@@ -1,0 +1,50 @@
+\section{Introduction}
+\section{Theory}
+Let $\mathcal{V} \subset \mathbb{R}^m$ be finite set corresponding to the domain, where $m \in \mathbb{N}$. In our context $\mathcal{V}$ will represent the pixels/voxels at which we observe imaging data. Given a distribution $\mathcal{D}$ on $\mathcal{X} \times \mathcal{Y}$ suppose that we observe
+i.i.d. from pairs $(X_i, Y_i)_{i = 1}^n$ on $\mathcal{D}$.  Here $X_i: \mathcal{V} \rightarrow \mathbb{R}$ represents the observed image and $Y_i:\mathcal{V} \rightarrow \lbrace 0, 1\rbrace$ outputs labels at each $v \in \mathcal{V}$ giving 1s at the true location of the objects in the image $X_i$ that we wish to identify and 0s elsewhere.
+
+Let $\mathcal{X} = \lbrace g: \mathcal{V} \rightarrow \mathbb{R}\rbrace$. Let $s:\mathcal{X} \times \mathcal{V} \rightarrow \mathbb{R}$ be a score function - trained on an independent dataset - such that given an image pair $(X,Y) \in \mathcal{X}\times \mathcal{Y}$, $s(X, v)$ is intended to be higher at the $v \in \mathcal{V}$ for which $Y(v) = 1$. The score function can for instance be derived from a deep neural network image segmentation method such as U-net CITE.
+
+In what follows, given an error rate $\alpha$ we will construct a classifer $c: \mathcal{X} \times \mathcal{V} \rightarrow \mathbb{R} $ such that given a new image pair $(X,Y) \sim \mathcal{D}$, and letting $L(X) = \lbrace v \in \mathcal{V}: c(X,v) = 1\rbrace$, we have
+\begin{equation*}
+	\mathbb{P}\left( Y(v) = 1 \text{ for all } v \in L(X) \right) \geq 1 - \alpha.
+\end{equation*}
+This corresponds to controlling  $\mathbb{P}\left( Y(v) = 0 \text{ for all } v \in L(X) \right) $, i.e. the probabilty of making an error, to a level $\alpha.$ This error rate is analogous to the familywise error rate from the multiple testing setting, an observation that allows us to control it using the distribution of the maximum in the spirit of Westphal-Young. 
+
+To do so, let $T_i = \max_{v \in \mathcal{V}: Y_i(v) = 0} s(X_i,v)$ and define
+\begin{equation*}
+	\lambda_{\alpha} = \inf\left\lbrace \lambda: \frac{1}{n} \sum_{i = 1}^n 1\left[ T_i \leq \lambda \right] \geq \alpha \right\rbrace.
+\end{equation*}
+be the upper $\alpha$-quantile of the distribution of the maximum of the score function of the observed image over the areas at which the true label is equal to 0. Then define the classifier, $c: \mathcal{X} \times \mathcal{V}$ such that
+\begin{equation*}
+	c(X, v) = 1[s(X,v)> \lambda_{\alpha}].
+\end{equation*}
+\begin{theorem}
+	Given $(X,Y) \sim \mathcal{D}$ independent of $(X_i, Y_i)_{i = 1}^n$, we have
+	\begin{equation*}
+		\mathbb{P}\left( Y(v) = 1 \text{ for all } v \in L(X) \right) \geq 1 - \alpha.
+	\end{equation*}
+\end{theorem}
+\begin{proof}
+	Suppose that $Y(v) = 0$ for some $v \in L(X)$, then it follows that $s(X,v) > \lambda_\alpha$ and conversely. Thus the event $\lbrace Y(v) = 0 \text{ for some } v \in L(X) \rbrace$ occurs if and only if $\max_{v \in \mathcal{V}: Y(v) = 0} s(X,v) >  \lambda_\alpha$. Let $T_{n+1} = \max_{v \in \mathcal{V}: Y(v) = 0} s(X,v)$. Then the vector $(T_1, \dots, T_{n+1})$ is exchangeable, so arguing as in XXX, it follows that $T_{n+1}$ is equally to lie between (or before/after) the values $T_1, \dots, T_n$. As such 
+	$\mathbb{P}\left( T_{n+1} > \lambda_{\alpha}\right) \leq \alpha$
+	and the result follows.
+\end{proof}
+
+\section{Results}
+\section{Applications}
+%\subsection{Tumor detection}
+%\begin{figure}[h!]
+%	\centering
+%	\includegraphics[width=\textwidth]{tumorfwerimage.png}
+%	\caption{Examples}
+%	\label{fig:enter-label}
+%\end{figure}
+
+\subsection{Polpys Tumor Segmentation}
+
+\subsection{Brain Mask Segmentation}
+
+
+\section{Acknowledgements}
+I'm grateful to Habib Ganjgahi at the Big Data Institue at the University of Oxford for useful conversations on this topic. 
