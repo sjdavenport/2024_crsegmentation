@@ -1,37 +1,112 @@
-\section{Introduction}
 \section{Theory}
-Let $\mathcal{V} \subset \mathbb{R}^m$ be finite set corresponding to the domain, where $m \in \mathbb{N}$. In our context $\mathcal{V}$ will represent the pixels/voxels at which we observe imaging data. Given a distribution $\mathcal{D}$ on $\mathcal{X} \times \mathcal{Y}$ suppose that we observe
-i.i.d. from pairs $(X_i, Y_i)_{i = 1}^n$ on $\mathcal{D}$.  Here $X_i: \mathcal{V} \rightarrow \mathbb{R}$ represents the observed image and $Y_i:\mathcal{V} \rightarrow \lbrace 0, 1\rbrace$ outputs labels at each $v \in \mathcal{V}$ giving 1s at the true location of the objects in the image $X_i$ that we wish to identify and 0s elsewhere.
+Let $\mathcal{V} \subset \mathbb{R}^m$ be finite set corresponding to the domain, where $m \in \mathbb{N}$, which represents the pixels/voxels at which we observe imaging data. Let $\mathcal{X} = \lbrace g: \mathcal{V} \rightarrow \mathbb{R}\rbrace$ be the set of real functions on $\mathcal{V}$ and let $\mathcal{Y} = \lbrace g: \mathcal{V} \rightarrow \lbrace 0,1 \rbrace \rbrace$ be the set of all functions taking the values 0 or 1. Suppose that we observe a calibration dataset $(X_i, Y_i)_{i = 1}^n$ of random images, where $X_i: \mathcal{V} \rightarrow \mathbb{R}$ represents the $i$th observed calibration image and $Y_i:\mathcal{V} \rightarrow \lbrace 0, 1\rbrace$ outputs labels at each $v \in \mathcal{V}$ giving 1s at the true location of the objects in the image $X_i$ that we wish to identify and 0s elsewhere. Let $\mathcal{P}(\mathcal{V})$ be the set of all subsets of $\mathcal{V}$ and let $=_d$ denote equality in distribution.
 
-Let $\mathcal{X} = \lbrace g: \mathcal{V} \rightarrow \mathbb{R}\rbrace$. Let $s:\mathcal{X} \times \mathcal{V} \rightarrow \mathbb{R}$ be a score function - trained on an independent dataset - such that given an image pair $(X,Y) \in \mathcal{X}\times \mathcal{Y}$, $s(X, v)$ is intended to be higher at the $v \in \mathcal{V}$ for which $Y(v) = 1$. The score function can for instance be derived from a deep neural network image segmentation method such as U-net CITE.
+Let $s:\mathcal{X} \times \mathcal{V} \rightarrow \mathbb{R}$ be a score function - trained on an independent dataset - such that given an image pair $(X,Y) \in \mathcal{X}\times \mathcal{Y}$, $s(X, v)$ is intended to be higher at the $v \in \mathcal{V}$ for which $Y(v) = 1$. The score function can for instance be the logit scores obtained from a deep neural network image segmentation method such as U-net CITE.
 
-In what follows, given an error rate $\alpha$ we will construct a classifer $c: \mathcal{X} \times \mathcal{V} \rightarrow \mathbb{R} $ such that given a new image pair $(X,Y) \sim \mathcal{D}$, and letting $L(X) = \lbrace v \in \mathcal{V}: c(X,v) = 1\rbrace$, we have
+In what follows, for a given error rate $\alpha$, we will use the calibration dataset to construct a confidence functions $L,U: \mathcal{X}  \rightarrow \mathcal{P}(\mathcal{V})$ such that for a new image pair $(X,Y) \sim \mathcal{D}$,
+\begin{equation}\label{eq:probstat}
+	\mathbb{P}\left( L(X) \subseteq \lbrace v\in \mathcal{V}: Y(v) = 1 \rbrace \subseteq U(X) \right) \geq 1 - \alpha.
+\end{equation}
+Here $L(X)$ and $U(X)$ serve as inner and outer confidence sets for the location of the true segmented mask. Their interpretation is that, up to the guarantee provided by the probabilistic statement \eqref{eq:probstat}, we can be sure that for each point $v\in L(X)$, $Y(v) = 1$ and that for each point $v \not\in U(X)$, $Y(v) = 0$. See Figure XXX for an example of this in practice. 
+\subsection{Conformal confidence sets}
+\subsubsection{Joint confidence sets}
+In order to construct conformal confidence sets let $f_U, f_L:\mathbb{R} \rightarrow \mathbb{R}$ be increasing functions and for each $1\leq i \leq n$, let $\tau_i = \max_{v \in \mathcal{V}: Y_i(v) = 0} f_U(s(X_i,v))$ and $\gamma_i = \max_{v \in \mathcal{V}: Y_i(v) = 1} f_L(-s(X_i,v))$  be the maxima of the function transformed scores over the areas at which the true labels equal 0 and 1 respectively. Define
 \begin{equation*}
-	\mathbb{P}\left( Y(v) = 1 \text{ for all } v \in L(X) \right) \geq 1 - \alpha.
+	\lambda_{\alpha} = \inf\left\lbrace \lambda: \frac{1}{n} \sum_{i = 1}^n 1\left[ \max(\tau_i, \gamma_i) \leq \lambda \right] \geq \alpha \right\rbrace.
 \end{equation*}
-This corresponds to controlling  $\mathbb{P}\left( Y(v) = 0 \text{ for all } v \in L(X) \right) $, i.e. the probabilty of making an error, to a level $\alpha.$ This error rate is analogous to the familywise error rate from the multiple testing setting, an observation that allows us to control it using the distribution of the maximum in the spirit of Westphal-Young. 
-
-To do so, let $T_i = \max_{v \in \mathcal{V}: Y_i(v) = 0} s(X_i,v)$ and define
-\begin{equation*}
-	\lambda_{\alpha} = \inf\left\lbrace \lambda: \frac{1}{n} \sum_{i = 1}^n 1\left[ T_i \leq \lambda \right] \geq \alpha \right\rbrace.
-\end{equation*}
-be the upper $\alpha$-quantile of the distribution of the maximum of the score function of the observed image over the areas at which the true label is equal to 0. Then define the classifier, $c: \mathcal{X} \times \mathcal{V}$ such that
-\begin{equation*}
-	c(X, v) = 1[s(X,v)> \lambda_{\alpha}].
-\end{equation*}
+to be the upper $\alpha$-quantile of the distribution of $\max(\tau_i, \gamma_i)$ over $1 \leq i \leq n$. Given $X \in \mathcal{X}$, let $U(X) = \lbrace v \in \mathcal{V}: f_U(s(X,v)) > \lambda_{\alpha} \rbrace $ and $L(X) = \lbrace v \in \mathcal{V}: f_L(-s(X,v)) > \lambda_{\alpha} \rbrace $. For these confidence sets, under exchangeability, we have the following inclusion result.
 \begin{theorem}
-	Given $(X,Y) \sim \mathcal{D}$ independent of $(X_i, Y_i)_{i = 1}^n$, we have
+	Given a new random image pair, $(X_{n+1},Y_{n+1})$, suppose that $(X_i, Y_i)_{i = 1}^{n+1}$ is an exchangeable sequence of random image pairs in the sense that 
 	\begin{equation*}
-		\mathbb{P}\left( Y(v) = 1 \text{ for all } v \in L(X) \right) \geq 1 - \alpha.
+		\left\lbrace (X_1,Y_1), \dots, (X_{n+1}, Y_{n+1}) \right\rbrace =_d \left\lbrace (X_{\sigma(1)}, Y_{\sigma(1)}), \dots, (X_{\sigma(n+1)}, Y_{\sigma(n+1)}) \right\rbrace
 	\end{equation*}
+	for any permutation $\sigma \in S_{n+1}$. Then,
+\begin{equation}\label{eq:probstat}
+	\mathbb{P}\left( L(X) \subseteq \lbrace v\in \mathcal{V}: Y(v) = 1 \rbrace \subseteq U(X) \right) \geq 1 - \alpha.
+\end{equation}
 \end{theorem}
 \begin{proof}
-	Suppose that $Y(v) = 0$ for some $v \in L(X)$, then it follows that $s(X,v) > \lambda_\alpha$ and conversely. Thus the event $\lbrace Y(v) = 0 \text{ for some } v \in L(X) \rbrace$ occurs if and only if $\max_{v \in \mathcal{V}: Y(v) = 0} s(X,v) >  \lambda_\alpha$. Let $T_{n+1} = \max_{v \in \mathcal{V}: Y(v) = 0} s(X,v)$. Then the vector $(T_1, \dots, T_{n+1})$ is exchangeable, so arguing as in XXX, it follows that $T_{n+1}$ is equally to lie between (or before/after) the values $T_1, \dots, T_n$. As such 
-	$\mathbb{P}\left( T_{n+1} > \lambda_{\alpha}\right) \leq \alpha$
-	and the result follows.
+	Let $\tau_{n+1}= \max_{v \in \mathcal{V}: Y_{n+1}(v) = 0} f_U(s(X_{n+1},v))$ and $\gamma_{n+1} = \max_{v \in \mathcal{V}: Y_{n+1}(v) = 1} f_L(-s(X_{n+1},v))$. Then exchangeability of the image pairs implies exchangeability of the sequence $(\tau_i, \gamma_i)_{i = 1}^{n+1}$ and as a consequence exchangeability of the sequence $(\max(\tau_i, \gamma_i))_{i = 1}^{n+1}$. 
+	In particular it follows that 
+	\begin{equation*}
+		content...
+	\end{equation*}
+	Now consider the event that $\max(\tau_{n+1}, \gamma_{n+1}) \leq \lambda_{\alpha}$. On this event $\tau_{n+1} \leq \lambda_\alpha$, and so in particular, 
+	\begin{equation*}
+		f_U(s(X_{n+1},v)) \leq \lambda_\alpha 
+	\end{equation*}
+	for all $v \in \mathcal{V}$ such that $Y_{n+1}(v) = 0$. As such given $u \in \mathcal{V}$ such that $	f_U(s(X_{n+1},u)) > \lambda_\alpha$ we must have $Y_{n+1}(u) = 1$ so it follows that 
+	\begin{equation*}
+		\lbrace v\in \mathcal{V}: Y(v) = 1 \rbrace \subseteq U(X) 
+	\end{equation*}
 \end{proof}
 
-\section{Results}
+\begin{remark}
+	Note that exchangeability holds for instance if we assume that the collection $(X_i, Y_i)_{i = 1}^{n+1}$ is an i.i.d. sequence of image pairs.
+\end{remark}
+
+%Typically in our applications, $X_{n+1}$ will observed with $Y$ unknown.
+%
+%%%%
+% $c: \mathcal{X} \times \mathcal{V} \rightarrow \mathbb{R} $ such that given  and letting $L(X) = \lbrace v \in \mathcal{V}: c(X,v) = 1\rbrace$, we have
+%\begin{equation*}
+%	\mathbb{P}\left( Y(v) = 1 \text{ for all } v \in L(X) \right) \geq 1 - \alpha.
+%\end{equation*}
+%This corresponds to controlling  $\mathbb{P}\left( Y(v) = 0 \text{ for all } v \in L(X) \right) $, i.e. the probabilty of making an error, to a level $\alpha.$ This error rate is analogous to the familywise error rate from the multiple testing setting, an observation that allows us to control it using the distribution of the maximum in the spirit of Westphal-Young. 
+%
+%To do so, let $T_i = \max_{v \in \mathcal{V}: Y_i(v) = 0} s(X_i,v)$ and define
+%\begin{equation*}
+%	\lambda_{\alpha} = \inf\left\lbrace \lambda: \frac{1}{n} \sum_{i = 1}^n 1\left[ T_i \leq \lambda \right] \geq \alpha \right\rbrace.
+%\end{equation*}
+%be the upper $\alpha$-quantile of the distribution of the maximum of the score function of the observed image over the areas at which the true label is equal to 0. Then define the classifier, $c: \mathcal{X} \times \mathcal{V}$ such that
+%\begin{equation*}
+%	c(X, v) = 1[s(X,v)> \lambda_{\alpha}].
+%\end{equation*}
+%\begin{theorem}
+%	Given $(X,Y) \sim \mathcal{D}$ independent of $(X_i, Y_i)_{i = 1}^n$, we have
+%	\begin{equation*}
+%		\mathbb{P}\left( Y(v) = 1 \text{ for all } v \in L(X) \right) \geq 1 - \alpha.
+%	\end{equation*}
+%\end{theorem}
+%\begin{proof}
+%	Suppose that $Y(v) = 0$ for some $v \in L(X)$, then it follows that $s(X,v) > \lambda_\alpha$ and conversely. Thus the event $\lbrace Y(v) = 0 \text{ for some } v \in L(X) \rbrace$ occurs if and only if $\max_{v \in \mathcal{V}: Y(v) = 0} s(X,v) >  \lambda_\alpha$. Let $T_{n+1} = \max_{v \in \mathcal{V}: Y(v) = 0} s(X,v)$. Then the vector $(T_1, \dots, T_{n+1})$ is exchangeable, so arguing as in XXX, it follows that $T_{n+1}$ is equally to lie between (or before/after) the values $T_1, \dots, T_n$. As such 
+%	$\mathbb{P}\left( T_{n+1} > \lambda_{\alpha}\right) \leq \alpha$
+%	and the result follows.
+%\end{proof}
+
+\subsubsection{Marginal confidence sets}
+We have focused so far on obtaining inner and outer sets with joint control of the coverage rate. However if one is instead interested in obtaining just an inner set  or just an outer set than one can instead spend all of the $\alpha$ available to construct such a set instead of spending it on both sets simultaneously. The resulting sets will be more precise than their joint counterparts but will of course only be valid marginally requireing a choice between the inner and the outer sets to be made. In particular we have the following results. 
+
+\begin{theorem}
+	(Maringal outer set)
+	Under the same setting as Theorem XXX, let 
+	\begin{equation*}
+		\lambda^U_{\alpha} = \inf\left\lbrace \lambda: \frac{1}{n} \sum_{i = 1}^n 1\left[ \tau_i\leq \lambda \right] \geq \alpha \right\rbrace.
+	\end{equation*}
+	and define $U_M(X) = \lbrace v \in \mathcal{V}: f_U(s(X,v)) > \lambda_{\alpha} \rbrace $. Then,
+	\begin{equation}\label{eq:probstat}
+		\mathbb{P}\left( \lbrace v\in \mathcal{V}: Y(v) = 1 \rbrace \subseteq U(X) \right) \geq 1 - \alpha.
+	\end{equation}
+\end{theorem}
+Similarly for the inner set we have
+\begin{theorem}
+	(Maringal outer set)
+	Under the same setting as Theorem XXX, let 
+	\begin{equation*}
+		\lambda^L_{\alpha} = \inf\left\lbrace \lambda: \frac{1}{n} \sum_{i = 1}^n 1\left[ \gamma_i\leq \lambda \right] \geq \alpha \right\rbrace.
+	\end{equation*}
+	and define $U(X) = \lbrace v \in \mathcal{V}: f_U(s(X,v)) > \lambda_{\alpha} \rbrace $. Then,
+	\begin{equation}\label{eq:probstat}
+		\mathbb{P}\left( \lbrace v\in \mathcal{V}: Y(v) = 1 \rbrace \subseteq U(X) \right) \geq 1 - \alpha.
+	\end{equation}
+\end{theorem}
+The proofs of these results follows that of Theorem XXX and are thus omitted. 
+\begin{remark}
+	Importantly the coverage of the sets $U_M(X)$ and $V_M(X)$ is not jointly valid and so when using these results the choice of inner versus outer set must be made in advance.
+\end{remark}
+
+\subsection{Obtaining confidence sets via concentration inequalities}
+
 \section{Applications}
 %\subsection{Tumor detection}
 %\begin{figure}[h!]
@@ -44,6 +119,8 @@ be the upper $\alpha$-quantile of the distribution of the maximum of the score f
 \subsection{Polpys Tumor Segmentation}
 
 \subsection{Brain Mask Segmentation}
+
+\subsection{Melanoma Segmentation}
 
 
 \section{Acknowledgements}

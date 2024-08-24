@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.4.17)  12 AUG 2024 17:42
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.4.17)  24 AUG 2024 13:08
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -458,7 +458,17 @@ File: l3backend-pdftex.def 2024-02-20 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count310
 \l__pdf_internal_box=\box62
 )
-(./arxiv_submission.aux)
+(./arxiv_submission.aux
+
+LaTeX Warning: Label `eq:probstat' multiply defined.
+
+
+LaTeX Warning: Label `eq:probstat' multiply defined.
+
+
+LaTeX Warning: Label `eq:probstat' multiply defined.
+
+)
 \openout1 = `arxiv_submission.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 47.
@@ -479,8 +489,7 @@ LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 47.
 LaTeX Font Info:    ... okay on input line 47.
 LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 47.
 LaTeX Font Info:    ... okay on input line 47.
-
-(/usr/local/texlive/2024/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+ (/usr/local/texlive/2024/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count311
 \scratchdimen=\dimen175
@@ -556,47 +565,89 @@ LaTeX Font Info:    Trying to load font information for U+msb on input line 50.
 (/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-(../abstract.tex) (../introduction.tex) (../main_body.tex [1
+(../abstract.tex) (../introduction.tex [1
 
-{/usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]) (../di
-scussion.tex)
-(../acknowledgements.tex) (./arxiv_submission.bbl
+{/usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2]
+
+Package natbib Warning: Citation `Sommerfield2018' on page 3 undefined on input
+ line 39.
+
+
+Package natbib Warning: Citation `Bowring2019' on page 3 undefined on input lin
+e 39.
+
+
+Package natbib Warning: Citation `Bowring2020' on page 3 undefined on input lin
+e 39.
+
+) (../main_body.tex [3]
+Overfull \hbox (34.64745pt too wide) in paragraph at lines 13--14
+\OT1/cmr/m/n/12 and for each $1 \OMS/cmsy/m/n/12 ^^T \OML/cmm/m/it/12 i \OMS/cm
+sy/m/n/12 ^^T \OML/cmm/m/it/12 n$\OT1/cmr/m/n/12 , let $\OML/cmm/m/it/12 ^^\[] 
+\OT1/cmr/m/n/12 = [][] \OML/cmm/m/it/12 f[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 s\
+OT1/cmr/m/n/12 (\OML/cmm/m/it/12 X[]; v\OT1/cmr/m/n/12 ))$ and $\OML/cmm/m/it/1
+2 ^^M[] \OT1/cmr/m/n/12 = [][] \OML/cmm/m/it/12 f[]\OT1/cmr/m/n/12 (\OMS/cmsy/m
+/n/12 ^^@\OML/cmm/m/it/12 s\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 X[]; v\OT1/cmr/m/n
+/12 ))$
+ []
+
+
+Overfull \hbox (35.36685pt too wide) in paragraph at lines 29--31
+[]\OT1/cmr/m/n/12 Let $\OML/cmm/m/it/12 ^^\[] \OT1/cmr/m/n/12 = [][] \OML/cmm/m
+/it/12 f[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 s\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 
+X[]; v\OT1/cmr/m/n/12 ))$ and $\OML/cmm/m/it/12 ^^M[] \OT1/cmr/m/n/12 = [][] \O
+ML/cmm/m/it/12 f[]\OT1/cmr/m/n/12 (\OMS/cmsy/m/n/12 ^^@\OML/cmm/m/it/12 s\OT1/c
+mr/m/n/12 (\OML/cmm/m/it/12 X[]; v\OT1/cmr/m/n/12 ))$.
+ []
+
+[4]) (../discussion.tex [5] [6]) (../acknowledgements.tex)
+(./arxiv_submission.bbl
 
 Package natbib Warning: Empty `thebibliography' environment on input line 8.
 
-) [2] (./arxiv_submission.aux)
+) (../appendix.tex)
+
+Package natbib Warning: There were undefined citations.
+
+[7] (./arxiv_submission.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-02-20>
  ***********
+
+
+LaTeX Warning: There were multiply-defined labels.
+
 Package rerunfilecheck Info: File `arxiv_submission.out' has not changed.
-(rerunfilecheck)             Checksum: D162AACD86395E6385D8D7FE2532B5E7;1042.
+(rerunfilecheck)             Checksum: 3DAB70CABC93936AC660AD1C645E2603;2171.
  ) 
 Here is how much of TeX's memory you used:
- 13764 strings out of 474116
- 215100 string characters out of 5743682
- 1941187 words of memory out of 5000000
- 35895 multiletter control sequences out of 15000+600000
- 569178 words of font info for 77 fonts, out of 8000000 for 9000
+ 13793 strings out of 474116
+ 215593 string characters out of 5743682
+ 1940187 words of memory out of 5000000
+ 35906 multiletter control sequences out of 15000+600000
+ 568477 words of font info for 75 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,6n,79p,579b,614s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,6n,79p,1012b,443s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 ></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><
 /usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></
 usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></us
 r/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/
-local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/lo
-cal/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/loca
-l/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/t
-exlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/te
-xlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texl
-ive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/texli
-ve/2024/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on arxiv_submission.pdf (2 pages, 143602 bytes).
+local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/lo
+cal/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/loca
+l/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/
+texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/tex
+live/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texliv
+e/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive
+/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2
+024/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/texlive/20
+24/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on arxiv_submission.pdf (7 pages, 197224 bytes).
 PDF statistics:
- 125 PDF objects out of 1000 (max. 8388607)
- 94 compressed objects within 1 object stream
- 15 named destinations out of 1000 (max. 500000)
- 73 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 190 PDF objects out of 1000 (max. 8388607)
+ 149 compressed objects within 2 object streams
+ 33 named destinations out of 1000 (max. 500000)
+ 113 words of extra memory for PDF output out of 10000 (max. 10000000)
 
