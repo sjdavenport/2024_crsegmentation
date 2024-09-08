@@ -1,8 +1,78 @@
-\begin{thebibliography}{0}
+\begin{thebibliography}{9}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
   \providecommand{\doi}[1]{doi: #1}\else
   \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Bernal et~al.(2012)Bernal, S{\'a}nchez, and Vilarino]{Bernal2012}
+Jorge Bernal, Javier S{\'a}nchez, and Fernando Vilarino.
+\newblock Towards automatic polyp detection with a polyp appearance model.
+\newblock \emph{Pattern Recognition}, 45\penalty0 (9):\penalty0 3166--3182,
+  2012.
+
+\bibitem[Borgli et~al.(2020)Borgli, Thambawita, Smedsrud, Hicks, Jha, Eskeland,
+  Randel, Pogorelov, Lux, Nguyen, et~al.]{Hyperkvasir2020}
+Hanna Borgli, Vajira Thambawita, Pia~H Smedsrud, Steven Hicks, Debesh Jha,
+  Sigrun~L Eskeland, Kristin~Ranheim Randel, Konstantin Pogorelov, Mathias Lux,
+  Duc Tien~Dang Nguyen, et~al.
+\newblock Hyperkvasir, a comprehensive multi-class image and video dataset for
+  gastrointestinal endoscopy.
+\newblock \emph{Scientific data}, 7\penalty0 (1):\penalty0 283, 2020.
+
+\bibitem[Bowring et~al.(2019)Bowring, Telschow, Schwartzman, and
+  Nichols]{Bowring2019}
+Alexander Bowring, Fabian Telschow, Armin Schwartzman, and Thomas~E. Nichols.
+\newblock Spatial confidence sets for raw effect size images.
+\newblock \emph{NeuroImage}, 203:\penalty0 116187, 2019.
+
+\bibitem[Bowring et~al.(2020)Bowring, Telschow, Schwartzman, and
+  Nichols]{Bowring2020}
+Alexander Bowring, Fabian Telschow, Armin Schwartzman, and Thomas~E. Nichols.
+\newblock Confidence sets for cohen’s d effect size images.
+\newblock \emph{NeuroImage}, 2020.
+
+\bibitem[Fan et~al.(2020)Fan, Ji, Zhou, Chen, Fu, Shen, and Shao]{PraNet2020}
+Deng-Ping Fan, Ge-Peng Ji, Tao Zhou, Geng Chen, Huazhu Fu, Jianbing Shen, and
+  Ling Shao.
+\newblock Pranet: Parallel reverse attention network for polyp segmentation.
+\newblock In \emph{International conference on medical image computing and
+  computer-assisted intervention}, pages 263--273. Springer, 2020.
+
+\bibitem[Pogorelov et~al.(2017)Pogorelov, Randel, Griwodz, Eskeland, de~Lange,
+  Johansen, Spampinato, Dang-Nguyen, Lux, Schmidt, Riegler, and
+  Halvorsen]{KVASIR2017}
+Konstantin Pogorelov, Kristin~Ranheim Randel, Carsten Griwodz, Sigrun~Losada
+  Eskeland, Thomas de~Lange, Dag Johansen, Concetto Spampinato, Duc-Tien
+  Dang-Nguyen, Mathias Lux, Peter~Thelin Schmidt, Michael Riegler, and P{\aa}l
+  Halvorsen.
+\newblock Kvasir: A multi-class image dataset for computer aided
+  gastrointestinal disease detection.
+\newblock In \emph{Proceedings of the 8th ACM on Multimedia Systems
+  Conference}, MMSys'17, pages 164--169, New York, NY, USA, 2017. ACM.
+\newblock ISBN 978-1-4503-5002-0.
+\newblock \doi{10.1145/3083187.3083212}.
+
+\bibitem[Silva et~al.(2014)Silva, Histace, Romain, Dray, and
+  Granado]{Silva2014}
+Juan Silva, Aymeric Histace, Olivier Romain, Xavier Dray, and Bertrand Granado.
+\newblock Toward embedded detection of polyps in wce images for early diagnosis
+  of colorectal cancer.
+\newblock \emph{International journal of computer assisted radiology and
+  surgery}, 9:\penalty0 283--293, 2014.
+
+\bibitem[Sommerfeld et~al.(2018)Sommerfeld, Sain, and
+  Schwartzman]{Sommerfield2018}
+Max Sommerfeld, Stephan Sain, and Armin Schwartzman.
+\newblock {Confidence regions for spatial excursion sets from repeated random
+  field observations, with an application to climate}.
+\newblock \emph{Journal of the American Statistical Association},
+  1459:\penalty0 0--0, 2018.
+
+\bibitem[Telschow et~al.(2023)Telschow, Ren, and
+  Schwartzman]{Telschow2023scope}
+Fabian Telschow, Junting Ren, and Armin Schwartzman.
+\newblock Scope sets: A versatile framework for simultaneous inference.
+\newblock \emph{Preprint}, 2023.
 
 \end{thebibliography}
