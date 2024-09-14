@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.4.17)  8 SEP 2024 22:03
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.4.17)  9 SEP 2024 23:14
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -653,10 +653,10 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 
 {/usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
 
-Package natbib Warning: Citation `Ren' on page 2 undefined on input line 17.
+Package natbib Warning: Citation `Ren' on page 2 undefined on input line 15.
 
 [2]) (../main_body.tex
-Overfull \hbox (33.25964pt too wide) in paragraph at lines 14--15
+Overfull \hbox (33.25964pt too wide) in paragraph at lines 13--14
 \OT1/cmr/m/n/12 and for each $1 \OMS/cmsy/m/n/12 ^^T \OML/cmm/m/it/12 i \OMS/cm
 sy/m/n/12 ^^T \OML/cmm/m/it/12 n$\OT1/cmr/m/n/12 , let $\OML/cmm/m/it/12 ^^\[] 
 \OT1/cmr/m/n/12 = [][] \OML/cmm/m/it/12 f[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 s\
@@ -667,7 +667,7 @@ OT1/cmr/m/n/12 (\OML/cmm/m/it/12 X[]; v\OT1/cmr/m/n/12 ))$ and $\OML/cmm/m/it/1
  []
 
 [3]
-Overfull \hbox (33.97905pt too wide) in paragraph at lines 30--32
+Overfull \hbox (33.97905pt too wide) in paragraph at lines 29--31
 []\OT1/cmr/m/n/12 Let $\OML/cmm/m/it/12 ^^\[] \OT1/cmr/m/n/12 = [][] \OML/cmm/m
 /it/12 f[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 s\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 
 X[]; v\OT1/cmr/m/n/12 ))$ and $\OML/cmm/m/it/12 ^^M[] \OT1/cmr/m/n/12 = [][] \O
@@ -676,103 +676,103 @@ mr/m/n/12 (\OML/cmm/m/it/12 X[]; v\OT1/cmr/m/n/12 ))$.
  []
 
 [4] [5]
-<../figures/val_crs_90_orig/15.png, id=136, 910.40125pt x 803.0pt>
+<../figures/val_images/15.png, id=143, 801.99625pt x 707.64375pt>
+File: ../figures/val_images/15.png Graphic file (type png)
+<use ../figures/val_images/15.png>
+Package pdftex.def Info: ../figures/val_images/15.png  used on input line 163.
+(pdftex.def)             Requested size: 85.41629pt x 75.35756pt.
+<../figures/val_images/114.png, id=144, 801.99625pt x 707.64375pt>
+File: ../figures/val_images/114.png Graphic file (type png)
+<use ../figures/val_images/114.png>
+Package pdftex.def Info: ../figures/val_images/114.png  used on input line 168.
+
+(pdftex.def)             Requested size: 85.41629pt x 75.35756pt.
+<../figures/val_images/61.png, id=145, 801.99625pt x 707.64375pt>
+File: ../figures/val_images/61.png Graphic file (type png)
+<use ../figures/val_images/61.png>
+Package pdftex.def Info: ../figures/val_images/61.png  used on input line 173.
+(pdftex.def)             Requested size: 85.41629pt x 75.35756pt.
+<../figures/val_images/76.png, id=146, 801.99625pt x 707.64375pt>
+File: ../figures/val_images/76.png Graphic file (type png)
+<use ../figures/val_images/76.png>
+Package pdftex.def Info: ../figures/val_images/76.png  used on input line 178.
+(pdftex.def)             Requested size: 85.41629pt x 75.35756pt.
+<../figures/val_images/87.png, id=147, 801.99625pt x 707.64375pt>
+File: ../figures/val_images/87.png Graphic file (type png)
+<use ../figures/val_images/87.png>
+Package pdftex.def Info: ../figures/val_images/87.png  used on input line 183.
+(pdftex.def)             Requested size: 85.41629pt x 75.35756pt.
+<../figures/val_crs_90_orig/15.png, id=148, 910.40125pt x 803.0pt>
 File: ../figures/val_crs_90_orig/15.png Graphic file (type png)
 <use ../figures/val_crs_90_orig/15.png>
 Package pdftex.def Info: ../figures/val_crs_90_orig/15.png  used on input line 
-157.
+190.
 (pdftex.def)             Requested size: 85.41629pt x 75.33006pt.
-<../figures/val_crs_90_orig/114.png, id=137, 801.99625pt x 707.64375pt>
+<../figures/val_crs_90_orig/114.png, id=149, 801.99625pt x 707.64375pt>
 File: ../figures/val_crs_90_orig/114.png Graphic file (type png)
 <use ../figures/val_crs_90_orig/114.png>
 Package pdftex.def Info: ../figures/val_crs_90_orig/114.png  used on input line
- 162.
+ 195.
 (pdftex.def)             Requested size: 85.41629pt x 75.35756pt.
-<../figures/val_crs_90_orig/61.png, id=138, 910.40125pt x 803.0pt>
+<../figures/val_crs_90_orig/61.png, id=150, 910.40125pt x 803.0pt>
 File: ../figures/val_crs_90_orig/61.png Graphic file (type png)
 <use ../figures/val_crs_90_orig/61.png>
 Package pdftex.def Info: ../figures/val_crs_90_orig/61.png  used on input line 
-167.
+200.
 (pdftex.def)             Requested size: 85.41629pt x 75.33006pt.
-<../figures/val_crs_90_orig/76.png, id=139, 910.40125pt x 803.0pt>
+<../figures/val_crs_90_orig/76.png, id=151, 910.40125pt x 803.0pt>
 File: ../figures/val_crs_90_orig/76.png Graphic file (type png)
 <use ../figures/val_crs_90_orig/76.png>
 Package pdftex.def Info: ../figures/val_crs_90_orig/76.png  used on input line 
-172.
+205.
 (pdftex.def)             Requested size: 85.41629pt x 75.33006pt.
-<../figures/val_crs_90_orig/87.png, id=140, 910.40125pt x 803.0pt>
+<../figures/val_crs_90_orig/87.png, id=152, 910.40125pt x 803.0pt>
 File: ../figures/val_crs_90_orig/87.png Graphic file (type png)
 <use ../figures/val_crs_90_orig/87.png>
 Package pdftex.def Info: ../figures/val_crs_90_orig/87.png  used on input line 
-177.
+210.
 (pdftex.def)             Requested size: 85.41629pt x 75.33006pt.
-<../figures/val_crs_90_distmix/15.png, id=141, 910.40125pt x 803.0pt>
+<../figures/val_crs_90_distmix/15.png, id=153, 910.40125pt x 803.0pt>
 File: ../figures/val_crs_90_distmix/15.png Graphic file (type png)
 <use ../figures/val_crs_90_distmix/15.png>
 Package pdftex.def Info: ../figures/val_crs_90_distmix/15.png  used on input li
-ne 184.
+ne 217.
 (pdftex.def)             Requested size: 85.41629pt x 75.33006pt.
-<../figures/val_crs_90_distmix/114.png, id=142, 910.40125pt x 803.0pt>
+<../figures/val_crs_90_distmix/114.png, id=154, 910.40125pt x 803.0pt>
 File: ../figures/val_crs_90_distmix/114.png Graphic file (type png)
 <use ../figures/val_crs_90_distmix/114.png>
 Package pdftex.def Info: ../figures/val_crs_90_distmix/114.png  used on input l
-ine 189.
+ine 222.
 (pdftex.def)             Requested size: 85.41629pt x 75.33006pt.
-<../figures/val_crs_90_distmix/61.png, id=143, 910.40125pt x 803.0pt>
+<../figures/val_crs_90_distmix/61.png, id=155, 910.40125pt x 803.0pt>
 File: ../figures/val_crs_90_distmix/61.png Graphic file (type png)
 <use ../figures/val_crs_90_distmix/61.png>
 Package pdftex.def Info: ../figures/val_crs_90_distmix/61.png  used on input li
-ne 194.
+ne 227.
 (pdftex.def)             Requested size: 85.41629pt x 75.33006pt.
-<../figures/val_crs_90_distmix/76.png, id=144, 910.40125pt x 803.0pt>
+<../figures/val_crs_90_distmix/76.png, id=156, 910.40125pt x 803.0pt>
 File: ../figures/val_crs_90_distmix/76.png Graphic file (type png)
 <use ../figures/val_crs_90_distmix/76.png>
 Package pdftex.def Info: ../figures/val_crs_90_distmix/76.png  used on input li
-ne 199.
+ne 232.
 (pdftex.def)             Requested size: 85.41629pt x 75.33006pt.
-<../figures/val_crs_90_distmix/87.png, id=145, 910.40125pt x 803.0pt>
+<../figures/val_crs_90_distmix/87.png, id=157, 910.40125pt x 803.0pt>
 File: ../figures/val_crs_90_distmix/87.png Graphic file (type png)
 <use ../figures/val_crs_90_distmix/87.png>
 Package pdftex.def Info: ../figures/val_crs_90_distmix/87.png  used on input li
-ne 204.
+ne 237.
 (pdftex.def)             Requested size: 85.41629pt x 75.33006pt.
-<../figures/val_images/15.png, id=146, 801.99625pt x 707.64375pt>
-File: ../figures/val_images/15.png Graphic file (type png)
-<use ../figures/val_images/15.png>
-Package pdftex.def Info: ../figures/val_images/15.png  used on input line 211.
-(pdftex.def)             Requested size: 85.41629pt x 75.35756pt.
-<../figures/val_images/114.png, id=147, 801.99625pt x 707.64375pt>
-File: ../figures/val_images/114.png Graphic file (type png)
-<use ../figures/val_images/114.png>
-Package pdftex.def Info: ../figures/val_images/114.png  used on input line 216.
-
-(pdftex.def)             Requested size: 85.41629pt x 75.35756pt.
-<../figures/val_images/61.png, id=148, 801.99625pt x 707.64375pt>
-File: ../figures/val_images/61.png Graphic file (type png)
-<use ../figures/val_images/61.png>
-Package pdftex.def Info: ../figures/val_images/61.png  used on input line 221.
-(pdftex.def)             Requested size: 85.41629pt x 75.35756pt.
-<../figures/val_images/76.png, id=149, 801.99625pt x 707.64375pt>
-File: ../figures/val_images/76.png Graphic file (type png)
-<use ../figures/val_images/76.png>
-Package pdftex.def Info: ../figures/val_images/76.png  used on input line 226.
-(pdftex.def)             Requested size: 85.41629pt x 75.35756pt.
-<../figures/val_images/87.png, id=150, 801.99625pt x 707.64375pt>
-File: ../figures/val_images/87.png Graphic file (type png)
-<use ../figures/val_images/87.png>
-Package pdftex.def Info: ../figures/val_images/87.png  used on input line 231.
-(pdftex.def)             Requested size: 85.41629pt x 75.35756pt.
-) (../discussion.tex [6] [7 <../figures/val_crs_90_orig/15.png (PNG copy)> <../
-figures/val_crs_90_orig/114.png (PNG copy)> <../figures/val_crs_90_orig/61.png 
-(PNG copy)> <../figures/val_crs_90_orig/76.png (PNG copy)> <../figures/val_crs_
-90_orig/87.png (PNG copy)> <../figures/val_crs_90_distmix/15.png (PNG copy)> <.
-./figures/val_crs_90_distmix/114.png (PNG copy)> <../figures/val_crs_90_distmix
-/61.png (PNG copy)> <../figures/val_crs_90_distmix/76.png (PNG copy)> <../figur
-es/val_crs_90_distmix/87.png (PNG copy)> <../figures/val_images/15.png (PNG cop
-y)> <../figures/val_images/114.png (PNG copy)> <../figures/val_images/61.png (P
-NG copy)> <../figures/val_images/76.png (PNG copy)> <../figures/val_images/87.p
-ng (PNG copy)>] [8]) (../acknowledgements.tex) (./arxiv_submission.bbl
-[9]) (../appendix.tex)
+ [6 <../figures/val_images/15.png (PNG copy)> <../figures/val_images/114.png (P
+NG copy)> <../figures/val_images/61.png (PNG copy)> <../figures/val_images/76.p
+ng (PNG copy)> <../figures/val_images/87.png (PNG copy)> <../figures/val_crs_90
+_orig/15.png (PNG copy)> <../figures/val_crs_90_orig/114.png (PNG copy)> <../fi
+gures/val_crs_90_orig/61.png (PNG copy)> <../figures/val_crs_90_orig/76.png (PN
+G copy)> <../figures/val_crs_90_orig/87.png (PNG copy)> <../figures/val_crs_90_
+distmix/15.png (PNG copy)> <../figures/val_crs_90_distmix/114.png (PNG copy)> <
+../figures/val_crs_90_distmix/61.png (PNG copy)> <../figures/val_crs_90_distmix
+/76.png (PNG copy)> <../figures/val_crs_90_distmix/87.png (PNG copy)>])
+(../discussion.tex [7]) (../acknowledgements.tex) (./arxiv_submission.bbl
+[8]) (../appendix.tex [9])
 
 Package natbib Warning: There were undefined citations.
 
@@ -786,16 +786,16 @@ L3 programming layer <2024-02-20>
 LaTeX Warning: There were multiply-defined labels.
 
 Package rerunfilecheck Info: File `arxiv_submission.out' has not changed.
-(rerunfilecheck)             Checksum: 2018B9F702C0D22E2651B1B9460AE704;2693.
+(rerunfilecheck)             Checksum: 7DE0FA383EB3A7DCF1EDF9FD22910B06;2267.
  ) 
 Here is how much of TeX's memory you used:
- 13966 strings out of 474116
- 220937 string characters out of 5743682
+ 13985 strings out of 474116
+ 221368 string characters out of 5743682
  1940187 words of memory out of 5000000
- 36063 multiletter control sequences out of 15000+600000
+ 36080 multiletter control sequences out of 15000+600000
  568477 words of font info for 75 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,8n,79p,1266b,617s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,8n,79p,1274b,617s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 ></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><
@@ -811,10 +811,10 @@ e/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive
 /2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2
 024/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/texlive/20
 24/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on arxiv_submission.pdf (10 pages, 2249225 bytes).
+Output written on arxiv_submission.pdf (10 pages, 2250881 bytes).
 PDF statistics:
- 254 PDF objects out of 1000 (max. 8388607)
- 195 compressed objects within 2 object streams
- 49 named destinations out of 1000 (max. 500000)
- 188 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 262 PDF objects out of 1000 (max. 8388607)
+ 202 compressed objects within 3 object streams
+ 51 named destinations out of 1000 (max. 500000)
+ 172 words of extra memory for PDF output out of 10000 (max. 10000000)
 

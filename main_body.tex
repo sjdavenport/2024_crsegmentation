@@ -9,8 +9,7 @@ In what follows, for a given error rate $\alpha$, we will use the calibration da
 	\mathbb{P}\left( I(X) \subseteq \lbrace v\in \mathcal{V}: Y(v) = 1 \rbrace \subseteq O(X) \right) \geq 1 - \alpha.
 \end{equation}
 Here $I(X)$ and $O(X)$ serve as inner and outer confidence sets for the location of the true segmented mask. Their interpretation is that, up to the guarantee provided by the probabilistic statement \eqref{eq:probstat}, we can be sure that for each point $v\in I(X)$, $Y(v) = 1$ and that for each point $v \not\in O(X)$, $Y(v) = 0$. See Figure XXX for an example of this in practice. 
-\subsection{Conformal confidence sets}
-\subsubsection{Joint confidence sets}
+\subsection{Joint confidence sets}
 In order to construct conformal confidence sets let $f_O, f_I:\mathbb{R} \rightarrow \mathbb{R}$ be increasing functions and for each $1\leq i \leq n$, let $\tau_i = \max_{v \in \mathcal{V}: Y_i(v) = 0} f_O(s(X_i,v))$ and $\gamma_i = \max_{v \in \mathcal{V}: Y_i(v) = 1} f_I(-s(X_i,v))$  be the maxima of the function transformed scores over the areas at which the true labels equal 0 and 1 respectively. Define
 \begin{equation*}
 	\lambda_{\alpha} = \inf\left\lbrace \lambda: \frac{1}{n} \sum_{i = 1}^n 1\left[ \max(\tau_i, \gamma_i) \leq \lambda \right] \geq \alpha \right\rbrace.
@@ -75,8 +74,8 @@ to be the upper $\alpha$-quantile of the distribution of $\max(\tau_i, \gamma_i)
 %	and the result follows.
 %\end{proof}
 
-\subsubsection{Marginal confidence sets}
-We have focused so far on obtaining inner and outer sets with joint control of the coverage rate. However if one is instead interested in obtaining just an inner set  or just an outer set than one can instead spend all of the $\alpha$ available to construct such a set instead of spending it on both sets simultaneously. The resulting sets will be more precise than their joint counterparts but will of course only be valid marginally requireing a choice between the inner and the outer sets to be made. In particular we have the following results. 
+\subsection{Marginal confidence sets}
+We have focused so far on obtaining inner and outer sets with joint control of the coverage rate. However if one is instead interested in obtaining just an inner set  or just an outer set than one can instead spend all of the $\alpha$ available to construct such a set instead of spending it on both sets simultaneously. The resulting sets will be more precise than their joint counterparts but are valid marginally. Iparticular we have the following results. 
 
 \begin{theorem}
 	(Marginal outer set)
@@ -101,21 +100,25 @@ Similarly for the inner set we have
 		\mathbb{P}\left( \lbrace v\in \mathcal{V}: Y(v) = 1 \rbrace \subseteq O(X) \right) \geq 1 - \alpha_2.
 	\end{equation}
 \end{theorem}
-The proofs of these results follows that of Theorem XXX and are thus omitted. 
-\begin{remark}
-	Importantly the coverage of the sets $U_M(X)$ and $V_M(X)$ is not jointly valid and so when using these results the choice of inner versus outer set must be made in advance.
-\end{remark}
+The proofs of these results follow that of Theorem XXX and are thus omitted. We can in fact use the marginal sets to provide joint inference.
+\begin{corollary}\label{cor:weighting}
+	(Joint from marginal) Given $\alpha \in (0,1)$ and $\alpha_1, \alpha_2 \in (0,1)$ such that $\alpha_1 + \alpha_2 \leq \alpha$
+\end{corollary}
+The advantage of the marginal sets is that they provide pivotal inference - not favouring inner or outer sets which can be important when the distribution of the score function is assymetric. The joint coverage provided in Theorem XXX is primarily of use when there is strong levels of dependence between $\tau_1$ and $\gamma_1$, in practice this dependence is low and it is often easier to construct joint sets using Corollary \ref{cor:weighting}.
+%\begin{remark}
+%	Importantly the coverage of the sets $U_M(X)$ and $V_M(X)$ is not jointly valid and so when using these results the choice of inner versus outer set must be made in advance.
+%\end{remark}
 
 %\subsection{Confidence sets for connected components}
 
-\subsection{Full conformal confidence sets}
-We have so far assumed that we have a calibration dataset available, separate from the training data used to contruct the score function, on which we can learn cutoffs and use them to provide conformal confidence sets, using split conformal prediction. As an alternative, we could instead use full conformal prediction in which the entire dataset is used to both train the model and to provide conformal uncertainty. 
-
-To do so let $s_{}$
-
-\begin{remark}
-	Full conformal confidence sets come with the same drawbacks as full conformal inference. In particular they can be very computationally expensive to generate because they require retraining the model for each  As a result, this approach does not scale well when the dataset is large and will often not be practical.
-\end{remark}
+%\subsection{Full conformal confidence sets}
+%We have so far assumed that we have a calibration dataset available, separate from the training data used to contruct the score function, on which we can learn cutoffs and use them to provide conformal confidence sets, using split conformal prediction. As an alternative, we could instead use full conformal prediction in which the entire dataset is used to both train the model and to provide conformal uncertainty. 
+%
+%To do so let $s_{}$
+%
+%\begin{remark}
+%	Full conformal confidence sets come with the same drawbacks as full conformal inference. In particular they can be very computationally expensive to generate because they require retraining the model for each XXX. As a result, this approach does not scale well when the dataset is large and will often not be practical.
+%\end{remark}
 
 \subsection{Better segmentors provide more precise conformal confidence sets}
 Given two real random variables, $A$ and $B$ write $ A \succeq B$ to indicate that $\mathbb{P}\left( A > t \right) \geq \mathbb{P}\left( B > t \right)$ for all $t \in \mathbb{R}$. Then we have the following result. 
@@ -124,6 +127,8 @@ Given two real random variables, $A$ and $B$ write $ A \succeq B$ to indicate th
 	$\max_{v \in \mathcal{V}: Y_1(v) = 0} s_v(X_{1}) \succeq \max_{v \in \mathcal{V}: Y_1(v) = 0} s_v(X_{1}) $
 \end{theorem}
 
+\subsection{Score transformations}
+The choice of score transformation
 
 \section{Application to Tumor segmentation}
 In order to illustrate and validate our approach we consider the problem of polpys tumor segmentation from XXX images. To do so we use the same dataset as in XXX and XXX in which 1782 poplys images, with available ground truth masks were combined from 5 open-source datasets (published in \cite{KVASIR2017}, \cite{Hyperkvasir2020} \cite{Bernal2012}, \cite{Silva2014}). As in XXX, logit scores were obtained using the PraNet model \cite{PraNet2020}, which is based on the Unet architecture CITE CHECK! 
@@ -131,7 +136,10 @@ In order to illustrate and validate our approach we consider the problem of polp
 \subsection{Choosing a score transformation}
 In order to optimize the size of our confidence sets we set aside 282 of the 1782 polpys images to form a learning dataset with which to choose the best score transformation. Of these we use 182 to perform a calibration for each of the score transformations considered and observe the results on the remaining 100. Note that since the learning dataset is independent of the 1500 images set-aside, we can study it as much as we like without compromising the validity of the follow-up analysis in Section XXX. 
 
-The score transformations we considered were the identity (after softmax transformation), distance transformations of the predicted masks and smoothing using a Gaussian kernel. The PraNet scores for several typical examples of the 100 images, are shown after applying these transformations in Figure XXX.  From these we see that PraNet assigns a high softmax score to the polpys regions which decreases in the regions directly around the  boundary of the tumor before returning to a higher level away from the polpys. This results in tight inner sets but large outer sets as the model struggles to identify where the tumor ends. 
+The score transformations we considered were the identity (after softmax transformation), distance transformations of the predicted masks and smoothing using a Gaussian kernel. Given a score function $s$ and a threshold $t \in \mathbb{R}$ let $B(t)$ be the set of points on the boundary of the set $\lbrace v \in \mathcal{V}: s(v) > t$ obtained by applying the marching squares algorithm CITE. Distance transformation scores are then obtained as following
+
+
+The PraNet scores for several typical examples of the 100 images, are shown after applying these transformations in Figure XXX.  From these we see that PraNet assigns a high softmax score to the polpys regions which decreases in the regions directly around the  boundary of the tumor before returning to a higher level away from the polpys. This results in tight inner sets but large outer sets as the model struggles to identify where the tumor ends. 
 
 Further examples are shown in Appendix XXX. 
 
@@ -152,6 +160,33 @@ Based on the results of the learning dataset we decided to combine the best of t
 We divide the 1500 images into 500 for conformal calibration, and 1000 for validation. The resulting conformal confidence sets for this data are shown in the second row of Figure \ref{fig:polpys}. For comparison we have also shown the sets obtained based on the untrsansformed softmax scores in the top row. From this figure we see that the method effectively delineates polyp regions. Inner sets are plotted in red and the outer sets are shown in blue. The ground truth mask for each polpys is shown in yellow and can be compared to the original images. In each of the examples considered the ground truth mask is bounded from within by the inner set and from without by the outer set. 
 
 \begin{figure}
+	\begin{subfigure}{0.19\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{../figures/val_images/15.png}
+		\label{fig:1}
+	\end{subfigure}
+	\begin{subfigure}{0.19\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{../figures/val_images/114.png}
+		\label{fig:1}
+	\end{subfigure}
+	\begin{subfigure}{0.19\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{../figures/val_images/61.png}
+		\label{fig:1}
+	\end{subfigure}
+	\begin{subfigure}{0.19\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{../figures/val_images/76.png}
+		\label{fig:1}
+	\end{subfigure}
+	\begin{subfigure}{0.19\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{../figures/val_images/87.png}
+		\label{fig:1}
+	\end{subfigure}
+		\vspace{-0.4cm}
+	\\
 		\begin{subfigure}{0.19\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/val_crs_90_orig/15.png}
@@ -177,7 +212,7 @@ We divide the 1500 images into 500 for conformal calibration, and 1000 for valid
 		\includegraphics[width=\textwidth]{../figures/val_crs_90_orig/87.png}
 		\label{fig:1}
 	\end{subfigure}
-		\vspace{-0.4cm}
+	\vspace{-0.4cm}
 	\\
 	\begin{subfigure}{0.19\textwidth}
 		\centering
@@ -204,33 +239,6 @@ We divide the 1500 images into 500 for conformal calibration, and 1000 for valid
 		\includegraphics[width=\textwidth]{../figures/val_crs_90_distmix/87.png}
 		\label{fig:1}
 	\end{subfigure}
-	\vspace{-0.4cm}
-	\\
-	\begin{subfigure}{0.19\textwidth}
-		\centering
-		\includegraphics[width=\textwidth]{../figures/val_images/15.png}
-		\label{fig:1}
-	\end{subfigure}
-	\begin{subfigure}{0.19\textwidth}
-		\centering
-		\includegraphics[width=\textwidth]{../figures/val_images/114.png}
-		\label{fig:1}
-	\end{subfigure}
-	\begin{subfigure}{0.19\textwidth}
-		\centering
-		\includegraphics[width=\textwidth]{../figures/val_images/61.png}
-		\label{fig:1}
-	\end{subfigure}
-	\begin{subfigure}{0.19\textwidth}
-		\centering
-		\includegraphics[width=\textwidth]{../figures/val_images/76.png}
-		\label{fig:1}
-	\end{subfigure}
-	\begin{subfigure}{0.19\textwidth}
-		\centering
-		\includegraphics[width=\textwidth]{../figures/val_images/87.png}
-		\label{fig:1}
-	\end{subfigure}
 	\label{fig:grid}
 	\caption{Conformal confidence sets for the polyps data. The bottom row shows the original endoscopic images with visible polyps. The top two rows present the conformal confidence sets, with the ground truth masks shown in yellow. The inner sets and outer sets are shown in red and blue respectively. The top row illustrates the sets which arise when using the original scores. Instead the middle show the resulting sets when $f_O$ is given by the distance transformation of the predicted polpys mask. The figure shows the benefit of transforming the score function and illustrates the method's effectiveness in accurately identifying polyp regions whilst providing informative spatial uncertainty bounds.}\label{fig:polpys}
 \end{figure}
@@ -242,9 +250,9 @@ We divide the 1500 images into 500 for conformal calibration, and 1000 for valid
 
 The inner sets are shown in red and represent regions where we can have high confidence of the presence of polyps. The outer sets are shown in blue and represent regions in which the polpys may be.
 
-These results show that we can provide informative confidence bounds for the location of the polpys and allow us to use the PraNet segmentation model with uncertainty guarantees. They also illustrate the limitations of the model which is essential for applications. When analyzing some images the outer uncertainty bounds can be quite large, even with the favourable alpha-weighting scheme. These images may require specialist follow-up in order to be certain about the true extent of the observed tumor. Improved uncertainty quantification would require an improved segmentation model. 
+These results show that we can provide informative confidence bounds for the location of the polpys and allow us to use the PraNet segmentation model with uncertainty guarantees. They also illustrate the limitations of the model which is essential for applications. Larger uncertainty bounds may require specialist follow-up in order to be certain about the true extent of the observed tumor. Improved uncertainty quantification would require an improved segmentation model. 
 
-More precise results can be obtained at the expense of probabilistic guarantees, see Figure XXX. A trade off must be made between precision and confidence and this can be determined in advance based on the alpha-weighting dataset. The approach of CITE controls the empirical false negative risk yielding additional precision but at the cost of coverage as shown in Figure XXX. 
+More precise results can be obtained at the expense of probabilistic guarantees, see Figure XXX. A trade off must be made between precision and confidence and this can also be determined in advance based on the learning dataset. The approach of CITE controls the empirical false negative risk yielding additional precision but at the cost of coverage as shown in Figure XXX. 
 
 \subsection{Measuring the false coverge rate}
 
