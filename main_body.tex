@@ -1,26 +1,101 @@
 \section{Theory}
-Let $\mathcal{V} \subset \mathbb{R}^m$ be finite set corresponding to the domain, where $m \in \mathbb{N}$, which represents the pixels/voxels at which we observe imaging data. Let $\mathcal{X} = \lbrace g: \mathcal{V} \rightarrow \mathbb{R}\rbrace$ be the set of real functions on $\mathcal{V}$ and let $\mathcal{Y} = \lbrace g: \mathcal{V} \rightarrow \lbrace 0,1 \rbrace \rbrace$ be the set of all functions taking the values 0 or 1. Suppose that we observe a calibration dataset $(X_i, Y_i)_{i = 1}^n$ of random images, where $X_i: \mathcal{V} \rightarrow \mathbb{R}$ represents the $i$th observed calibration image and $Y_i:\mathcal{V} \rightarrow \lbrace 0, 1\rbrace$ outputs labels at each $v \in \mathcal{V}$ giving 1s at the true location of the objects in the image $X_i$ that we wish to identify and 0s elsewhere. Let $\mathcal{P}(\mathcal{V})$ be the set of all subsets of $\mathcal{V}$ and let $=_d$ denote equality in distribution.
+\subsection{Set up}
+Let $\mathcal{V} \subset \mathbb{R}^m$ be finite set corresponding to the domain, where $m \in \mathbb{N}$, which represents the pixels/voxels at which we observe imaging data. Let $\mathcal{X} = \lbrace g: \mathcal{V} \rightarrow \mathbb{R}\rbrace$ be the set of real functions on $\mathcal{V}$ and let $\mathcal{Y} = \lbrace g: \mathcal{V} \rightarrow \lbrace 0,1 \rbrace \rbrace$ be the set of all functions taking the values 0 or 1. Suppose that we observe a calibration dataset $(X_i, Y_i)_{i = 1}^n$ of random images, where $X_i: \mathcal{V} \rightarrow \mathbb{R}$ represents the $i$th observed calibration image and $Y_i:\mathcal{V} \rightarrow \lbrace 0, 1\rbrace$ outputs labels at each $v \in \mathcal{V}$ giving 1s at the true location of the objects in the image $X_i$ that we wish to identify and 0s elsewhere. Let $\mathcal{P}(\mathcal{V})$ be the set of all subsets of $\mathcal{V}$.
 
 Let $s:\mathcal{X} \times \mathcal{V} \rightarrow \mathbb{R}$ be a score function - trained on an independent dataset - such that given an image pair $(X,Y) \in \mathcal{X}\times \mathcal{Y}$, $s(X, v)$ is intended to be higher at the $v \in \mathcal{V}$ for which $Y(v) = 1$. The score function can for instance be the logit scores obtained from a deep neural network image segmentation method such as U-net CITE. 
 %Let $T(Y) = \left\lbrace v\in \mathcal{V}: Y(v) = 1 \right\rbrace$ correspond to the true location of the objects in the image $X$. 
 
-In what follows, for a given error rate $\alpha$, we will use the calibration dataset to construct a confidence functions $I,O:  \mathcal{X}  \rightarrow \mathcal{P}(\mathcal{V})$ such that for a new image pair $(X,Y) \sim \mathcal{D}$,
-\begin{equation}\label{eq:probstat}
-	\mathbb{P}\left( I(X) \subseteq \lbrace v\in \mathcal{V}: Y(v) = 1 \rbrace \subseteq O(X) \right) \geq 1 - \alpha.
+In what follows, for a given error rate $\alpha$, we will use the calibration dataset to construct a confidence functions $I,O:  \mathcal{X}  \rightarrow \mathcal{P}(\mathcal{V})$ such that for a new image pair $(X,Y) \sim \mathcal{D}$, given $\alpha_1, \alpha_2 \in (0,1)$ we have
+\begin{equation}\label{eq:probstat1}
+	\mathbb{P}\left( I(X) \subseteq \lbrace v\in \mathcal{V}: Y(v) = 1 \rbrace  \right) \geq 1 - \alpha_1, 
 \end{equation}
-Here $I(X)$ and $O(X)$ serve as inner and outer confidence sets for the location of the true segmented mask. Their interpretation is that, up to the guarantee provided by the probabilistic statement \eqref{eq:probstat}, we can be sure that for each point $v\in I(X)$, $Y(v) = 1$ and that for each point $v \not\in O(X)$, $Y(v) = 0$. See Figure XXX for an example of this in practice. 
-\subsection{Joint confidence sets}
-In order to construct conformal confidence sets let $f_O, f_I:\mathbb{R} \rightarrow \mathbb{R}$ be increasing functions and for each $1\leq i \leq n$, let $\tau_i = \max_{v \in \mathcal{V}: Y_i(v) = 0} f_O(s(X_i,v))$ and $\gamma_i = \max_{v \in \mathcal{V}: Y_i(v) = 1} f_I(-s(X_i,v))$  be the maxima of the function transformed scores over the areas at which the true labels equal 0 and 1 respectively. Define
-\begin{equation*}
-	\lambda_{\alpha} = \inf\left\lbrace \lambda: \frac{1}{n} \sum_{i = 1}^n 1\left[ \max(\tau_i, \gamma_i) \leq \lambda \right] \geq \alpha \right\rbrace.
-\end{equation*}
-to be the upper $\alpha$-quantile of the distribution of $\max(\tau_i, \gamma_i)$ over $1 \leq i \leq n$. Given $X \in \mathcal{X}$, let $O(X) = \lbrace v \in \mathcal{V}: f_O(s(X,v)) > \lambda_{\alpha} \rbrace $ and $I(X) = \lbrace v \in \mathcal{V}: f_I(-s(X,v)) > \lambda_{\alpha} \rbrace $. For these confidence sets, under exchangeability, we have the following inclusion result.
-\begin{theorem}
-	Given a new random image pair, $(X_{n+1},Y_{n+1})$, suppose that $(X_i, Y_i)_{i = 1}^{n+1}$ is an exchangeable sequence of random image pairs in the sense that 
+\begin{equation}\label{eq:probstat2}
+	\text{ and } 	\mathbb{P}\left( \lbrace v\in \mathcal{V}: Y(v) = 1 \rbrace \subseteq O(X)  \right) \geq 1 - \alpha_2.
+\end{equation}
+Here $I(X)$ and $O(X)$ serve as inner and outer confidence sets for the location of the true segmented mask. Their interpretation is that, up to the guarantees provided by the probabilistic statements \eqref{eq:probstat1} and \eqref{eq:probstat2}, we can be sure that for each $v\in I(X)$, $Y(v) = 1$ or that for each $v \not\in O(X)$, $Y(v) = 0$. See Figure XXX for an example of this in practice. Joint control over the events can also be guaranteed, either by sensible choices of $\alpha_1$ and $\alpha_2$ or by using the joint distribution of the maxima of the logit scores - see Section XXX. 
+
+In order to establish conformal confidence results we shall require the following exchangeablity assumption. 
+\begin{assumption}\label{ass:ex}
+		Given a new random image pair, $(X_{n+1},Y_{n+1})$, suppose that $(X_i, Y_i)_{i = 1}^{n+1}$ is an exchangeable sequence of random image pairs in the sense that 
 	\begin{equation*}
 		\left\lbrace (X_1,Y_1), \dots, (X_{n+1}, Y_{n+1}) \right\rbrace =_d \left\lbrace (X_{\sigma(1)}, Y_{\sigma(1)}), \dots, (X_{\sigma(n+1)}, Y_{\sigma(n+1)}) \right\rbrace
 	\end{equation*}
-	for any permutation $\sigma \in S_{n+1}$. Then,
+	for any permutation $\sigma \in S_{n+1}$. Here $=_d$ denotes equality in distribution and $S_{n+1} $ is the group of permutations of the integers $\lbrace1, \dots, n+1\rbrace$.
+\end{assumption}
+Exchangeability or a variant is a standard assumption in the conformal inference literature CITE and is essential for providing coverage guarantees. It holds for instance if we assume that the collection $(X_i, Y_i)_{i = 1}^{n+1}$ is an i.i.d. sequence of image pairs but is more general and allows for other dependence structures. 
+
+\subsection{Marginal confidence sets}
+In order to construct conformal confidence sets let $f_O, f_I:\mathbb{R} \rightarrow \mathbb{R}$ be increasing functions and for each $1\leq i \leq n$, let $\tau_i = \max_{v \in \mathcal{V}: Y_i(v) = 0} f_O(s(X_i,v))$ and $\gamma_i = \max_{v \in \mathcal{V}: Y_i(v) = 1} f_I(-s(X_i,v))$  be the maxima of the function transformed scores over the areas at which the true labels equal 0 and 1 respectively. Then we construct confidence sets as follows.
+\begin{theorem}\label{thm:inner}
+	(Marginal inner set)
+	Under Assumption \ref{ass:ex}, given $\alpha_2 \in (0,1)$, let 
+	\begin{equation*}
+		\lambda_I(\alpha_2) = \inf\left\lbrace \lambda: \frac{1}{n} \sum_{i = 1}^n 1\left[ \gamma_i\leq \lambda \right] \geq \alpha_2 \right\rbrace.
+	\end{equation*}
+	and define $O(X) = \lbrace v \in \mathcal{V}: f_O(s(X,v)) > \lambda_{\alpha} \rbrace $. Then,
+	\begin{equation}\label{eq:probstat}
+		\mathbb{P}\left( I(X) \subseteq\lbrace v\in \mathcal{V}: Y_{n+1} = 1 \rbrace \right) \geq 1 - \alpha_2.
+	\end{equation}
+\end{theorem}
+\begin{proof}
+	Let $\tau_{n+1}= \max_{v \in \mathcal{V}: Y_{n+1}(v) = 0} f_O(s(X_{n+1},v))$, Then exchangeability of the image pairs implies exchangeability of the sequence $(\tau_i)_{i = 1}^{n+1}$. In particular it follows that 
+	\begin{equation*}
+		content...
+	\end{equation*}
+	Now consider the event that $\max(\tau_{n+1}, \gamma_{n+1}) \leq \lambda_{\alpha}$. On this event $\tau_{n+1} \leq \lambda_\alpha$, and so in particular, 
+	\begin{equation*}
+		f_O(s(X_{n+1},v)) \leq \lambda_\alpha 
+	\end{equation*}
+	for all $v \in \mathcal{V}$ such that $Y_{n+1}(v) = 0$. As such given $u \in \mathcal{V}$ such that $	f_O(s(X_{n+1},u)) > \lambda_\alpha$ we must have $Y_{n+1}(u) = 1$ so it follows that 
+	\begin{equation*}
+		\lbrace v\in \mathcal{V}: Y(v) = 1 \rbrace \subseteq O(X) 
+	\end{equation*}
+\end{proof}
+\noindent Similarly for the outer set we have
+\begin{theorem}\label{thm:outer}
+	(Marginal outer set)
+	Under Assumption \ref{ass:ex}, given $\alpha_1 \in (0,1)$, let 
+	\begin{equation*}
+		\lambda_O({\alpha_1})= \inf\left\lbrace \lambda: \frac{1}{n} \sum_{i = 1}^n 1\left[ \tau_i\leq \lambda \right] \geq \alpha_1 \right\rbrace.
+	\end{equation*}
+	and define $O(X) = \lbrace v \in \mathcal{V}: f_O(s(X,v)) > 	\lambda_O({\alpha_1}) \rbrace $ for $X $. Then,
+	\begin{equation}\label{eq:probstat}
+		\mathbb{P}\left( \lbrace v\in \mathcal{V}: Y_{n+1}(v) = 1 \rbrace \subseteq O(X_{n+1}) \right) \geq 1 - \alpha_1.
+	\end{equation}
+\end{theorem}
+\noindent The proof of Theorem \ref{thm:outer} follows that of Theorem \ref{thm:inner} and is thus omitted. 
+
+
+%\begin{remark}
+%	Importantly the coverage of the sets $U_M(X)$ and $V_M(X)$ is not jointly valid and so when using these results the choice of inner versus outer set must be made in advance.
+%\end{remark}
+
+%\subsection{Confidence sets for connected components}
+
+%\subsection{Full conformal confidence sets}
+%We have so far assumed that we have a calibration dataset available, separate from the training data used to contruct the score function, on which we can learn cutoffs and use them to provide conformal confidence sets, using split conformal prediction. As an alternative, we could instead use full conformal prediction in which the entire dataset is used to both train the model and to provide conformal uncertainty. 
+%
+%To do so let $s_{}$
+%
+%\begin{remark}
+%	Full conformal confidence sets come with the same drawbacks as full conformal inference. In particular they can be very computationally expensive to generate because they require retraining the model for each XXX. As a result, this approach does not scale well when the dataset is large and will often not be practical.
+%\end{remark}
+
+\subsection{Joint confidence sets}
+Instead of focussing on marginal control one can instead spend all of the $\alpha$ available to construct sets which have a joint probabilistic guarantees. This gain comes at the expense of a loss of precision. The simplest means of constructing jointly valid confidence sets is via the marginal sets themselves.
+\begin{corollary}\label{cor:weighting}
+	(Joint from marginal) Assume Assumption \ref{ass:ex} holds and given $\alpha \in (0,1)$ and $\alpha_1, \alpha_2 \in (0,1)$ such that $\alpha_1 + \alpha_2 \leq \alpha$, define $I(X)$ and  $O(X)$ as in Theorems \ref{thm:inner} and \ref{thm:outer} . Then 
+	\begin{equation}
+		\mathbb{P}\left( I(X) \subseteq \lbrace v\in \mathcal{V}: Y_{n+1}(v) = 1 \rbrace \subseteq O(X)  \right) \geq 1 - \alpha. 
+	\end{equation}
+\end{corollary}
+Alternatively joint control can be obtained using the joint distribution of the maxima of the logit scores as follows.
+\begin{theorem}\label{thm:joint}
+	(Joint coverage) Assume that Assumption \ref{ass:ex} holds. Given $\alpha \in (0,1)$, let 
+	\begin{equation*}
+		\lambda(\alpha) = \inf\left\lbrace \lambda: \frac{1}{n} \sum_{i = 1}^n 1\left[ \max(\tau_i, \gamma_i) \leq \lambda \right] \geq \alpha \right\rbrace.
+	\end{equation*}
+	to be the upper $\alpha$-quantile of the distribution of $\max(\tau_i, \gamma_i)$ over $1 \leq i \leq n$. Let $O(X) = \lbrace v \in \mathcal{V}: f_O(s(X,v)) >  \lambda(\alpha) \rbrace $ and $I(X) = \lbrace v \in \mathcal{V}: f_I(-s(X,v)) >	\lambda(\alpha) \rbrace $. Then,
 \begin{equation}\label{eq:probstat}
 	\mathbb{P}\left( I(X) \subseteq \lbrace v\in \mathcal{V}: Y(v) = 1 \rbrace \subseteq O(X) \right) \geq 1 - \alpha.
 \end{equation}
@@ -42,7 +117,7 @@ to be the upper $\alpha$-quantile of the distribution of $\max(\tau_i, \gamma_i)
 \end{proof}
 
 \begin{remark}
-	Note that exchangeability holds for instance if we assume that the collection $(X_i, Y_i)_{i = 1}^{n+1}$ is an i.i.d. sequence of image pairs.
+	The advantage of Corollary \ref{cor:weighting} is that the resulting inner and outer sets provide pivotal inference - not favouring one side or the other - which can be important when the distribution of the score function is asymmetric. Moreover the levels $\alpha_1$ and $\alpha_2$ can be used to provide a greater weight to either inner or outer sets whilst maintaining joint coverage. Theorem \ref{thm:joint} may instead be useful when there are strong levels of dependence between $\tau_1$ and $\gamma_1$. In practice this dependence is often low and scale differences in the scores can lead to a severe lack of pivotality. As such in practice it may be better to construct joint sets using Corollary \ref{cor:weighting}. 
 \end{remark}
 
 %Typically in our applications, $X_{n+1}$ will observed with $Y$ unknown.
@@ -73,52 +148,6 @@ to be the upper $\alpha$-quantile of the distribution of $\max(\tau_i, \gamma_i)
 %	$\mathbb{P}\left( T_{n+1} > \lambda_{\alpha}\right) \leq \alpha$
 %	and the result follows.
 %\end{proof}
-
-\subsection{Marginal confidence sets}
-We have focused so far on obtaining inner and outer sets with joint control of the coverage rate. However if one is instead interested in obtaining just an inner set  or just an outer set than one can instead spend all of the $\alpha$ available to construct such a set instead of spending it on both sets simultaneously. The resulting sets will be more precise than their joint counterparts but are valid marginally. Iparticular we have the following results. 
-
-\begin{theorem}
-	(Marginal outer set)
-	Under the same setting as Theorem XXX, given $\alpha_1 \in (0,1)$, let 
-	\begin{equation*}
-		\lambda_O({\alpha_1})= \inf\left\lbrace \lambda: \frac{1}{n} \sum_{i = 1}^n 1\left[ \tau_i\leq \lambda \right] \geq \alpha_1 \right\rbrace.
-	\end{equation*}
-	and define $O_M(X) = \lbrace v \in \mathcal{V}: f_O(s(X,v)) > 	\lambda_O({\alpha_1}) \rbrace $. Then,
-	\begin{equation}\label{eq:probstat}
-		\mathbb{P}\left( \lbrace v\in \mathcal{V}: Y(v) = 1 \rbrace \subseteq O_M(X) \right) \geq 1 - \alpha_1.
-	\end{equation}
-\end{theorem}
-Similarly for the inner set we have
-\begin{theorem}
-	(Marginal inner set)
-	Under the same setting as Theorem XXX, given $\alpha_2 \in (0,1)$, let 
-	\begin{equation*}
-		\lambda_I(\alpha_2) = \inf\left\lbrace \lambda: \frac{1}{n} \sum_{i = 1}^n 1\left[ \gamma_i\leq \lambda \right] \geq \alpha_2 \right\rbrace.
-	\end{equation*}
-	and define $O(X) = \lbrace v \in \mathcal{V}: f_O(s(X,v)) > \lambda_{\alpha} \rbrace $. Then,
-	\begin{equation}\label{eq:probstat}
-		\mathbb{P}\left( \lbrace v\in \mathcal{V}: Y(v) = 1 \rbrace \subseteq O(X) \right) \geq 1 - \alpha_2.
-	\end{equation}
-\end{theorem}
-The proofs of these results follow that of Theorem XXX and are thus omitted. We can in fact use the marginal sets to provide joint inference.
-\begin{corollary}\label{cor:weighting}
-	(Joint from marginal) Given $\alpha \in (0,1)$ and $\alpha_1, \alpha_2 \in (0,1)$ such that $\alpha_1 + \alpha_2 \leq \alpha$
-\end{corollary}
-The advantage of the marginal sets is that they provide pivotal inference - not favouring inner or outer sets which can be important when the distribution of the score function is assymetric. The joint coverage provided in Theorem XXX is primarily of use when there is strong levels of dependence between $\tau_1$ and $\gamma_1$, in practice this dependence is low and it is often easier to construct joint sets using Corollary \ref{cor:weighting}.
-%\begin{remark}
-%	Importantly the coverage of the sets $U_M(X)$ and $V_M(X)$ is not jointly valid and so when using these results the choice of inner versus outer set must be made in advance.
-%\end{remark}
-
-%\subsection{Confidence sets for connected components}
-
-%\subsection{Full conformal confidence sets}
-%We have so far assumed that we have a calibration dataset available, separate from the training data used to contruct the score function, on which we can learn cutoffs and use them to provide conformal confidence sets, using split conformal prediction. As an alternative, we could instead use full conformal prediction in which the entire dataset is used to both train the model and to provide conformal uncertainty. 
-%
-%To do so let $s_{}$
-%
-%\begin{remark}
-%	Full conformal confidence sets come with the same drawbacks as full conformal inference. In particular they can be very computationally expensive to generate because they require retraining the model for each XXX. As a result, this approach does not scale well when the dataset is large and will often not be practical.
-%\end{remark}
 
 \subsection{Better segmentors provide more precise conformal confidence sets}
 Given two real random variables, $A$ and $B$ write $ A \succeq B$ to indicate that $\mathbb{P}\left( A > t \right) \geq \mathbb{P}\left( B > t \right)$ for all $t \in \mathbb{R}$. Then we have the following result. 
