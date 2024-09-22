@@ -28,43 +28,39 @@ Exchangeability or a variant is a standard assumption in the conformal inference
 In order to construct conformal confidence sets let $f_O, f_I:\mathbb{R} \rightarrow \mathbb{R}$ be increasing functions and for each $1\leq i \leq n$, let $\tau_i = \max_{v \in \mathcal{V}: Y_i(v) = 0} f_O(s(X_i,v))$ and $\gamma_i = \max_{v \in \mathcal{V}: Y_i(v) = 1} f_I(-s(X_i,v))$  be the maxima of the function transformed scores over the areas at which the true labels equal 0 and 1 respectively. Then we construct confidence sets as follows.
 \begin{theorem}\label{thm:inner}
 	(Marginal inner set)
-	Under Assumption \ref{ass:ex}, given $\alpha_2 \in (0,1)$, let 
+	Under Assumption \ref{ass:ex}, given $\alpha_1 \in (0,1)$, let 
 	\begin{equation*}
-		\lambda_I(\alpha_2) = \inf\left\lbrace \lambda: \frac{1}{n} \sum_{i = 1}^n 1\left[ \gamma_i\leq \lambda \right] \geq \alpha_2 \right\rbrace.
+		\lambda_I(\alpha_1) = \inf\left\lbrace \lambda: \frac{1}{n} \sum_{i = 1}^n 1\left[ \gamma_i\leq \lambda \right] \geq \alpha_1 \right\rbrace.
 	\end{equation*}
-	and define $O(X) = \lbrace v \in \mathcal{V}: f_O(s(X,v)) > \lambda_{\alpha} \rbrace $. Then,
+	be the upper $\alpha$ quantile of $(\gamma_i)_{i = 1}^n$and define $O(X) = \lbrace v \in \mathcal{V}: f_O(s(X,v)) >\lambda_I(\alpha_2)  \rbrace $. Then,
 	\begin{equation}\label{eq:probstat}
-		\mathbb{P}\left( I(X) \subseteq\lbrace v\in \mathcal{V}: Y_{n+1} = 1 \rbrace \right) \geq 1 - \alpha_2.
+		\mathbb{P}\left( I(X) \subseteq\lbrace v\in \mathcal{V}: Y_{n+1} = 1 \rbrace \right) \geq 1 - \alpha_1.
 	\end{equation}
 \end{theorem}
 \begin{proof}
-	Let $\tau_{n+1}= \max_{v \in \mathcal{V}: Y_{n+1}(v) = 0} f_O(s(X_{n+1},v))$, Then exchangeability of the image pairs implies exchangeability of the sequence $(\tau_i)_{i = 1}^{n+1}$. In particular it follows that 
+	Let $\tau_{n+1}= \max_{v \in \mathcal{V}: Y_{n+1}(v) = 0} f_O(s(X_{n+1},v))$, Then exchangeability of the image pairs implies exchangeability of the sequence $(\tau_i)_{i = 1}^{n+1}$. In particular, as $\lambda_I(\alpha_1)$ is the $\alpha_1$ quantile of the distribution of $(\tau_i)_{i = 1}^{n}$, by Lemma 1 of \cite{} it follows that 
 	\begin{equation*}
-		content...
+	\mathbb{P}\left(\gamma_{n+1} \leq \lambda_I(\alpha_1) \right) \geq 1 - \alpha_1. 
 	\end{equation*}
-	Now consider the event that $\max(\tau_{n+1}, \gamma_{n+1}) \leq \lambda_{\alpha}$. On this event $\tau_{n+1} \leq \lambda_\alpha$, and so in particular, 
+	Now consider the event that $\gamma_{n+1}\leq \lambda_{\alpha}$, on this event, $ f_O(s(X_{n+1},v)) \leq \lambda_\alpha $
+	for all $v \in \mathcal{V}$ such that $Y_{n+1}(v) = 0$. As such, given $u \in \mathcal{V}$ such that $ f_O(s(X_{n+1},u)) > \lambda_\alpha$, we must have $Y_{n+1}(u) = 1$ so it follows that $	\lbrace v\in \mathcal{V}: Y(v) = 1 \rbrace \subseteq O(X) $ and in particular that 
 	\begin{equation*}
-		f_O(s(X_{n+1},v)) \leq \lambda_\alpha 
-	\end{equation*}
-	for all $v \in \mathcal{V}$ such that $Y_{n+1}(v) = 0$. As such given $u \in \mathcal{V}$ such that $	f_O(s(X_{n+1},u)) > \lambda_\alpha$ we must have $Y_{n+1}(u) = 1$ so it follows that 
-	\begin{equation*}
-		\lbrace v\in \mathcal{V}: Y(v) = 1 \rbrace \subseteq O(X) 
-	\end{equation*}
+	\mathbb{P}\left( \lbrace v\in \mathcal{V}: Y(v) = 1 \rbrace \subseteq O(X)  \right) \geq \mathbb{P}\left(\gamma_{n+1} \leq \lambda_I(\alpha_1) \right) \geq 1 - \alpha_1. 
+\end{equation*}
 \end{proof}
 \noindent Similarly for the outer set we have
 \begin{theorem}\label{thm:outer}
 	(Marginal outer set)
-	Under Assumption \ref{ass:ex}, given $\alpha_1 \in (0,1)$, let 
+	Under Assumption \ref{ass:ex}, given $\alpha_2 \in (0,1)$, let 
 	\begin{equation*}
-		\lambda_O({\alpha_1})= \inf\left\lbrace \lambda: \frac{1}{n} \sum_{i = 1}^n 1\left[ \tau_i\leq \lambda \right] \geq \alpha_1 \right\rbrace.
+		\lambda_O({\alpha_2})= \inf\left\lbrace \lambda: \frac{1}{n} \sum_{i = 1}^n 1\left[ \tau_i\leq \lambda \right] \geq \alpha_2 \right\rbrace.
 	\end{equation*}
 	and define $O(X) = \lbrace v \in \mathcal{V}: f_O(s(X,v)) > 	\lambda_O({\alpha_1}) \rbrace $ for $X $. Then,
 	\begin{equation}\label{eq:probstat}
-		\mathbb{P}\left( \lbrace v\in \mathcal{V}: Y_{n+1}(v) = 1 \rbrace \subseteq O(X_{n+1}) \right) \geq 1 - \alpha_1.
+		\mathbb{P}\left( \lbrace v\in \mathcal{V}: Y_{n+1}(v) = 1 \rbrace \subseteq O(X_{n+1}) \right) \geq 1 - \alpha_2.
 	\end{equation}
 \end{theorem}
 \noindent The proof of Theorem \ref{thm:outer} follows that of Theorem \ref{thm:inner} and is thus omitted. 
-
 
 %\begin{remark}
 %	Importantly the coverage of the sets $U_M(X)$ and $V_M(X)$ is not jointly valid and so when using these results the choice of inner versus outer set must be made in advance.
@@ -101,11 +97,8 @@ Alternatively joint control can be obtained using the joint distribution of the 
 \end{equation}
 \end{theorem}
 \begin{proof}
-	Let $\tau_{n+1}= \max_{v \in \mathcal{V}: Y_{n+1}(v) = 0} f_O(s(X_{n+1},v))$ and $\gamma_{n+1} = \max_{v \in \mathcal{V}: Y_{n+1}(v) = 1} f_I(-s(X_{n+1},v))$. Then exchangeability of the image pairs implies exchangeability of the sequence $(\tau_i, \gamma_i)_{i = 1}^{n+1}$ and as a consequence exchangeability of the sequence $(\max(\tau_i, \gamma_i))_{i = 1}^{n+1}$. 
+	Let $\tau_{n+1}= \max_{v \in \mathcal{V}: Y_{n+1}(v) = 0} f_O(s(X_{n+1},v))$ and $\gamma_{n+1} = \max_{v \in \mathcal{V}: Y_{n+1}(v) = 1} f_I(-s(X_{n+1},v))$. Then exchangeability of the image pairs implies exchangeability of the sequence $(\tau_i)_{i = 1}^{n+1}$.
 	In particular it follows that 
-	\begin{equation*}
-		content...
-	\end{equation*}
 	Now consider the event that $\max(\tau_{n+1}, \gamma_{n+1}) \leq \lambda_{\alpha}$. On this event $\tau_{n+1} \leq \lambda_\alpha$, and so in particular, 
 	\begin{equation*}
 		f_O(s(X_{n+1},v)) \leq \lambda_\alpha 
@@ -156,23 +149,39 @@ Given two real random variables, $A$ and $B$ write $ A \succeq B$ to indicate th
 	$\max_{v \in \mathcal{V}: Y_1(v) = 0} s_v(X_{1}) \succeq \max_{v \in \mathcal{V}: Y_1(v) = 0} s_v(X_{1}) $
 \end{theorem}
 
-\subsection{Score transformations}
-The choice of score transformation
+\subsection{Optimizing score transformations on  a learning dataset}
+\subsubsection{Setting aside a learning dataset}
+The choice of score transformations $f_I$ and $f_O$ is extremely important and can have a large impact on the size of the conformal confidence sets. The best choice depends on both the distribution of the data and on the nature of the output of the trained segmentor used to calculate the scores. We thus recommend setting aside a learning dataset independent from both the calibration dataset, used to compute the conformal thresholds, and the test dataset. 
 
-\section{Application to Tumor segmentation}
+In order to make efficient use of the data available, the learning dataset can in fact contain some or all of the data used to train the image segmentor. This data is assumed to be independent of the calibration and test data and so can be used to learn the best score transformations without compromising validity . The advantage of doing so is that less additional data needs to be set aside or collected for the purposes of learning a score function. Moreover it allows for additional data to be used to train the model resulting in better segmentation performance. The disadvantage is that machine learning models typically overfit their training data meaning that certain score functions may appear to perform better on this data than they do in practice. The choice of whether to include training data in the learning dataset thus depends on the quantity of data available and the quality of the segmentation model.
+
+
+
+\subsubsection{Useful score transformations}
+
+\section{Application to Polpys tumor segmentation}
 In order to illustrate and validate our approach we consider the problem of polpys tumor segmentation from XXX images. To do so we use the same dataset as in XXX and XXX in which 1782 poplys images, with available ground truth masks were combined from 5 open-source datasets (published in \cite{KVASIR2017}, \cite{Hyperkvasir2020} \cite{Bernal2012}, \cite{Silva2014}). As in XXX, logit scores were obtained using the PraNet model \cite{PraNet2020}, which is based on the Unet architecture CITE CHECK! 
 
 \subsection{Choosing a score transformation}
-In order to optimize the size of our confidence sets we set aside 282 of the 1782 polpys images to form a learning dataset with which to choose the best score transformation. Of these we use 182 to perform a calibration for each of the score transformations considered and observe the results on the remaining 100. Note that since the learning dataset is independent of the 1500 images set-aside, we can study it as much as we like without compromising the validity of the follow-up analysis in Section XXX. 
+In order to optimize the size of our confidence sets we set aside 282 of the 1782 polpys images to form a learning dataset with which to choose the best score transformation. Note that since the learning dataset is independent of the remeaing 1500 images set-aside, we can study it as much as we like without compromising the validity of the follow-up analysis in Section \ref{SS:val}. 
 
 The score transformations we considered were the identity (after softmax transformation), distance transformations of the predicted masks and smoothing using a Gaussian kernel. Given a score function $s$ and a threshold $t \in \mathbb{R}$ let $B(t)$ be the set of points on the boundary of the set $\lbrace v \in \mathcal{V}: s(v) > t$ obtained by applying the marching squares algorithm CITE. Distance transformation scores are then obtained as following
 
 
-The PraNet scores for several typical examples of the 100 images, are shown after applying these transformations in Figure XXX.  From these we see that PraNet assigns a high softmax score to the polpys regions which decreases in the regions directly around the  boundary of the tumor before returning to a higher level away from the polpys. This results in tight inner sets but large outer sets as the model struggles to identify where the tumor ends. 
+The PraNet scores for several typical examples are shown, after applying these transformations, in Figure XXX.  From these we see that PraNet assigns a high softmax score to the polpys regions which decreases in the regions directly around the  boundary of the tumor before returning to a higher level away from the polpys. This results in tight inner sets but large outer sets as the model struggles to identify where the tumor ends. 
 
 Further examples are shown in Appendix XXX. 
 
 Based on the images set aside for alpha weighting we decided to use $\alpha_1 = 0.02$ and $\alpha_2 = 0.08$ to ensure a joint coverage of $90\%$. This ratio was chosen in light of the fact that in this data identifying where a given tumor ends appears to be more challenging than identifying pixels where we are sure that there is a tumor. For comparison we also present the results of an equal weighting scheme.
+
+
+\begin{figure}
+		\centering
+		\includegraphics[width=0.5\textwidth]{../figures/learning/learningdist.png}
+		\label{scorehists}
+\end{figure}
+From the histograms in Figure \ref{scorehists} we can see that thresholding the scores at the inner threshold captures most of the data. However this is not the case for the outer threshold. From Figure XXX we can see that confidence sets based on the original scores struggle to identify where the tumor ends, resulting in very large sets. 
+
 
 %\subsection{Tumor detection}
 %\begin{figure}[h!]
@@ -183,10 +192,10 @@ Based on the images set aside for alpha weighting we decided to use $\alpha_1 = 
 %\end{figure
 
 %\subsection{}
-\subsection{Conformal confidence sets for polpys tumor segmentation}
+\subsection{Illustrating the performance of conformal confidence sets}\label{SS:val}
 Based on the results of the learning dataset we decided to combine the best of the approaches for the inner and outer sets respectively, taking $f_I$ to be the softmax transformation and $f_O$ to be the distance transformation of the predicted mask.
 
-We divide the 1500 images into 500 for conformal calibration, and 1000 for validation. The resulting conformal confidence sets for this data are shown in the second row of Figure \ref{fig:polpys}. For comparison we have also shown the sets obtained based on the untrsansformed softmax scores in the top row. From this figure we see that the method effectively delineates polyp regions. Inner sets are plotted in red and the outer sets are shown in blue. The ground truth mask for each polpys is shown in yellow and can be compared to the original images. In each of the examples considered the ground truth mask is bounded from within by the inner set and from without by the outer set. 
+We divide the 1500 images at random into 500 for conformal calibration, and 1000 for validation. The resulting conformal confidence sets for this data are shown in the second row of Figure \ref{fig:polpys}. For comparison we have also shown the sets obtained based on the untransformed softmax scores in the top row. From this figure we see that the method, using the transformed scores, effectively delineates polyp regions. Inner sets are plotted in red and the outer sets are shown in blue. The ground truth mask for each polpys is shown in yellow and can be compared to the original images. In each of the examples considered the ground truth mask is bounded from within by the inner set and from without by the outer set. 
 
 \begin{figure}
 	\begin{subfigure}{0.19\textwidth}
@@ -284,7 +293,10 @@ These results show that we can provide informative confidence bounds for the loc
 More precise results can be obtained at the expense of probabilistic guarantees, see Figure XXX. A trade off must be made between precision and confidence and this can also be determined in advance based on the learning dataset. The approach of CITE controls the empirical false negative risk yielding additional precision but at the cost of coverage as shown in Figure XXX. 
 
 \subsection{Measuring the false coverge rate}
+In this section we run validations to evaluate the false coverage rate of our approach. To do so we return to the original dataset of 1798 images and run 1000 validations, in each validation dividing the data into a calibration set of 798 images and a test dataset of 1000 images. In each division we calculate the conformal confidence sets using the above approaches and evaluate the coverage rate for $\alpha$ ranging from $0.05$ to $1$ on the test dataset. We average over all validations and present the results in Figure XXX. In this Figure we also compare to the coverage attained by using Bonferroni and Conformal Risk control \cite{}. We can see that Bonferroni whilst valid is conservative because it does not account for the dependence in the data. Instead conformal risk control can have highly inflated error rates - this is because it is designed to control the expected proportion of discoveries not cover the tumors. The results indicate the trade-off that must be made when choosing between the methods., i.e. whilst risk control provide meaningful inference CITE it comes with a cost in terms of under coverage. Instead, in this setting, conformal confidence sets provide informative segmentation bounds (as illustrated in Section XXX) and corresponding coverage guarantees.
 
+\subsection{Improving risk control using transformed scores}
+ 
 %\subsection{Application to Melanoma segmentation}
 
 %\subsection{Melanoma Lesion Segmentation}
