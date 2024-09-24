@@ -1,0 +1,102 @@
+\begin{thebibliography}{12}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Angelopoulos \& Bates(2021)Angelopoulos and Bates]{Angelopoulos2021}
+Anastasios~N Angelopoulos and Stephen Bates.
+\newblock A gentle introduction to conformal prediction and distribution-free
+  uncertainty quantification.
+\newblock \emph{arXiv preprint arXiv:2107.07511}, 2021.
+
+\bibitem[Angelopoulos et~al.(2021)Angelopoulos, Bates, Cand{\`e}s, Jordan, and
+  Lei]{Angelopoulos2021LTT}
+Anastasios~N Angelopoulos, Stephen Bates, Emmanuel~J Cand{\`e}s, Michael~I
+  Jordan, and Lihua Lei.
+\newblock Learn then test: Calibrating predictive algorithms to achieve risk
+  control.
+\newblock \emph{arXiv preprint arXiv:2110.01052}, 2021.
+
+\bibitem[Angelopoulos et~al.(2022)Angelopoulos, Bates, Fisch, Lei, and
+  Schuster]{Angelopoulos2022}
+Anastasios~N Angelopoulos, Stephen Bates, Adam Fisch, Lihua Lei, and Tal
+  Schuster.
+\newblock Conformal risk control.
+\newblock \emph{arXiv preprint arXiv:2208.02814}, 2022.
+
+\bibitem[Bates et~al.(2021)Bates, Angelopoulos, Lei, Malik, and
+  Jordan]{Bates2021}
+Stephen Bates, Anastasios Angelopoulos, Lihua Lei, Jitendra Malik, and Michael
+  Jordan.
+\newblock Distribution-free, risk-controlling prediction sets.
+\newblock \emph{Journal of the ACM (JACM)}, 68\penalty0 (6):\penalty0 1--34,
+  2021.
+
+\bibitem[Benjamini \& Hochberg(1995)Benjamini and Hochberg]{Benjamini1995}
+Yoav Benjamini and Yosef Hochberg.
+\newblock Controlling the false discovery rate: a practical and powerful
+  approach to multiple testing.
+\newblock \emph{Journal of the Royal statistical society: series B
+  (Methodological)}, 57\penalty0 (1):\penalty0 289--300, 1995.
+
+\bibitem[Bernal et~al.(2012)Bernal, S{\'a}nchez, and Vilarino]{Bernal2012}
+Jorge Bernal, Javier S{\'a}nchez, and Fernando Vilarino.
+\newblock Towards automatic polyp detection with a polyp appearance model.
+\newblock \emph{Pattern Recognition}, 45\penalty0 (9):\penalty0 3166--3182,
+  2012.
+
+\bibitem[Borgli et~al.(2020)Borgli, Thambawita, Smedsrud, Hicks, Jha, Eskeland,
+  Randel, Pogorelov, Lux, Nguyen, et~al.]{Hyperkvasir2020}
+Hanna Borgli, Vajira Thambawita, Pia~H Smedsrud, Steven Hicks, Debesh Jha,
+  Sigrun~L Eskeland, Kristin~Ranheim Randel, Konstantin Pogorelov, Mathias Lux,
+  Duc Tien~Dang Nguyen, et~al.
+\newblock Hyperkvasir, a comprehensive multi-class image and video dataset for
+  gastrointestinal endoscopy.
+\newblock \emph{Scientific data}, 7\penalty0 (1):\penalty0 283, 2020.
+
+\bibitem[Bowring et~al.(2019)Bowring, Telschow, Schwartzman, and
+  Nichols]{Bowring2019}
+Alexander Bowring, Fabian Telschow, Armin Schwartzman, and Thomas~E. Nichols.
+\newblock Spatial confidence sets for raw effect size images.
+\newblock \emph{NeuroImage}, 203:\penalty0 116187, 2019.
+
+\bibitem[Fan et~al.(2020)Fan, Ji, Zhou, Chen, Fu, Shen, and Shao]{PraNet2020}
+Deng-Ping Fan, Ge-Peng Ji, Tao Zhou, Geng Chen, Huazhu Fu, Jianbing Shen, and
+  Ling Shao.
+\newblock Pranet: Parallel reverse attention network for polyp segmentation.
+\newblock In \emph{International conference on medical image computing and
+  computer-assisted intervention}, pp.\  263--273. Springer, 2020.
+
+\bibitem[Gong et~al.(2018)Gong, Wan, Lu, Ma, Cheng, Cheng, Gruenewald, and
+  Feng]{}
+Weikang Gong, Lin Wan, Wenlian Lu, Liang Ma, Fan Cheng, Wei Cheng, Stefan
+  Gruenewald, and Jianfeng Feng.
+\newblock Statistical testing and power analysis for brain-wide association
+  study.
+\newblock \emph{Medical image analysis}, 47:\penalty0 15--30, 2018.
+
+\bibitem[Pogorelov et~al.(2017)Pogorelov, Randel, Griwodz, Eskeland, de~Lange,
+  Johansen, Spampinato, Dang-Nguyen, Lux, Schmidt, Riegler, and
+  Halvorsen]{KVASIR2017}
+Konstantin Pogorelov, Kristin~Ranheim Randel, Carsten Griwodz, Sigrun~Losada
+  Eskeland, Thomas de~Lange, Dag Johansen, Concetto Spampinato, Duc-Tien
+  Dang-Nguyen, Mathias Lux, Peter~Thelin Schmidt, Michael Riegler, and P{\aa}l
+  Halvorsen.
+\newblock Kvasir: A multi-class image dataset for computer aided
+  gastrointestinal disease detection.
+\newblock In \emph{Proceedings of the 8th ACM on Multimedia Systems
+  Conference}, MMSys'17, pp.\  164--169, New York, NY, USA, 2017. ACM.
+\newblock ISBN 978-1-4503-5002-0.
+\newblock \doi{10.1145/3083187.3083212}.
+
+\bibitem[Silva et~al.(2014)Silva, Histace, Romain, Dray, and
+  Granado]{Silva2014}
+Juan Silva, Aymeric Histace, Olivier Romain, Xavier Dray, and Bertrand Granado.
+\newblock Toward embedded detection of polyps in wce images for early diagnosis
+  of colorectal cancer.
+\newblock \emph{International journal of computer assisted radiology and
+  surgery}, 9:\penalty0 283--293, 2014.
+
+\end{thebibliography}
