@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.4.17)  24 SEP 2024 12:51
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.4.17)  27 SEP 2024 14:55
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -370,8 +370,8 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 )
 \Hy@SectionHShift=\skip67
 )
-LaTeX Font Info:    Trying to load font information for OT1+ptm on input line 7
-5.
+LaTeX Font Info:    Trying to load font information for OT1+ptm on input line 6
+0.
  (/usr/local/texlive/2024/texmf-dist/tex/latex/psnfss/ot1ptm.fd
 File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
 )
@@ -388,10 +388,7 @@ LaTeX Warning: Label `eq:probstat' multiply defined.
 LaTeX Warning: Label `eq:probstat' multiply defined.
 
 
-LaTeX Warning: Label `fig:1' multiply defined.
-
-
-LaTeX Warning: Label `sub@fig:1' multiply defined.
+LaTeX Warning: Label `scorehists' multiply defined.
 
 
 LaTeX Warning: Label `fig:1' multiply defined.
@@ -470,28 +467,40 @@ LaTeX Warning: Label `fig:1' multiply defined.
 
 
 LaTeX Warning: Label `sub@fig:1' multiply defined.
+
+
+LaTeX Warning: Label `fig:1' multiply defined.
+
+
+LaTeX Warning: Label `sub@fig:1' multiply defined.
+
+
+LaTeX Warning: Label `eq:probstat' multiply defined.
+
+
+LaTeX Warning: Label `eq:probstat' multiply defined.
 
 )
 \openout1 = `iclr_submission.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 75.
-LaTeX Font Info:    ... okay on input line 75.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 75.
-LaTeX Font Info:    ... okay on input line 75.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 75.
-LaTeX Font Info:    ... okay on input line 75.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 75.
-LaTeX Font Info:    ... okay on input line 75.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 75.
-LaTeX Font Info:    ... okay on input line 75.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 75.
-LaTeX Font Info:    ... okay on input line 75.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 75.
-LaTeX Font Info:    ... okay on input line 75.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 75.
-LaTeX Font Info:    ... okay on input line 75.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 75.
-LaTeX Font Info:    ... okay on input line 75.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 60.
+LaTeX Font Info:    ... okay on input line 60.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 60.
+LaTeX Font Info:    ... okay on input line 60.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 60.
+LaTeX Font Info:    ... okay on input line 60.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 60.
+LaTeX Font Info:    ... okay on input line 60.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 60.
+LaTeX Font Info:    ... okay on input line 60.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 60.
+LaTeX Font Info:    ... okay on input line 60.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 60.
+LaTeX Font Info:    ... okay on input line 60.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 60.
+LaTeX Font Info:    ... okay on input line 60.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 60.
+LaTeX Font Info:    ... okay on input line 60.
  (/usr/local/texlive/2024/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count300
@@ -517,19 +526,19 @@ e
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: hyperref package is loaded.
 Package caption Info: End \AtBeginDocument code.
-Package hyperref Info: Link coloring OFF on input line 75.
+Package hyperref Info: Link coloring OFF on input line 60.
 
 (./iclr_submission.out) (./iclr_submission.out)
 \@outlinefile=\write3
 \openout3 = `iclr_submission.out'.
 
-LaTeX Font Info:    Trying to load font information for U+msa on input line 79.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 64.
 
 
 (/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 79.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 64.
 
 
 (/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/umsb.fd
@@ -548,134 +557,151 @@ Package natbib Warning: Citation `Mejia2019' on page 2 undefined on input line
 Package natbib Warning: Citation `Ren' on page 2 undefined on input line 15.
 
 ) (../main_body.tex [2] [3] [4]
-<../figures/learning/origscores.png, id=155, 1087.06125pt x 841.1425pt>
+<../figures/learning/origscores.png, id=173, 1087.06125pt x 841.1425pt>
 File: ../figures/learning/origscores.png Graphic file (type png)
 <use ../figures/learning/origscores.png>
 Package pdftex.def Info: ../figures/learning/origscores.png  used on input line
- 168.
+ 180.
 (pdftex.def)             Requested size: 119.2467pt x 92.26926pt.
-<../figures/learning/distscores.png, id=157, 1106.1325pt x 850.17625pt>
+<../figures/learning/distscores.png, id=175, 1106.1325pt x 850.17625pt>
 File: ../figures/learning/distscores.png Graphic file (type png)
 <use ../figures/learning/distscores.png>
 Package pdftex.def Info: ../figures/learning/distscores.png  used on input line
- 169.
+ 181.
 (pdftex.def)             Requested size: 119.2467pt x 91.65161pt.
 
 
-Package caption Warning: \label without proper reference on input line 170.
+Package caption Warning: \label without proper reference on input line 190.
 See the caption package documentation for explanation.
 
 
-LaTeX Warning: Reference `scorehists' on page 5 undefined on input line 172.
+LaTeX Warning: Reference `scorehists' on page 5 undefined on input line 184.
 
-[5 <../figures/learning/origscores.png> <../figures/learning/distscores.png>]
-<../figures/val_images/15.png, id=173, 801.99625pt x 707.64375pt>
+File: ../figures/learning/origscores.png Graphic file (type png)
+<use ../figures/learning/origscores.png>
+Package pdftex.def Info: ../figures/learning/origscores.png  used on input line
+ 188.
+(pdftex.def)             Requested size: 119.2467pt x 92.26926pt.
+File: ../figures/learning/distscores.png Graphic file (type png)
+<use ../figures/learning/distscores.png>
+Package pdftex.def Info: ../figures/learning/distscores.png  used on input line
+ 189.
+(pdftex.def)             Requested size: 119.2467pt x 91.65161pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [5]
+<../figures/val_images/15.png, id=188, 801.99625pt x 707.64375pt>
 File: ../figures/val_images/15.png Graphic file (type png)
 <use ../figures/val_images/15.png>
-Package pdftex.def Info: ../figures/val_images/15.png  used on input line 192.
+Package pdftex.def Info: ../figures/val_images/15.png  used on input line 211.
 (pdftex.def)             Requested size: 75.52312pt x 66.63297pt.
-<../figures/val_images/114.png, id=174, 801.99625pt x 707.64375pt>
+<../figures/val_images/114.png, id=189, 801.99625pt x 707.64375pt>
 File: ../figures/val_images/114.png Graphic file (type png)
 <use ../figures/val_images/114.png>
-Package pdftex.def Info: ../figures/val_images/114.png  used on input line 197.
+Package pdftex.def Info: ../figures/val_images/114.png  used on input line 216.
 
 (pdftex.def)             Requested size: 75.52312pt x 66.63297pt.
-<../figures/val_images/61.png, id=175, 801.99625pt x 707.64375pt>
+<../figures/val_images/61.png, id=190, 801.99625pt x 707.64375pt>
 File: ../figures/val_images/61.png Graphic file (type png)
 <use ../figures/val_images/61.png>
-Package pdftex.def Info: ../figures/val_images/61.png  used on input line 202.
+Package pdftex.def Info: ../figures/val_images/61.png  used on input line 221.
 (pdftex.def)             Requested size: 75.52312pt x 66.63297pt.
-<../figures/val_images/76.png, id=176, 801.99625pt x 707.64375pt>
+<../figures/val_images/76.png, id=191, 801.99625pt x 707.64375pt>
 File: ../figures/val_images/76.png Graphic file (type png)
 <use ../figures/val_images/76.png>
-Package pdftex.def Info: ../figures/val_images/76.png  used on input line 207.
+Package pdftex.def Info: ../figures/val_images/76.png  used on input line 226.
 (pdftex.def)             Requested size: 75.52312pt x 66.63297pt.
-<../figures/val_images/87.png, id=177, 801.99625pt x 707.64375pt>
+<../figures/val_images/87.png, id=192, 801.99625pt x 707.64375pt>
 File: ../figures/val_images/87.png Graphic file (type png)
 <use ../figures/val_images/87.png>
-Package pdftex.def Info: ../figures/val_images/87.png  used on input line 212.
+Package pdftex.def Info: ../figures/val_images/87.png  used on input line 231.
 (pdftex.def)             Requested size: 75.52312pt x 66.63297pt.
-<../figures/val_crs_90_orig/15.png, id=178, 910.40125pt x 803.0pt>
+<../figures/val_crs_90_orig/15.png, id=193, 910.40125pt x 803.0pt>
 File: ../figures/val_crs_90_orig/15.png Graphic file (type png)
 <use ../figures/val_crs_90_orig/15.png>
 Package pdftex.def Info: ../figures/val_crs_90_orig/15.png  used on input line 
-219.
+238.
 (pdftex.def)             Requested size: 75.52312pt x 66.6061pt.
-<../figures/val_crs_90_orig/114.png, id=179, 801.99625pt x 707.64375pt>
+<../figures/val_crs_90_orig/114.png, id=194, 801.99625pt x 707.64375pt>
 File: ../figures/val_crs_90_orig/114.png Graphic file (type png)
 <use ../figures/val_crs_90_orig/114.png>
 Package pdftex.def Info: ../figures/val_crs_90_orig/114.png  used on input line
- 224.
+ 243.
 (pdftex.def)             Requested size: 75.52312pt x 66.63297pt.
-<../figures/val_crs_90_orig/61.png, id=180, 910.40125pt x 803.0pt>
+<../figures/val_crs_90_orig/61.png, id=195, 910.40125pt x 803.0pt>
 File: ../figures/val_crs_90_orig/61.png Graphic file (type png)
 <use ../figures/val_crs_90_orig/61.png>
 Package pdftex.def Info: ../figures/val_crs_90_orig/61.png  used on input line 
-229.
+248.
 (pdftex.def)             Requested size: 75.52312pt x 66.6061pt.
-<../figures/val_crs_90_orig/76.png, id=181, 910.40125pt x 803.0pt>
+<../figures/val_crs_90_orig/76.png, id=196, 910.40125pt x 803.0pt>
 File: ../figures/val_crs_90_orig/76.png Graphic file (type png)
 <use ../figures/val_crs_90_orig/76.png>
 Package pdftex.def Info: ../figures/val_crs_90_orig/76.png  used on input line 
-234.
+253.
 (pdftex.def)             Requested size: 75.52312pt x 66.6061pt.
-<../figures/val_crs_90_orig/87.png, id=182, 910.40125pt x 803.0pt>
+<../figures/val_crs_90_orig/87.png, id=197, 910.40125pt x 803.0pt>
 File: ../figures/val_crs_90_orig/87.png Graphic file (type png)
 <use ../figures/val_crs_90_orig/87.png>
 Package pdftex.def Info: ../figures/val_crs_90_orig/87.png  used on input line 
-239.
+258.
 (pdftex.def)             Requested size: 75.52312pt x 66.6061pt.
-<../figures/val_crs_90_distmix/15.png, id=183, 910.40125pt x 803.0pt>
+<../figures/val_crs_90_distmix/15.png, id=198, 910.40125pt x 803.0pt>
 File: ../figures/val_crs_90_distmix/15.png Graphic file (type png)
 <use ../figures/val_crs_90_distmix/15.png>
 Package pdftex.def Info: ../figures/val_crs_90_distmix/15.png  used on input li
-ne 246.
+ne 265.
 (pdftex.def)             Requested size: 75.52312pt x 66.6061pt.
-<../figures/val_crs_90_distmix/114.png, id=184, 910.40125pt x 803.0pt>
+<../figures/val_crs_90_distmix/114.png, id=199, 910.40125pt x 803.0pt>
 File: ../figures/val_crs_90_distmix/114.png Graphic file (type png)
 <use ../figures/val_crs_90_distmix/114.png>
 Package pdftex.def Info: ../figures/val_crs_90_distmix/114.png  used on input l
-ine 251.
+ine 270.
 (pdftex.def)             Requested size: 75.52312pt x 66.6061pt.
-<../figures/val_crs_90_distmix/61.png, id=185, 910.40125pt x 803.0pt>
+<../figures/val_crs_90_distmix/61.png, id=200, 910.40125pt x 803.0pt>
 File: ../figures/val_crs_90_distmix/61.png Graphic file (type png)
 <use ../figures/val_crs_90_distmix/61.png>
 Package pdftex.def Info: ../figures/val_crs_90_distmix/61.png  used on input li
-ne 256.
+ne 275.
 (pdftex.def)             Requested size: 75.52312pt x 66.6061pt.
-<../figures/val_crs_90_distmix/76.png, id=186, 910.40125pt x 803.0pt>
+<../figures/val_crs_90_distmix/76.png, id=201, 910.40125pt x 803.0pt>
 File: ../figures/val_crs_90_distmix/76.png Graphic file (type png)
 <use ../figures/val_crs_90_distmix/76.png>
 Package pdftex.def Info: ../figures/val_crs_90_distmix/76.png  used on input li
-ne 261.
+ne 280.
 (pdftex.def)             Requested size: 75.52312pt x 66.6061pt.
-<../figures/val_crs_90_distmix/87.png, id=187, 910.40125pt x 803.0pt>
+<../figures/val_crs_90_distmix/87.png, id=202, 910.40125pt x 803.0pt>
 File: ../figures/val_crs_90_distmix/87.png Graphic file (type png)
 <use ../figures/val_crs_90_distmix/87.png>
 Package pdftex.def Info: ../figures/val_crs_90_distmix/87.png  used on input li
-ne 266.
+ne 285.
 (pdftex.def)             Requested size: 75.52312pt x 66.6061pt.
 
-[6 <../figures/val_images/15.png (PNG copy)> <../figures/val_images/114.png (PN
-G copy)> <../figures/val_images/61.png (PNG copy)> <../figures/val_images/76.pn
-g (PNG copy)> <../figures/val_images/87.png (PNG copy)> <../figures/val_crs_90_
-orig/15.png (PNG copy)> <../figures/val_crs_90_orig/114.png (PNG copy)> <../fig
-ures/val_crs_90_orig/61.png (PNG copy)> <../figures/val_crs_90_orig/76.png (PNG
- copy)> <../figures/val_crs_90_orig/87.png (PNG copy)> <../figures/val_crs_90_d
-istmix/15.png (PNG copy)> <../figures/val_crs_90_distmix/114.png (PNG copy)> <.
-./figures/val_crs_90_distmix/61.png (PNG copy)> <../figures/val_crs_90_distmix/
-76.png (PNG copy)> <../figures/val_crs_90_distmix/87.png (PNG copy)>])
-(../discussion.tex [7]) (../acknowledgements.tex) (./iclr_submission.bbl
+[6 <../figures/learning/origscores.png> <../figures/learning/distscores.png>])
+(../discussion.tex
+Underfull \vbox (badness 2205) has occurred while \output is active []
+
+ [7 <../figures/val_images/15.png (PNG copy)> <../figures/val_images/114.png (P
+NG copy)> <../figures/val_images/61.png (PNG copy)> <../figures/val_images/76.p
+ng (PNG copy)> <../figures/val_images/87.png (PNG copy)> <../figures/val_crs_90
+_orig/15.png (PNG copy)> <../figures/val_crs_90_orig/114.png (PNG copy)> <../fi
+gures/val_crs_90_orig/61.png (PNG copy)> <../figures/val_crs_90_orig/76.png (PN
+G copy)> <../figures/val_crs_90_orig/87.png (PNG copy)> <../figures/val_crs_90_
+distmix/15.png (PNG copy)> <../figures/val_crs_90_distmix/114.png (PNG copy)> <
+../figures/val_crs_90_distmix/61.png (PNG copy)> <../figures/val_crs_90_distmix
+/76.png (PNG copy)> <../figures/val_crs_90_distmix/87.png (PNG copy)>])
+(../acknowledgements.tex) (./iclr_submission.bbl
 Underfull \hbox (badness 1424) in paragraph at lines 31--36
 []\OT1/ptm/m/n/10 Stephen Bates, Anas-ta-sios An-gelopou-los, Li-hua Lei, Ji-te
 n-dra Ma-lik, and Michael Jor-dan.
  []
 
-)
+[8]) (../appendix.tex [9])
 
 Package natbib Warning: There were undefined citations.
 
-[8] [9] (./iclr_submission.aux)
+[10] (./iclr_submission.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-02-20>
@@ -688,16 +714,16 @@ LaTeX Warning: There were undefined references.
 LaTeX Warning: There were multiply-defined labels.
 
 Package rerunfilecheck Info: File `iclr_submission.out' has not changed.
-(rerunfilecheck)             Checksum: E736170519B1FF10A786CA04DC22654D;2962.
+(rerunfilecheck)             Checksum: 1DDDDC5B797444D69951C8F87B3A76D2;3652.
  ) 
 Here is how much of TeX's memory you used:
- 12586 strings out of 474116
- 198605 string characters out of 5743682
+ 12610 strings out of 474116
+ 198966 string characters out of 5743682
  1950187 words of memory out of 5000000
- 34722 multiletter control sequences out of 15000+600000
+ 34733 multiletter control sequences out of 15000+600000
  575667 words of font info for 64 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,13n,79p,1346b,530s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,13n,79p,1346b,590s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb
 ></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb>
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></
@@ -712,10 +738,10 @@ live/2024/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local
 e/2024/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2024/tex
 mf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2024/texmf-dist/fo
 nts/type1/urw/times/utmri8a.pfb>
-Output written on iclr_submission.pdf (9 pages, 2449128 bytes).
+Output written on iclr_submission.pdf (10 pages, 2457188 bytes).
 PDF statistics:
- 287 PDF objects out of 1000 (max. 8388607)
- 226 compressed objects within 3 object streams
- 55 named destinations out of 1000 (max. 500000)
- 198 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 323 PDF objects out of 1000 (max. 8388607)
+ 261 compressed objects within 3 object streams
+ 66 named destinations out of 1000 (max. 500000)
+ 214 words of extra memory for PDF output out of 10000 (max. 10000000)
 

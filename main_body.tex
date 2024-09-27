@@ -24,11 +24,16 @@ In order to establish conformal confidence results we shall require the followin
 \end{assumption}
 Exchangeability or a variant is a standard assumption in the conformal inference literature \citep{Angelopoulos2021} and factilates coverage guarantees. It holds for instance if we assume that the collection $(X_i, Y_i)_{i = 1}^{n+1}$ is an i.i.d. sequence of image pairs but is more general and in principle allows for other dependence structures. 
 
-\subsection{Marginal confidence sets}
-In order to construct conformal confidence sets let $f_O, f_I:\mathbb{R} \rightarrow \mathbb{R}$ be increasing functions and for each $1\leq i \leq n$, let $\tau_i = \max_{v \in \mathcal{V}: Y_i(v) = 0} f_O(s(X_i,v))$ and $\gamma_i = \max_{v \in \mathcal{V}: Y_i(v) = 1} f_I(-s(X_i,v))$  be the maxima of the function transformed scores over the areas at which the true labels equal 0 and 1 respectively. Then we construct confidence sets as follows.
+\subsection{Marginal confidence sets}\label{SS:MCS}
+In order to construct conformal confidence sets let $f_O, f_I:\mathbb{R} \rightarrow \mathbb{R}$ be increasing functions and for each $1\leq i \leq n$, let $\tau_i = \max_{v \in \mathcal{V}: Y_i(v) = 0} f_O(s(X_i,v))$ and $\gamma_i = \max_{v \in \mathcal{V}: Y_i(v) = 1} f_I(-s(X_i,v))$  be the maxima of the function transformed scores over the areas at which the true labels equal 0 and 1 respectively. We will require the following assumption on the scores and the transformation functions.
+\begin{assumption}\label{ass:indep}
+	(Independence of scores) $(X_i, Y_i)_{i = 1}^{n+1}$ is independent of the functions $s, f_O, f_I$. 
+\end{assumption}
+
+Given this we construct confidence sets as follows.
 \begin{theorem}\label{thm:inner}
 	(Marginal inner set)
-	Under Assumption \ref{ass:ex}, given $\alpha_1 \in (0,1)$, let 
+	Under Assumptions \ref{ass:ex} and \ref{ass:indep}, given $\alpha_1 \in (0,1)$, let 
 	\begin{equation*}
 		\lambda_I(\alpha_1) = \inf\left\lbrace \lambda: \frac{1}{n} \sum_{i = 1}^n 1\left[ \gamma_i\leq \lambda \right] \geq \alpha_1 \right\rbrace.
 	\end{equation*}
@@ -42,25 +47,29 @@ In order to construct conformal confidence sets let $f_O, f_I:\mathbb{R} \righta
 	\begin{equation*}
 	\mathbb{P}\left(\gamma_{n+1} \leq \lambda_I(\alpha_1) \right) \geq 1 - \alpha_1. 
 	\end{equation*}
-	Now consider the event that $\gamma_{n+1}\leq \lambda_{\alpha}$, on this event, $ f_O(s(X_{n+1},v)) \leq \lambda_\alpha $
-	for all $v \in \mathcal{V}$ such that $Y_{n+1}(v) = 0$. As such, given $u \in \mathcal{V}$ such that $ f_O(s(X_{n+1},u)) > \lambda_\alpha$, we must have $Y_{n+1}(u) = 1$ so it follows that $	\lbrace v\in \mathcal{V}: Y(v) = 1 \rbrace \subseteq O(X) $ and in particular that 
+	Now consider the event that $\gamma_{n+1}\leq \lambda_I(\alpha) $, on this event, $ f_O(s(X_{n+1},v)) \leq \lambda_I(\alpha) $
+	for all $v \in \mathcal{V}$ such that $Y_{n+1}(v) = 0$. As such, given $u \in \mathcal{V}$ such that $ f_O(s(X_{n+1},u)) > \lambda_I(\alpha) $, we must have $Y_{n+1}(u) = 1$ so it follows that $	\lbrace v\in \mathcal{V}: Y(v) = 1 \rbrace \subseteq O(X) $ and in particular that 
 	\begin{equation*}
 	\mathbb{P}\left( \lbrace v\in \mathcal{V}: Y(v) = 1 \rbrace \subseteq O(X)  \right) \geq \mathbb{P}\left(\gamma_{n+1} \leq \lambda_I(\alpha_1) \right) \geq 1 - \alpha_1. 
 \end{equation*}
 \end{proof}
-\noindent Similarly for the outer set we have
+\noindent For the outer set we have the following analogous result.
 \begin{theorem}\label{thm:outer}
 	(Marginal outer set)
-	Under Assumption \ref{ass:ex}, given $\alpha_2 \in (0,1)$, let 
+	Under Assumptions \ref{ass:ex} and \ref{ass:indep}, given $\alpha_2 \in (0,1)$, let 
 	\begin{equation*}
 		\lambda_O({\alpha_2})= \inf\left\lbrace \lambda: \frac{1}{n} \sum_{i = 1}^n 1\left[ \tau_i\leq \lambda \right] \geq \alpha_2 \right\rbrace.
 	\end{equation*}
-	be the upper $\alpha$ quantile of $(\gamma_i)_{i = 1}^n$and define $O(X) = \lbrace v \in \mathcal{V}: f_O(s(X,v)) >\lambda_O(\alpha_2)  \rbrace $. Then,
+	be the upper $\alpha$ quantile of $(\tau_i)_{i = 1}^n$and define $O(X) = \lbrace v \in \mathcal{V}: f_O(s(X,v)) >\lambda_O(\alpha_2)  \rbrace $. Then,
 	\begin{equation}\label{eq:probstat}
 		\mathbb{P}\left( \lbrace v\in \mathcal{V}: Y_{n+1}(v) = 1 \rbrace \subseteq O(X_{n+1}) \right) \geq 1 - \alpha_2.
 	\end{equation}
 \end{theorem}
 \noindent The proof of Theorem \ref{thm:outer} follows that of Theorem \ref{thm:inner} and is thus omitted. 
+\begin{remark}\label{rmk:max}
+	We have used the maximum over the transformed scores in order to combine score information on and off the ground truth masks. The maximum is a natural combination function in imaging and is commonly used in the context of multiple testing CITE. However the theory above is valid for any increasing combination function. We show this in Appendix \ref{A:CF} where we establish generalized versions of the results in Sections \ref{SS:MCS} and \ref{SS:joint}.
+\end{remark}
+
 
 %\begin{remark}
 %	Importantly the coverage of the sets $U_M(X)$ and $V_M(X)$ is not jointly valid and so when using these results the choice of inner versus outer set must be made in advance.
@@ -80,14 +89,14 @@ In order to construct conformal confidence sets let $f_O, f_I:\mathbb{R} \righta
 \subsection{Joint confidence sets}\label{SS:joint}
 Instead of focussing on marginal control one can instead spend all of the $\alpha$ available to construct sets which have a joint probabilistic guarantees. This gain comes at the expense of a loss of precision. The simplest means of constructing jointly valid confidence sets is via the marginal sets themselves.
 \begin{corollary}\label{cor:weighting}
-	(Joint from marginal) Assume Assumption \ref{ass:ex} holds and given $\alpha \in (0,1)$ and $\alpha_1, \alpha_2 \in (0,1)$ such that $\alpha_1 + \alpha_2 \leq \alpha$, define $I(X)$ and  $O(X)$ as in Theorems \ref{thm:inner} and \ref{thm:outer}. Then 
+	(Joint from marginal) Assume Assumptions \ref{ass:ex} and \ref{ass:indep} hold and given $\alpha \in (0,1)$ and $\alpha_1, \alpha_2 \in (0,1)$ such that $\alpha_1 + \alpha_2 \leq \alpha$, define $I(X)$ and  $O(X)$ as in Theorems \ref{thm:inner} and \ref{thm:outer}. Then 
 	\begin{equation}
 		\mathbb{P}\left( I(X) \subseteq \lbrace v\in \mathcal{V}: Y_{n+1}(v) = 1 \rbrace \subseteq O(X)  \right) \geq 1 - \alpha. 
 	\end{equation}
 \end{corollary}
 Alternatively joint control can be obtained using the joint distribution of the maxima of the logit scores as follows.
 \begin{theorem}\label{thm:joint}
-	(Joint coverage) Assume that Assumption \ref{ass:ex} holds. Given $\alpha \in (0,1)$, let 
+	(Joint coverage) Assume that Assumption \ref{ass:ex} and \ref{ass:indep}  hold. Given $\alpha \in (0,1)$, let 
 	\begin{equation*}
 		\lambda(\alpha) = \inf\left\lbrace \lambda: \frac{1}{n} \sum_{i = 1}^n 1\left[ \max(\tau_i, \gamma_i) \leq \lambda \right] \geq \alpha \right\rbrace
 	\end{equation*}
@@ -101,8 +110,11 @@ Alternatively joint control can be obtained using the joint distribution of the 
 \end{proof}
 
 \begin{remark}
-	The advantage of Corollary \ref{cor:weighting} is that the resulting inner and outer sets provide pivotal inference - not favouring one side or the other - which can be important when the distribution of the score function is asymmetric. Moreover the levels $\alpha_1$ and $\alpha_2$ can be used to provide a greater weight to either inner or outer sets whilst maintaining joint coverage. Theorem \ref{thm:joint} may instead be useful when there are strong levels of dependence between $\tau_1$ and $\gamma_1$. In practice this dependence is often low and scale differences in the scores can lead to a severe lack of pivotality. As such in practice it may be better to construct joint sets using Corollary \ref{cor:weighting}. 
+	The advantage of Corollary \ref{cor:weighting} is that the resulting inner and outer sets provide pivotal inference - not favouring one side or the other - which can be important when the distribution of the score function is asymmetric. Moreover the levels $\alpha_1$ and $\alpha_2$ can be used to provide a greater weight to either inner or outer sets whilst maintaining joint coverage. Theorem \ref{thm:joint} may instead be useful when there are strong levels of dependence between $\tau_1$ and $\gamma_1$. However, when this dependence is low, scale differences in the scores can lead to a severe lack of pivotality. As such in practice it may be simpler to construct joint sets using Corollary \ref{cor:weighting}. 
 \end{remark}
+
+\subsection{Confidence sets from bounding boxes}
+As an alternative to the above we can construct conformal confidence sets based on bounding boxes. In what follows we adapt the approach of CITE to our setting with the following modifications. In particular we treat the outer and inner bounding boxes differently - CITE used the same dilation/contraction for both the inside and outside boxes. Secondly the inner box will need to fit inside the detected object not inside the bounding box of the object. 
 
 %Typically in our applications, $X_{n+1}$ will observed with $Y$ unknown.
 %
