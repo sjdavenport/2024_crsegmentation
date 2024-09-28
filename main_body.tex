@@ -189,12 +189,21 @@ From the histograms in Figure \ref{scorehists} we can see that thresholding the 
 	\includegraphics[width=0.24\textwidth]{../figures/learning/scores/202.png}
 		\includegraphics[width=0.24\textwidth]{../figures/learning/score_surf/202.png}	\includegraphics[width=0.24\textwidth]{../figures/learning/dist_surf/202.png}
 		\includegraphics[width=0.24\textwidth]{../figures/learning/dist_bt_surf/202.png}\\
+			
 		\includegraphics[width=0.24\textwidth]{../figures/learning/images/202.png}
 	\includegraphics[width=0.24\textwidth]{../figures/learning/score_crs_marginal90/202.png}
 	\includegraphics[width=0.24\textwidth]{../figures/learning/dist_crs_marginal90/202.png}
-	\includegraphics[width=0.24\textwidth]{../figures/learning/dist_bt_crs_marginal90/202.png}
+	\includegraphics[width=0.24\textwidth]{../figures/learning/dist_bt_crs_marginal90/202.png}\\
+\vspace{0.5cm}
+		\includegraphics[width=0.24\textwidth]{../figures/learning/scores/362.png}
+	\includegraphics[width=0.24\textwidth]{../figures/learning/score_surf/362.png}	\includegraphics[width=0.24\textwidth]{../figures/learning/dist_surf/362.png}
+	\includegraphics[width=0.24\textwidth]{../figures/learning/dist_bt_surf/362.png}\\
+	\includegraphics[width=0.24\textwidth]{../figures/learning/images/362.png}
+	\includegraphics[width=0.24\textwidth]{../figures/learning/score_crs_marginal90/362.png}
+	\includegraphics[width=0.24\textwidth]{../figures/learning/dist_crs_marginal90/362.png}
+	\includegraphics[width=0.24\textwidth]{../figures/learning/dist_bt_crs_marginal90/362.png}
 \end{center}
-	\caption{Illustrating the performance of the different score transformations on the learning dataset. Bottom right: the original image of the polpys tumor. Top Left: an intensity plot of the scores obtained from PraNet with purple/yellow indicating areas of lower/higher assigned probability. For the remaining panels, 3 different score transformations are shown which from left to right are the original scores, distance transformed scores and bounding box scores. In each of the panels on the top row a surface plot of the PraNet scores is shown, along with the marginal conformal thresholds which are used to obtain the inner and outer sets.  These thresholds are illustrated via red and blue planes respectively and are obtained over the learning dataset. The panels on the bottom show the corresponding conformal confidence sets. Here the inner set is shown in red, plotted over the ground truth mask of the polyps, shown in yellow, plotted over the outer set which is shown in blue. The outer set contains the ground truth mask which contains the inner set in all examples.}
+	\caption{Illustrating the performance of the different score transformations on the learning dataset. We display 2 example tumors and present the results of each in 8 panels. These panels are as follows. Bottom right: the original image of the polpys tumor. Top Left: an intensity plot of the scores obtained from PraNet with purple/yellow indicating areas of lower/higher assigned probability. For the remaining panels, 3 different score transformations are shown which from left to right are the original scores, distance transformed scores and bounding box scores. In each of the panels on the top row a surface plot of the transformed PraNet scores is shown, along with the marginal conformal thresholds which are used to obtain the marginal 90\% inner and outer sets.  These thresholds are illustrated via red and blue planes respectively and are obtained over the learning dataset. The panels on the bottom show the corresponding conformal confidence sets. Here the inner set is shown in red, plotted over the ground truth mask of the polyps, shown in yellow, plotted over the outer set which is shown in blue. The outer set contains the ground truth mask which contains the inner set in all examples. From these figures we see that the original scores provide tight inner confidence sets and the distance transformed scores instead provide tight outer confidence sets. The conclusion from the learning dataset is therefore that it makes sense to combine these two score transformations.}
 	\label{fig:learning}
 \end{figure}
 
