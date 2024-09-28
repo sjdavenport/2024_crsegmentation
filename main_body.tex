@@ -67,7 +67,7 @@ Given this we construct confidence sets as follows.
 \end{theorem}
 \noindent The proof of Theorem \ref{thm:outer} follows that of Theorem \ref{thm:inner} and is thus omitted. 
 \begin{remark}\label{rmk:max}
-	We have used the maximum over the transformed scores in order to combine score information on and off the ground truth masks. The maximum is a natural combination function in imaging and is commonly used in the context of multiple testing CITE. However the theory above is valid for any increasing combination function. We show this in Appendix \ref{A:CF} where we establish generalized versions of the results in Sections \ref{SS:MCS} and \ref{SS:joint}.
+	We have used the maximum over the transformed scores in order to combine score information on and off the ground truth masks. The maximum is a natural combination function in imaging and is commonly used in the context of multiple testing \citep{Worsley1992}. However the theory above is valid for any increasing combination function. We show this in Appendix \ref{A:CF} where we establish generalized versions of these results.
 \end{remark}
 
 
@@ -100,17 +100,17 @@ Alternatively joint control can be obtained using the joint distribution of the 
 	\begin{equation*}
 		\lambda(\alpha) = \inf\left\lbrace \lambda: \frac{1}{n} \sum_{i = 1}^n 1\left[ \max(\tau_i, \gamma_i) \leq \lambda \right] \geq \alpha \right\rbrace
 	\end{equation*}
-	to be the upper $\alpha$-quantile of the distribution of $\max(\tau_i, \gamma_i)$ over $1 \leq i \leq n$. Let $O(X) = \lbrace v \in \mathcal{V}: f_O(s(X,v)) >  \lambda(\alpha) \rbrace $ and $I(X) = \lbrace v \in \mathcal{V}: f_I(-s(X,v)) >	\lambda(\alpha) \rbrace $. Then,
+ 	be the upper $\alpha$-quantile of the distribution of $\max(\tau_i, \gamma_i)$ over $1 \leq i \leq n$.\\ Let $O(X) = \lbrace v \in \mathcal{V}: f_O(s(X,v)) >  \lambda(\alpha) \rbrace $ and $I(X) = \lbrace v \in \mathcal{V}: f_I(-s(X,v)) >	\lambda(\alpha) \rbrace $. Then,
 \begin{equation}\label{eq:probstat}
 	\mathbb{P}\left( I(X) \subseteq \lbrace v\in \mathcal{V}: Y(v) = 1 \rbrace \subseteq O(X) \right) \geq 1 - \alpha.
 \end{equation}
 \end{theorem}
 \begin{proof}
-	Exchangeability of the image pairs implies exchangeability of the sequence $(\tau_i)_{i = 1}^{n+1}$. Moreover on the event that $\max(\tau_{n+1}, \gamma_{n+1}) \leq \lambda_{\alpha}$. In particular $\tau_{n+1} \leq \lambda_\alpha$ and $\gamma_{n+1} \leq \lambda_\alpha$ on this event so the result following via a proof similar to that of Theorem \ref{thm:inner}.
+	Exchangeability of the image pairs implies exchangeability of the sequence $(\tau_i, \gamma_i)_{i = 1}^{n+1}$. Moreover on the event that $\max(\tau_{n+1}, \gamma_{n+1}) \leq \lambda(\alpha)$ we have $\tau_{n+1} \leq \lambda(\alpha)$ and $\gamma_{n+1} \leq \lambda(\alpha)$ so the result follows via a proof similar to that of Theorem \ref{thm:inner}.
 \end{proof}
 
 \begin{remark}
-	The advantage of Corollary \ref{cor:weighting} is that the resulting inner and outer sets provide pivotal inference - not favouring one side or the other - which can be important when the distribution of the score function is asymmetric. Moreover the levels $\alpha_1$ and $\alpha_2$ can be used to provide a greater weight to either inner or outer sets whilst maintaining joint coverage. Theorem \ref{thm:joint} may instead be useful when there are strong levels of dependence between $\tau_1$ and $\gamma_1$. However, when this dependence is low, scale differences in the scores can lead to a severe lack of pivotality. As such in practice it may be simpler to construct joint sets using Corollary \ref{cor:weighting}. 
+	The advantage of Corollary \ref{cor:weighting} is that the resulting inner and outer sets provide pivotal inference - not favouring one side or the other - which can be important when the distribution of the score function is asymmetric. Moreover the levels $\alpha_1$ and $\alpha_2$ can be used to provide a greater weight to either inner or outer sets whilst maintaining joint coverage. Theorem \ref{thm:joint} may instead be useful when there are strong levels of dependence between $\tau_1$ and $\gamma_1$. However, when this dependence is low, scale differences in the scores can lead to a lack of pivotality. This can be improved by appropriate choices of the score transformations $f_I$ and $f_O$ however in practice it may be simpler to construct joint sets using Corollary \ref{cor:weighting}. 
 \end{remark}
 
 \subsection{Confidence sets from bounding boxes}
@@ -170,7 +170,7 @@ The score transformations we considered were the identity (after softmax transfo
 
 The PraNet scores for several typical examples are shown, after applying these transformations, in Figure XXX.  From these we see that PraNet assigns a high softmax score to the polpys regions which decreases in the regions directly around the  boundary of the tumor before returning to a higher level away from the polpys. This results in tight inner sets but large outer sets as the model struggles to identify where the tumor ends. 
 
-Further examples are shown in Appendix XXX. 
+A further 10 examples are shown in Appendix XXX. 
 
 Based on the images set aside for alpha weighting we decided to use $\alpha_1 = 0.02$ and $\alpha_2 = 0.08$ to ensure a joint coverage of $90\%$. This ratio was chosen in light of the fact that in this data identifying where a given tumor ends appears to be more challenging than identifying pixels where we are sure that there is a tumor. For comparison we also present the results of an equal weighting scheme.
 
@@ -184,10 +184,18 @@ Based on the images set aside for alpha weighting we decided to use $\alpha_1 = 
 From the histograms in Figure \ref{scorehists} we can see that thresholding the scores at the inner threshold captures most of the data. However this is not the case for the outer threshold. From Figure XXX we can see that confidence sets based on the original scores struggle to identify where the tumor ends, resulting in very large sets. 
 
 \begin{figure}
-	\centering
-	\includegraphics[width=0.3\textwidth]{../figures/learning/origscores.png}
-	\includegraphics[width=0.3\textwidth]{../figures/learning/distscores.png}
-	\label{scorehists}
+%	\centering
+\begin{center}
+	\includegraphics[width=0.24\textwidth]{../figures/learning/scores/202.png}
+		\includegraphics[width=0.24\textwidth]{../figures/learning/score_surf/202.png}	\includegraphics[width=0.24\textwidth]{../figures/learning/dist_surf/202.png}
+		\includegraphics[width=0.24\textwidth]{../figures/learning/dist_bt_surf/202.png}\\
+		\includegraphics[width=0.24\textwidth]{../figures/learning/images/202.png}
+	\includegraphics[width=0.24\textwidth]{../figures/learning/score_crs_marginal90/202.png}
+	\includegraphics[width=0.24\textwidth]{../figures/learning/dist_crs_marginal90/202.png}
+	\includegraphics[width=0.24\textwidth]{../figures/learning/dist_bt_crs_marginal90/202.png}
+\end{center}
+	\caption{Illustrating the performance of the different score transformations on the learning dataset. Bottom right: the original image of the polpys tumor. Top Left: an intensity plot of the scores obtained from PraNet with purple/yellow indicating areas of lower/higher assigned probability. For the remaining panels, 3 different score transformations are shown which from left to right are the original scores, distance transformed scores and bounding box scores. In each of the panels on the top row a surface plot of the PraNet scores is shown, along with the marginal conformal thresholds which are used to obtain the inner and outer sets.  These thresholds are illustrated via red and blue planes respectively and are obtained over the learning dataset. The panels on the bottom show the corresponding conformal confidence sets. Here the inner set is shown in red, plotted over the ground truth mask of the polyps, shown in yellow, plotted over the outer set which is shown in blue. The outer set contains the ground truth mask which contains the inner set in all examples.}
+	\label{fig:learning}
 \end{figure}
 
 
@@ -300,8 +308,9 @@ More precise results can be obtained at the expense of probabilistic guarantees,
 In this section we run validations to evaluate the false coverage rate of our approach. To do so we take the set aside 1500 images and run 1000 validations, in each validation dividing the data into equally sized calibration and test sets of 750 images. In each division we calculate the conformal confidence sets using the above approaches and evaluate the coverage rate for $\alpha$ ranging from $0.05$ to $1$ on the test dataset. We average over all validations and present the results in Figure XXX. In this Figure we also compare to the coverage attained by using Bonferroni and Conformal Risk control \cite{}. We can see that Bonferroni whilst valid is conservative because it does not account for the dependence in the data. Instead conformal risk control can have highly inflated error rates - this is because it is designed to control the expected proportion of discoveries not cover the tumors. The results indicate the trade-off that must be made when choosing between the methodss, i.e. whilst risk control can provide meaningful inference CITE it comes with a cost in terms of under coverage. Instead, in this setting, conformal confidence sets provide informative segmentation bounds (as illustrated in Section \ref{SS:val}) and come with strong coverage guarantees.
 
 \begin{figure}
-	
-	\caption{Left: . Right: False coverage rate of the outer and inner sets over the test set of 1000 images for $\alpha$ ranging from 0 to $0.2$.  }\label{fig:dist}
+	\includegraphics[width=0.32\textwidth]{../figures/validation/inner_coverage.pdf}
+	\includegraphics[width=0.32\textwidth]{../figures/validation/outer_coverage.pdf}
+	\caption{False coverage levels of the inner and outer sets averaged over 1000 validations for the original, distance transformed (DT) and bounding box (BB) scores.}\label{fig:dist}
 \end{figure}
 
 \begin{figure}

@@ -1,4 +1,4 @@
-\begin{thebibliography}{12}
+\begin{thebibliography}{13}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -98,5 +98,11 @@ Juan Silva, Aymeric Histace, Olivier Romain, Xavier Dray, and Bertrand Granado.
   of colorectal cancer.
 \newblock \emph{International journal of computer assisted radiology and
   surgery}, 9:\penalty0 283--293, 2014.
+
+\bibitem[Worsley et~al.(1992)Worsley, Evans, Marrett, and Neelin]{Worsley1992}
+Keith~J. Worsley, Alan~C Evans, Sean Marrett, and P~Neelin.
+\newblock A three-dimensional statistical analysis for {CBF} activation studies
+  in human brain.
+\newblock \emph{JCBFM}, 1992.
 
 \end{thebibliography}
