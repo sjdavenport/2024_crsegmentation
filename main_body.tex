@@ -160,10 +160,10 @@ In order to make efficient use of the data available, the learning dataset can i
 %\subsubsection{Useful score transformations}
 
 \section{Application to Polpys tumor segmentation}
-In order to illustrate and validate our approach we consider the problem of polpys tumor segmentation from XXX images. To do so we use the same dataset as in XXX and XXX in which 1782 poplys images, with available ground truth masks were combined from 5 open-source datasets (published in \cite{KVASIR2017}, \cite{Hyperkvasir2020} \cite{Bernal2012}, \cite{Silva2014}). As in XXX, logit scores were obtained using the PraNet model \cite{PraNet2020}, which is based on the Unet architecture CITE CHECK! 
+In order to illustrate and validate our approach we consider the problem of polpys tumor segmentation. To do so we use the same dataset as in \cite{Angelopoulos2022} in which 1798 poplys images, with available ground truth masks were combined from 5 open-source datasets (published in \cite{KVASIR2017}, \cite{Hyperkvasir2020} \cite{Bernal2012}, \cite{Silva2014}). Logit scores were obtained for this data using the PraNet model \cite{PraNet2020}, which is based on the Unet architecture CITE CHECK! 
 
 \subsection{Choosing a score transformation}
-In order to optimize the size of our confidence sets we set aside 282 of the 1782 polpys images to form a learning dataset with which to choose the best score transformation. Note that since the learning dataset is independent of the remaining 1500 images set-aside, we can study it as much as we like without compromising the validity of the follow-up analysis in Section \ref{SS:val}. 
+In order to optimize the size of our confidence sets we set aside 298 of the 1798 polpys images to form a learning dataset on which to choose the best score transformations. Importantly as the learning dataset is independent of the remaining 1500 images set-aside, we can study it as much as we like without compromising the validity of the follow-up analyses in Sections \ref{SS:val}, 
 
 The score transformations we considered were the identity (after softmax transformation), distance transformations of the predicted masks and smoothing using a Gaussian kernel. Given a score function $s$ and a threshold $t \in \mathbb{R}$ let $B(t)$ be the set of points on the boundary of the set $\lbrace v \in \mathcal{V}: s(v) > t$ obtained by applying the marching squares algorithm CITE. Distance transformation scores are then obtained as following
 
@@ -313,7 +313,7 @@ These results show that we can provide informative confidence bounds for the loc
 
 More precise results can be obtained at the expense of probabilistic guarantees, see Figure XXX. A trade off must be made between precision and confidence and this can also be determined in advance based on the learning dataset. The approach of CITE controls the empirical false negative risk yielding additional precision but at the cost of coverage as shown in Figure XXX. 
 
-\subsection{Measuring the coverge rate}
+\subsection{Measuring the coverge rate}\label{SS:cov}
 In this section we run validations to evaluate the false coverage rate of our approach. To do so we take the set aside 1500 images and run 1000 validations, in each validation dividing the data into equally sized calibration and test sets of 750 images. In each division we calculate the conformal confidence sets using the above approaches and evaluate the coverage rate on the test dataset. We average over all validations and present the results in Figure XXX. Histograms for the $90\%$ coverage obtained over each validation run are shown in Figure \ref{fig:valhist}.
 
  In this Figure we also compare to the coverage attained by using Conformal Risk control \cite{}. We can see that conformal risk control can have highly inflated error rates - this is because it is designed to control the expected proportion of discoveries not cover the tumors. The results indicate the trade-off that must be made when choosing between the methodss, i.e. whilst risk control can provide meaningful inference CITE it comes with a cost in terms of under coverage. Instead, in this setting, conformal confidence sets provide informative segmentation bounds (as illustrated in Section \ref{SS:val}) and come with strong coverage guarantees. 
