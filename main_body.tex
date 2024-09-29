@@ -314,27 +314,53 @@ These results show that we can provide informative confidence bounds for the loc
 More precise results can be obtained at the expense of probabilistic guarantees, see Figure XXX. A trade off must be made between precision and confidence and this can also be determined in advance based on the learning dataset. The approach of CITE controls the empirical false negative risk yielding additional precision but at the cost of coverage as shown in Figure XXX. 
 
 \subsection{Measuring the coverge rate}
-In this section we run validations to evaluate the false coverage rate of our approach. To do so we take the set aside 1500 images and run 1000 validations, in each validation dividing the data into equally sized calibration and test sets of 750 images. In each division we calculate the conformal confidence sets using the above approaches and evaluate the coverage rate on the test dataset. We average over all validations and present the results in Figure XXX. In this Figure we also compare to the coverage attained by using Conformal Risk control \cite{}. We can see that conformal risk control can have highly inflated error rates - this is because it is designed to control the expected proportion of discoveries not cover the tumors. The results indicate the trade-off that must be made when choosing between the methodss, i.e. whilst risk control can provide meaningful inference CITE it comes with a cost in terms of under coverage. Instead, in this setting, conformal confidence sets provide informative segmentation bounds (as illustrated in Section \ref{SS:val}) and come with strong coverage guarantees.
+In this section we run validations to evaluate the false coverage rate of our approach. To do so we take the set aside 1500 images and run 1000 validations, in each validation dividing the data into equally sized calibration and test sets of 750 images. In each division we calculate the conformal confidence sets using the above approaches and evaluate the coverage rate on the test dataset. We average over all validations and present the results in Figure XXX. Histograms for the $90\%$ coverage obtained over each validation run are shown in Figure \ref{fig:valhist}.
+
+ In this Figure we also compare to the coverage attained by using Conformal Risk control \cite{}. We can see that conformal risk control can have highly inflated error rates - this is because it is designed to control the expected proportion of discoveries not cover the tumors. The results indicate the trade-off that must be made when choosing between the methodss, i.e. whilst risk control can provide meaningful inference CITE it comes with a cost in terms of under coverage. Instead, in this setting, conformal confidence sets provide informative segmentation bounds (as illustrated in Section \ref{SS:val}) and come with strong coverage guarantees. 
 \begin{figure}
-	\includegraphics[width=0.32\textwidth]{../figures/validation/inner_coverage.pdf}
-	\includegraphics[width=0.32\textwidth]{../figures/validation/outer_coverage.pdf}
+	\begin{center}
+		\includegraphics[width=0.4\textwidth]{../figures/validation/inner_coverage.pdf}
+		\quad\quad
+		\includegraphics[width=0.4\textwidth]{../figures/validation/outer_coverage.pdf}
+	\end{center}
 	\caption{False coverage levels of the inner and outer sets averaged over 1000 validations for the original, distance transformed (DT) and bounding box (BB) scores.}\label{fig:coverage}
 \end{figure}
+
+%\begin{figure}
+%	\includegraphics[width=0.32\textwidth]{../figures/validation/inner_coverage.pdf}
+%	\includegraphics[width=0.32\textwidth]{../figures/validation/outer_coverage.pdf}
+%	\caption{False coverage levels of the inner and outer sets averaged over 1000 validations for the original, distance transformed (DT) and bounding box (BB) scores.}\label{fig:coverage}
+%\end{figure}
+%	\quad
+%\includegraphics[width=0.28\textwidth]{../figures/validation/val_hist.pdf}
 
 \subsection{Comparing the efficiency of the bounds}
 \begin{figure}
 	\begin{center}
-			\includegraphics[width=0.48\textwidth]{../figures/efficiency/inner_ratio.pdf}
-		\includegraphics[width=0.48\textwidth]{../figures/efficiency/outer_ratio.pdf}
+			\includegraphics[width=0.45\textwidth]{../figures/efficiency/inner_ratio.pdf}
+			\quad\quad
+		\includegraphics[width=0.45\textwidth]{../figures/efficiency/outer_ratio.pdf}
 	\end{center}
 	\caption{Measuring the efficiency of the bound using the ratio of the diameter of the coverage set to the diameter of the true tumor mask The closer the ratio is to one the better. Higher coverage rates lead to a lower efficiency. The original scores provide the most efficient inner sets and the distance transformed scores provide the most efficient outer sets.}\label{fig:efficiency}
 \end{figure}
+
 \begin{figure}
 	\begin{center}
-			\includegraphics[width=0.48\textwidth]{../figures/efficiency/inner_proportion.pdf}
-		\includegraphics[width=0.48\textwidth]{../figures/efficiency/outer_proportion.pdf}
+		\includegraphics[width=0.32\textwidth]{../figures/validation/val_hist_orig_inner.pdf}
+		\includegraphics[width=0.32\textwidth]{../figures/validation/val_hist_dt_inner.pdf}\\
+		\includegraphics[width=0.32\textwidth]{../figures/validation/val_hist_orig_outer.pdf}
+		\includegraphics[width=0.32\textwidth]{../figures/validation/val_hist_dt_outer.pdf}
 	\end{center}
-	\caption{Measuring the proportion of the entire image which is covered by the respective confidence sets at each level. Left: proportion of the image which lies within the true mask but outside of the inner set. Middle: proportion of the image which lies within the confidence set but outside of the true mask. For both a lower proportion corresponds to increased precision. }\label{fig:efficiency2}
+	\caption{Histograms of the coverage rates obtained across each of the validation resamples for 90\% coverage sets. We plot the results for the original scores, distance transformed scores (DT) and boundary box scores (BB) from left to right.}\label{fig:valhist}
+\end{figure}
+
+\begin{figure}
+	\begin{center}
+			\includegraphics[width=0.45\textwidth]{../figures/efficiency/inner_proportion.pdf}
+			\quad\quad
+		\includegraphics[width=0.45\textwidth]{../figures/efficiency/outer_proportion.pdf}
+	\end{center}
+	\caption{Measuring the proportion of the entire image which is under/over covered by the respective confidence sets. Left: proportion of the image which lies within the true mask but outside of the inner set. Middle: proportion of the image which lies within the confidence set but outside of the true mask. For both a lower proportion corresponds to increased precision. }\label{fig:efficiency2}
 \end{figure}
 
 \subsection{Improving risk control using transformed scores}
