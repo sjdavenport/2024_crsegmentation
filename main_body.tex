@@ -1,8 +1,8 @@
 \section{Theory}
 \subsection{Set up}
-Let $\mathcal{V} \subset \mathbb{R}^m$, for some dimension $m \in \mathbb{N}$, be a finite set corresponding to the domain which represents the pixels/voxels at which we observe imaging data. Let $\mathcal{X} = \lbrace g: \mathcal{V} \rightarrow \mathbb{R}\rbrace$ be the set of real functions on $\mathcal{V}$ and let $\mathcal{Y} = \lbrace g: \mathcal{V} \rightarrow \lbrace 0,1 \rbrace \rbrace$ be the set of all functions taking the values 0 or 1. Suppose that we observe a calibration dataset $(X_i, Y_i)_{i = 1}^n$ of random images, where $X_i: \mathcal{V} \rightarrow \mathbb{R}$ represents the $i$th observed calibration image and $Y_i:\mathcal{V} \rightarrow \lbrace 0, 1\rbrace$ outputs labels at each $v \in \mathcal{V}$ giving 1s at the true location of the objects in the image $X_i$ that we wish to identify and 0s elsewhere. Let $\mathcal{P}(\mathcal{V})$ be the set of all subsets of $\mathcal{V}$.
+Let $\mathcal{V} \subset \mathbb{R}^m$, for some dimension $m \in \mathbb{N}$, be a finite set corresponding to the domain which represents the pixels/voxels at which we observe imaging data. Let $\mathcal{X} = \lbrace g: \mathcal{V} \rightarrow \mathbb{R}\rbrace$ be the set of real functions on $\mathcal{V}$ and let $\mathcal{Y} = \lbrace g: \mathcal{V} \rightarrow \lbrace 0,1 \rbrace \rbrace$ be the set of all functions taking the values 0 or 1. We shall refer to elements of $\mathcal{X}$ and $\mathcal{Y}$ as images. Suppose that we observe a calibration dataset $(X_i, Y_i)_{i = 1}^n$ of random images, where $X_i: \mathcal{V} \rightarrow \mathbb{R}$ represents the $i$th observed calibration image and $Y_i:\mathcal{V} \rightarrow \lbrace 0, 1\rbrace$ outputs labels at each $v \in \mathcal{V}$ giving 1s at the true location of the objects in the image $X_i$ that we wish to identify and 0s elsewhere. Let $\mathcal{P}(\mathcal{V})$ be the set of all subsets of $\mathcal{V}$. Moreover, given a function $f:\mathcal{X} \rightarrow \mathcal{X}$, we shall write $f(X,v)$ to denote $f(X)(v)$ for all $v \in \mathcal{V}$.
 
-Let $s:\mathcal{X} \times \mathcal{V} \rightarrow \mathbb{R}$ be a score function - trained on an independent dataset - such that given an image pair $(X,Y) \in \mathcal{X}\times \mathcal{Y}$, $s(X, v)$ is intended to be higher at the $v \in \mathcal{V}$ for which $Y(v) = 1$. The score function can for instance be the logit scores obtained from a deep neural network image segmentation method e.g. CITE. 
+Let $s:\mathcal{X}  \rightarrow \mathcal{X} $ be a score function - trained on an independent dataset - such that given an image pair $(X,Y) \in \mathcal{X}\times \mathcal{Y}$, $s(X)$ is a score image in which $s(X,v) $ is intended to be higher at the $v \in \mathcal{V}$ for which $Y(v) = 1$. The score function can for instance be the logit scores obtained from a deep neural network image segmentation method to the image $X$ as input e.g. CITE. 
 %Let $T(Y) = \left\lbrace v\in \mathcal{V}: Y(v) = 1 \right\rbrace$ correspond to the true location of the objects in the image $X$. 
 
 In what follows we will use the calibration dataset to construct a confidence functions $I,O:  \mathcal{X}  \rightarrow \mathcal{P}(\mathcal{V})$ such that for a new image pair $(X,Y) \sim \mathcal{D}$, given error rates $\alpha_1, \alpha_2 \in (0,1)$ we have
@@ -25,7 +25,7 @@ In order to establish conformal confidence results we shall require the followin
 Exchangeability or a variant is a standard assumption in the conformal inference literature \citep{Angelopoulos2021} and factilates coverage guarantees. It holds for instance if we assume that the collection $(X_i, Y_i)_{i = 1}^{n+1}$ is an i.i.d. sequence of image pairs but is more general and in principle allows for other dependence structures. 
 
 \subsection{Marginal confidence sets}\label{SS:MCS}
-In order to construct conformal confidence sets let $f_O, f_I:\mathbb{R} \rightarrow \mathbb{R}$ be increasing functions and for each $1\leq i \leq n$, let $\tau_i = \max_{v \in \mathcal{V}: Y_i(v) = 0} f_O(s(X_i,v))$ and $\gamma_i = \max_{v \in \mathcal{V}: Y_i(v) = 1} f_I(-s(X_i,v))$  be the maxima of the function transformed scores over the areas at which the true labels equal 0 and 1 respectively. We will require the following assumption on the scores and the transformation functions.
+In order to construct conformal confidence sets let $f_I, f_O:\mathcal{X} \rightarrow \mathcal{X}$ be inner and outer transformation functions and for each $1\leq i \leq n +1 $, let $\tau_i = \max_{v \in \mathcal{V}: Y_i(v) = 0} f_I(s(X_i), v)$ and $\gamma_i = \max_{v \in \mathcal{V}: Y_i(v) = 1} f_O(-s(X_i), v)$  be the maxima of the function transformed scores over the areas at which the true labels equal 0 and 1 respectively. We will require the following assumption on the scores and the transformation functions.
 \begin{assumption}\label{ass:indep}
 	(Independence of scores) $(X_i, Y_i)_{i = 1}^{n+1}$ is independent of the functions $s, f_O, f_I$. 
 \end{assumption}
@@ -35,22 +35,23 @@ Given this we construct confidence sets as follows.
 	(Marginal inner set)
 	Under Assumptions \ref{ass:ex} and \ref{ass:indep}, given $\alpha_1 \in (0,1)$, let 
 	\begin{equation*}
-		\lambda_I(\alpha_1) = \inf\left\lbrace \lambda: \frac{1}{n} \sum_{i = 1}^n 1\left[ \gamma_i\leq \lambda \right] \geq \alpha_1 \right\rbrace.
+		\lambda_I(\alpha_1) = \inf\left\lbrace \lambda: \frac{1}{n} \sum_{i = 1}^n 1\left[ \tau_i\leq \lambda \right] \geq \frac{\lceil (1-\alpha_1)(n+1) \rceil}{n}\right\rbrace,
 	\end{equation*}
-	be the upper $\alpha$ quantile of $(\gamma_i)_{i = 1}^n$and define $I(X) = \lbrace v \in \mathcal{V}: f_I(-s(X,v)) >\lambda_I(\alpha_2)  \rbrace $. Then,
+%	be the upper $\alpha_1$ quantile of $(\tau_i)_{i = 1}^n$
+	and define $I(X) = \lbrace v \in \mathcal{V}: f_I(s(X), v) >\lambda_I(\alpha_2)  \rbrace $. Then,
 	\begin{equation}\label{eq:probstat}
-		\mathbb{P}\left( I(X) \subseteq\lbrace v\in \mathcal{V}: Y_{n+1} = 1 \rbrace \right) \geq 1 - \alpha_1.
+		\mathbb{P}\left( I(X_{n+1}) \subseteq\lbrace v\in \mathcal{V}: Y_{n+1}(v) = 1 \rbrace \right) \geq 1 - \alpha_1.
 	\end{equation}
 \end{theorem}
 \begin{proof}
-	Let $\tau_{n+1}= \max_{v \in \mathcal{V}: Y_{n+1}(v) = 0} f_O(s(X_{n+1},v))$, Then exchangeability of the image pairs implies exchangeability of the sequence $(\tau_i)_{i = 1}^{n+1}$. In particular, as $\lambda_I(\alpha_1)$ is the $\alpha_1$ quantile of the distribution of $(\tau_i)_{i = 1}^{n}$, by Lemma 1 of \cite{} it follows that 
+	Under Assumptions \ref{ass:ex} and \ref{ass:indep}, exchangeability of the image pairs implies exchangeability of the sequence $(\tau_i)_{i = 1}^{n+1}$. In particular, as $\lambda_I(\alpha_1)$ is the upper $\alpha_1$ quantile of the distribution of $(\tau_i)_{i = 1}^{n} \cup \lbrace \infty \rbrace $ by Lemma 1 of \cite{Tibshirani2019}, it follows that 
 	\begin{equation*}
-	\mathbb{P}\left(\gamma_{n+1} \leq \lambda_I(\alpha_1) \right) \geq 1 - \alpha_1. 
+	\mathbb{P}\left(\tau_{n+1} \leq \lambda_I(\alpha_1) \right) \geq 1 - \alpha_1. 
 	\end{equation*}
-	Now consider the event that $\gamma_{n+1}\leq \lambda_I(\alpha) $, on this event, $ f_O(s(X_{n+1},v)) \leq \lambda_I(\alpha) $
-	for all $v \in \mathcal{V}$ such that $Y_{n+1}(v) = 0$. As such, given $u \in \mathcal{V}$ such that $ f_O(s(X_{n+1},u)) > \lambda_I(\alpha) $, we must have $Y_{n+1}(u) = 1$ so it follows that $	\lbrace v\in \mathcal{V}: Y(v) = 1 \rbrace \subseteq O(X) $ and in particular that 
+	Now consider the event that $\tau_{n+1}\leq \lambda_I(\alpha)$. On this event, $ f_I(s(X_{n+1}),v) \leq \lambda_I(\alpha) $
+	for all $v \in \mathcal{V}$ such that $Y_{n+1}(v) = 0$. As such, given $u \in \mathcal{V}$ such that $ f_I(s(X_{n+1}), u) > \lambda_I(\alpha) $, we must have $Y_{n+1}(u) = 1$ so it follows that $I(X_{n+1}) \subseteq \lbrace v\in \mathcal{V}: Y_{n+1}(v) = 1 \rbrace  $ and in particular that 
 	\begin{equation*}
-	\mathbb{P}\left( \lbrace v\in \mathcal{V}: Y(v) = 1 \rbrace \subseteq O(X)  \right) \geq \mathbb{P}\left(\gamma_{n+1} \leq \lambda_I(\alpha_1) \right) \geq 1 - \alpha_1. 
+	\mathbb{P}\left( I(X_{n+1}) \subseteq \lbrace v\in \mathcal{V}: Y_{n+1}(v) = 1 \rbrace  \right) \geq \mathbb{P}\left(\tau_{n+1} \leq \lambda_I(\alpha_1) \right) \geq 1 - \alpha_1. 
 \end{equation*}
 \end{proof}
 \noindent For the outer set we have the following analogous result.
@@ -58,19 +59,25 @@ Given this we construct confidence sets as follows.
 	(Marginal outer set)
 	Under Assumptions \ref{ass:ex} and \ref{ass:indep}, given $\alpha_2 \in (0,1)$, let 
 	\begin{equation*}
-		\lambda_O({\alpha_2})= \inf\left\lbrace \lambda: \frac{1}{n} \sum_{i = 1}^n 1\left[ \tau_i\leq \lambda \right] \geq \alpha_2 \right\rbrace.
+		\lambda_O({\alpha_2})= \inf\left\lbrace \lambda: \frac{1}{n} \sum_{i = 1}^n 1\left[ \gamma_i\leq \lambda \right] \geq \frac{\lceil (1-\alpha_2)(n+1) \rceil}{n} \right\rbrace,
 	\end{equation*}
-	be the upper $\alpha$ quantile of $(\tau_i)_{i = 1}^n$and define $O(X) = \lbrace v \in \mathcal{V}: f_O(s(X,v)) >\lambda_O(\alpha_2)  \rbrace $. Then,
+%	be the upper $\alpha_2$ quantile of $(\gamma_i)_{i = 1}^n$
+	and define $O(X) = \lbrace v \in \mathcal{V}: f_O(-s(X), v) \leq \lambda_O(\alpha_2)  \rbrace $. Then,
 	\begin{equation}\label{eq:probstat}
 		\mathbb{P}\left( \lbrace v\in \mathcal{V}: Y_{n+1}(v) = 1 \rbrace \subseteq O(X_{n+1}) \right) \geq 1 - \alpha_2.
 	\end{equation}
 \end{theorem}
-\noindent The proof of Theorem \ref{thm:outer} follows that of Theorem \ref{thm:inner} and is thus omitted. 
+\begin{proof}
+	Arguing as in the proof of Theorem \ref{thm:inner}, it follows that $\mathbb{P}\left(\gamma_{n+1} \leq \lambda_O(\alpha_2) \right) \geq 1 - \alpha_2.$
+	Now on the event that $\gamma_{n+1}\leq \lambda_O(\alpha_2)$ we have $ f_O(-s(X_{n+1},v)) \leq \lambda_O(\alpha_2) $ for all $v \in \mathcal{V}$ such that $Y_{n+1}(v) = 1$. As such, given $u \in \mathcal{V}$ such that $ f_O(-s(X_{n+1},u)) > \lambda_I(\alpha) $, we must have $Y_{n+1}(u) = 0$ and so $	O(X)^C  \subseteq \lbrace v\in \mathcal{V}: Y(v) = 0 \rbrace  $. The result then follows as above.
+\end{proof}
+%\noindent The proof of Theorem \ref{thm:outer} follows that of Theorem \ref{thm:inner} and is thus omitted. 
 \begin{remark}\label{rmk:max}
 	We have used the maximum over the transformed scores in order to combine score information on and off the ground truth masks. The maximum is a natural combination function in imaging and is commonly used in the context of multiple testing \citep{Worsley1992}. However the theory above is valid for any increasing combination function. We show this in Appendix \ref{A:CF} where we establish generalized versions of these results.
 \end{remark}
-
-
+\begin{remark}
+	Inner and outer coverage can also be viewed as a special case of conformal risk control with an appropriate choice of loss function. We can thus alternatively establish coverage results as a corollary to risk control, see Appendix \ref{risk2con} for details. This amounts to an alternative proof of the results as the proof of the validity of risk control is different though still strongly relies on exchangeability.
+\end{remark}
 %\begin{remark}
 %	Importantly the coverage of the sets $U_M(X)$ and $V_M(X)$ is not jointly valid and so when using these results the choice of inner versus outer set must be made in advance.
 %\end{remark}
@@ -87,22 +94,23 @@ Given this we construct confidence sets as follows.
 %\end{remark}
 
 \subsection{Joint confidence sets}\label{SS:joint}
-Instead of focussing on marginal control one can instead spend all of the $\alpha$ available to construct sets which have a joint probabilistic guarantees. This gain comes at the expense of a loss of precision. The simplest means of constructing jointly valid confidence sets is via the marginal sets themselves.
+Instead of focusing on marginal control one can instead spend all of the $\alpha$ available to construct sets which have a joint probabilistic guarantees. This gain comes at the expense of a loss of precision. The simplest means of constructing jointly valid confidence sets is via the marginal sets themselves.
 \begin{corollary}\label{cor:weighting}
 	(Joint from marginal) Assume Assumptions \ref{ass:ex} and \ref{ass:indep} hold and given $\alpha \in (0,1)$ and $\alpha_1, \alpha_2 \in (0,1)$ such that $\alpha_1 + \alpha_2 \leq \alpha$, define $I(X)$ and  $O(X)$ as in Theorems \ref{thm:inner} and \ref{thm:outer}. Then 
 	\begin{equation}
-		\mathbb{P}\left( I(X) \subseteq \lbrace v\in \mathcal{V}: Y_{n+1}(v) = 1 \rbrace \subseteq O(X)  \right) \geq 1 - \alpha. 
+		\mathbb{P}\left( I(X_{n+1}) \subseteq \lbrace v\in \mathcal{V}: Y_{n+1}(v) = 1 \rbrace \subseteq O(X_{n+1})  \right) \geq  \frac{\lceil (1-\alpha)(n+1) \rceil}{n}. 
 	\end{equation}
 \end{corollary}
 Alternatively joint control can be obtained using the joint distribution of the maxima of the logit scores as follows.
 \begin{theorem}\label{thm:joint}
-	(Joint coverage) Assume that Assumption \ref{ass:ex} and \ref{ass:indep}  hold. Given $\alpha \in (0,1)$, let 
+	(Joint coverage) Assume that Assumption \ref{ass:ex} and \ref{ass:indep}  hold. Given $\alpha \in (0,1)$, define 
 	\begin{equation*}
-		\lambda(\alpha) = \inf\left\lbrace \lambda: \frac{1}{n} \sum_{i = 1}^n 1\left[ \max(\tau_i, \gamma_i) \leq \lambda \right] \geq \alpha \right\rbrace
+		\lambda(\alpha) = \inf\left\lbrace \lambda: \frac{1}{n} \sum_{i = 1}^n 1\left[ \max(\tau_i, \gamma_i) \leq \lambda \right] \geq 1-\alpha \right\rbrace.
 	\end{equation*}
- 	be the upper $\alpha$-quantile of the distribution of $\max(\tau_i, \gamma_i)$ over $1 \leq i \leq n$.\\ Let $O(X) = \lbrace v \in \mathcal{V}: f_O(s(X,v)) >  \lambda(\alpha) \rbrace $ and $I(X) = \lbrace v \in \mathcal{V}: f_I(-s(X,v)) >	\lambda(\alpha) \rbrace $. Then,
+% 	be the upper $\alpha$-quantile of the distribution of $\max(\tau_i, \gamma_i)$ over $1 \leq i \leq n$.\\
+ Let $O(X) = \lbrace v \in \mathcal{V}: f_O(-s(X,v)) \leq \lambda(\alpha) \rbrace $ and $I(X) = \lbrace v \in \mathcal{V}: f_I(s(X,v)) >	\lambda(\alpha) \rbrace $. Then,
 \begin{equation}\label{eq:probstat}
-	\mathbb{P}\left( I(X) \subseteq \lbrace v\in \mathcal{V}: Y(v) = 1 \rbrace \subseteq O(X) \right) \geq 1 - \alpha.
+	\mathbb{P}\left( I(X_{n+1}) \subseteq \lbrace v\in \mathcal{V}: Y(v) = 1 \rbrace \subseteq O(X_{n+1}) \right) \geq 1 - \alpha.
 \end{equation}
 \end{theorem}
 \begin{proof}
@@ -112,9 +120,6 @@ Alternatively joint control can be obtained using the joint distribution of the 
 \begin{remark}
 	The advantage of Corollary \ref{cor:weighting} is that the resulting inner and outer sets provide pivotal inference - not favouring one side or the other - which can be important when the distribution of the score function is asymmetric. Moreover the levels $\alpha_1$ and $\alpha_2$ can be used to provide a greater weight to either inner or outer sets whilst maintaining joint coverage. Theorem \ref{thm:joint} may instead be useful when there are strong levels of dependence between $\tau_1$ and $\gamma_1$. However, when this dependence is low, scale differences in the scores can lead to a lack of pivotality. This can be improved by appropriate choices of the score transformations $f_I$ and $f_O$ however in practice it may be simpler to construct joint sets using Corollary \ref{cor:weighting}. 
 \end{remark}
-
-\subsection{Confidence sets from bounding boxes}
-As an alternative to the above we can construct conformal confidence sets based on bounding boxes. In what follows we adapt the approach of CITE to our setting with the following modifications. In particular we treat the outer and inner bounding boxes differently - CITE used the same dilation/contraction for both the inside and outside boxes. Secondly the inner box will need to fit inside the detected object not inside the bounding box of the object. 
 
 %Typically in our applications, $X_{n+1}$ will observed with $Y$ unknown.
 %
@@ -157,7 +162,17 @@ Given two real random variables, $A$ and $B$ write $ A \succeq B$ to indicate th
 The choice of score transformations $f_I$ and $f_O$ is extremely important and can have a large impact on the size of the conformal confidence sets. The best choice depends on both the distribution of the data and on the nature of the output of the trained segmentor used to calculate the scores. We thus recommend setting aside a learning dataset independent from both the calibration dataset, used to compute the conformal thresholds, and the test dataset. 
 
 In order to make efficient use of the data available, the learning dataset can in fact contain some or all of the data used to train the image segmentor. This data is assumed to be independent of the calibration and test data and so can be used to learn the best score transformations without compromising validity . The advantage of doing so is that less additional data needs to be set aside or collected for the purposes of learning a score function. Moreover it allows for additional data to be used to train the model resulting in better segmentation performance. The disadvantage is that machine learning models typically overfit their training data meaning that certain score functions may appear to perform better on this data than they do in practice. The choice of whether to include training data in the learning dataset thus depends on the quantity of data available and the quality of the segmentation model.
+
+A score transformation that we will make particular use of is the distance based transformation which we define as follows. Given a score function $s$ and a threshold $t \in \mathbb{R}$ let $E(t)$ be the set of points on the boundary of the set $\lbrace v \in \mathcal{V}: s(X,v) > t\rbrace $ obtained by applying the marching squares algorithm CITE. Then given a distance metric $d$ we define the distance transformation scores as follows.
+
+
 %\subsubsection{Useful score transformations}
+
+\subsection{Constructing confidence sets from bounding boxes}
+Existing work on conformal confidence sets which aim to provide coverage of the entire ground truth mask with a given probability has primarily focused on bounding boxes, see \citep{De2022, Andeol2023, Mukama2024}. These papers adjust for multiple comparisons over the 4 edges of the bounding box, doing so conformally by comparing the distance between the predicted bounding box and the bounding box of the ground truth mask. These approaches aggregrate the predicted bounding boxes over all objects within all of the calibration images, often combining multiple bounding boxes per image. However, as observed in Section 5 of \cite{De2022}, doing so violates exchangeability which needed for valid conformal inference, as there is dependence between the objects within each image. These papers do not provide formal proofs and their theoretical validity is thus unclear.
+
+% particular CITE relies on the results of CITE to establish validity however these results do not directly apply in the bounding box setting. This is because, while CITE shows the validity of conformal inference over multiple depenedent inferences but it assumes a fixed number of these inferences. Instead the number of true and predicted bounding boxes in a given image can vary so the result of CITE does not apply.
+In order to provide a more formal justification of bounding box methods we establish the validity of an adapted version of the max-additive bounding box method of \cite{Andeol2023} as a corollary to our results, see Appendix \ref{AA:BBtheory}. We compare to this approach in our experiments below. Targetting bounding boxes does not directly target the mask itself and so the resulting confidence sets are typically conservative.
 
 \section{Application to Polpys tumor segmentation}
 In order to illustrate and validate our approach we consider the problem of polpys tumor segmentation. To do so we use the same dataset as in \cite{Angelopoulos2022} in which 1798 poplys images, with available ground truth masks were combined from 5 open-source datasets (published in \cite{KVASIR2017}, \cite{Hyperkvasir2020} \cite{Bernal2012}, \cite{Silva2014}). Logit scores were obtained for this data using the PraNet model \cite{PraNet2020}, which is based on the Unet architecture CITE CHECK! 
@@ -165,7 +180,7 @@ In order to illustrate and validate our approach we consider the problem of polp
 \subsection{Choosing a score transformation}
 In order to optimize the size of our confidence sets we set aside 298 of the 1798 polpys images to form a learning dataset on which to choose the best score transformations. Importantly as the learning dataset is independent of the remaining 1500 images set-aside, we can study it as much as we like without compromising the validity of the follow-up analyses in Sections \ref{SS:val}, 
 
-The score transformations we considered were the identity (after softmax transformation), distance transformations of the predicted masks and smoothing using a Gaussian kernel. Given a score function $s$ and a threshold $t \in \mathbb{R}$ let $B(t)$ be the set of points on the boundary of the set $\lbrace v \in \mathcal{V}: s(v) > t$ obtained by applying the marching squares algorithm CITE. Distance transformation scores are then obtained as following
+The score transformations we considered were the identity (after softmax transformation), distance transformations of the predicted masks and bounding box scores. 
 
 
 The PraNet scores for several typical examples are shown, after applying these transformations, in Figure XXX.  From these we see that PraNet assigns a high softmax score to the polpys regions which decreases in the regions directly around the  boundary of the tumor before returning to a higher level away from the polpys. This results in tight inner sets but large outer sets as the model struggles to identify where the tumor ends. 
@@ -186,14 +201,13 @@ From the histograms in Figure \ref{scorehists} we can see that thresholding the 
 \begin{figure}
 %	\centering
 \begin{center}
-	\includegraphics[width=0.24\textwidth]{../figures/learning/scores/202.png}
-		\includegraphics[width=0.24\textwidth]{../figures/learning/score_surf/202.png}	\includegraphics[width=0.24\textwidth]{../figures/learning/dist_surf/202.png}
-		\includegraphics[width=0.24\textwidth]{../figures/learning/dist_bt_surf/202.png}\\
-			
-		\includegraphics[width=0.24\textwidth]{../figures/learning/images/202.png}
-	\includegraphics[width=0.24\textwidth]{../figures/learning/score_crs_marginal90/202.png}
-	\includegraphics[width=0.24\textwidth]{../figures/learning/dist_crs_marginal90/202.png}
-	\includegraphics[width=0.24\textwidth]{../figures/learning/dist_bt_crs_marginal90/202.png}\\
+	\includegraphics[width=0.24\textwidth]{../figures/learning/scores/903.png}
+		\includegraphics[width=0.24\textwidth]{../figures/learning/score_surf/903.png}	\includegraphics[width=0.24\textwidth]{../figures/learning/dist_surf/903.png}
+		\includegraphics[width=0.24\textwidth]{../figures/learning/dist_bt_surf/903.png}\\
+		\includegraphics[width=0.24\textwidth]{../figures/learning/images/903.png}
+	\includegraphics[width=0.24\textwidth]{../figures/learning/score_crs_marginal90/903.png}
+	\includegraphics[width=0.24\textwidth]{../figures/learning/dist_crs_marginal90/903.png}
+	\includegraphics[width=0.24\textwidth]{../figures/learning/dist_bt_crs_marginal90/903.png}\\
 \vspace{0.5cm}
 		\includegraphics[width=0.24\textwidth]{../figures/learning/scores/362.png}
 	\includegraphics[width=0.24\textwidth]{../figures/learning/score_surf/362.png}	\includegraphics[width=0.24\textwidth]{../figures/learning/dist_surf/362.png}
@@ -351,12 +365,12 @@ In this section we run validations to evaluate the false coverage rate of our ap
 		\includegraphics[width=0.32\textwidth]{../figures/validation/val_hist_orig_outer.pdf}
 		\includegraphics[width=0.32\textwidth]{../figures/validation/val_hist_dt_outer.pdf}
 	\end{center}
-	\caption{Histograms of the coverage rates obtained across each of the validation resamples for 90\% coverage sets. We plot the results for the original scores, distance transformed scores (DT) and boundary box scores (BB) from left to right.}\label{fig:valhist}
+	\caption{Histograms of the coverage rates obtained across each of the validation resamples for 90\% inner and outer marginal confidence sets. We plot the results for the original scores, distance transformed scores (DT) and boundary box scores (BB) from left to right.}\label{fig:valhist}
 \end{figure}
 
 \begin{figure}
 	\begin{center}
-			\includegraphics[width=0.45\textwidth]{../figures/efficiency/inner_proportion.pdf}
+			\includegraphics[width=0.46\textwidth]{../figures/efficiency/inner_proportion.pdf}
 			\quad\quad
 		\includegraphics[width=0.45\textwidth]{../figures/efficiency/outer_proportion.pdf}
 	\end{center}

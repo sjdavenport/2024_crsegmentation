@@ -2,7 +2,7 @@ This is BibTeX, Version 0.99d (TeX Live 2024)
 Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: iclr_submission.aux
 I couldn't open database file ../bibfiles/Genetics.bib
----line 97 of file iclr_submission.aux
+---line 101 of file iclr_submission.aux
  : \bibdata{../bibfiles/RFT,../bibfiles/MachineLearning,../bibfiles/MHT,../bibfiles/Statistics,../bibfiles/TomsPapers,../bibfiles/Genetics
  :                                                                                                                                        ,../bibfiles/fMRI,../bibfiles/Books}
 I'm skipping whatever remains of this command
@@ -25,45 +25,45 @@ Repeated entry---line 272 of file ../bibfiles/TomsPapers.bib
  :                       ,
 I'm skipping whatever remains of this entry
 Warning--I didn't find a database entry for "Mejia2019"
-You've used 13 entries,
+You've used 17 entries,
             2773 wiz_defined-function locations,
-            700 strings with 8380 characters,
-and the built_in function-call counts, 8106 in all, are:
-= -- 679
-> -- 695
-< -- 4
-+ -- 232
-- -- 219
-* -- 748
-:= -- 1293
-add.period$ -- 43
-call.type$ -- 13
-change.case$ -- 111
-chr.to.int$ -- 13
-cite$ -- 26
-duplicate$ -- 291
-empty$ -- 505
-format.name$ -- 236
-if$ -- 1646
+            727 strings with 9389 characters,
+and the built_in function-call counts, 10338 in all, are:
+= -- 867
+> -- 869
+< -- 5
++ -- 290
+- -- 273
+* -- 941
+:= -- 1639
+add.period$ -- 56
+call.type$ -- 17
+change.case$ -- 141
+chr.to.int$ -- 17
+cite$ -- 34
+duplicate$ -- 387
+empty$ -- 665
+format.name$ -- 294
+if$ -- 2112
 int.to.chr$ -- 1
 int.to.str$ -- 1
-missing$ -- 13
-newline$ -- 75
-num.names$ -- 52
-pop$ -- 207
+missing$ -- 17
+newline$ -- 95
+num.names$ -- 68
+pop$ -- 270
 preamble$ -- 1
-purify$ -- 98
+purify$ -- 124
 quote$ -- 0
-skip$ -- 257
+skip$ -- 332
 stack$ -- 0
-substring$ -- 233
-swap$ -- 32
-text.length$ -- 2
+substring$ -- 281
+swap$ -- 45
+text.length$ -- 3
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 143
+type$ -- 187
 warning$ -- 0
-while$ -- 57
+while$ -- 74
 width$ -- 0
-write$ -- 180
+write$ -- 232
 (There were 4 error messages)

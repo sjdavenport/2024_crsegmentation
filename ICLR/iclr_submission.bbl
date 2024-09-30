@@ -1,9 +1,17 @@
-\begin{thebibliography}{13}
+\begin{thebibliography}{17}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
   \providecommand{\doi}[1]{doi: #1}\else
   \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[And{\'e}ol et~al.(2023)And{\'e}ol, Fel, De~Grancey, and
+  Mossina]{Andeol2023}
+L{\'e}o And{\'e}ol, Thomas Fel, Florence De~Grancey, and Luca Mossina.
+\newblock Confident object detection via conformal prediction and conformal
+  risk control: an application to railway signaling.
+\newblock In \emph{Conformal and Probabilistic Prediction with Applications},
+  pp.\  36--55. PMLR, 2023.
 
 \bibitem[Angelopoulos \& Bates(2021)Angelopoulos and Bates]{Angelopoulos2021}
 Anastasios~N Angelopoulos and Stephen Bates.
@@ -62,6 +70,14 @@ Alexander Bowring, Fabian Telschow, Armin Schwartzman, and Thomas~E. Nichols.
 \newblock Spatial confidence sets for raw effect size images.
 \newblock \emph{NeuroImage}, 203:\penalty0 116187, 2019.
 
+\bibitem[de~Grancey et~al.(2022)de~Grancey, Adam, Alecu, Gerchinovitz, Mamalet,
+  and Vigouroux]{De2022}
+Florence de~Grancey, Jean-Luc Adam, Lucian Alecu, S{\'e}bastien Gerchinovitz,
+  Franck Mamalet, and David Vigouroux.
+\newblock Object detection with probabilistic guarantees.
+\newblock In \emph{Fifth International Workshop on Artificial Intelligence
+  Safety Engineering (WAISE 2022)}, 2022.
+
 \bibitem[Fan et~al.(2020)Fan, Ji, Zhou, Chen, Fu, Shen, and Shao]{PraNet2020}
 Deng-Ping Fan, Ge-Peng Ji, Tao Zhou, Geng Chen, Huazhu Fu, Jianbing Shen, and
   Ling Shao.
@@ -76,6 +92,15 @@ Weikang Gong, Lin Wan, Wenlian Lu, Liang Ma, Fan Cheng, Wei Cheng, Stefan
 \newblock Statistical testing and power analysis for brain-wide association
   study.
 \newblock \emph{Medical image analysis}, 47:\penalty0 15--30, 2018.
+
+\bibitem[Mukama et~al.(2024)Mukama, Messoudi, Rousseau, and
+  Destercke]{Mukama2024}
+Bruce~Cyusa Mukama, Soundouss Messoudi, Sylvain Rousseau, and S{\'e}bastien
+  Destercke.
+\newblock Copula-based conformal prediction for object detection: a more
+  efficient approach.
+\newblock \emph{Proceedings of Machine Learning Research}, 230:\penalty0 1--18,
+  2024.
 
 \bibitem[Pogorelov et~al.(2017)Pogorelov, Randel, Griwodz, Eskeland, de~Lange,
   Johansen, Spampinato, Dang-Nguyen, Lux, Schmidt, Riegler, and
@@ -98,6 +123,12 @@ Juan Silva, Aymeric Histace, Olivier Romain, Xavier Dray, and Bertrand Granado.
   of colorectal cancer.
 \newblock \emph{International journal of computer assisted radiology and
   surgery}, 9:\penalty0 283--293, 2014.
+
+\bibitem[Tibshirani et~al.(2019)Tibshirani, Foygel~Barber, Candes, and
+  Ramdas]{Tibshirani2019}
+Ryan~J Tibshirani, Rina Foygel~Barber, Emmanuel Candes, and Aaditya Ramdas.
+\newblock Conformal prediction under covariate shift.
+\newblock \emph{Advances in neural information processing systems}, 32, 2019.
 
 \bibitem[Worsley et~al.(1992)Worsley, Evans, Marrett, and Neelin]{Worsley1992}
 Keith~J. Worsley, Alan~C Evans, Sean Marrett, and P~Neelin.
