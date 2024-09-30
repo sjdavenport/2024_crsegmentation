@@ -52,9 +52,15 @@ We can use our results in order to provide valid inference for bounding boxes.  
 $$B_I(Y) = \cup_{c \in cc(Y)} B_{I, \max}(c) \text{ and } B_O(Y) = \cup_{c \in cc(Y)} B_{O, \min}(c)$$
 to be the unions of the largest inner and smallest outer boxes of the connected components of the image $Y$. Then define
 $$\hat{B}_I(Y) = \cup_{c \in cc(\hat{M}(X)) } B_{I, \max}(c) \text{ and } \hat{B}_O(Y) = \cup_{c \in cc(\hat{M}(X))} B_{O, \min}(c)$$
-to be the unions of the largest inner and smallest outer boxes of the connected components of the predicted mask $\hat{M}(X).$
+to be the unions of the largest inner and smallest outer boxes of the connected components of the predicted mask $\hat{M}(X).$ 
 
-Let $b_I(s)$ be the inner distance transformed scores based on the distance to $\hat{B}_I$. Let $b_O(s)$ be the distance transformed scores based on the distance to $\hat{B}_O$. We shall refer to these scores as the box scores. We shall define a combination of these, primarily for the purposes of plotting, as follows. Let $b_M(s, v) = b_O(s,v)$ for each $v \not\in \hat{B}_O$ and let $b_M(s, v) = \max(b_I(s,v), 0) $ for $v \in \hat{B}_O$ . An illustration of these scores for two example tumors are shown in Figure XXX. Consider the sequences of image pairs $(X_i, B_i^I)_{i = 1}^n$ and $(X_i, B_i^O)_{i = 1}^n$. These both satisfy exchangeability and so, applying Theorems \ref{thm:inner} and \ref{thm:outer} we obtain the following bounding box validity results.
+For the remainder of this section we shall assume that $\mathcal{V} \subset \mathbb{R}^2$, this is not strictly necessary but will help to simplify notation. Given $u,v \in \mathcal{V}$, write $u = (u_1, u_2)$ and $v = (v_1, v_2)$ and let $\rho(u,v) = \max \left( |u_1 - v_1|, |u_2 - v_2| \right)$ be the chessboard metric. Let 
+\begin{equation*}
+	b_I(s(X), v) = d_{\hat{B}_I, \rho}(X, v) \text{ and } b_O(s(X), v) = d_{\hat{B}_O, \rho}(X, v) 
+\end{equation*}
+be the distance transformed scores based on the distance to the predicted inner and outer box collections $\hat{B}_I$ and $\hat{B}_O$ respectively. Let $b_O(s)$ be the distance transformed scores based on the distance to $\hat{B}_O$. We shall refer to these scores as the box scores. We shall define a combination of these $b_M$, primarily for the purposes of plotting in Figure \ref{fig:learning}, as follows. Let $b_M(s, v) = b_O(s,v)$ for each $v \not\in \hat{B}_O$ and let $b_M(s, v) = \max(b_I(s,v), 0) $ for $v \in \hat{B}_O$. An illustration of these scores for two example tumors are shown in Figure XXX.
+
+Now consider the sequences of image pairs $(X_i, B_i^I)_{i = 1}^n$ and $(X_i, B_i^O)_{i = 1}^n$. These both satisfy exchangeability and so, applying Theorems \ref{thm:inner} and \ref{thm:outer} we obtain the following bounding box validity results.
 \begin{corollary}\label{thm:boxinnergen}
 	(Marginal inner bounding box)
 	Suppose Assumption \ref{ass:ex} holds and that $(X_i, Y_i)_{i = 1}^{n+1}$ is independent of the functions $s$ and $b_I$.  Given $\alpha_1 \in (0,1)$, define 
@@ -70,9 +76,9 @@ Let $b_I(s)$ be the inner distance transformed scores based on the distance to $
 	(Marginal outer bounding box)
 	Suppose Assumption \ref{ass:ex} holds and that $(X_i, Y_i)_{i = 1}^{n+1}$ is independent of the functions $s$ and $b_O$. Given $\alpha_2 \in (0,1)$, define 
 	\begin{equation*}
-		\lambda_O({\alpha_2})= \inf\left\lbrace \lambda: \frac{1}{n} \sum_{i = 1}^n 1\left[ C(B^O_i, b_O(s(X_i))) \leq \lambda \right] \geq  \frac{\lceil (1-\alpha_2)(n+1) \rceil}{n} \right\rbrace.
+		\lambda_O({\alpha_2})= \inf\left\lbrace \lambda: \frac{1}{n} \sum_{i = 1}^n 1\left[ C(B^O_i, -b_O(s(X_i))) \leq \lambda \right] \geq  \frac{\lceil (1-\alpha_2)(n+1) \rceil}{n} \right\rbrace.
 	\end{equation*}
-	for a suitable combination function $C$, and let $O(X) = \lbrace v \in \mathcal{V}: C(v, f_O(-s(X))) \leq \lambda_O(\alpha_2)  \rbrace $. Then,
+	for a suitable combination function $C$, and let $O(X) = \lbrace v \in \mathcal{V}: C(v, -b_O(s(X))) \leq \lambda_O(\alpha_2)  \rbrace $. Then,
 	\begin{equation}\label{eq:probstat}
 		\mathbb{P}\left( \lbrace v\in \mathcal{V}: Y_{n+1}(v) = 1 \rbrace \subseteq B^O_{n+1} \subseteq O(X_{n+1}) \right) \geq 1 - \alpha_2.
 	\end{equation}

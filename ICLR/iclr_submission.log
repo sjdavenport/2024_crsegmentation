@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.4.17)  30 SEP 2024 19:10
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.4.17)  30 SEP 2024 19:30
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -921,317 +921,317 @@ n-dra Ma-lik, and Michael Jor-dan.
  []
 
 [11]) (../appendix.tex [12] [13] [14]
-<../figures/learning/scores/772.png, id=567, 621.32124pt x 550.055pt>
+<../figures/learning/scores/772.png, id=568, 621.32124pt x 550.055pt>
 File: ../figures/learning/scores/772.png Graphic file (type png)
 <use ../figures/learning/scores/772.png>
 Package pdftex.def Info: ../figures/learning/scores/772.png  used on input line
- 88.
+ 94.
 (pdftex.def)             Requested size: 95.39857pt x 84.45189pt.
-<../figures/learning/score_surf/772.png, id=568, 1603.9925pt x 1415.2875pt>
+<../figures/learning/score_surf/772.png, id=569, 1603.9925pt x 1415.2875pt>
 File: ../figures/learning/score_surf/772.png Graphic file (type png)
 <use ../figures/learning/score_surf/772.png>
 Package pdftex.def Info: ../figures/learning/score_surf/772.png  used on input 
-line 89.
+line 95.
 (pdftex.def)             Requested size: 95.39857pt x 84.15773pt.
-<../figures/learning/dist_surf/772.png, id=569, 1603.9925pt x 1415.2875pt>
+<../figures/learning/dist_surf/772.png, id=570, 1603.9925pt x 1415.2875pt>
 File: ../figures/learning/dist_surf/772.png Graphic file (type png)
 <use ../figures/learning/dist_surf/772.png>
 Package pdftex.def Info: ../figures/learning/dist_surf/772.png  used on input l
-ine 89.
+ine 95.
 (pdftex.def)             Requested size: 95.39857pt x 84.15773pt.
-<../figures/learning/dist_bt_surf/772.png, id=570, 1603.9925pt x 1415.2875pt>
+<../figures/learning/dist_bt_surf/772.png, id=571, 1603.9925pt x 1415.2875pt>
 File: ../figures/learning/dist_bt_surf/772.png Graphic file (type png)
 <use ../figures/learning/dist_bt_surf/772.png>
 Package pdftex.def Info: ../figures/learning/dist_bt_surf/772.png  used on inpu
-t line 90.
+t line 96.
 (pdftex.def)             Requested size: 95.39857pt x 84.15773pt.
-<../figures/learning/images/772.png, id=571, 801.99625pt x 707.64375pt>
+<../figures/learning/images/772.png, id=572, 801.99625pt x 707.64375pt>
 File: ../figures/learning/images/772.png Graphic file (type png)
 <use ../figures/learning/images/772.png>
 Package pdftex.def Info: ../figures/learning/images/772.png  used on input line
- 91.
+ 97.
 (pdftex.def)             Requested size: 95.39857pt x 84.16853pt.
-<../figures/learning/score_crs_marginal90/772.png, id=572, 801.99625pt x 707.64
+<../figures/learning/score_crs_marginal90/772.png, id=573, 801.99625pt x 707.64
 375pt>
 File: ../figures/learning/score_crs_marginal90/772.png Graphic file (type png)
 <use ../figures/learning/score_crs_marginal90/772.png>
 Package pdftex.def Info: ../figures/learning/score_crs_marginal90/772.png  used
- on input line 92.
+ on input line 98.
 (pdftex.def)             Requested size: 95.39857pt x 84.16853pt.
-<../figures/learning/dist_crs_marginal90/772.png, id=573, 910.40125pt x 803.0pt
+<../figures/learning/dist_crs_marginal90/772.png, id=574, 910.40125pt x 803.0pt
 >
 File: ../figures/learning/dist_crs_marginal90/772.png Graphic file (type png)
 <use ../figures/learning/dist_crs_marginal90/772.png>
 Package pdftex.def Info: ../figures/learning/dist_crs_marginal90/772.png  used 
-on input line 93.
+on input line 99.
 (pdftex.def)             Requested size: 95.39857pt x 84.13982pt.
-<../figures/learning/dist_bt_crs_marginal90/772.png, id=574, 910.40125pt x 803.
+<../figures/learning/dist_bt_crs_marginal90/772.png, id=575, 910.40125pt x 803.
 0pt>
 File: ../figures/learning/dist_bt_crs_marginal90/772.png Graphic file (type png
 )
 <use ../figures/learning/dist_bt_crs_marginal90/772.png>
 Package pdftex.def Info: ../figures/learning/dist_bt_crs_marginal90/772.png  us
-ed on input line 94.
+ed on input line 100.
 (pdftex.def)             Requested size: 95.39857pt x 84.13982pt.
-<../figures/learning/scores/202.png, id=575, 621.32124pt x 550.055pt>
+<../figures/learning/scores/202.png, id=576, 621.32124pt x 550.055pt>
 File: ../figures/learning/scores/202.png Graphic file (type png)
 <use ../figures/learning/scores/202.png>
 Package pdftex.def Info: ../figures/learning/scores/202.png  used on input line
- 96.
+ 102.
 (pdftex.def)             Requested size: 95.39857pt x 84.45189pt.
-<../figures/learning/score_surf/202.png, id=576, 1603.9925pt x 1415.2875pt>
+<../figures/learning/score_surf/202.png, id=577, 1603.9925pt x 1415.2875pt>
 File: ../figures/learning/score_surf/202.png Graphic file (type png)
 <use ../figures/learning/score_surf/202.png>
 Package pdftex.def Info: ../figures/learning/score_surf/202.png  used on input 
-line 97.
+line 103.
 (pdftex.def)             Requested size: 95.39857pt x 84.15773pt.
-<../figures/learning/dist_surf/202.png, id=577, 1603.9925pt x 1415.2875pt>
+<../figures/learning/dist_surf/202.png, id=578, 1603.9925pt x 1415.2875pt>
 File: ../figures/learning/dist_surf/202.png Graphic file (type png)
 <use ../figures/learning/dist_surf/202.png>
 Package pdftex.def Info: ../figures/learning/dist_surf/202.png  used on input l
-ine 97.
+ine 103.
 (pdftex.def)             Requested size: 95.39857pt x 84.15773pt.
-<../figures/learning/dist_bt_surf/202.png, id=578, 1603.9925pt x 1415.2875pt>
+<../figures/learning/dist_bt_surf/202.png, id=579, 1603.9925pt x 1415.2875pt>
 File: ../figures/learning/dist_bt_surf/202.png Graphic file (type png)
 <use ../figures/learning/dist_bt_surf/202.png>
 Package pdftex.def Info: ../figures/learning/dist_bt_surf/202.png  used on inpu
-t line 98.
+t line 104.
 (pdftex.def)             Requested size: 95.39857pt x 84.15773pt.
-<../figures/learning/images/202.png, id=579, 801.99625pt x 707.64375pt>
+<../figures/learning/images/202.png, id=580, 801.99625pt x 707.64375pt>
 File: ../figures/learning/images/202.png Graphic file (type png)
 <use ../figures/learning/images/202.png>
 Package pdftex.def Info: ../figures/learning/images/202.png  used on input line
- 99.
+ 105.
 (pdftex.def)             Requested size: 95.39857pt x 84.16853pt.
-<../figures/learning/score_crs_marginal90/202.png, id=580, 801.99625pt x 707.64
+<../figures/learning/score_crs_marginal90/202.png, id=581, 801.99625pt x 707.64
 375pt>
 File: ../figures/learning/score_crs_marginal90/202.png Graphic file (type png)
 <use ../figures/learning/score_crs_marginal90/202.png>
 Package pdftex.def Info: ../figures/learning/score_crs_marginal90/202.png  used
- on input line 100.
+ on input line 106.
 (pdftex.def)             Requested size: 95.39857pt x 84.16853pt.
-<../figures/learning/dist_crs_marginal90/202.png, id=581, 910.40125pt x 803.0pt
+<../figures/learning/dist_crs_marginal90/202.png, id=582, 910.40125pt x 803.0pt
 >
 File: ../figures/learning/dist_crs_marginal90/202.png Graphic file (type png)
 <use ../figures/learning/dist_crs_marginal90/202.png>
 Package pdftex.def Info: ../figures/learning/dist_crs_marginal90/202.png  used 
-on input line 101.
+on input line 107.
 (pdftex.def)             Requested size: 95.39857pt x 84.13982pt.
-<../figures/learning/dist_bt_crs_marginal90/202.png, id=582, 910.40125pt x 803.
+<../figures/learning/dist_bt_crs_marginal90/202.png, id=583, 910.40125pt x 803.
 0pt>
 File: ../figures/learning/dist_bt_crs_marginal90/202.png Graphic file (type png
 )
 <use ../figures/learning/dist_bt_crs_marginal90/202.png>
 Package pdftex.def Info: ../figures/learning/dist_bt_crs_marginal90/202.png  us
-ed on input line 102.
+ed on input line 108.
 (pdftex.def)             Requested size: 95.39857pt x 84.13982pt.
-<../figures/learning/scores/54.png, id=583, 621.32124pt x 550.055pt>
+<../figures/learning/scores/54.png, id=584, 621.32124pt x 550.055pt>
 File: ../figures/learning/scores/54.png Graphic file (type png)
 <use ../figures/learning/scores/54.png>
 Package pdftex.def Info: ../figures/learning/scores/54.png  used on input line 
-104.
+110.
 (pdftex.def)             Requested size: 95.39857pt x 84.45189pt.
-<../figures/learning/score_surf/54.png, id=584, 1603.9925pt x 1415.2875pt>
+<../figures/learning/score_surf/54.png, id=585, 1603.9925pt x 1415.2875pt>
 File: ../figures/learning/score_surf/54.png Graphic file (type png)
 <use ../figures/learning/score_surf/54.png>
 Package pdftex.def Info: ../figures/learning/score_surf/54.png  used on input l
-ine 105.
+ine 111.
 (pdftex.def)             Requested size: 95.39857pt x 84.15773pt.
-<../figures/learning/dist_surf/54.png, id=585, 1603.9925pt x 1415.2875pt>
+<../figures/learning/dist_surf/54.png, id=586, 1603.9925pt x 1415.2875pt>
 File: ../figures/learning/dist_surf/54.png Graphic file (type png)
 <use ../figures/learning/dist_surf/54.png>
 Package pdftex.def Info: ../figures/learning/dist_surf/54.png  used on input li
-ne 105.
+ne 111.
 (pdftex.def)             Requested size: 95.39857pt x 84.15773pt.
-<../figures/learning/dist_bt_surf/54.png, id=586, 1603.9925pt x 1415.2875pt>
+<../figures/learning/dist_bt_surf/54.png, id=587, 1603.9925pt x 1415.2875pt>
 File: ../figures/learning/dist_bt_surf/54.png Graphic file (type png)
 <use ../figures/learning/dist_bt_surf/54.png>
 Package pdftex.def Info: ../figures/learning/dist_bt_surf/54.png  used on input
- line 106.
+ line 112.
 (pdftex.def)             Requested size: 95.39857pt x 84.15773pt.
-<../figures/learning/images/54.png, id=587, 801.99625pt x 707.64375pt>
+<../figures/learning/images/54.png, id=588, 801.99625pt x 707.64375pt>
 File: ../figures/learning/images/54.png Graphic file (type png)
 <use ../figures/learning/images/54.png>
 Package pdftex.def Info: ../figures/learning/images/54.png  used on input line 
-107.
+113.
 (pdftex.def)             Requested size: 95.39857pt x 84.16853pt.
-<../figures/learning/score_crs_marginal90/54.png, id=588, 801.99625pt x 707.643
+<../figures/learning/score_crs_marginal90/54.png, id=589, 801.99625pt x 707.643
 75pt>
 File: ../figures/learning/score_crs_marginal90/54.png Graphic file (type png)
 <use ../figures/learning/score_crs_marginal90/54.png>
 Package pdftex.def Info: ../figures/learning/score_crs_marginal90/54.png  used 
-on input line 108.
+on input line 114.
 (pdftex.def)             Requested size: 95.39857pt x 84.16853pt.
-<../figures/learning/dist_crs_marginal90/54.png, id=589, 910.40125pt x 803.0pt>
+<../figures/learning/dist_crs_marginal90/54.png, id=590, 910.40125pt x 803.0pt>
 
 File: ../figures/learning/dist_crs_marginal90/54.png Graphic file (type png)
 <use ../figures/learning/dist_crs_marginal90/54.png>
 Package pdftex.def Info: ../figures/learning/dist_crs_marginal90/54.png  used o
-n input line 109.
+n input line 115.
 (pdftex.def)             Requested size: 95.39857pt x 84.13982pt.
-<../figures/learning/dist_bt_crs_marginal90/54.png, id=590, 910.40125pt x 803.0
+<../figures/learning/dist_bt_crs_marginal90/54.png, id=591, 910.40125pt x 803.0
 pt>
 File: ../figures/learning/dist_bt_crs_marginal90/54.png Graphic file (type png)
 
 <use ../figures/learning/dist_bt_crs_marginal90/54.png>
 Package pdftex.def Info: ../figures/learning/dist_bt_crs_marginal90/54.png  use
-d on input line 110.
+d on input line 116.
 (pdftex.def)             Requested size: 95.39857pt x 84.13982pt.
-<../figures/learning/scores/183.png, id=593, 621.32124pt x 550.055pt>
+<../figures/learning/scores/183.png, id=594, 621.32124pt x 550.055pt>
 File: ../figures/learning/scores/183.png Graphic file (type png)
 <use ../figures/learning/scores/183.png>
 Package pdftex.def Info: ../figures/learning/scores/183.png  used on input line
- 119.
+ 125.
 (pdftex.def)             Requested size: 95.39857pt x 84.45189pt.
-<../figures/learning/score_surf/183.png, id=594, 1603.9925pt x 1415.2875pt>
+<../figures/learning/score_surf/183.png, id=595, 1603.9925pt x 1415.2875pt>
 File: ../figures/learning/score_surf/183.png Graphic file (type png)
 <use ../figures/learning/score_surf/183.png>
 Package pdftex.def Info: ../figures/learning/score_surf/183.png  used on input 
-line 120.
+line 126.
 (pdftex.def)             Requested size: 95.39857pt x 84.15773pt.
-<../figures/learning/dist_surf/183.png, id=595, 1603.9925pt x 1415.2875pt>
+<../figures/learning/dist_surf/183.png, id=596, 1603.9925pt x 1415.2875pt>
 File: ../figures/learning/dist_surf/183.png Graphic file (type png)
 <use ../figures/learning/dist_surf/183.png>
 Package pdftex.def Info: ../figures/learning/dist_surf/183.png  used on input l
-ine 120.
+ine 126.
 (pdftex.def)             Requested size: 95.39857pt x 84.15773pt.
-<../figures/learning/dist_bt_surf/183.png, id=596, 1603.9925pt x 1415.2875pt>
+<../figures/learning/dist_bt_surf/183.png, id=597, 1603.9925pt x 1415.2875pt>
 File: ../figures/learning/dist_bt_surf/183.png Graphic file (type png)
 <use ../figures/learning/dist_bt_surf/183.png>
 Package pdftex.def Info: ../figures/learning/dist_bt_surf/183.png  used on inpu
-t line 121.
+t line 127.
 (pdftex.def)             Requested size: 95.39857pt x 84.15773pt.
-<../figures/learning/images/183.png, id=597, 801.99625pt x 707.64375pt>
+<../figures/learning/images/183.png, id=598, 801.99625pt x 707.64375pt>
 File: ../figures/learning/images/183.png Graphic file (type png)
 <use ../figures/learning/images/183.png>
 Package pdftex.def Info: ../figures/learning/images/183.png  used on input line
- 122.
+ 128.
 (pdftex.def)             Requested size: 95.39857pt x 84.16853pt.
-<../figures/learning/score_crs_marginal90/183.png, id=598, 801.99625pt x 707.64
+<../figures/learning/score_crs_marginal90/183.png, id=599, 801.99625pt x 707.64
 375pt>
 File: ../figures/learning/score_crs_marginal90/183.png Graphic file (type png)
 <use ../figures/learning/score_crs_marginal90/183.png>
 Package pdftex.def Info: ../figures/learning/score_crs_marginal90/183.png  used
- on input line 123.
+ on input line 129.
 (pdftex.def)             Requested size: 95.39857pt x 84.16853pt.
-<../figures/learning/dist_crs_marginal90/183.png, id=599, 910.40125pt x 803.0pt
+<../figures/learning/dist_crs_marginal90/183.png, id=600, 910.40125pt x 803.0pt
 >
 File: ../figures/learning/dist_crs_marginal90/183.png Graphic file (type png)
 <use ../figures/learning/dist_crs_marginal90/183.png>
 Package pdftex.def Info: ../figures/learning/dist_crs_marginal90/183.png  used 
-on input line 124.
+on input line 130.
 (pdftex.def)             Requested size: 95.39857pt x 84.13982pt.
-<../figures/learning/dist_bt_crs_marginal90/183.png, id=600, 910.40125pt x 803.
+<../figures/learning/dist_bt_crs_marginal90/183.png, id=601, 910.40125pt x 803.
 0pt>
 File: ../figures/learning/dist_bt_crs_marginal90/183.png Graphic file (type png
 )
 <use ../figures/learning/dist_bt_crs_marginal90/183.png>
 Package pdftex.def Info: ../figures/learning/dist_bt_crs_marginal90/183.png  us
-ed on input line 125.
+ed on input line 131.
 (pdftex.def)             Requested size: 95.39857pt x 84.13982pt.
-<../figures/learning/scores/530.png, id=601, 621.32124pt x 550.055pt>
+<../figures/learning/scores/530.png, id=602, 621.32124pt x 550.055pt>
 File: ../figures/learning/scores/530.png Graphic file (type png)
 <use ../figures/learning/scores/530.png>
 Package pdftex.def Info: ../figures/learning/scores/530.png  used on input line
- 127.
+ 133.
 (pdftex.def)             Requested size: 95.39857pt x 84.45189pt.
-<../figures/learning/score_surf/530.png, id=602, 1603.9925pt x 1415.2875pt>
+<../figures/learning/score_surf/530.png, id=603, 1603.9925pt x 1415.2875pt>
 File: ../figures/learning/score_surf/530.png Graphic file (type png)
 <use ../figures/learning/score_surf/530.png>
 Package pdftex.def Info: ../figures/learning/score_surf/530.png  used on input 
-line 128.
+line 134.
 (pdftex.def)             Requested size: 95.39857pt x 84.15773pt.
-<../figures/learning/dist_surf/530.png, id=603, 1603.9925pt x 1415.2875pt>
+<../figures/learning/dist_surf/530.png, id=604, 1603.9925pt x 1415.2875pt>
 File: ../figures/learning/dist_surf/530.png Graphic file (type png)
 <use ../figures/learning/dist_surf/530.png>
 Package pdftex.def Info: ../figures/learning/dist_surf/530.png  used on input l
-ine 128.
+ine 134.
 (pdftex.def)             Requested size: 95.39857pt x 84.15773pt.
-<../figures/learning/dist_bt_surf/530.png, id=604, 1603.9925pt x 1415.2875pt>
+<../figures/learning/dist_bt_surf/530.png, id=605, 1603.9925pt x 1415.2875pt>
 File: ../figures/learning/dist_bt_surf/530.png Graphic file (type png)
 <use ../figures/learning/dist_bt_surf/530.png>
 Package pdftex.def Info: ../figures/learning/dist_bt_surf/530.png  used on inpu
-t line 129.
+t line 135.
 (pdftex.def)             Requested size: 95.39857pt x 84.15773pt.
-<../figures/learning/images/530.png, id=605, 801.99625pt x 707.64375pt>
+<../figures/learning/images/530.png, id=606, 801.99625pt x 707.64375pt>
 File: ../figures/learning/images/530.png Graphic file (type png)
 <use ../figures/learning/images/530.png>
 Package pdftex.def Info: ../figures/learning/images/530.png  used on input line
- 130.
+ 136.
 (pdftex.def)             Requested size: 95.39857pt x 84.16853pt.
-<../figures/learning/score_crs_marginal90/530.png, id=606, 801.99625pt x 707.64
+<../figures/learning/score_crs_marginal90/530.png, id=607, 801.99625pt x 707.64
 375pt>
 File: ../figures/learning/score_crs_marginal90/530.png Graphic file (type png)
 <use ../figures/learning/score_crs_marginal90/530.png>
 Package pdftex.def Info: ../figures/learning/score_crs_marginal90/530.png  used
- on input line 131.
+ on input line 137.
 (pdftex.def)             Requested size: 95.39857pt x 84.16853pt.
-<../figures/learning/dist_crs_marginal90/530.png, id=607, 910.40125pt x 803.0pt
+<../figures/learning/dist_crs_marginal90/530.png, id=608, 910.40125pt x 803.0pt
 >
 File: ../figures/learning/dist_crs_marginal90/530.png Graphic file (type png)
 <use ../figures/learning/dist_crs_marginal90/530.png>
 Package pdftex.def Info: ../figures/learning/dist_crs_marginal90/530.png  used 
-on input line 132.
+on input line 138.
 (pdftex.def)             Requested size: 95.39857pt x 84.13982pt.
-<../figures/learning/dist_bt_crs_marginal90/530.png, id=608, 910.40125pt x 803.
+<../figures/learning/dist_bt_crs_marginal90/530.png, id=609, 910.40125pt x 803.
 0pt>
 File: ../figures/learning/dist_bt_crs_marginal90/530.png Graphic file (type png
 )
 <use ../figures/learning/dist_bt_crs_marginal90/530.png>
 Package pdftex.def Info: ../figures/learning/dist_bt_crs_marginal90/530.png  us
-ed on input line 133.
+ed on input line 139.
 (pdftex.def)             Requested size: 95.39857pt x 84.13982pt.
-<../figures/learning/scores/754.png, id=609, 621.32124pt x 550.055pt>
+<../figures/learning/scores/754.png, id=610, 621.32124pt x 550.055pt>
 File: ../figures/learning/scores/754.png Graphic file (type png)
 <use ../figures/learning/scores/754.png>
 Package pdftex.def Info: ../figures/learning/scores/754.png  used on input line
- 135.
+ 141.
 (pdftex.def)             Requested size: 95.39857pt x 84.45189pt.
-<../figures/learning/score_surf/754.png, id=610, 1603.9925pt x 1415.2875pt>
+<../figures/learning/score_surf/754.png, id=611, 1603.9925pt x 1415.2875pt>
 File: ../figures/learning/score_surf/754.png Graphic file (type png)
 <use ../figures/learning/score_surf/754.png>
 Package pdftex.def Info: ../figures/learning/score_surf/754.png  used on input 
-line 136.
+line 142.
 (pdftex.def)             Requested size: 95.39857pt x 84.15773pt.
-<../figures/learning/dist_surf/754.png, id=611, 1603.9925pt x 1415.2875pt>
+<../figures/learning/dist_surf/754.png, id=612, 1603.9925pt x 1415.2875pt>
 File: ../figures/learning/dist_surf/754.png Graphic file (type png)
 <use ../figures/learning/dist_surf/754.png>
 Package pdftex.def Info: ../figures/learning/dist_surf/754.png  used on input l
-ine 136.
+ine 142.
 (pdftex.def)             Requested size: 95.39857pt x 84.15773pt.
-<../figures/learning/dist_bt_surf/754.png, id=612, 1603.9925pt x 1415.2875pt>
+<../figures/learning/dist_bt_surf/754.png, id=613, 1603.9925pt x 1415.2875pt>
 File: ../figures/learning/dist_bt_surf/754.png Graphic file (type png)
 <use ../figures/learning/dist_bt_surf/754.png>
 Package pdftex.def Info: ../figures/learning/dist_bt_surf/754.png  used on inpu
-t line 137.
+t line 143.
 (pdftex.def)             Requested size: 95.39857pt x 84.15773pt.
-<../figures/learning/images/754.png, id=613, 801.99625pt x 707.64375pt>
+<../figures/learning/images/754.png, id=614, 801.99625pt x 707.64375pt>
 File: ../figures/learning/images/754.png Graphic file (type png)
 <use ../figures/learning/images/754.png>
 Package pdftex.def Info: ../figures/learning/images/754.png  used on input line
- 138.
+ 144.
 (pdftex.def)             Requested size: 95.39857pt x 84.16853pt.
-<../figures/learning/score_crs_marginal90/754.png, id=614, 801.99625pt x 707.64
+<../figures/learning/score_crs_marginal90/754.png, id=615, 801.99625pt x 707.64
 375pt>
 File: ../figures/learning/score_crs_marginal90/754.png Graphic file (type png)
 <use ../figures/learning/score_crs_marginal90/754.png>
 Package pdftex.def Info: ../figures/learning/score_crs_marginal90/754.png  used
- on input line 139.
+ on input line 145.
 (pdftex.def)             Requested size: 95.39857pt x 84.16853pt.
-<../figures/learning/dist_crs_marginal90/754.png, id=615, 910.40125pt x 803.0pt
+<../figures/learning/dist_crs_marginal90/754.png, id=616, 910.40125pt x 803.0pt
 >
 File: ../figures/learning/dist_crs_marginal90/754.png Graphic file (type png)
 <use ../figures/learning/dist_crs_marginal90/754.png>
 Package pdftex.def Info: ../figures/learning/dist_crs_marginal90/754.png  used 
-on input line 140.
+on input line 146.
 (pdftex.def)             Requested size: 95.39857pt x 84.13982pt.
-<../figures/learning/dist_bt_crs_marginal90/754.png, id=616, 910.40125pt x 803.
+<../figures/learning/dist_bt_crs_marginal90/754.png, id=617, 910.40125pt x 803.
 0pt>
 File: ../figures/learning/dist_bt_crs_marginal90/754.png Graphic file (type png
 )
 <use ../figures/learning/dist_bt_crs_marginal90/754.png>
 Package pdftex.def Info: ../figures/learning/dist_bt_crs_marginal90/754.png  us
-ed on input line 141.
+ed on input line 147.
 (pdftex.def)             Requested size: 95.39857pt x 84.13982pt.
  [15 <../figures/learning/scores/772.png (PNG copy)> <../figures/learning/score
 _surf/772.png (PNG copy)> <../figures/learning/dist_surf/772.png (PNG copy)> <.
@@ -1307,10 +1307,10 @@ live/2024/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local
 e/2024/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2024/tex
 mf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2024/texmf-dist/fo
 nts/type1/urw/times/utmri8a.pfb>
-Output written on iclr_submission.pdf (17 pages, 14585502 bytes).
+Output written on iclr_submission.pdf (17 pages, 14586651 bytes).
 PDF statistics:
- 716 PDF objects out of 1000 (max. 8388607)
- 413 compressed objects within 5 object streams
+ 717 PDF objects out of 1000 (max. 8388607)
+ 414 compressed objects within 5 object streams
  96 named destinations out of 1000 (max. 500000)
  624 words of extra memory for PDF output out of 10000 (max. 10000000)
 
