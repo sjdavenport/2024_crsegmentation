@@ -163,14 +163,14 @@ The choice of score transformations $f_I$ and $f_O$ is extremely important and c
 
 In order to make efficient use of the data available, the learning dataset can in fact contain some or all of the data used to train the image segmentor. This data is assumed to be independent of the calibration and test data and so can be used to learn the best score transformations without compromising validity . The advantage of doing so is that less additional data needs to be set aside or collected for the purposes of learning a score function. Moreover it allows for additional data to be used to train the model resulting in better segmentation performance. The disadvantage is that machine learning models typically overfit their training data meaning that certain score functions may appear to perform better on this data than they do in practice. The choice of whether to include training data in the learning dataset thus depends on the quantity of data available and the quality of the segmentation model.
 
-A score transformation that we will make particular use of in Section \ref{SS:res} is based on the distance transformation which we define as follows. Given a set $\mathcal{A} \subseteq \mathcal{V}$, let $E(\mathcal{A})$ be the set of points on the boundary of $\mathcal{A}$ obtained using the marching squares algorithm \citep{Maple2003}. Given a distance metric $\rho$ we define the distance transformation $d_{\mathcal{A}, \rho}:\mathcal{X} \rightarrow \mathcal{X}$, which sends $X\in \mathcal{X}$ and $v\in \mathcal{V}$ to
+A score transformation that we will make particular use of in Section \ref{SS:res} is based on the distance transformation which we define as follows. Given $\mathcal{A} \subseteq \mathcal{V}$, let $E(\mathcal{A})$ be the set of points on the boundary of $\mathcal{A}$ obtained using the marching squares algorithm \citep{Maple2003}. Given a distance metric $\rho$ define the distance transformation $d_{\rho}: \mathcal{P}(\mathcal{V}) \times \mathcal{V}\rightarrow \mathbb{R}$, which sends $\mathcal{A} \in \mathcal{P}(\mathcal{V})$ and $v\in \mathcal{V}$ to
 \begin{equation*}
-	d_{\mathcal{A}, \rho}(X, v) = \text{sign}_\mathcal{A}(v)\min\lbrace \rho(v, e): e \in E(\mathcal{A})\rbrace, 
+	d_{\rho}(\mathcal{A}, v) = \text{sign}(\mathcal{A}, v)\min\lbrace \rho(v, e): e \in E(\mathcal{A})\rbrace, 
 \end{equation*}
-where $ \text{sign}_\mathcal{A}(v) = 1 $ if $v\in \mathcal{A}$ and equals $0$ otherwise. The function $d_{\mathcal{A}, \rho}$ is an adapation of the distance transform of \cite{Borgefors1986} which provides positive values within the set $\mathcal{A}$ and negative values outside of $\mathcal{A}$.
+where $ \text{sign}(\mathcal{A}, v) = 1 $ if $v\in \mathcal{A}$ and equals $-1$ otherwise. The function $d_{\rho}$ is an adapation of the distance transform of \cite{Borgefors1986} which provides positive values within the set $\mathcal{A}$ and negative values outside of $\mathcal{A}$.
 
 \subsection{Constructing confidence sets from bounding boxes}
-Existing work on conformal confidence sets which aim to provide coverage of the entire ground truth mask with a given probability has primarily focused on bounding boxes, see \citep{De2022, Andeol2023, Mukama2024}. These papers adjust for multiple comparisons over the 4 edges of the bounding box, doing so conformally by comparing the distance between the predicted bounding box and the bounding box of the ground truth mask. These approaches aggregrate the predicted bounding boxes over all objects within all of the calibration images, often combining multiple bounding boxes per image. However, as observed in Section 5 of \cite{De2022}, doing so violates exchangeability which needed for valid conformal inference, as there is dependence between the objects within each image. These papers do not provide formal proofs and their theoretical validity is thus unclear.
+Existing work on conformal confidence sets which aim to provide coverage of the entire ground truth mask with a given probability has primarily focused on bounding boxes, see e.g. \citep{De2022, Andeol2023, Mukama2024}. These papers adjust for multiple comparisons over the 4 edges of the bounding box, doing so conformally by comparing the distance between the predicted bounding box and the bounding box of the ground truth mask. These approaches aggregrate the predictions over all objects within all of the calibration images, often combining multiple bounding boxes per image. However, as observed in Section 5 of \cite{De2022}, doing so violates exchangeability which is needed for valid conformal inference, as there is dependence between the objects within each image. These papers do not provide formal proofs and their theoretical validity is thus unclear.
 
 % particular CITE relies on the results of CITE to establish validity however these results do not directly apply in the bounding box setting. This is because, while CITE shows the validity of conformal inference over multiple depenedent inferences but it assumes a fixed number of these inferences. Instead the number of true and predicted bounding boxes in a given image can vary so the result of CITE does not apply.
 In order to provide a more formal justification of bounding box methods we establish the validity of an adapted version of the max-additive bounding box method of \cite{Andeol2023} as a corollary to our results, see Appendix \ref{AA:BBtheory}. We compare to this approach in our experiments below. Targetting bounding boxes does not directly target the mask itself and so the resulting confidence sets are typically conservative.
@@ -193,8 +193,10 @@ Based on the images set aside for alpha weighting we decided to use $\alpha_1 = 
 
 \begin{figure}
 		\centering
-		\includegraphics[width=0.3\textwidth]{../figures/learning/origscores.png}
-		\includegraphics[width=0.3\textwidth]{../figures/learning/distscores.png}
+		\includegraphics[width=0.32\textwidth]{../figures/learning/hist_scores/origscores.png}
+		\includegraphics[width=0.32\textwidth]{../figures/learning/hist_scores/distscores.png}
+		\includegraphics[width=0.32\textwidth]{../figures/learning/hist_scores/btscores.png}
+		\caption{Histograms of the distribution of the scores on the learning dataset within and outside the ground truth masks. Thresholds obtained for the marginal $90\%$ inner and outer confidence sets, based on the respective scores, are displayed in red and blue.}
 		\label{scorehists}
 \end{figure}
 From the histograms in Figure \ref{scorehists} we can see that thresholding the scores at the inner threshold captures most of the data. However this is not the case for the outer threshold. From Figure XXX we can see that confidence sets based on the original scores struggle to identify where the tumor ends, resulting in very large sets. 
@@ -202,21 +204,21 @@ From the histograms in Figure \ref{scorehists} we can see that thresholding the 
 \begin{figure}
 %	\centering
 \begin{center}
-	\includegraphics[width=0.24\textwidth]{../figures/learning/scores/903.png}
-		\includegraphics[width=0.24\textwidth]{../figures/learning/score_surf/903.png}	\includegraphics[width=0.24\textwidth]{../figures/learning/dist_surf/903.png}
-		\includegraphics[width=0.24\textwidth]{../figures/learning/dist_bt_surf/903.png}\\
-		\includegraphics[width=0.24\textwidth]{../figures/learning/images/903.png}
-	\includegraphics[width=0.24\textwidth]{../figures/learning/score_crs_marginal90/903.png}
-	\includegraphics[width=0.24\textwidth]{../figures/learning/dist_crs_marginal90/903.png}
-	\includegraphics[width=0.24\textwidth]{../figures/learning/dist_bt_crs_marginal90/903.png}\\
-\vspace{0.5cm}
-		\includegraphics[width=0.24\textwidth]{../figures/learning/scores/362.png}
-	\includegraphics[width=0.24\textwidth]{../figures/learning/score_surf/362.png}	\includegraphics[width=0.24\textwidth]{../figures/learning/dist_surf/362.png}
-	\includegraphics[width=0.24\textwidth]{../figures/learning/dist_bt_surf/362.png}\\
-	\includegraphics[width=0.24\textwidth]{../figures/learning/images/362.png}
+	\includegraphics[width=0.24\textwidth]{../figures/learning/scores/362.png}
+		\includegraphics[width=0.24\textwidth]{../figures/learning/score_surf/362.png}	\includegraphics[width=0.24\textwidth]{../figures/learning/dist_surf/362.png}
+		\includegraphics[width=0.24\textwidth]{../figures/learning/dist_bt_surf/362.png}\\
+		\includegraphics[width=0.24\textwidth]{../figures/learning/images/362.png}
 	\includegraphics[width=0.24\textwidth]{../figures/learning/score_crs_marginal90/362.png}
 	\includegraphics[width=0.24\textwidth]{../figures/learning/dist_crs_marginal90/362.png}
-	\includegraphics[width=0.24\textwidth]{../figures/learning/dist_bt_crs_marginal90/362.png}
+	\includegraphics[width=0.24\textwidth]{../figures/learning/dist_bt_crs_marginal90/362.png}\\
+\vspace{0.5cm}
+		\includegraphics[width=0.24\textwidth]{../figures/learning/scores/335.png}
+	\includegraphics[width=0.24\textwidth]{../figures/learning/score_surf/335.png}	\includegraphics[width=0.24\textwidth]{../figures/learning/dist_surf/335.png}
+	\includegraphics[width=0.24\textwidth]{../figures/learning/dist_bt_surf/335.png}\\
+	\includegraphics[width=0.24\textwidth]{../figures/learning/images/335.png}
+	\includegraphics[width=0.24\textwidth]{../figures/learning/score_crs_marginal90/335.png}
+	\includegraphics[width=0.24\textwidth]{../figures/learning/dist_crs_marginal90/335.png}
+	\includegraphics[width=0.24\textwidth]{../figures/learning/dist_bt_crs_marginal90/335.png}
 \end{center}
 	\caption{Illustrating the performance of the different score transformations on the learning dataset. We display 2 example tumors and present the results of each in 8 panels. These panels are as follows. Bottom right: the original image of the polpys tumor. Top Left: an intensity plot of the scores obtained from PraNet with purple/yellow indicating areas of lower/higher assigned probability. For the remaining panels, 3 different score transformations are shown which from left to right are the original scores, distance transformed scores and bounding box scores. In each of the panels on the top row a surface plot of the transformed PraNet scores is shown, along with the marginal conformal thresholds which are used to obtain the marginal 90\% inner and outer sets.  These thresholds are illustrated via red and blue planes respectively and are obtained over the learning dataset. The panels on the bottom show the corresponding conformal confidence sets. Here the inner set is shown in red, plotted over the ground truth mask of the polyps, shown in yellow, plotted over the outer set which is shown in blue. The outer set contains the ground truth mask which contains the inner set in all examples. From these figures we see that the original scores provide tight inner confidence sets and the distance transformed scores instead provide tight outer confidence sets. The conclusion from the learning dataset is therefore that it makes sense to combine these two score transformations.}
 	\label{fig:learning}
@@ -329,9 +331,9 @@ These results show that we can provide informative confidence bounds for the loc
 More precise results can be obtained at the expense of probabilistic guarantees, see Figure XXX. A trade off must be made between precision and confidence and this can also be determined in advance based on the learning dataset. The approach of CITE controls the empirical false negative risk yielding additional precision but at the cost of coverage as shown in Figure XXX. 
 
 \subsection{Measuring the coverge rate}\label{SS:cov}
-In this section we run validations to evaluate the false coverage rate of our approach. To do so we take the set aside 1500 images and run 1000 validations, in each validation dividing the data into equally sized calibration and test sets of 750 images. In each division we calculate the conformal confidence sets using the above approaches and evaluate the coverage rate on the test dataset. We average over all validations and present the results in Figure XXX. Histograms for the $90\%$ coverage obtained over each validation run are shown in Figure \ref{fig:valhist}.
+In this section we run validations to evaluate the false coverage rate of our approach. To do so we take the set aside 1500 images and run 1000 validations, in each validation dividing the data into 1000 calibration and 500 test images. In each division we calculate the conformal confidence sets using the above approaches, based on thresholds derived from the calibration dataset, and evaluate the coverage rate on the test dataset. We average over all 1000 validations and present the results in Figure \ref{fig:coverage}. Histograms for the $90\%$ coverage obtained over each validation run are shown in Figure \ref{fig:valhist}. From these results we can see that all the approaches the coverage rate is controlled at or above the nominal level as desired. The coverage for the bounding box scores slightly over cover at lower levels. This is likely due to the discontinuities in the score functions. 
 
- In this Figure we also compare to the coverage attained by using Conformal Risk control \cite{}. We can see that conformal risk control can have highly inflated error rates - this is because it is designed to control the expected proportion of discoveries not cover the tumors. The results indicate the trade-off that must be made when choosing between the methodss, i.e. whilst risk control can provide meaningful inference CITE it comes with a cost in terms of under coverage. Instead, in this setting, conformal confidence sets provide informative segmentation bounds (as illustrated in Section \ref{SS:val}) and come with strong coverage guarantees. 
+XXX In this Figure we also compare to the coverage attained by using Conformal Risk control \cite{}. We can see that conformal risk control can have highly inflated error rates - this is because it is designed to control the expected proportion of discoveries not cover the tumors. The results indicate the trade-off that must be made when choosing between the methodss, i.e. whilst risk control can provide meaningful inference CITE it comes with a cost in terms of under coverage. Instead, in this setting, conformal confidence sets provide informative segmentation bounds (as illustrated in Section \ref{SS:val}) and come with strong coverage guarantees. 
 \begin{figure}
 	\begin{center}
 		\includegraphics[width=0.4\textwidth]{../figures/validation/inner_coverage.pdf}
