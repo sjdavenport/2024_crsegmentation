@@ -50,7 +50,7 @@ and we recover the desired result. Arguing similarly it is possible to establish
 \subsection{Providing theory for deriving confidence sets from bounding boxes}\label{AA:BBtheory}
 We can use our results in order to provide valid inference for bounding boxes.  In what follows we adapt the approach of \cite{Andeol2023} in order to ensure validity. In particular given $Z \in \mathcal{Y}$, let $B_{I, \max}(Z)$ be the largest box which can be contained within the set $\lbrace v\in \mathcal{V}: Z(v) = 1 \rbrace$ and let $ B_{O, \min}(Z)$ be the smallest box which contains it. Given $Y \in \mathcal{Y}, $ let $cc(Y) \subseteq \mathcal{P}(\mathcal{V})$ denote the set of connected components of the set $\lbrace v\in \mathcal{V}: Y(v) = 1 \rbrace$ for a given connectivity criterion (which we take to be $4$ in our examples). Define 
 $$B_I(Y) = \cup_{c \in cc(Y)} B_{I, \max}(c) \text{ and } B_O(Y) = \cup_{c \in cc(Y)} B_{O, \min}(c)$$
-to be the unions of the largest inner and smallest outer boxes of the connected components of the image $Y$. Moreover, given $X \in \mathcal{X}$, let $\hat{M}(X) \in \mathcal{Y}$ be the predicted mask based on the segmentation model. I.e. let $M(X,v) = 1$ if $s(X,v) > 0.5$ and 0 otherwise. Then define
+to be the unions of the largest inner and smallest outer boxes of the connected components of the image $Y$. Then define
 $$\hat{B}_I(Y) = \cup_{c \in cc(\hat{M}(X)) } B_{I, \max}(c) \text{ and } \hat{B}_O(Y) = \cup_{c \in cc(\hat{M}(X))} B_{O, \min}(c)$$
 to be the unions of the largest inner and smallest outer boxes of the connected components of the predicted mask $\hat{M}(X).$
 
