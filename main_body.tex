@@ -331,7 +331,7 @@ These results show that we can provide informative confidence bounds for the loc
 More precise results can be obtained at the expense of probabilistic guarantees, see Figure XXX. A trade off must be made between precision and confidence and this can also be determined in advance based on the learning dataset. The approach of CITE controls the empirical false negative risk yielding additional precision but at the cost of coverage as shown in Figure XXX. 
 
 \subsection{Measuring the coverge rate}\label{SS:cov}
-In this section we run validations to evaluate the false coverage rate of our approach. To do so we take the set aside 1500 images and run 1000 validations, in each validation dividing the data into 1000 calibration and 500 test images. In each division we calculate the conformal confidence sets using the above approaches, based on thresholds derived from the calibration dataset, and evaluate the coverage rate on the test dataset. We average over all 1000 validations and present the results in Figure \ref{fig:coverage}. Histograms for the $90\%$ coverage obtained over each validation run are shown in Figure \ref{fig:valhist}. From these results we can see that all the approaches the coverage rate is controlled at or above the nominal level as desired. The coverage for the bounding box scores slightly over cover at lower levels. This is likely due to the discontinuities in the score functions. 
+In this section we run validations to evaluate the false coverage rate of our approach. To do so we take the set aside 1500 images and run 1000 validations, in each validation dividing the data into 1000 calibration and 500 test images. In each division we calculate the conformal confidence sets using the above approaches, based on thresholds derived from the calibration dataset, and evaluate the coverage rate on the test dataset. We average over all 1000 validations and present the results in Figure \ref{fig:coverage}. Histograms for the $90\%$ coverage obtained over each validation run are shown in Figure \ref{fig:valhist}. From these results we can see that for all the approaches the coverage rate is controlled at or above the nominal level as desired. The coverage for the bounding box scores slightly over cover at lower levels. This is likely due to the discontinuities in the score functions. 
 
 XXX In this Figure we also compare to the coverage attained by using Conformal Risk control \cite{}. We can see that conformal risk control can have highly inflated error rates - this is because it is designed to control the expected proportion of discoveries not cover the tumors. The results indicate the trade-off that must be made when choosing between the methodss, i.e. whilst risk control can provide meaningful inference CITE it comes with a cost in terms of under coverage. Instead, in this setting, conformal confidence sets provide informative segmentation bounds (as illustrated in Section \ref{SS:val}) and come with strong coverage guarantees. 
 \begin{figure}
@@ -352,6 +352,10 @@ XXX In this Figure we also compare to the coverage attained by using Conformal R
 %\includegraphics[width=0.28\textwidth]{../figures/validation/val_hist.pdf}
 
 \subsection{Comparing the efficiency of the bounds}
+In order to compare the power of the approaches we compare the ratio of the 
+
+It follows that the method chosen based on the learning dataset which uses the distance transformed scores for the outer set and the original scores for the inner set is the best combination, providing the most precise confidence sets. Which matches the observations from Section \ref{SS:val}. 
+
 \begin{figure}
 	\begin{center}
 			\includegraphics[width=0.45\textwidth]{../figures/efficiency/inner_ratio.pdf}
@@ -363,18 +367,8 @@ XXX In this Figure we also compare to the coverage attained by using Conformal R
 
 \begin{figure}
 	\begin{center}
-		\includegraphics[width=0.32\textwidth]{../figures/validation/val_hist_orig_inner.pdf}
-		\includegraphics[width=0.32\textwidth]{../figures/validation/val_hist_dt_inner.pdf}\\
-		\includegraphics[width=0.32\textwidth]{../figures/validation/val_hist_orig_outer.pdf}
-		\includegraphics[width=0.32\textwidth]{../figures/validation/val_hist_dt_outer.pdf}
-	\end{center}
-	\caption{Histograms of the coverage rates obtained across each of the validation resamples for 90\% inner and outer marginal confidence sets. We plot the results for the original scores, distance transformed scores (DT) and boundary box scores (BB) from left to right.}\label{fig:valhist}
-\end{figure}
-
-\begin{figure}
-	\begin{center}
-			\includegraphics[width=0.46\textwidth]{../figures/efficiency/inner_proportion.pdf}
-			\quad\quad
+		\includegraphics[width=0.46\textwidth]{../figures/efficiency/inner_proportion.pdf}
+		\quad\quad
 		\includegraphics[width=0.45\textwidth]{../figures/efficiency/outer_proportion.pdf}
 	\end{center}
 	\caption{Measuring the proportion of the entire image which is under/over covered by the respective confidence sets. Left: proportion of the image which lies within the true mask but outside of the inner set. Middle: proportion of the image which lies within the confidence set but outside of the true mask. For both a lower proportion corresponds to increased precision. }\label{fig:efficiency2}

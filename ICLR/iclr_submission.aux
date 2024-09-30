@@ -90,19 +90,17 @@
 \newlabel{fig:polpys}{{3}{8}{Conformal confidence sets for the polyps data. The bottom row shows the original endoscopic images with visible polyps. The top two rows present the conformal confidence sets, with the ground truth masks shown in yellow. The inner sets and outer sets are shown in red and blue respectively. The top row illustrates the sets which arise when using the original scores. Instead the middle show the resulting sets when $f_O$ is given by the distance transformation of the predicted polpys mask. The figure shows the benefit of transforming the score function and illustrates the method's effectiveness in accurately identifying polyp regions whilst providing informative spatial uncertainty bounds}{figure.caption.3}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.3}Measuring the coverge rate}{8}{subsection.3.3}\protected@file@percent }
 \newlabel{SS:cov}{{3.3}{8}{Measuring the coverge rate}{subsection.3.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.4}Comparing the efficiency of the bounds}{8}{subsection.3.4}\protected@file@percent }
+\citation{Bowring2019}
+\citation{Mejia2019}
 \@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces False coverage levels of the inner and outer sets averaged over 1000 validations for the original, distance transformed (DT) and bounding box (BB) scores.}}{9}{figure.caption.4}\protected@file@percent }
 \newlabel{fig:coverage}{{4}{9}{False coverage levels of the inner and outer sets averaged over 1000 validations for the original, distance transformed (DT) and bounding box (BB) scores}{figure.caption.4}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Measuring the efficiency of the bound using the ratio of the diameter of the coverage set to the diameter of the true tumor mask The closer the ratio is to one the better. Higher coverage rates lead to a lower efficiency. The original scores provide the most efficient inner sets and the distance transformed scores provide the most efficient outer sets.}}{9}{figure.caption.5}\protected@file@percent }
 \newlabel{fig:efficiency}{{5}{9}{Measuring the efficiency of the bound using the ratio of the diameter of the coverage set to the diameter of the true tumor mask The closer the ratio is to one the better. Higher coverage rates lead to a lower efficiency. The original scores provide the most efficient inner sets and the distance transformed scores provide the most efficient outer sets}{figure.caption.5}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Histograms of the coverage rates obtained across each of the validation resamples for 90\% inner and outer marginal confidence sets. We plot the results for the original scores, distance transformed scores (DT) and boundary box scores (BB) from left to right.}}{9}{figure.caption.6}\protected@file@percent }
-\newlabel{fig:valhist}{{6}{9}{Histograms of the coverage rates obtained across each of the validation resamples for 90\% inner and outer marginal confidence sets. We plot the results for the original scores, distance transformed scores (DT) and boundary box scores (BB) from left to right}{figure.caption.6}{}}
-\citation{Bowring2019}
-\citation{Mejia2019}
-\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces Measuring the proportion of the entire image which is under/over covered by the respective confidence sets. Left: proportion of the image which lies within the true mask but outside of the inner set. Middle: proportion of the image which lies within the confidence set but outside of the true mask. For both a lower proportion corresponds to increased precision. }}{10}{figure.caption.7}\protected@file@percent }
-\newlabel{fig:efficiency2}{{7}{10}{Measuring the proportion of the entire image which is under/over covered by the respective confidence sets. Left: proportion of the image which lies within the true mask but outside of the inner set. Middle: proportion of the image which lies within the confidence set but outside of the true mask. For both a lower proportion corresponds to increased precision}{figure.caption.7}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.4}Comparing the efficiency of the bounds}{10}{subsection.3.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.5}Improving risk control using transformed scores}{10}{subsection.3.5}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {4}Discussion}{10}{section.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.5}Improving risk control using transformed scores}{9}{subsection.3.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {4}Discussion}{9}{section.4}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Measuring the proportion of the entire image which is under/over covered by the respective confidence sets. Left: proportion of the image which lies within the true mask but outside of the inner set. Middle: proportion of the image which lies within the confidence set but outside of the true mask. For both a lower proportion corresponds to increased precision. }}{10}{figure.caption.6}\protected@file@percent }
+\newlabel{fig:efficiency2}{{6}{10}{Measuring the proportion of the entire image which is under/over covered by the respective confidence sets. Left: proportion of the image which lies within the true mask but outside of the inner set. Middle: proportion of the image which lies within the confidence set but outside of the true mask. For both a lower proportion corresponds to increased precision}{figure.caption.6}{}}
 \bibdata{../bibfiles/RFT,../bibfiles/MachineLearning,../bibfiles/MHT,../bibfiles/Statistics,../bibfiles/TomsPapers,../bibfiles/Genetics,../bibfiles/fMRI,../bibfiles/Books}
 \bibcite{Andeol2023}{{1}{2023}{{And{\'e}ol et~al.}}{{And{\'e}ol, Fel, De~Grancey, and Mossina}}}
 \bibcite{Angelopoulos2021}{{2}{2021}{{Angelopoulos \& Bates}}{{Angelopoulos and Bates}}}
@@ -125,17 +123,17 @@
 \bibcite{Tibshirani2019}{{19}{2019}{{Tibshirani et~al.}}{{Tibshirani, Foygel~Barber, Candes, and Ramdas}}}
 \bibcite{Worsley1992}{{20}{1992}{{Worsley et~al.}}{{Worsley, Evans, Marrett, and Neelin}}}
 \bibstyle{iclr2025_conference}
+\citation{Angelopoulos2022}
 \@writefile{toc}{\contentsline {section}{\numberline {A}Appendix}{12}{appendix.A}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {A.1}Obtaining conformal confidence sets with increasing combination functions}{12}{subsection.A.1}\protected@file@percent }
 \newlabel{A:CF}{{A.1}{12}{Obtaining conformal confidence sets with increasing combination functions}{subsection.A.1}{}}
-\citation{Angelopoulos2022}
+\newlabel{thm:innergen}{{A.2}{12}{}{theorem.A.2}{}}
+\newlabel{eq:probstat}{{7}{12}{}{equation.A.7}{}}
+\newlabel{thm:genouter}{{A.3}{12}{}{theorem.A.3}{}}
+\newlabel{eq:probstat}{{8}{12}{}{equation.A.8}{}}
 \citation{Angelopoulos2022}
 \citation{Angelopoulos2022}
 \citation{Andeol2023}
-\newlabel{thm:innergen}{{A.2}{13}{}{theorem.A.2}{}}
-\newlabel{eq:probstat}{{7}{13}{}{equation.A.7}{}}
-\newlabel{thm:genouter}{{A.3}{13}{}{theorem.A.3}{}}
-\newlabel{eq:probstat}{{8}{13}{}{equation.A.8}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {A.2}Obtaining confidence sets from risk control}{13}{subsection.A.2}\protected@file@percent }
 \newlabel{risk2con}{{A.2}{13}{Obtaining confidence sets from risk control}{subsection.A.2}{}}
 \newlabel{eq:probstat2}{{9}{13}{Obtaining confidence sets from risk control}{equation.A.9}{}}
@@ -146,9 +144,12 @@
 \newlabel{thm:boxgenouter}{{A.6}{14}{}{theorem.A.6}{}}
 \newlabel{eq:probstat}{{A.6}{14}{}{equation.A.11}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {A.4}Additional examples from the learning dataset}{15}{subsection.A.4}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces Additional examples from the learning dataset. The layout of these figures is the same as for Figure \ref {fig:learning}.}}{15}{figure.caption.10}\protected@file@percent }
-\newlabel{fig:learning2}{{8}{15}{Additional examples from the learning dataset. The layout of these figures is the same as for Figure \ref {fig:learning}}{figure.caption.10}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces Futher examples from the learning dataset. The layout of these figures is the same as for Figure \ref {fig:learning}.}}{16}{figure.caption.11}\protected@file@percent }
-\newlabel{fig:learning3}{{9}{16}{Futher examples from the learning dataset. The layout of these figures is the same as for Figure \ref {fig:learning}}{figure.caption.11}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {A.5}Additional examples from the validation set}{17}{subsection.A.5}\protected@file@percent }
-\gdef \@abspage@last{17}
+\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces Additional examples from the learning dataset. The layout of these figures is the same as for Figure \ref {fig:learning}.}}{15}{figure.caption.9}\protected@file@percent }
+\newlabel{fig:learning2}{{7}{15}{Additional examples from the learning dataset. The layout of these figures is the same as for Figure \ref {fig:learning}}{figure.caption.9}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces Futher examples from the learning dataset. The layout of these figures is the same as for Figure \ref {fig:learning}.}}{16}{figure.caption.10}\protected@file@percent }
+\newlabel{fig:learning3}{{8}{16}{Futher examples from the learning dataset. The layout of these figures is the same as for Figure \ref {fig:learning}}{figure.caption.10}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {A.5}Histograms of the coverage}{17}{subsection.A.5}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces Histograms of the coverage rates obtained across each of the validation resamples for 90\% inner and outer marginal confidence sets. We plot the results for the original scores, distance transformed scores (DT) and boundary box scores (BB) from left to right.}}{17}{figure.caption.11}\protected@file@percent }
+\newlabel{fig:valhist}{{9}{17}{Histograms of the coverage rates obtained across each of the validation resamples for 90\% inner and outer marginal confidence sets. We plot the results for the original scores, distance transformed scores (DT) and boundary box scores (BB) from left to right}{figure.caption.11}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {A.6}Additional examples from the validation set}{18}{subsection.A.6}\protected@file@percent }
+\gdef \@abspage@last{18}
