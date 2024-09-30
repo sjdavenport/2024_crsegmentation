@@ -73,7 +73,7 @@ Given this we construct confidence sets as follows.
 \end{proof}
 %\noindent The proof of Theorem \ref{thm:outer} follows that of Theorem \ref{thm:inner} and is thus omitted. 
 \begin{remark}\label{rmk:max}
-	We have used the maximum over the transformed scores in order to combine score information on and off the ground truth masks. The maximum is a natural combination function in imaging and is commonly used in the context of multiple testing \citep{Worsley1992}. However the theory above is valid for any increasing combination function. We show this in Appendix \ref{A:CF} where we establish generalized versions of these results.
+	We have used the maximum over the transformed scores in order to combine score information on and off the ground truth masks. The maximum is a natural combination function in imaging and is commonly used in the context of multiple testing \citep{Worsley1992, Bowring2019}. However the theory above is valid for any increasing combination function. We show this in Appendix \ref{A:CF} where we establish generalized versions of these results.
 \end{remark}
 \begin{remark}
 	Inner and outer coverage can also be viewed as a special case of conformal risk control with an appropriate choice of loss function. We can thus instead establish coverage results as a corollary to risk control, see Appendix \ref{risk2con} for details. This amounts to an alternative proof of the results as the proof of the validity of risk control is different though still strongly relies on exchangeability.
@@ -108,9 +108,9 @@ Alternatively joint control can be obtained using the joint distribution of the 
 		\lambda(\alpha) = \inf\left\lbrace \lambda: \frac{1}{n} \sum_{i = 1}^n 1\left[ \max(\tau_i, \gamma_i) \leq \lambda \right] \geq 1-\alpha \right\rbrace.
 	\end{equation*}
 % 	be the upper $\alpha$-quantile of the distribution of $\max(\tau_i, \gamma_i)$ over $1 \leq i \leq n$.\\
- Let $O(X) = \lbrace v \in \mathcal{V}: f_O(-s(X,v)) \leq \lambda(\alpha) \rbrace $ and $I(X) = \lbrace v \in \mathcal{V}: f_I(s(X,v)) >	\lambda(\alpha) \rbrace $. Then,
+ Let $O(X) = \lbrace v \in \mathcal{V}: f_O(-s(X),v) \leq \lambda(\alpha) \rbrace $ and $I(X) = \lbrace v \in \mathcal{V}: f_I(s(X),v) >	\lambda(\alpha) \rbrace $. Then,
 \begin{equation}\label{eq:probstat}
-	\mathbb{P}\left( I(X_{n+1}) \subseteq \lbrace v\in \mathcal{V}: Y(v) = 1 \rbrace \subseteq O(X_{n+1}) \right) \geq 1 - \alpha.
+	\mathbb{P}\left( I(X_{n+1}) \subseteq \lbrace v\in \mathcal{V}: Y_{n+1}(v) = 1 \rbrace \subseteq O(X_{n+1}) \right) \geq 1 - \alpha.
 \end{equation}
 \end{theorem}
 \begin{proof}
@@ -118,7 +118,7 @@ Alternatively joint control can be obtained using the joint distribution of the 
 \end{proof}
 
 \begin{remark}
-	The advantage of Corollary \ref{cor:weighting} is that the resulting inner and outer sets provide pivotal inference - not favouring one side or the other - which can be important when the distribution of the score function is asymmetric. Moreover the levels $\alpha_1$ and $\alpha_2$ can be used to provide a greater weight to either inner or outer sets whilst maintaining joint coverage. Theorem \ref{thm:joint} may instead be useful when there are strong levels of dependence between $\tau_1$ and $\gamma_1$. However, when this dependence is low, scale differences in the scores can lead to a lack of pivotality. This can be improved by appropriate choices of the score transformations $f_I$ and $f_O$ however in practice it may be simpler to construct joint sets using Corollary \ref{cor:weighting}. 
+	The advantage of Corollary \ref{cor:weighting} is that the resulting inner and outer sets provide pivotal inference - not favouring one side or the other - which can be important when the distribution of the score function is asymmetric. Moreover the levels $\alpha_1$ and $\alpha_2$ can be used to provide a greater weight to either inner or outer sets whilst maintaining joint coverage. Theorem \ref{thm:joint} may instead be useful when there are strong levels of dependence between $\tau_{n+1}$ and $\gamma_{n+1}$. However, when this dependence is low, scale differences in the scores can lead to a lack of pivotality. This can be improved by appropriate choices of the score transformations $f_I$ and $f_O$ however in practice it may be simpler to construct joint sets using Corollary \ref{cor:weighting}. 
 \end{remark}
 
 %Typically in our applications, $X_{n+1}$ will observed with $Y$ unknown.
