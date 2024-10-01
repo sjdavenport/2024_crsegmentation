@@ -55,7 +55,7 @@ $$\hat{B}_I(s(X)) = \cup_{c \in cc(\hat{M}(X)) } B_{I, \max}(c) \text{ and } \ha
 to be the unions of the largest inner and smallest outer boxes of the connected components of the predicted mask $\hat{M}(X)$, respectively. Note that this is well-defined as $\hat{M}(X)$ is a function of $s(X)$.
 
 For the remainder of this section we shall assume that $\mathcal{V} \subset \mathbb{R}^2$, this is not strictly necessary but will help to simplify notation. Given $u,v \in \mathcal{V}$, write $u = (u_1, u_2)$ and $v = (v_1, v_2)$ and let $\rho(u,v) = \max \left( |u_1 - v_1|, |u_2 - v_2| \right)$ be the chessboard metric. 
-\begin{definition}
+\begin{definition}\label{dfn:BBS}
 	(Bounding box scores) For each $X \in \mathcal{X}$ and $v \in \mathcal{V}$, let
 	\begin{equation*}
 		b_I(s(X), v) = d_{\rho}(\hat{B}_I(s(X)), v) \text{ and } b_O(s(X), v) = d_{\rho}(\hat{B}_O(s(X)), v) 
@@ -157,11 +157,13 @@ Joint results can be obtained in a similar manner to those in Section \ref{SS:jo
 \begin{figure}[h!]
 	\begin{center}
 		\includegraphics[width=0.32\textwidth]{../figures/validation/val_hist_orig_inner.pdf}
-		\includegraphics[width=0.32\textwidth]{../figures/validation/val_hist_dt_inner.pdf}\\
+		\includegraphics[width=0.32\textwidth]{../figures/validation/val_hist_dt_inner.pdf}
+		\includegraphics[width=0.32\textwidth]{../figures/validation/val_hist_bt_inner.pdf}\\
 		\includegraphics[width=0.32\textwidth]{../figures/validation/val_hist_orig_outer.pdf}
 		\includegraphics[width=0.32\textwidth]{../figures/validation/val_hist_dt_outer.pdf}
+		\includegraphics[width=0.32\textwidth]{../figures/validation/val_hist_bt_outer.pdf}
 	\end{center}
-	\caption{Histograms of the coverage rates obtained across each of the validation resamples for 90\% inner and outer marginal confidence sets. We plot the results for the original scores, distance transformed scores (DT) and boundary box scores (BB) from left to right.}\label{fig:valhist}
+	\caption{Histograms of the coverage rates obtained across each of the validation resamples for 90\% inner and outer marginal confidence sets. We plot the results for the original scores, distance transformed scores (DT) and boundary box scores (BB) from left to right. The bounding box scores are discontinuous which is the cause of the discreteness of the rightmost histogram.}\label{fig:valhist}
 \end{figure}
 
 \newpage
