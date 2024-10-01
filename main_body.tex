@@ -25,7 +25,7 @@ In order to establish conformal confidence results we shall require the followin
 Exchangeability or a variant is a standard assumption in the conformal inference literature \citep{Angelopoulos2021} and factilates coverage guarantees. It holds for instance if we assume that the collection $(X_i, Y_i)_{i = 1}^{n+1}$ is an i.i.d. sequence of image pairs but is more general and in principle allows for other dependence structures. 
 
 \subsection{Marginal confidence sets}\label{SS:MCS}
-In order to construct conformal confidence sets let $f_I, f_O:\mathcal{X} \rightarrow \mathcal{X}$ be inner and outer transformation functions and for each $1\leq i \leq n +1 $, let $\tau_i = \max_{v \in \mathcal{V}: Y_i(v) = 0} f_I(s(X_i), v)$ and $\gamma_i = \max_{v \in \mathcal{V}: Y_i(v) = 1} f_O(-s(X_i), v)$  be the maxima of the function transformed scores over the areas at which the true labels equal 0 and 1 respectively. We will require the following assumption on the scores and the transformation functions.
+In order to construct conformal confidence sets let $f_I, f_O:\mathcal{X} \rightarrow \mathcal{X}$ be inner and outer transformation functions and for each $1\leq i \leq n +1 $, let $\tau_i = \max_{v \in \mathcal{V}: Y_i(v) = 0} f_I(s(X_i), v)$ and $\gamma_i = \max_{v \in \mathcal{V}: Y_i(v) = 1} -f_O(s(X_i), v)$  be the maxima of the function transformed scores over the areas at which the true labels equal 0 and 1 respectively. We will require the following assumption on the scores and the transformation functions.
 \begin{assumption}\label{ass:indep}
 	(Independence of scores) $(X_i, Y_i)_{i = 1}^{n+1}$ is independent of the functions $s, f_O, f_I$. 
 \end{assumption}
@@ -62,14 +62,14 @@ Given this we construct confidence sets as follows.
 		\lambda_O({\alpha_2})= \inf\left\lbrace \lambda: \frac{1}{n} \sum_{i = 1}^n 1\left[ \gamma_i\leq \lambda \right] \geq \frac{\lceil (1-\alpha_2)(n+1) \rceil}{n} \right\rbrace,
 	\end{equation*}
 %	be the upper $\alpha_2$ quantile of $(\gamma_i)_{i = 1}^n$
-	and define $O(X) = \lbrace v \in \mathcal{V}: f_O(-s(X), v) \leq \lambda_O(\alpha_2)  \rbrace $. Then,
+	and define $O(X) = \lbrace v \in \mathcal{V}: -f_O(s(X), v) \leq \lambda_O(\alpha_2)  \rbrace $. Then,
 	\begin{equation}\label{eq:probstat}
 		\mathbb{P}\left( \lbrace v\in \mathcal{V}: Y_{n+1}(v) = 1 \rbrace \subseteq O(X_{n+1}) \right) \geq 1 - \alpha_2.
 	\end{equation}
 \end{theorem}
 \begin{proof}
 	Arguing as in the proof of Theorem \ref{thm:inner}, it follows that $\mathbb{P}\left(\gamma_{n+1} \leq \lambda_O(\alpha_2) \right) \geq 1 - \alpha_2.$
-	Now on the event that $\gamma_{n+1}\leq \lambda_O(\alpha_2)$ we have $ f_O(-s(X_{n+1},v)) \leq \lambda_O(\alpha_2) $ for all $v \in \mathcal{V}$ such that $Y_{n+1}(v) = 1$. As such, given $u \in \mathcal{V}$ such that $ f_O(-s(X_{n+1},u)) > \lambda_I(\alpha) $, we must have $Y_{n+1}(u) = 0$ and so $	O(X)^C  \subseteq \lbrace v\in \mathcal{V}: Y(v) = 0 \rbrace  $. The result then follows as above.
+	Now on the event that $\gamma_{n+1}\leq \lambda_O(\alpha_2)$ we have $ -f_O(s(X_{n+1},v)) \leq \lambda_O(\alpha_2) $ for all $v \in \mathcal{V}$ such that $Y_{n+1}(v) = 1$. As such, given $u \in \mathcal{V}$ such that $ -f_O(s(X_{n+1},u)) > \lambda_I(\alpha) $, we must have $Y_{n+1}(u) = 0$ and so $	O(X)^C  \subseteq \lbrace v\in \mathcal{V}: Y(v) = 0 \rbrace  $. The result then follows as above.
 \end{proof}
 %\noindent The proof of Theorem \ref{thm:outer} follows that of Theorem \ref{thm:inner} and is thus omitted. 
 \begin{remark}\label{rmk:max}

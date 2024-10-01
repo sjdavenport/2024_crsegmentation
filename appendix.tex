@@ -23,9 +23,9 @@ The proof follows that of Theorem \ref{thm:inner}. The key observation is that f
 	(Marginal outer set)
 	Under Assumptions \ref{ass:ex} and \ref{ass:indep}, given $\alpha_2 \in (0,1)$, define 
 	\begin{equation*}
-		\lambda_O({\alpha_2})= \inf\left\lbrace \lambda: \frac{1}{n} \sum_{i = 1}^n 1\left[ C(\lbrace v \in \mathcal{V}: Y_i(v) = 0\rbrace, f_O(-s(X_i))) \leq \lambda \right] \geq 1-\alpha_2 \right\rbrace.
+		\lambda_O({\alpha_2})= \inf\left\lbrace \lambda: \frac{1}{n} \sum_{i = 1}^n 1\left[ C(\lbrace v \in \mathcal{V}: Y_i(v) = 0\rbrace, -f_O(s(X_i))) \leq \lambda \right] \geq 1-\alpha_2 \right\rbrace.
 	\end{equation*}
-	for a suitable combination function $C$, and let $O(X) = \lbrace v \in \mathcal{V}: C(v, f_O(-s(X))) \leq \lambda_O(\alpha_2)  \rbrace $. Then,
+	for a suitable combination function $C$, and let $O(X) = \lbrace v \in \mathcal{V}: C(v, -f_O(s(X))) \leq \lambda_O(\alpha_2)  \rbrace $. Then,
 	\begin{equation}\label{eq:probstat}
 		\mathbb{P}\left( \lbrace v\in \mathcal{V}: Y_{n+1}(v) = 1 \rbrace \subseteq O(X_{n+1}) \right) \geq 1 - \alpha_2.
 	\end{equation}
