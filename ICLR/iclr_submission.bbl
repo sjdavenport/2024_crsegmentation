@@ -1,4 +1,4 @@
-\begin{thebibliography}{20}
+\begin{thebibliography}{30}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -55,6 +55,13 @@ Jorge Bernal, Javier S{\'a}nchez, and Fernando Vilarino.
 \newblock \emph{Pattern Recognition}, 45\penalty0 (9):\penalty0 3166--3182,
   2012.
 
+\bibitem[Blanchard et~al.(2024)Blanchard, Durand, Marandon-Carlhian, and
+  P{\'e}rier]{Blanchard2024}
+Gilles Blanchard, Guillermo Durand, Ariane Marandon-Carlhian, and Romain
+  P{\'e}rier.
+\newblock Fdr control and fdp bounds for conformal link prediction.
+\newblock \emph{arXiv preprint arXiv:2404.02542}, 2024.
+
 \bibitem[Borgefors(1986)]{Borgefors1986}
 Gunilla Borgefors.
 \newblock Distance transformations in digital images.
@@ -99,12 +106,43 @@ Weikang Gong, Lin Wan, Wenlian Lu, Liang Ma, Fan Cheng, Wei Cheng, Stefan
   study.
 \newblock \emph{Medical image analysis}, 47:\penalty0 15--30, 2018.
 
+\bibitem[Guo et~al.(2017)Guo, Pleiss, Sun, and Weinberger]{Guo2017}
+Chuan Guo, Geoff Pleiss, Yu~Sun, and Kilian~Q Weinberger.
+\newblock On calibration of modern neural networks.
+\newblock In \emph{International conference on machine learning}, pp.\
+  1321--1330. PMLR, 2017.
+
+\bibitem[Gupta et~al.(2020)Gupta, Podkopaev, and Ramdas]{Gupta2020}
+Chirag Gupta, Aleksandr Podkopaev, and Aaditya Ramdas.
+\newblock Distribution-free binary classification: prediction sets, confidence
+  intervals and calibration.
+\newblock \emph{Advances in Neural Information Processing Systems},
+  33:\penalty0 3711--3723, 2020.
+
+\bibitem[Jungo et~al.(2020)Jungo, Balsiger, and Reyes]{Jungo2020}
+Alain Jungo, Fabian Balsiger, and Mauricio Reyes.
+\newblock Analyzing the quality and challenges of uncertainty estimations for
+  brain tumor segmentation.
+\newblock \emph{Frontiers in neuroscience}, 14:\penalty0 282, 2020.
+
 \bibitem[Maple(2003)]{Maple2003}
 Carsten Maple.
 \newblock Geometric design and space planning using the marching squares and
   marching cube algorithms.
 \newblock In \emph{2003 international conference on geometric modeling and
   graphics, 2003. Proceedings}, pp.\  90--95. IEEE, 2003.
+
+\bibitem[Marandon(2024)]{Marandon2024}
+Ariane Marandon.
+\newblock Conformal link prediction for false discovery rate control.
+\newblock \emph{TEST}, pp.\  1--22, 2024.
+
+\bibitem[Mossina et~al.(2024)Mossina, Dalmau, and And{\'e}ol]{Mossina2024}
+Luca Mossina, Joseba Dalmau, and L{\'e}o And{\'e}ol.
+\newblock Conformal semantic image segmentation: Post-hoc quantification of
+  predictive uncertainty.
+\newblock In \emph{Proceedings of the IEEE/CVF Conference on Computer Vision
+  and Pattern Recognition}, pp.\  3574--3584, 2024.
 
 \bibitem[Mukama et~al.(2024)Mukama, Messoudi, Rousseau, and
   Destercke]{Mukama2024}
@@ -114,6 +152,14 @@ Bruce~Cyusa Mukama, Soundouss Messoudi, Sylvain Rousseau, and S{\'e}bastien
   efficient approach.
 \newblock \emph{Proceedings of Machine Learning Research}, 230:\penalty0 1--18,
   2024.
+
+\bibitem[Papadopoulos et~al.(2002)Papadopoulos, Proedrou, Vovk, and
+  Gammerman]{Papadopoulos2002}
+Harris Papadopoulos, Kostas Proedrou, Volodya Vovk, and Alex Gammerman.
+\newblock Inductive confidence machines for regression.
+\newblock In \emph{Machine learning: ECML 2002: 13th European conference on
+  machine learning Helsinki, Finland, August 19--23, 2002 proceedings 13}, pp.\
+   345--356. Springer, 2002.
 
 \bibitem[Pogorelov et~al.(2017)Pogorelov, Randel, Griwodz, Eskeland, de~Lange,
   Johansen, Spampinato, Dang-Nguyen, Lux, Schmidt, Riegler, and
@@ -128,6 +174,11 @@ Konstantin Pogorelov, Kristin~Ranheim Randel, Carsten Griwodz, Sigrun~Losada
   Conference}, MMSys'17, pp.\  164--169, New York, NY, USA, 2017. ACM.
 \newblock ISBN 978-1-4503-5002-0.
 \newblock \doi{10.1145/3083187.3083212}.
+
+\bibitem[Shafer \& Vovk(2008)Shafer and Vovk]{Shafer2008}
+Glenn Shafer and Vladimir Vovk.
+\newblock A tutorial on conformal prediction.
+\newblock \emph{Journal of Machine Learning Research}, 9\penalty0 (3), 2008.
 
 \bibitem[Silva et~al.(2014)Silva, Histace, Romain, Dray, and
   Granado]{Silva2014}
@@ -148,6 +199,17 @@ Sophia Sun and Rose Yu.
 Ryan~J Tibshirani, Rina Foygel~Barber, Emmanuel Candes, and Aaditya Ramdas.
 \newblock Conformal prediction under covariate shift.
 \newblock \emph{Advances in neural information processing systems}, 32, 2019.
+
+\bibitem[Topol(2019)]{Topol2019}
+Eric~J Topol.
+\newblock High-performance medicine: the convergence of human and artificial
+  intelligence.
+\newblock \emph{Nature medicine}, 25\penalty0 (1):\penalty0 44--56, 2019.
+
+\bibitem[Vovk et~al.(2005)Vovk, Gammerman, and Shafer]{Vovk2005}
+Vladimir Vovk, Alexander Gammerman, and Glenn Shafer.
+\newblock \emph{Algorithmic learning in a random world}, volume~29.
+\newblock Springer, 2005.
 
 \bibitem[Worsley et~al.(1992)Worsley, Evans, Marrett, and Neelin]{Worsley1992}
 Keith~J. Worsley, Alan~C Evans, Sean Marrett, and P~Neelin.

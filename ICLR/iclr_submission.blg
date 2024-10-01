@@ -2,7 +2,7 @@ This is BibTeX, Version 0.99d (TeX Live 2024)
 Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: iclr_submission.aux
 I couldn't open database file ../bibfiles/Genetics.bib
----line 103 of file iclr_submission.aux
+---line 116 of file iclr_submission.aux
  : \bibdata{../bibfiles/RFT,../bibfiles/MachineLearning,../bibfiles/MHT,../bibfiles/Statistics,../bibfiles/TomsPapers,../bibfiles/Genetics
  :                                                                                                                                        ,../bibfiles/fMRI,../bibfiles/Books}
 I'm skipping whatever remains of this command
@@ -13,6 +13,10 @@ Repeated entry---line 1940 of file ../bibfiles/RFT.bib
  :                     ,
 I'm skipping whatever remains of this entry
 Database file #2: ../bibfiles/MachineLearning.bib
+Repeated entry---line 176 of file ../bibfiles/MachineLearning.bib
+ : @book{Vovk2005
+ :               ,
+I'm skipping whatever remains of this entry
 Database file #3: ../bibfiles/MHT.bib
 Database file #4: ../bibfiles/Statistics.bib
 Repeated entry---line 3176 of file ../bibfiles/Statistics.bib
@@ -24,46 +28,45 @@ Repeated entry---line 272 of file ../bibfiles/TomsPapers.bib
  : @article{Benjamini1995
  :                       ,
 I'm skipping whatever remains of this entry
-Warning--I didn't find a database entry for "Mejia2019"
-You've used 20 entries,
+You've used 30 entries,
             2773 wiz_defined-function locations,
-            748 strings with 9919 characters,
-and the built_in function-call counts, 11605 in all, are:
-= -- 987
-> -- 910
-< -- 9
-+ -- 305
-- -- 285
-* -- 1021
-:= -- 1821
-add.period$ -- 66
-call.type$ -- 20
-change.case$ -- 154
-chr.to.int$ -- 20
-cite$ -- 40
-duplicate$ -- 460
-empty$ -- 795
-format.name$ -- 311
-if$ -- 2394
+            811 strings with 11791 characters,
+and the built_in function-call counts, 16687 in all, are:
+= -- 1451
+> -- 1188
+< -- 17
++ -- 399
+- -- 369
+* -- 1419
+:= -- 2570
+add.period$ -- 98
+call.type$ -- 30
+change.case$ -- 211
+chr.to.int$ -- 30
+cite$ -- 60
+duplicate$ -- 710
+empty$ -- 1214
+format.name$ -- 407
+if$ -- 3492
 int.to.chr$ -- 1
 int.to.str$ -- 1
-missing$ -- 20
-newline$ -- 110
-num.names$ -- 80
-pop$ -- 302
+missing$ -- 31
+newline$ -- 160
+num.names$ -- 120
+pop$ -- 422
 preamble$ -- 1
-purify$ -- 134
+purify$ -- 182
 quote$ -- 0
-skip$ -- 382
+skip$ -- 580
 stack$ -- 0
-substring$ -- 336
-swap$ -- 57
-text.length$ -- 4
+substring$ -- 546
+swap$ -- 107
+text.length$ -- 9
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 220
+type$ -- 325
 warning$ -- 0
-while$ -- 88
+while$ -- 135
 width$ -- 0
-write$ -- 271
-(There were 4 error messages)
+write$ -- 402
+(There were 5 error messages)
