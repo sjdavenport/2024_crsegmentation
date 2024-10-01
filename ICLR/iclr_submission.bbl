@@ -1,4 +1,4 @@
-\begin{thebibliography}{32}
+\begin{thebibliography}{34}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -83,6 +83,12 @@ Alexander Bowring, Fabian Telschow, Armin Schwartzman, and Thomas~E. Nichols.
 \newblock Spatial confidence sets for raw effect size images.
 \newblock \emph{NeuroImage}, 203:\penalty0 116187, 2019.
 
+\bibitem[Chen et~al.(2017)Chen, Genovese, and Wasserman]{chen2017density}
+Yen-Chi Chen, Christopher~R Genovese, and Larry Wasserman.
+\newblock Density level sets: Asymptotics, inference, and visualization.
+\newblock \emph{Journal of the American Statistical Association}, 112\penalty0
+  (520):\penalty0 1684--1696, 2017.
+
 \bibitem[de~Grancey et~al.(2022)de~Grancey, Adam, Alecu, Gerchinovitz, Mamalet,
   and Vigouroux]{De2022}
 Florence de~Grancey, Jean-Luc Adam, Lucian Alecu, S{\'e}bastien Gerchinovitz,
@@ -135,6 +141,14 @@ Carsten Maple.
 Ariane Marandon.
 \newblock Conformal link prediction for false discovery rate control.
 \newblock \emph{TEST}, pp.\  1--22, 2024.
+
+\bibitem[Mejia et~al.(2020)Mejia, Yue, Bolin, Lindgren, and
+  Lindquist]{Mejia2020}
+Amanda~F Mejia, Yu~Yue, David Bolin, Finn Lindgren, and Martin~A Lindquist.
+\newblock A bayesian general linear modeling approach to cortical surface fmri
+  data analysis.
+\newblock \emph{Journal of the American Statistical Association}, 115\penalty0
+  (530):\penalty0 501--520, 2020.
 
 \bibitem[Mossina et~al.(2024)Mossina, Dalmau, and And{\'e}ol]{Mossina2024}
 Luca Mossina, Joseba Dalmau, and L{\'e}o And{\'e}ol.
