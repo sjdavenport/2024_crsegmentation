@@ -149,14 +149,12 @@ Alternatively joint control can be obtained using the joint distribution of the 
 %	$\mathbb{P}\left( T_{n+1} > \lambda_{\alpha}\right) \leq \alpha$
 %	and the result follows.
 %\end{proof}
-
-\subsection{Better segmentors provide more precise conformal confidence sets}
-Given two real random variables, $A$ and $B$ write $ A \succeq B$ to indicate that $\mathbb{P}\left( A > t \right) \geq \mathbb{P}\left( B > t \right)$ for all $t \in \mathbb{R}$. Then we have the following result. 
-\begin{theorem}
-	Suppose that $(X_i, Y_i)_{i = 1}^{n+1}$ is an i.i.d. sequence, and let $s, t: \mathcal{V} \rightarrow \mathbb{R}$ be two score functions. Assume that 
-	$\max_{v \in \mathcal{V}: Y_1(v) = 0} s_v(X_{1}) \succeq \max_{v \in \mathcal{V}: Y_1(v) = 0} s_v(X_{1}) $
-\end{theorem}
-
+%\subsection{Better segmentors provide more precise conformal confidence sets}
+%Given two real random variables, $A$ and $B$ write $ A \succeq B$ to indicate that $\mathbb{P}\left( A > t \right) \geq \mathbb{P}\left( B > t \right)$ for all $t \in \mathbb{R}$. Then we have the following result. 
+%\begin{theorem}
+%	Suppose that $(X_i, Y_i)_{i = 1}^{n+1}$ is an i.i.d. sequence, and let $s, t: \mathcal{V} \rightarrow \mathbb{R}$ be two score functions. Assume that 
+%	$\max_{v \in \mathcal{V}: Y_1(v) = 0} s_v(X_{1}) \succeq \max_{v \in \mathcal{V}: Y_1(v) = 0} s_v(X_{1}) $
+%\end{theorem}
 \subsection{Optimizing score transformations}
 %\subsubsection{Setting aside a learning dataset}
 The choice of score transformations $f_I$ and $f_O$ is extremely important and can have a large impact on the size of the conformal confidence sets. The best choice depends on both the distribution of the data and on the nature of the output of the trained segmentor used to calculate the scores. We thus recommend setting aside a learning dataset independent from both the calibration dataset, used to compute the conformal thresholds, and the test dataset. This approach was used in \cite{Sun2024} to learn the best copula transformation for combining dependent data streams.
@@ -176,9 +174,17 @@ Existing work on conformal confidence sets which aim to provide coverage of the 
 In order to provide a more formal justification of bounding box methods we establish the validity of an adapted version of the max-additive method of \cite{Andeol2023} as a corollary to our results, see Appendix \ref{AA:BBtheory}. We compare to this approach in our experiments below. Targetting bounding boxes does not directly target the mask itself and so the resulting confidence sets are typically conservative.
 
 \section{Application to Polpys tumor segmentation}\label{SS:res}
-In order to illustrate and validate our approach we consider the problem of polpys tumor segmentation. To do so we use the same dataset as in \cite{Angelopoulos2022} in which 1798 poplys images, with available ground truth masks were combined from 5 open-source datasets (published in \cite{KVASIR2017}, \cite{Hyperkvasir2020} \cite{Bernal2012}, \cite{Silva2014}). Logit scores were obtained for this data using the PraNet model \cite{PraNet2020}, which is based on the Unet architecture CITE CHECK! 
+In order to illustrate and validate our approach we consider the problem of polpys tumor segmentation. To do so we use the same dataset as in \cite{Angelopoulos2022} in which 1798 poplys images, with available ground truth masks were combined from 5 open-source datasets (\cite{KVASIR2017}, \cite{Hyperkvasir2020} \cite{Bernal2012}, \cite{Silva2014}). Logit scores were obtained for these images using the parallel reverse attention network (PraNet) model \citep{PraNet2020}.
 
 \subsection{Choosing a score transformation}
+\begin{figure}
+	\centering
+	\includegraphics[width=0.32\textwidth]{../figures/learning/hist_scores/origscores.png}
+	\includegraphics[width=0.32\textwidth]{../figures/learning/hist_scores/distscores.png}
+	\includegraphics[width=0.32\textwidth]{../figures/learning/hist_scores/btscores.png}
+	\caption{Histograms of the distribution of the scores on the learning dataset within and outside the ground truth masks. Thresholds obtained for the marginal $90\%$ inner and outer confidence sets, based on the respective scores, are displayed in red and blue.}
+	\label{scorehists}
+\end{figure}
 In order to optimize the size of our confidence sets we set aside 298 of the 1798 polpys images to form a learning dataset on which to choose the best score transformations. Importantly as the learning dataset is independent of the remaining 1500 images set-aside, we can study it as much as we like without compromising the validity of the follow-up analyses in Sections \ref{SS:val}. In particular in this section we shall use the learning dataset as both calibrate and study the results, in order to maximize the amount of important information we can learn from it.
 
 The score transformations we considered were the identity (after softmax transformation) and distance transformations of the predicted masks:  taking $f_I(s(X), v) = f_O(s(X), v) = d_\rho(\hat{M}(X), v)$, where $\rho$ is the Euclidean metric. We also compare to the results of using the bounding box transformations $f_I = b_I$ and $f_O = b_O$ which correspond to tranforming the predicted bounding box using a distance transformation based on the chessboard metric and are defined formally in Appendix \ref{AA:BBtheory}. For the purposes of plotting we used the combined bounding box scores defined in Definition \ref{dfn:BBS}.
@@ -186,16 +192,6 @@ The score transformations we considered were the identity (after softmax transfo
 From the histograms in Figure \ref{scorehists} we can see that thresholding the original scores at the inner threshold captures most of the data. However this is not the case for the outer threshold for which the data is better separated using the distance transformed and bounding box scores. Figure \ref{fig:learning} shows PraNet scores for 2 typical examples, along with surface plots of the transformed scores and corresponding marginal confidence regions (with thresholds obtained from calibrating over the learning dataset). From these we see that PraNet often assigns a high softmax score to the polpys regions which decreases in the regions directly around the  boundary of the tumor before returning to a higher level away from the polpys. This results in tight inner sets but large outer sets as the model struggles to identify where the tumor ends. Instead the distance transformed and bounding box scores are much better at providing outer bounds on the tumor, with distance transformed scores providing a tighter outside fit. Additional examples are shown in Figure \ref{fig:learning2} and \ref{fig:learning3} and have the same conclusion.
 
 Based on the images set aside we can also learn the right balance of $\alpha$ to use for joint confidence sets. We decided to use $\alpha_1 = 0.02$ and $\alpha_2 = 0.08$ to ensure a joint coverage of $90\%$. This ratio was chosen in light of the fact that in this dataset identifying where a given tumor ends appears to be more challenging than identifying pixels where we are sure that there is a tumor.
-
-\begin{figure}
-		\centering
-		\includegraphics[width=0.32\textwidth]{../figures/learning/hist_scores/origscores.png}
-		\includegraphics[width=0.32\textwidth]{../figures/learning/hist_scores/distscores.png}
-		\includegraphics[width=0.32\textwidth]{../figures/learning/hist_scores/btscores.png}
-		\caption{Histograms of the distribution of the scores on the learning dataset within and outside the ground truth masks. Thresholds obtained for the marginal $90\%$ inner and outer confidence sets, based on the respective scores, are displayed in red and blue.}
-		\label{scorehists}
-\end{figure}
-
 
 \begin{figure}
 %	\centering
@@ -233,98 +229,207 @@ Based on the images set aside we can also learn the right balance of $\alpha$ to
 \subsection{Illustrating the performance of conformal confidence sets}\label{SS:val}
 Based on the results of the learning dataset we decided to combine the best of the approaches for the inner and outer sets respectively, taking $f_I$ to be the identity and $f_O$ to be the distance transformation of the predicted mask.
 
-We divide the 1500 images at random into 500 for conformal calibration, and 1000 for validation. The resulting conformal confidence sets for this data are shown in the second row of Figure \ref{fig:polpys}. For comparison we have also shown the sets obtained based on the untransformed softmax scores in the top row. From this figure we see that the method, using the transformed scores, effectively delineates polyp regions. Inner sets are plotted in red and the outer sets are shown in blue. The ground truth mask for each polpys is shown in yellow and can be compared to the original images. In each of the examples considered the ground truth mask is bounded from within by the inner set and from without by the outer set. 
-
-\begin{figure}
+We divide the set aside 1500 images at random into 1000 for conformal calibration, and 500 for testing. The resulting conformal confidence sets for this data are shown in the second row of Figure \ref{fig:polpys}. For comparison we have also shown the sets obtained based on the untransformed softmax scores in the top row. From this figure we see that the method, using the transformed scores, effectively delineates polyp regions. Inner sets are plotted in red and the outer sets are shown in blue. The ground truth mask for each polpys is shown in yellow and can be compared to the original images. In each of the examples considered the ground truth mask is bounded from within by the inner set and from without by the outer set. 
+\begin{figure}[h!]
 	\begin{subfigure}{0.19\textwidth}
 		\centering
-		\includegraphics[width=\textwidth]{../figures/val_images/15.png}
+		\includegraphics[width=\textwidth]{../figures/all_images/61.png}
 		\label{fig:1}
 	\end{subfigure}
 	\begin{subfigure}{0.19\textwidth}
 		\centering
-		\includegraphics[width=\textwidth]{../figures/val_images/114.png}
+		\includegraphics[width=\textwidth]{../figures/all_images/114.png}
 		\label{fig:1}
 	\end{subfigure}
 	\begin{subfigure}{0.19\textwidth}
 		\centering
-		\includegraphics[width=\textwidth]{../figures/val_images/61.png}
+		\includegraphics[width=\textwidth]{../figures/all_images/144.png}
 		\label{fig:1}
 	\end{subfigure}
 	\begin{subfigure}{0.19\textwidth}
 		\centering
-		\includegraphics[width=\textwidth]{../figures/val_images/76.png}
+		\includegraphics[width=\textwidth]{../figures/all_images/148.png}
 		\label{fig:1}
 	\end{subfigure}
 	\begin{subfigure}{0.19\textwidth}
 		\centering
-		\includegraphics[width=\textwidth]{../figures/val_images/87.png}
+		\includegraphics[width=\textwidth]{../figures/all_images/251.png}
 		\label{fig:1}
 	\end{subfigure}
-		\vspace{-0.4cm}
+	\vspace{-0.35cm}
+	\\
+	\begin{subfigure}{0.19\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{../figures/validation/val_crs_combo_90/61.png}
+		\label{fig:1}
+	\end{subfigure}
+	\begin{subfigure}{0.19\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{../figures/validation/val_crs_combo_90/114.png}
+		\label{fig:1}
+	\end{subfigure}
+	\begin{subfigure}{0.19\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{../figures/validation/val_crs_combo_90/144.png}
+		\label{fig:1}
+	\end{subfigure}
+	\begin{subfigure}{0.19\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{../figures/validation/val_crs_combo_90/148.png}
+		\label{fig:1}
+	\end{subfigure}
+	\begin{subfigure}{0.19\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{../figures/validation/val_crs_combo_90/251.png}
+		\label{fig:1}
+	\end{subfigure}
+	\vspace{-0.35cm}
 	\\
 		\begin{subfigure}{0.19\textwidth}
 		\centering
-		\includegraphics[width=\textwidth]{../figures/val_crs_90_orig/15.png}
+		\includegraphics[width=\textwidth]{../figures/all_images/7.png}
 		\label{fig:1}
 	\end{subfigure}
 	\begin{subfigure}{0.19\textwidth}
 		\centering
-		\includegraphics[width=\textwidth]{../figures/val_crs_90_orig/114.png}
+		\includegraphics[width=\textwidth]{../figures/all_images/211.png}
 		\label{fig:1}
 	\end{subfigure}
 	\begin{subfigure}{0.19\textwidth}
 		\centering
-		\includegraphics[width=\textwidth]{../figures/val_crs_90_orig/61.png}
+		\includegraphics[width=\textwidth]{../figures/all_images/1062.png}
 		\label{fig:1}
 	\end{subfigure}
 	\begin{subfigure}{0.19\textwidth}
 		\centering
-		\includegraphics[width=\textwidth]{../figures/val_crs_90_orig/76.png}
+		\includegraphics[width=\textwidth]{../figures/all_images/398.png}
 		\label{fig:1}
 	\end{subfigure}
 	\begin{subfigure}{0.19\textwidth}
 		\centering
-		\includegraphics[width=\textwidth]{../figures/val_crs_90_orig/87.png}
+		\includegraphics[width=\textwidth]{../figures/all_images/269.png}
 		\label{fig:1}
 	\end{subfigure}
-	\vspace{-0.4cm}
+	\vspace{-0.35cm}
 	\\
 	\begin{subfigure}{0.19\textwidth}
 		\centering
-		\includegraphics[width=\textwidth]{../figures/val_crs_90_distmix/15.png}
+		\includegraphics[width=\textwidth]{../figures/validation/cal_crs_combo_90/7.png}
 		\label{fig:1}
 	\end{subfigure}
 	\begin{subfigure}{0.19\textwidth}
 		\centering
-		\includegraphics[width=\textwidth]{../figures/val_crs_90_distmix/114.png}
+		\includegraphics[width=\textwidth]{../figures/validation/cal_crs_combo_90/211.png}
 		\label{fig:1}
 	\end{subfigure}
 	\begin{subfigure}{0.19\textwidth}
 		\centering
-		\includegraphics[width=\textwidth]{../figures/val_crs_90_distmix/61.png}
+		\includegraphics[width=\textwidth]{../figures/validation/val_crs_combo_90/1062.png}
 		\label{fig:1}
 	\end{subfigure}
 	\begin{subfigure}{0.19\textwidth}
 		\centering
-		\includegraphics[width=\textwidth]{../figures/val_crs_90_distmix/76.png}
+		\includegraphics[width=\textwidth]{../figures/validation/val_crs_combo_90/398.png}
 		\label{fig:1}
 	\end{subfigure}
 	\begin{subfigure}{0.19\textwidth}
 		\centering
-		\includegraphics[width=\textwidth]{../figures/val_crs_90_distmix/87.png}
+		\includegraphics[width=\textwidth]{../figures/validation/cal_crs_combo_90/269.png}
 		\label{fig:1}
 	\end{subfigure}
 	\label{fig:grid}
-	\caption{Conformal confidence sets for the polyps data. The bottom row shows the original endoscopic images with visible polyps. The top two rows present the conformal confidence sets, with the ground truth masks shown in yellow. The inner sets and outer sets are shown in red and blue respectively. The top row illustrates the sets which arise when using the original scores. Instead the middle show the resulting sets when $f_O$ is given by the distance transformation of the predicted polpys mask. The figure shows the benefit of transforming the score function and illustrates the method's effectiveness in accurately identifying polyp regions whilst providing informative spatial uncertainty bounds.}\label{fig:polpys}
+	\caption{Conformal confidence sets for the polyps data. For each set of polpys images the top row shows the original endoscopic images with visible polyp and the second row presents the conformal confidence sets, with the ground truth masks shown in yellow. The inner sets and outer sets are shown in red and blue respectively. The figure shows the benefits of combining different score transformations for the inner and outer sets and illustrates the method's effectiveness in accurately identifying polyp regions whilst providing informative spatial uncertainty bounds.}\label{fig:res}
 \end{figure}
-
-
+%\begin{figure}
+%	\begin{subfigure}{0.19\textwidth}
+%		\centering
+%		\includegraphics[width=\textwidth]{../figures/val_images/15.png}
+%		\label{fig:1}
+%	\end{subfigure}
+%	\begin{subfigure}{0.19\textwidth}
+%		\centering
+%		\includegraphics[width=\textwidth]{../figures/val_images/114.png}
+%		\label{fig:1}
+%	\end{subfigure}
+%	\begin{subfigure}{0.19\textwidth}
+%		\centering
+%		\includegraphics[width=\textwidth]{../figures/val_images/61.png}
+%		\label{fig:1}
+%	\end{subfigure}
+%	\begin{subfigure}{0.19\textwidth}
+%		\centering
+%		\includegraphics[width=\textwidth]{../figures/val_images/76.png}
+%		\label{fig:1}
+%	\end{subfigure}
+%	\begin{subfigure}{0.19\textwidth}
+%		\centering
+%		\includegraphics[width=\textwidth]{../figures/val_images/87.png}
+%		\label{fig:1}
+%	\end{subfigure}
+%		\vspace{-0.4cm}
+%	\\
+%		\begin{subfigure}{0.19\textwidth}
+%		\centering
+%		\includegraphics[width=\textwidth]{../figures/val_crs_90_orig/15.png}
+%		\label{fig:1}
+%	\end{subfigure}
+%	\begin{subfigure}{0.19\textwidth}
+%		\centering
+%		\includegraphics[width=\textwidth]{../figures/val_crs_90_orig/114.png}
+%		\label{fig:1}
+%	\end{subfigure}
+%	\begin{subfigure}{0.19\textwidth}
+%		\centering
+%		\includegraphics[width=\textwidth]{../figures/val_crs_90_orig/61.png}
+%		\label{fig:1}
+%	\end{subfigure}
+%	\begin{subfigure}{0.19\textwidth}
+%		\centering
+%		\includegraphics[width=\textwidth]{../figures/val_crs_90_orig/76.png}
+%		\label{fig:1}
+%	\end{subfigure}
+%	\begin{subfigure}{0.19\textwidth}
+%		\centering
+%		\includegraphics[width=\textwidth]{../figures/val_crs_90_orig/87.png}
+%		\label{fig:1}
+%	\end{subfigure}
+%	\vspace{-0.4cm}
+%	\\
+%	\begin{subfigure}{0.19\textwidth}
+%		\centering
+%		\includegraphics[width=\textwidth]{../figures/val_crs_90_distmix/15.png}
+%		\label{fig:1}
+%	\end{subfigure}
+%	\begin{subfigure}{0.19\textwidth}
+%		\centering
+%		\includegraphics[width=\textwidth]{../figures/val_crs_90_distmix/114.png}
+%		\label{fig:1}
+%	\end{subfigure}
+%	\begin{subfigure}{0.19\textwidth}
+%		\centering
+%		\includegraphics[width=\textwidth]{../figures/val_crs_90_distmix/61.png}
+%		\label{fig:1}
+%	\end{subfigure}
+%	\begin{subfigure}{0.19\textwidth}
+%		\centering
+%		\includegraphics[width=\textwidth]{../figures/val_crs_90_distmix/76.png}
+%		\label{fig:1}
+%	\end{subfigure}
+%	\begin{subfigure}{0.19\textwidth}
+%		\centering
+%		\includegraphics[width=\textwidth]{../figures/val_crs_90_distmix/87.png}
+%		\label{fig:1}
+%	\end{subfigure}
+%	\label{fig:grid}
+%	\caption{Conformal confidence sets for the polyps data. The bottom row shows the original endoscopic images with visible polyps. The top two rows present the conformal confidence sets, with the ground truth masks shown in yellow. The inner sets and outer sets are shown in red and blue respectively. The top row illustrates the sets which arise when using the original scores. Instead the middle show the resulting sets when $f_O$ is given by the distance transformation of the predicted polpys mask. The figure shows the benefit of transforming the score function and illustrates the method's effectiveness in accurately identifying polyp regions whilst providing informative spatial uncertainty bounds.}\label{fig:polpys}
+%\end{figure}
 The inner sets are shown in red and represent regions where we can have high confidence of the presence of polyps. The outer sets are shown in blue and represent regions in which the polpys may be.
 
 These results show that we can provide informative confidence bounds for the location of the polpys and allow us to use the PraNet segmentation model with uncertainty guarantees. They also illustrate the limitations of the model which is essential for applications. Larger uncertainty bounds may require specialist follow-up in order to be certain about the true extent of the observed tumor. Improved uncertainty quantification would require an improved segmentation model. 
 
-More precise results can be obtained at the expense of probabilistic guarantees, see Figure XXX. A trade off must be made between precision and confidence and this can also be determined in advance based on the learning dataset. The approach of CITE controls the empirical false negative risk yielding additional precision but at the cost of coverage as shown in Figure XXX. 
+More precise results can be obtained at the expense of probabilistic guarantees, see Figure XXX. A trade off must be made between precision and confidence and this can also be determined in advance based on the learning dataset. 
+
+%The approach of CITE controls the empirical false negative risk yielding additional precision but at the cost of coverage as shown in Figure XXX. 
 
 \subsection{Measuring the coverge rate}\label{SS:cov}
 In this section we run validations to evaluate the false coverage rate of our approach. To do so we take the set aside 1500 images and run 1000 validations, in each validation dividing the data into 1000 calibration and 500 test images. In each division we calculate the conformal confidence sets using the above approaches, based on thresholds derived from the calibration dataset, and evaluate the coverage rate on the test dataset. We average over all 1000 validations and present the results in Figure \ref{fig:coverage}. Histograms for the $90\%$ coverage obtained over each validation run are shown in Figure \ref{fig:valhist}. From these results we can see that for all the approaches the coverage rate is controlled at or above the nominal level as desired. The coverage for the bounding box scores slightly over cover at lower levels. This is likely due to the discontinuities in the score functions. 
@@ -332,9 +437,9 @@ In this section we run validations to evaluate the false coverage rate of our ap
 XXX In this Figure we also compare to the coverage attained by using Conformal Risk control \cite{}. We can see that conformal risk control can have highly inflated error rates - this is because it is designed to control the expected proportion of discoveries not cover the tumors. The results indicate the trade-off that must be made when choosing between the methodss, i.e. whilst risk control can provide meaningful inference CITE it comes with a cost in terms of under coverage. Instead, in this setting, conformal confidence sets provide informative segmentation bounds (as illustrated in Section \ref{SS:val}) and come with strong coverage guarantees. 
 \begin{figure}
 	\begin{center}
-		\includegraphics[width=0.4\textwidth]{../figures/validation/inner_coverage.pdf}
+		\includegraphics[width=0.35\textwidth]{../figures/validation/inner_coverage.pdf}
 		\quad\quad
-		\includegraphics[width=0.4\textwidth]{../figures/validation/outer_coverage.pdf}
+		\includegraphics[width=0.35\textwidth]{../figures/validation/outer_coverage.pdf}
 	\end{center}
 	\caption{False coverage levels of the inner and outer sets averaged over 1000 validations for the original, distance transformed (DT) and bounding box (BB) scores.}\label{fig:coverage}
 \end{figure}
@@ -369,10 +474,9 @@ It follows that the method chosen based on the learning dataset which uses the d
 	\end{center}
 	\caption{Measuring the proportion of the entire image which is under/over covered by the respective confidence sets. Left: proportion of the image which lies within the true mask but outside of the inner set. Middle: proportion of the image which lies within the confidence set but outside of the true mask. For both a lower proportion corresponds to increased precision. }\label{fig:efficiency2}
 \end{figure}
+%\subsection{Improving risk control using transformed scores}
+%Risk control can also benefit  
 
-\subsection{Improving risk control using transformed scores}
-Risk control can also benefit  
- 
 %\subsection{Application to Melanoma segmentation}
 
 %\subsection{Melanoma Lesion Segmentation}
