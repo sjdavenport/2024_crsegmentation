@@ -1,4 +1,4 @@
-\begin{thebibliography}{30}
+\begin{thebibliography}{32}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -98,14 +98,6 @@ Deng-Ping Fan, Ge-Peng Ji, Tao Zhou, Geng Chen, Huazhu Fu, Jianbing Shen, and
 \newblock In \emph{International conference on medical image computing and
   computer-assisted intervention}, pp.\  263--273. Springer, 2020.
 
-\bibitem[Gong et~al.(2018)Gong, Wan, Lu, Ma, Cheng, Cheng, Gruenewald, and
-  Feng]{}
-Weikang Gong, Lin Wan, Wenlian Lu, Liang Ma, Fan Cheng, Wei Cheng, Stefan
-  Gruenewald, and Jianfeng Feng.
-\newblock Statistical testing and power analysis for brain-wide association
-  study.
-\newblock \emph{Medical image analysis}, 47:\penalty0 15--30, 2018.
-
 \bibitem[Guo et~al.(2017)Guo, Pleiss, Sun, and Weinberger]{Guo2017}
 Chuan Guo, Geoff Pleiss, Yu~Sun, and Kilian~Q Weinberger.
 \newblock On calibration of modern neural networks.
@@ -118,6 +110,13 @@ Chirag Gupta, Aleksandr Podkopaev, and Aaditya Ramdas.
   intervals and calibration.
 \newblock \emph{Advances in Neural Information Processing Systems},
   33:\penalty0 3711--3723, 2020.
+
+\bibitem[Jalalifar et~al.(2022)Jalalifar, Soliman, Sahgal, and
+  Sadeghi-Naini]{Jalalifar2022}
+Seyed~Ali Jalalifar, Hany Soliman, Arjun Sahgal, and Ali Sadeghi-Naini.
+\newblock Impact of tumour segmentation accuracy on efficacy of quantitative
+  mri biomarkers of radiotherapy outcome in brain metastasis.
+\newblock \emph{Cancers}, 14\penalty0 (20):\penalty0 5133, 2022.
 
 \bibitem[Jungo et~al.(2020)Jungo, Balsiger, and Reyes]{Jungo2020}
 Alain Jungo, Fabian Balsiger, and Mauricio Reyes.
@@ -160,6 +159,16 @@ Harris Papadopoulos, Kostas Proedrou, Volodya Vovk, and Alex Gammerman.
 \newblock In \emph{Machine learning: ECML 2002: 13th European conference on
   machine learning Helsinki, Finland, August 19--23, 2002 proceedings 13}, pp.\
    345--356. Springer, 2002.
+
+\bibitem[Patz et~al.(2014)Patz, Pinsky, Gatsonis, Sicks, Kramer, Tammem{\"a}gi,
+  Chiles, Black, Aberle, Team, et~al.]{Patz2014}
+Edward~F Patz, Paul Pinsky, Constantine Gatsonis, JoRean~D Sicks, Barnett~S
+  Kramer, Martin~C Tammem{\"a}gi, Caroline Chiles, William~C Black, Denise~R
+  Aberle, NLST Overdiagnosis Manuscript~Writing Team, et~al.
+\newblock Overdiagnosis in low-dose computed tomography screening for lung
+  cancer.
+\newblock \emph{JAMA internal medicine}, 174\penalty0 (2):\penalty0 269--274,
+  2014.
 
 \bibitem[Pogorelov et~al.(2017)Pogorelov, Randel, Griwodz, Eskeland, de~Lange,
   Johansen, Spampinato, Dang-Nguyen, Lux, Schmidt, Riegler, and
@@ -210,6 +219,15 @@ Eric~J Topol.
 Vladimir Vovk, Alexander Gammerman, and Glenn Shafer.
 \newblock \emph{Algorithmic learning in a random world}, volume~29.
 \newblock Springer, 2005.
+
+\bibitem[Wieslander et~al.(2020)Wieslander, Harrison, Skogberg, Jackson,
+  Frid{\'e}n, Karlsson, Spjuth, and W{\"a}hlby]{Wieslander2020}
+H{\aa}kan Wieslander, Philip~J Harrison, Gabriel Skogberg, Sonya Jackson,
+  Markus Frid{\'e}n, Johan Karlsson, Ola Spjuth, and Carolina W{\"a}hlby.
+\newblock Deep learning with conformal prediction for hierarchical analysis of
+  large-scale whole-slide tissue images.
+\newblock \emph{IEEE journal of biomedical and health informatics}, 25\penalty0
+  (2):\penalty0 371--380, 2020.
 
 \bibitem[Worsley et~al.(1992)Worsley, Evans, Marrett, and Neelin]{Worsley1992}
 Keith~J. Worsley, Alan~C Evans, Sean Marrett, and P~Neelin.
