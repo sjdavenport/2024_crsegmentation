@@ -12,9 +12,9 @@ end
 imagesc(background); hold on
 
 if ~exist('color_scheme', 'var')
-    add_region({outer_set, middle_set, inner_set}, {'blue','yellow', 'red'})
+    add_region2({outer_set, middle_set, inner_set}, {'blue','yellow', 'red'})
 else
-    add_region({outer_set, middle_set, inner_set}, {[0, 0.4470, 0.7410],'yellow', [1,0.2,0.2]})
+    add_region2({outer_set, middle_set, inner_set}, {[0, 0.4470, 0.7410],'yellow', [1,0.2,0.2]})
 end
 
 end
