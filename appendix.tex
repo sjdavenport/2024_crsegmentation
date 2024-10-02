@@ -11,19 +11,19 @@ We can construct generalized marginal confidence sets as follows.
 	(Marginal inner set)
 	Under Assumptions \ref{ass:ex} and \ref{ass:indep}, given $\alpha_1 \in (0,1)$, define 
 	\begin{equation*}
-		\lambda_I(\alpha_1) = \inf\left\lbrace \lambda: \frac{1}{n} \sum_{i = 1}^n 1\left[ C(\lbrace v \in \mathcal{V}: Y_i(v) = 1\rbrace, f_I(s(X_i))) \leq \lambda \right] \geq 1-\alpha_1 \right\rbrace,
+		\lambda_I(\alpha_1) = \inf\left\lbrace \lambda: \frac{1}{n} \sum_{i = 1}^n 1\left[ C(\lbrace v \in \mathcal{V}: Y_i(v) = 1\rbrace, f_I(s(X_i))) \leq \lambda \right] \geq \frac{\lceil (1-\alpha_1)(n+1) \rceil}{n} \right\rbrace,
 	\end{equation*}
  	for a suitable combination function $C$, and define $I(X) = \lbrace v \in \mathcal{V}: C(v, f_I(s(X))) >\lambda_I(\alpha_1)  \rbrace $. Then,
 	\begin{equation}\label{eq:probstat}
 		\mathbb{P}\left( I(X_{n+1}) \subseteq\lbrace v\in \mathcal{V}: Y_{n+1} = 1 \rbrace \right) \geq 1 - \alpha_1.
 	\end{equation}
 \end{theorem}
-The proof follows that of Theorem \ref{thm:inner}. The key observation is that for any suitable combination function $C$,  given $\lambda \in \mathbb{R}$, $\mathcal{A} \subseteq \mathcal{V} $ and $X \in \mathcal{X}$, we have that $C(\mathcal{A}, X) \leq \lambda$ implies that $C(v, X) \leq \lambda$. This is the relevant property of the maximum which we used for the results in the main text. For the outer set we similarly have the following.
+The proof follows that of Theorem \ref{thm:inner}. The key observation is that for any suitable combination function $C$,  given $\lambda \in \mathbb{R}$, $\mathcal{A} \subseteq \mathcal{V} $ and $X \in \mathcal{X}$, $C(\mathcal{A}, X) \leq \lambda$ implies that $C(v, X) \leq \lambda$. This is the relevant property of the maximum which we used for the results in the main text. For the outer set we similarly have the following.
 \begin{theorem}\label{thm:genouter}
 	(Marginal outer set)
 	Under Assumptions \ref{ass:ex} and \ref{ass:indep}, given $\alpha_2 \in (0,1)$, define 
 	\begin{equation*}
-		\lambda_O({\alpha_2})= \inf\left\lbrace \lambda: \frac{1}{n} \sum_{i = 1}^n 1\left[ C(\lbrace v \in \mathcal{V}: Y_i(v) = 0\rbrace, -f_O(s(X_i))) \leq \lambda \right] \geq 1-\alpha_2 \right\rbrace.
+		\lambda_O({\alpha_2})= \inf\left\lbrace \lambda: \frac{1}{n} \sum_{i = 1}^n 1\left[ C(\lbrace v \in \mathcal{V}: Y_i(v) = 0\rbrace, -f_O(s(X_i))) \leq \lambda \right] \geq \frac{\lceil (1-\alpha_2)(n+1) \rceil}{n} \right\rbrace.
 	\end{equation*}
 	for a suitable combination function $C$, and let $O(X) = \lbrace v \in \mathcal{V}: C(v, -f_O(s(X))) \leq \lambda_O(\alpha_2)  \rbrace $. Then,
 	\begin{equation}\label{eq:probstat}
@@ -41,14 +41,14 @@ For $i = 1, \dots, n + 1$, let 	$L_i(\lambda) = 	L(I_\lambda(X_i), Y_i)$. Then a
 \begin{equation*}
 	\mathbb{E}\left[ L_{n+1}(\hat{\lambda})\right] \leq \alpha_1
 \end{equation*}
-where $\hat{\lambda} = \inf\left\lbrace \lambda: \frac{1}{n}\sum_{i = 1}^n L_i(\lambda) \leq \alpha_1 - \frac{1-\alpha_1}{n}\right\rbrace$. Arguing as in Appendix A of \citep{Angelopoulos2022} it in fact follows that $\hat{\lambda}  = \lambda_I(\alpha_1)$ and so $I(X) = I_{\hat{\lambda}}(X)$. As such 	
+where $\hat{\lambda} = \inf\left\lbrace \lambda: \frac{1}{n}\sum_{i = 1}^n L_i(\lambda) \leq \alpha_1 - \frac{1-\alpha_1}{n}\right\rbrace$. Arguing as in Appendix A of \citep{Angelopoulos2022} and applying a similar argument to that used in the proof of Theorem \ref{thm:inner} it in fact follows that $\hat{\lambda}  = \lambda_I(\alpha_1)$ and so $I(X) = I_{\hat{\lambda}}(X)$. As such 	
 \begin{equation}\label{eq:probstat2}
 	\mathbb{P}\left( I(X_{n+1}) \subseteq\lbrace v\in \mathcal{V}: Y_{n+1} = 1 \rbrace \right) = 1 - \mathbb{E}\left[ L_{n+1}(\hat{\lambda})\right]  \geq 1 - \alpha_1, 
 \end{equation}
 and we recover the desired result. Arguing similarly it is possible to establish proofs of Theorems \ref{thm:outer} and \ref{thm:genouter}.
 
 \subsection{Providing theory for deriving confidence sets from bounding boxes}\label{AA:BBtheory}
-We can use our results in order to provide valid inference for bounding boxes.  In what follows we adapt the approach of \cite{Andeol2023} in order to ensure validity. In particular given $Z \in \mathcal{Y}$, let $B_{I, \max}(Z)$ be the largest box which can be contained within the set $\lbrace v\in \mathcal{V}: Z(v) = 1 \rbrace$ and let $ B_{O, \min}(Z)$ be the smallest box which contains it. Given $Y \in \mathcal{Y}, $ let $cc(Y) \subseteq \mathcal{P}(\mathcal{V})$ denote the set of connected components of the set $\lbrace v\in \mathcal{V}: Y(v) = 1 \rbrace$ for a given connectivity criterion (which we take to be $4$ in our examples), and note that these can themselves be identifed as elements of $\mathcal{Y}$. Define 
+We can use our results in order to provide valid inference for bounding boxes.  In what follows we adapt the approach of \cite{Andeol2023} in order to ensure validity. In particular given $Z \in \mathcal{Y}$, let $B_{I, \max}(Z)$ be the largest box which can be contained within the set $\lbrace v\in \mathcal{V}: Z(v) = 1 \rbrace$ and let $ B_{O, \min}(Z)$ be the smallest box which contains it. Given $Y \in \mathcal{Y}, $ let $cc(Y) \subseteq \mathcal{P}(\mathcal{V})$ denote the set of connected components of the set $\lbrace v\in \mathcal{V}: Y(v) = 1 \rbrace$ for a given connectivity criterion (which we take to be $4$ in our examples), and note that these components can themselves be identifed as elements of $\mathcal{Y}$. Define 
 $$B_I(Y) = \cup_{c \in cc(Y)} B_{I, \max}(c) \text{ and } B_O(Y) = \cup_{c \in cc(Y)} B_{O, \min}(c)$$
 to be the unions of the largest inner and smallest outer boxes of the connected components of the image $Y$, respectively. Then define
 $$\hat{B}_I(s(X)) = \cup_{c \in cc(\hat{M}(X)) } B_{I, \max}(c) \text{ and } \hat{B}_O(s(X)) = \cup_{c \in cc(\hat{M}(X))} B_{O, \min}(c)$$
@@ -60,9 +60,10 @@ For the remainder of this section we shall assume that $\mathcal{V} \subset \mat
 	\begin{equation*}
 		b_I(s(X), v) = d_{\rho}(\hat{B}_I(s(X)), v) \text{ and } b_O(s(X), v) = d_{\rho}(\hat{B}_O(s(X)), v) 
 	\end{equation*}
-be the distance transformed scores based on the chessboard distance to the predicted inner and outer box collections $\hat{B}_I(s(X))$ and $\hat{B}_O(s(X))$, respectively. We also define a combination of these $b_M$, primarily for the purposes of plotting in Figure \ref{fig:learning}, as follows. Let $b_M(s(X), v) = b_O(s(X),v)$ for each $v \not\in \hat{B}_O$ and let $b_M(s(X), v) = \max(b_I(s(X),v), 0) $ for $v \in \hat{B}_O$. We shall write $b_I(s(X)) \in \mathcal{X}$ to denote the image which has $b_I(s(X))(v) = 	b_I(s(X), v)$ and similarly for $b_O(s(X))$ and $b_M(s(X))$. An illustration of these scores for two example tumors is shown in Figure XXX.
+be the distance transformed scores based on the chessboard distance to the predicted inner and outer box collections $\hat{B}_I(s(X))$ and $\hat{B}_O(s(X))$, respectively. We also define a combination of these $b_M$, primarily for the purposes of plotting in Figure \ref{fig:learning}, as follows. Let $b_M(s(X), v) = b_O(s(X),v)$ for each $v \not\in \hat{B}_O(s(X))$ and let $b_M(s(X), v) = \max(b_I(s(X),v), 0) $ for $v \in \hat{B}_O(s(X))$. We shall write $b_I(s(X)) \in \mathcal{X}$ to denote the image which has $b_I(s(X))(v) = 	b_I(s(X), v)$ and similarly for $b_O(s(X))$ and $b_M(s(X))$. 
+%An illustration of these scores for two example tumors is shown in Figure XXX.
 \end{definition}
-Now consider the sequences of image pairs $(X_i, B_i^I)_{i = 1}^n$ and $(X_i, B_i^O)_{i = 1}^n$. These both satisfy exchangeability and so, applying Theorems \ref{thm:inner} and \ref{thm:outer} we obtain the following bounding box validity results.
+Now consider the sequences of image pairs $(X_i, B_i^I)_{i = 1}^n$ and $(X_i, B_i^O)_{i = 1}^n$. These both satisfy exchangeability and so, applying Theorems \ref{thm:innergen} and \ref{thm:genouter}, we obtain the following bounding box validity results.
 \begin{corollary}\label{thm:boxinnergen}
 	(Marginal inner bounding boxes)
 	Suppose Assumption \ref{ass:ex} holds and that $(X_i, Y_i)_{i = 1}^{n+1}$ is independent of the functions $s$ and $b_I$.  Given $\alpha_1 \in (0,1)$, define 
@@ -536,9 +537,295 @@ Joint results can be obtained in a similar manner to those in Section \ref{SS:jo
 		\label{fig:1}
 	\end{subfigure}
 	\label{fig:grid}
-	\caption{Additional validition examples. In each example, after the original images, the rows are (from top to bottom) the combination, then the original scores and finally the bounding box scores.}\label{fig:polpysex2}
+	\caption{Additional validition examples. In each example, after the original images, the rows are (from top to bottom) the combination of the original and distance transformed scores, then the original scores and finally the bounding box scores.}\label{fig:polpysex2}
 \end{figure}
 
+\newpage
+\subsection{Confidence sets for the bounding boxes}
+\begin{figure}[h!]
+	\begin{subfigure}{0.19\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{../figures/all_images/61.png}
+		\label{fig:1}
+	\end{subfigure}
+	\begin{subfigure}{0.19\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{../figures/all_images/114.png}
+		\label{fig:1}
+	\end{subfigure}
+	\begin{subfigure}{0.19\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{../figures/all_images/144.png}
+		\label{fig:1}
+	\end{subfigure}
+	\begin{subfigure}{0.19\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{../figures/all_images/148.png}
+		\label{fig:1}
+	\end{subfigure}
+	\begin{subfigure}{0.19\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{../figures/all_images/251.png}
+		\label{fig:1}
+	\end{subfigure}
+	\vspace{-0.35cm}
+	\\
+	\begin{subfigure}{0.19\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{../figures/validation/boundary_box_90/61.png}
+		\label{fig:1}
+	\end{subfigure}
+	\begin{subfigure}{0.19\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{../figures/validation/boundary_box_90/114.png}
+		\label{fig:1}
+	\end{subfigure}
+	\begin{subfigure}{0.19\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{../figures/validation/boundary_box_90/144.png}
+		\label{fig:1}
+	\end{subfigure}
+	\begin{subfigure}{0.19\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{../figures/validation/boundary_box_90/148.png}
+		\label{fig:1}
+	\end{subfigure}
+	\begin{subfigure}{0.19\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{../figures/validation/boundary_box_90/251.png}
+		\label{fig:1}
+	\end{subfigure}
+	\vspace{-0.35cm}
+	\\
+	\begin{subfigure}{0.19\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{../figures/all_images/7.png}
+		\label{fig:1}
+	\end{subfigure}
+	\begin{subfigure}{0.19\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{../figures/all_images/211.png}
+		\label{fig:1}
+	\end{subfigure}
+	\begin{subfigure}{0.19\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{../figures/all_images/1062.png}
+		\label{fig:1}
+	\end{subfigure}
+	\begin{subfigure}{0.19\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{../figures/all_images/398.png}
+		\label{fig:1}
+	\end{subfigure}
+	\begin{subfigure}{0.19\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{../figures/all_images/269.png}
+		\label{fig:1}
+	\end{subfigure}
+	\vspace{-0.35cm}
+	\\
+	\begin{subfigure}{0.19\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{../figures/validation/boundary_box_90/7.png}
+		\label{fig:1}
+	\end{subfigure}
+	\begin{subfigure}{0.19\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{../figures/validation/boundary_box_90/211.png}
+		\label{fig:1}
+	\end{subfigure}
+	\begin{subfigure}{0.19\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{../figures/validation/boundary_box_90/1062.png}
+		\label{fig:1}
+	\end{subfigure}
+	\begin{subfigure}{0.19\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{../figures/validation/boundary_box_90/398.png}
+		\label{fig:1}
+	\end{subfigure}
+	\begin{subfigure}{0.19\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{../figures/validation/boundary_box_90/269.png}
+		\label{fig:1}
+	\end{subfigure}
+	\label{fig:grid}
+	\caption{Conformal confidence sets for the boundary boxes themselves using the approach introduced in Section \ref{AA:BBtheory}. The ground truth outer bounding boxes are shown in yellow.}\label{fig:resbb}
+\end{figure}
+
+\subsection{Joint 90\% confidence regions}
+\begin{figure}[h!]
+	\begin{subfigure}{0.19\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{../figures/validation/joint_90/61.png}
+		\label{fig:1}
+	\end{subfigure}
+	\begin{subfigure}{0.19\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{../figures/validation/joint_90/114.png}
+		\label{fig:1}
+	\end{subfigure}
+	\begin{subfigure}{0.19\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{../figures/validation/joint_90/144.png}
+		\label{fig:1}
+	\end{subfigure}
+	\begin{subfigure}{0.19\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{../figures/validation/joint_90/148.png}
+		\label{fig:1}
+	\end{subfigure}
+	\begin{subfigure}{0.19\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{../figures/validation/joint_90/251.png}
+		\label{fig:1}
+	\end{subfigure}
+	\vspace{-0.35cm}
+	\\
+	\begin{subfigure}{0.19\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{../figures/validation/joint_90/7.png}
+		\label{fig:1}
+	\end{subfigure}
+	\begin{subfigure}{0.19\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{../figures/validation/joint_90/211.png}
+		\label{fig:1}
+	\end{subfigure}
+	\begin{subfigure}{0.19\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{../figures/validation/joint_90/1062.png}
+		\label{fig:1}
+	\end{subfigure}
+	\begin{subfigure}{0.19\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{../figures/validation/joint_90/398.png}
+		\label{fig:1}
+	\end{subfigure}
+	\begin{subfigure}{0.19\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{../figures/validation/joint_90/269.png}
+		\label{fig:1}
+	\end{subfigure}
+	\label{fig:grid}
+	\caption{Joint 90\% conformal confidence sets obtained using Corollary \ref{cor:weighting}, with $\alpha_1 = 0.02$ and $\alpha_2 = 0.08$, for the polpys images in Figure \ref{fig:res}.}\label{fig:joint}
+\end{figure}
+\newpage
+\subsection{Marginal 80 \% Confidence regions}
+\begin{figure}[h!]
+	\begin{subfigure}{0.19\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{../figures/validation/val_crs_combo_80/61.png}
+		\label{fig:1}
+	\end{subfigure}
+	\begin{subfigure}{0.19\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{../figures/validation/val_crs_combo_80/114.png}
+		\label{fig:1}
+	\end{subfigure}
+	\begin{subfigure}{0.19\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{../figures/validation/val_crs_combo_80/144.png}
+		\label{fig:1}
+	\end{subfigure}
+	\begin{subfigure}{0.19\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{../figures/validation/val_crs_combo_80/148.png}
+		\label{fig:1}
+	\end{subfigure}
+	\begin{subfigure}{0.19\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{../figures/validation/val_crs_combo_80/251.png}
+		\label{fig:1}
+	\end{subfigure}
+	\vspace{-0.35cm}
+	\\
+	\begin{subfigure}{0.19\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{../figures/validation/val_crs_combo_80/7.png}
+		\label{fig:1}
+	\end{subfigure}
+	\begin{subfigure}{0.19\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{../figures/validation/val_crs_combo_80/211.png}
+		\label{fig:1}
+	\end{subfigure}
+	\begin{subfigure}{0.19\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{../figures/validation/val_crs_combo_80/1062.png}
+		\label{fig:1}
+	\end{subfigure}
+	\begin{subfigure}{0.19\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{../figures/validation/val_crs_combo_80/398.png}
+		\label{fig:1}
+	\end{subfigure}
+	\begin{subfigure}{0.19\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{../figures/validation/val_crs_combo_80/269.png}
+		\label{fig:1}
+	\end{subfigure}
+	\label{fig:grid}
+	\caption{Marginal 80\% conformal confidence sets obtained for the polpys images in Figure \ref{fig:res}.}\label{fig:joint2}
+\end{figure}
+\subsection{Marginal 95 \% Confidence regions}
+
+\begin{figure}[h!]
+	\begin{subfigure}{0.19\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{../figures/validation/val_crs_combo_95/61.png}
+		\label{fig:1}
+	\end{subfigure}
+	\begin{subfigure}{0.19\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{../figures/validation/val_crs_combo_95/114.png}
+		\label{fig:1}
+	\end{subfigure}
+	\begin{subfigure}{0.19\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{../figures/validation/val_crs_combo_95/144.png}
+		\label{fig:1}
+	\end{subfigure}
+	\begin{subfigure}{0.19\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{../figures/validation/val_crs_combo_95/148.png}
+		\label{fig:1}
+	\end{subfigure}
+	\begin{subfigure}{0.19\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{../figures/validation/val_crs_combo_95/251.png}
+		\label{fig:1}
+	\end{subfigure}
+	\vspace{-0.35cm}
+	\\
+	\begin{subfigure}{0.19\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{../figures/validation/val_crs_combo_95/7.png}
+		\label{fig:1}
+	\end{subfigure}
+	\begin{subfigure}{0.19\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{../figures/validation/val_crs_combo_95/211.png}
+		\label{fig:1}
+	\end{subfigure}
+	\begin{subfigure}{0.19\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{../figures/validation/val_crs_combo_95/1062.png}
+		\label{fig:1}
+	\end{subfigure}
+	\begin{subfigure}{0.19\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{../figures/validation/joint_90/398.png}
+		\label{fig:1}
+	\end{subfigure}
+	\begin{subfigure}{0.19\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{../figures/validation/joint_90/269.png}
+		\label{fig:1}
+	\end{subfigure}
+	\label{fig:grid}
+	\caption{Marginal 95\% conformal confidence sets obtained using for the polpys images in Figure \ref{fig:res}. These sets are also joint 90\% confidence sets with equally weighted $\alpha_1 = \alpha_2 = 0.05$. The influence of the weighting scheme can therefore examined by comparing to Figure \ref{fig:joint}.}\label{fig:joint3}
+\end{figure}
 \newpage
 \subsection{Histograms of the coverage}
 \begin{figure}[h!]
@@ -550,6 +837,6 @@ Joint results can be obtained in a similar manner to those in Section \ref{SS:jo
 		\includegraphics[width=0.32\textwidth]{../figures/validation/val_hist_dt_outer.pdf}
 		\includegraphics[width=0.32\textwidth]{../figures/validation/val_hist_bt_outer.pdf}
 	\end{center}
-	\caption{Histograms of the coverage rates obtained across each of the validation resamples for 90\% inner and outer marginal confidence sets. We plot the results for the original scores, distance transformed scores (DT) and boundary box scores (BB) from left to right. The bounding box scores are discontinuous which is the cause of the discreteness of the rightmost histogram.}\label{fig:valhist}
+	\caption{Histograms of the coverage rates obtained across each of the validation resamples for 90\% inner and outer marginal confidence sets. We plot the results for the original scores, distance transformed scores (DT) and boundary box scores (BB) from left to right. The bounding box scores are discontinuous which is the cause of the discreteness of the rightmost histograms.}\label{fig:valhist}
 \end{figure}
 
