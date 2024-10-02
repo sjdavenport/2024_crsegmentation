@@ -2,7 +2,7 @@
 \subsection{Set up}
 Let $\mathcal{V} \subset \mathbb{R}^m$, for some dimension $m \in \mathbb{N}$, be a finite set corresponding to the domain which represents the pixels/voxels/points at which we observe imaging data. Let $\mathcal{X} = \lbrace g: \mathcal{V} \rightarrow \mathbb{R}\rbrace$ be the set of real functions on $\mathcal{V}$ and let $\mathcal{Y} = \lbrace g: \mathcal{V} \rightarrow \lbrace 0,1 \rbrace \rbrace$ be the set of all functions on $\mathcal{V}$ taking the values 0 or 1. We shall refer to elements of $\mathcal{X}$ and $\mathcal{Y}$ as images. Suppose that we observe a calibration dataset $(X_i, Y_i)_{i = 1}^n$ of random images, where $X_i: \mathcal{V} \rightarrow \mathbb{R}$ represents the $i$th observed calibration image and $Y_i:\mathcal{V} \rightarrow \lbrace 0, 1\rbrace$ outputs labels at each $v \in \mathcal{V}$ giving 1s at the true location of the objects in the image $X_i$ that we wish to identify and 0s elsewhere. Let $\mathcal{P}(\mathcal{V})$ be the set of all subsets of $\mathcal{V}$. Given a function $f:\mathcal{X} \rightarrow \mathcal{X}$, we shall write $f(X,v)$ to denote $f(X)(v)$ for all $v \in \mathcal{V}$. 
 
-Let $s:\mathcal{X}  \rightarrow \mathcal{X} $ be a score function - trained on an independent dataset - such that given an image pair $(X,Y) \in \mathcal{X}\times \mathcal{Y}$, $s(X)$ is a score image in which $s(X,v) $ is intended to be higher at the $v \in \mathcal{V}$ for which $Y(v) = 1$. The score function can for instance be the logit scores obtained from applying a deep neural network image segmentation method to the image $X$. Given $X \in \mathcal{X}$, let $\hat{M}(X) \in \mathcal{Y}$ be the predicted mask based on the segmentation method.
+Let $s:\mathcal{X}  \rightarrow \mathcal{X} $ be a score function - trained on an independent dataset - such that given an image pair $(X,Y) \in \mathcal{X}\times \mathcal{Y}$, $s(X)$ is a score image in which $s(X,v) $ is intended to be higher at the $v \in \mathcal{V}$ for which $Y(v) = 1$. The score function can for instance be the logit scores obtained from applying a deep neural network image segmentation method to the image $X$. Given $X \in \mathcal{X}$, let $\hat{M}(X) \in \mathcal{Y}$ be the predicted mask given by the model which is assumed to be obtained using the scores $s(X)$.
 %Let $T(Y) = \left\lbrace v\in \mathcal{V}: Y(v) = 1 \right\rbrace$ correspond to the true location of the objects in the image $X$. 
 
 In what follows we will use the calibration dataset to construct confidence functions $I,O:  \mathcal{X}  \rightarrow \mathcal{P}(\mathcal{V})$ such that for a new image pair $(X,Y)$, given error rates $\alpha_1, \alpha_2 \in (0,1)$ we have
@@ -38,18 +38,18 @@ Given this we construct confidence sets as follows.
 		\lambda_I(\alpha_1) = \inf\left\lbrace \lambda: \frac{1}{n} \sum_{i = 1}^n 1\left[ \tau_i\leq \lambda \right] \geq \frac{\lceil (1-\alpha_1)(n+1) \rceil}{n}\right\rbrace,
 	\end{equation*}
 %	be the upper $\alpha_1$ quantile of $(\tau_i)_{i = 1}^n$
-	and define $I(X) = \lbrace v \in \mathcal{V}: f_I(s(X), v) >\lambda_I(\alpha_2)  \rbrace $. Then,
+	and define $I(X) = \lbrace v \in \mathcal{V}: f_I(s(X), v) >\lambda_I(\alpha_1)  \rbrace $. Then,
 	\begin{equation}\label{eq:probstat}
 		\mathbb{P}\left( I(X_{n+1}) \subseteq\lbrace v\in \mathcal{V}: Y_{n+1}(v) = 1 \rbrace \right) \geq 1 - \alpha_1.
 	\end{equation}
 \end{theorem}
 \begin{proof}
-	Under Assumptions \ref{ass:ex} and \ref{ass:indep}, exchangeability of the image pairs implies exchangeability of the sequence $(\tau_i)_{i = 1}^{n+1}$. In particular, as $\lambda_I(\alpha_1)$ is the upper $\alpha_1$ quantile of the distribution of $(\tau_i)_{i = 1}^{n} \cup \lbrace \infty \rbrace $ and so, by Lemma 1 of \cite{Tibshirani2019}, it follows that 
+	Under Assumptions \ref{ass:ex} and \ref{ass:indep}, exchangeability of the image pairs implies exchangeability of the sequence $(\tau_i)_{i = 1}^{n+1}$. In particular, $\lambda_I(\alpha_1)$ is the upper $\alpha_1$ quantile of the distribution of $(\tau_i)_{i = 1}^{n} \cup \lbrace \infty \rbrace $ and so, by Lemma 1 of \cite{Tibshirani2019}, it follows that 
 	\begin{equation*}
 	\mathbb{P}\left(\tau_{n+1} \leq \lambda_I(\alpha_1) \right) \geq 1 - \alpha_1. 
 	\end{equation*}
-	Now consider the event that $\tau_{n+1}\leq \lambda_I(\alpha)$. On this event, $ f_I(s(X_{n+1}),v) \leq \lambda_I(\alpha) $
-	for all $v \in \mathcal{V}$ such that $Y_{n+1}(v) = 0$. As such, given $u \in \mathcal{V}$ such that $ f_I(s(X_{n+1}), u) > \lambda_I(\alpha) $, we must have $Y_{n+1}(u) = 1$. It then follows that $I(X_{n+1}) \subseteq \lbrace v\in \mathcal{V}: Y_{n+1}(v) = 1 \rbrace  $ and in particular that 
+	Now consider the event that $\tau_{n+1}\leq \lambda_I(\alpha_1)$. On this event, $ f_I(s(X_{n+1}),v) \leq \lambda_I(\alpha_1) $
+	for all $v \in \mathcal{V}$ such that $Y_{n+1}(v) = 0$. As such, given $u \in \mathcal{V}$ such that $ f_I(s(X_{n+1}), u) > \lambda_I(\alpha_1) $, we must have $Y_{n+1}(u) = 1$ and so $I(X_{n+1}) \subseteq \lbrace v\in \mathcal{V}: Y_{n+1}(v) = 1 \rbrace  $. It thus follows that
 	\begin{equation*}
 	\mathbb{P}\left( I(X_{n+1}) \subseteq \lbrace v\in \mathcal{V}: Y_{n+1}(v) = 1 \rbrace  \right) \geq \mathbb{P}\left(\tau_{n+1} \leq \lambda_I(\alpha_1) \right) \geq 1 - \alpha_1. 
 \end{equation*}
@@ -69,7 +69,7 @@ Given this we construct confidence sets as follows.
 \end{theorem}
 \begin{proof}
 	Arguing as in the proof of Theorem \ref{thm:inner}, it follows that $\mathbb{P}\left(\gamma_{n+1} \leq \lambda_O(\alpha_2) \right) \geq 1 - \alpha_2.$
-	Now on the event that $\gamma_{n+1}\leq \lambda_O(\alpha_2)$ we have $ -f_O(s(X_{n+1},v)) \leq \lambda_O(\alpha_2) $ for all $v \in \mathcal{V}$ such that $Y_{n+1}(v) = 1$. As such, given $u \in \mathcal{V}$ such that $ -f_O(s(X_{n+1},u)) > \lambda_I(\alpha) $, we must have $Y_{n+1}(u) = 0$ and so $	O(X)^C  \subseteq \lbrace v\in \mathcal{V}: Y_{n+1}(v) = 0 \rbrace  $. The result then follows as above.
+	Now on the event that $\gamma_{n+1}\leq \lambda_O(\alpha_2)$ we have $ -f_O(s(X_{n+1}),v) \leq \lambda_O(\alpha_2) $ for all $v \in \mathcal{V}$ such that $Y_{n+1}(v) = 1$. As such, given $u \in \mathcal{V}$ such that $ -f_O(s(X_{n+1}),u) > \lambda_I(\alpha) $, we must have $Y_{n+1}(u) = 0$ and so $	O(X)^C  \subseteq \lbrace v\in \mathcal{V}: Y_{n+1}(v) = 0 \rbrace  $. The result then follows as above.
 \end{proof}
 %\noindent The proof of Theorem \ref{thm:outer} follows that of Theorem \ref{thm:inner} and is thus omitted. 
 \begin{remark}\label{rmk:max}
@@ -101,7 +101,7 @@ Instead of focusing on marginal control one can instead spend all of the $\alpha
 		\mathbb{P}\left( I(X_{n+1}) \subseteq \lbrace v\in \mathcal{V}: Y_{n+1}(v) = 1 \rbrace \subseteq O(X_{n+1})  \right) \geq  1-\alpha. 
 	\end{equation}
 \end{corollary}
-Alternatively joint control can be obtained using the joint distribution of the maxima of the logit scores as follows.
+Alternatively joint control can be obtained using the joint distribution of the maxima of the transformed logit scores as follows.
 \begin{theorem}\label{thm:joint}
 	(Joint coverage) Assume that Assumption \ref{ass:ex} and \ref{ass:indep}  hold. Given $\alpha \in (0,1)$, define 
 	\begin{equation*}
@@ -118,7 +118,7 @@ Alternatively joint control can be obtained using the joint distribution of the 
 \end{proof}
 
 \begin{remark}
-	The advantage of Corollary \ref{cor:weighting} is that the resulting inner and outer sets provide pivotal inference - not favouring one side or the other - which can be important when the distribution of the score function is asymmetric. Moreover the levels $\alpha_1$ and $\alpha_2$ can be used to provide a greater weight to either inner or outer sets whilst maintaining joint coverage. Theorem \ref{thm:joint} may instead be useful when there is strong dependence between $\tau_{n+1}$ and $\gamma_{n+1}$. However, when this dependence is low, scale differences in the scores can lead to a lack of pivotality. This can be improved by appropriate choices of the score transformations $f_I$ and $f_O$ however in practice it may be simpler to construct joint sets using Corollary \ref{cor:weighting}. 
+	The advantage of Corollary \ref{cor:weighting} is that the resulting inner and outer sets provide pivotal inference - not favouring one side or the other - which can be important when the distribution of the score function is asymmetric. Moreover the levels $\alpha_1$ and $\alpha_2$ can be used to provide a greater weight to either inner or outer sets whilst maintaining joint coverage. Theorem \ref{thm:joint} may instead be useful when there is strong dependence between $\tau_{n+1}$ and $\gamma_{n+1}$. However, when this dependence is weak, scale differences in the scores can lead to a lack of pivotality. This can be improved by appropriate choices of the score transformations $f_I$ and $f_O$ however in practice it may be simpler to construct joint sets using Corollary \ref{cor:weighting}. 
 \end{remark}
 
 %Typically in our applications, $X_{n+1}$ will observed with $Y$ unknown.
@@ -190,9 +190,9 @@ In order to optimize the size of our confidence sets we set aside 298 of the 179
 
 The score transformations we considered were the identity (after softmax transformation) and distance transformations of the predicted masks:  taking $f_I(s(X), v) = f_O(s(X), v) = d_\rho(\hat{M}(X), v)$, where $\rho$ is the Euclidean metric. We also compare to the results of using the bounding box transformations $f_I = b_I$ and $f_O = b_O$ which correspond to transforming the predicted bounding box using a distance transformation based on the chessboard metric and are defined formally in Appendix \ref{AA:BBtheory}. For the purposes of plotting we used the combined bounding box scores defined in Definition \ref{dfn:BBS}.
 
-From the histograms in Figure \ref{scorehists} we can see that thresholding the original scores at the inner threshold well separates the data. However this is not the case for the outer threshold for which the data is better separated using the distance transformed and bounding box scores. Figure \ref{fig:learning} shows PraNet scores for 2 typical examples, along with surface plots of the transformed scores and corresponding marginal confidence regions (with thresholds obtained from calibrating over the learning dataset). From these we see that PraNet typically assigns a high softmax score to the polpys regions which decreases in the regions directly around the  boundary of the tumor before returning to a higher level away from the polpys. This results in tight inner sets but large outer sets as the model struggles to identify where the tumor ends. Instead the distance transformed and bounding box scores are much better at providing outer bounds on the tumor, with distance transformed scores providing a tighter outside fit. Additional examples are shown in Figures \ref{fig:learning2} and \ref{fig:learning3} and have the same conclusion.
+From the histograms in Figure \ref{scorehists} we can see that thresholding the original scores at the inner threshold well separates the data. However this is not the case for the outer threshold for which the data is better separated using the distance transformed and bounding box scores. Figure \ref{fig:learning} shows PraNet scores for 2 typical examples, along with surface plots of the transformed scores and corresponding $90\%$ marginal confidence regions (with thresholds obtained from calibrating over the learning dataset). From these we see that PraNet typically assigns a high softmax score to the polpys regions which decreases in the regions directly around the  boundary of the tumor before returning to a higher level away from the polpys. This results in tight inner sets but large outer sets as the model struggles to identify where the tumor ends. Instead the distance transformed and bounding box scores are much better at providing outer bounds on the tumor, with distance transformed scores providing a tighter outside fit. Additional examples are shown in Figures \ref{fig:learning2} and \ref{fig:learning3} and have the same conclusion.
 
-Based on the images set aside we can also learn the right balance of $\alpha$ to use for joint confidence sets. A ratio of 4 to 1 seems appropriate here in light of the fact that in this dataset identifying where a given tumor ends appears to be more challenging than identifying pixels where we are sure that there is a tumor. To achieve joint coverage of $90\%$ this involves taking $\alpha_1 = 0.02$ and $\alpha_2 = 0.08$.
+Based on the results of the learning dataset we decided to combine the best of the approaches for the inner and outer sets respectively for the inference in Section \ref{SS:val}, taking $f_I$ to be the identity and $f_O$ to be the distance transformation of the predicted mask in order to optimize performance. We can also use the learning dataset to determine how to weight the $\alpha$ used to obtain joint confidence sets. A ratio of 4 to 1 seems appropriate here in light of the fact that in this dataset identifying where a given tumor ends appears to be more challenging than identifying pixels where we are sure that there is a tumor. To achieve joint coverage of $90\%$ this involves taking $\alpha_1 = 0.02$ and $\alpha_2 = 0.08$.
 
 \begin{figure}
 %	\centering
@@ -228,9 +228,7 @@ Based on the images set aside we can also learn the right balance of $\alpha$ to
 
 %\subsection{}
 \subsection{Illustrating the performance of conformal confidence sets}\label{SS:val}
-Based on the results of the learning dataset we decided to combine the best of the approaches for the inner and outer sets respectively, taking $f_I$ to be the identity and $f_O$ to be the distance transformation of the predicted mask.
-
-We divide the set aside 1500 images at random into 1000 for conformal calibration, and 500 for testing. The resulting conformal confidence sets for this data are shown in Figure \ref{fig:res}. The inner sets are shown in red and represent regions where we can have high confidence of the presence of polyps. The outer sets are shown in blue and represent regions in which the polpys may be. The ground truth mask for each polpys is shown in yellow and can be compared to the original images. In each of the examples considered the ground truth is bounded from within by the inner set and from without by the outer set. 
+In order to illustrate the full extent of our methods in practice we divide the set aside 1500 images at random into 1000 for conformal calibration, and 500 for testing. The resulting conformal confidence sets for 10 example images from the test dataset are shown in Figure \ref{fig:res}, with inner sets obtained using the original scores and outer sets using the distance transformed scores. The inner sets are shown in red and represent regions where we can have high confidence of the presence of polyps. The outer sets are shown in blue and represent regions in which the polpys may be. The ground truth mask for each polpys is shown in yellow and can be compared to the original images. In each of the examples considered the ground truth is bounded from within by the inner set and from without by the outer set. 
 \begin{figure}[h!]
 	\begin{subfigure}{0.19\textwidth}
 		\centering
@@ -426,7 +424,7 @@ We divide the set aside 1500 images at random into 1000 for conformal calibratio
 %\end{figure}
 Results for confidence sets based on the original and bounding box scores as well as additional examples are available in Figures \ref{fig:polpysex} and \ref{fig:polpysex2}. Confidence sets can also be provided for the bounding boxes themselves if that is the object of interest, see Figure \ref{fig:resbb}. Joint $90\%$ confidence sets are displayed in Figure \ref{fig:joint}, from which we can see that with alpha-weighting (i.e. taking $\alpha_1 = 0.02$ and $\alpha_2 = 0.08$) we are able to obtain joint confidence sets which are still relatively tight.
 
-These results collectively show that we can provide informative confidence bounds for the location of the polpys and allow us to use the PraNet segmentation model with uncertainty guarantees. From Figure \ref{fig:res} we can see that the method, which combines the original and the transformed scores, effectively delineates polyp regions. These results also help to make us aware of the limitations of the model: improved uncertainty quantification would require an improved segmentation model. 
+These results collectively show that we can provide informative confidence bounds for the location of the polpys and allow us to use the PraNet segmentation model with uncertainty guarantees. From Figure \ref{fig:res} we can see that the method, which combines the original and the transformed scores, effectively delineates polyps regions. These results also help to make us aware of the limitations of the model, allowing medical practioners to follow up on outer sets which do not contain inner sets  in order to determine whether a tumor is present. Improved uncertainty quantification would require an improved segmentation model. 
 %Larger uncertainty bounds may require specialist follow-up in order to be certain about the true extent of the observed tumor. 
 
 More precise results can be obtained at the expense of probabilistic guarantees, see Figures \ref{fig:joint2} and \ref{fig:joint3}. A trade off must be made between precision and confidence. The most informative confidence level can be determined in advance based on the learning dataset and the desired type of coverage.
