@@ -18,17 +18,18 @@
 \citation{Jalalifar2022}
 \citation{Gupta2020,Patz2014}
 \citation{Bates2021}
+\citation{Wieslander2020}
 \citation{Mossina2024}
-\@writefile{toc}{\contentsline {section}{\numberline {2}Theory}{2}{section.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.1}Set up}{2}{subsection.2.1}\protected@file@percent }
 \citation{Angelopoulos2021}
+\@writefile{toc}{\contentsline {section}{\numberline {2}Theory}{3}{section.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.1}Set up}{3}{subsection.2.1}\protected@file@percent }
 \newlabel{eq:probstat1}{{1}{3}{Set up}{equation.2.1}{}}
-\newlabel{eq:probstat2}{{2}{3}{Set up}{equation.2.2}{}}
+\newlabel{eq:probstat3}{{2}{3}{Set up}{equation.2.2}{}}
 \newlabel{ass:ex}{{1}{3}{}{assumption.1}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.2}Marginal confidence sets}{3}{subsection.2.2}\protected@file@percent }
 \newlabel{SS:MCS}{{2.2}{3}{Marginal confidence sets}{subsection.2.2}{}}
 \citation{Tibshirani2019}
-\citation{Worsley1992,Bowring2019}
+\citation{Worsley1992}
 \newlabel{ass:indep}{{2}{4}{}{assumption.2}{}}
 \newlabel{thm:inner}{{2.1}{4}{}{theorem.2.1}{}}
 \newlabel{eq:probstat}{{3}{4}{}{equation.2.3}{}}
@@ -54,76 +55,80 @@
 \citation{Silva2014}
 \citation{PraNet2020}
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.5}Constructing confidence sets from bounding boxes}{6}{subsection.2.5}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {3}Application to Polpys tumor segmentation}{6}{section.3}\protected@file@percent }
-\newlabel{SS:res}{{3}{6}{Application to Polpys tumor segmentation}{section.3}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Histograms of the distribution of the scores on the learning dataset within and outside the ground truth masks. Thresholds obtained for the marginal $90\%$ inner and outer confidence sets, based on the respective scores, are displayed in red and blue.}}{7}{figure.caption.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Histograms of the distribution of the scores over the whole image within and outside the ground truth masks. Thresholds obtained for the marginal $90\%$ inner and outer confidence sets, obtained based on quantiles of the distribution of $(\tau _i)_{i = 1}^n$ and $(\gamma _i)_{i = 1}^n$, are displayed in red and blue.}}{7}{figure.caption.1}\protected@file@percent }
 \providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
-\newlabel{scorehists}{{1}{7}{Histograms of the distribution of the scores on the learning dataset within and outside the ground truth masks. Thresholds obtained for the marginal $90\%$ inner and outer confidence sets, based on the respective scores, are displayed in red and blue}{figure.caption.1}{}}
+\newlabel{scorehists}{{1}{7}{Histograms of the distribution of the scores over the whole image within and outside the ground truth masks. Thresholds obtained for the marginal $90\%$ inner and outer confidence sets, obtained based on quantiles of the distribution of $(\tau _i)_{i = 1}^n$ and $(\gamma _i)_{i = 1}^n$, are displayed in red and blue}{figure.caption.1}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {3}Application to Polpys tumor segmentation}{7}{section.3}\protected@file@percent }
+\newlabel{SS:res}{{3}{7}{Application to Polpys tumor segmentation}{section.3}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Choosing a score transformation}{7}{subsection.3.1}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Illustrating the performance of the different score transformations on the learning dataset. We display 2 example tumors and present the results of each in 8 panels. These panels are as follows. Bottom right: the original image of the polpys tumor. Top Left: an intensity plot of the scores obtained from PraNet with purple/yellow indicating areas of lower/higher assigned probability. For the remaining panels, 3 different score transformations are shown which from left to right are the original scores, distance transformed scores $d_\rho (\hat  {M}(X), v)$ and bounding box scores (obtained using the combined bounding box score $b_M$ defined in Definition \ref {dfn:BBS}). In each of the panels on the top row a surface plot of the transformed PraNet scores is shown, along with the marginal conformal thresholds which are used to obtain the marginal 90\% inner and outer sets. These thresholds are illustrated via red and blue planes respectively and are obtained over the learning dataset. The panels on the bottom show the corresponding conformal confidence sets. Here the inner set is shown in red, plotted over the ground truth mask of the polyps, shown in yellow, plotted over the outer set which is shown in blue. The outer set contains the ground truth mask which contains the inner set in all examples. From these figures we see that the original scores provide tight inner confidence sets and the distance transformed scores instead provide tight outer confidence sets. The conclusion from the learning dataset is therefore that it makes sense to combine these two score transformations.}}{8}{figure.caption.2}\protected@file@percent }
-\newlabel{fig:learning}{{2}{8}{Illustrating the performance of the different score transformations on the learning dataset. We display 2 example tumors and present the results of each in 8 panels. These panels are as follows. Bottom right: the original image of the polpys tumor. Top Left: an intensity plot of the scores obtained from PraNet with purple/yellow indicating areas of lower/higher assigned probability. For the remaining panels, 3 different score transformations are shown which from left to right are the original scores, distance transformed scores $d_\rho (\hat {M}(X), v)$ and bounding box scores (obtained using the combined bounding box score $b_M$ defined in Definition \ref {dfn:BBS}). In each of the panels on the top row a surface plot of the transformed PraNet scores is shown, along with the marginal conformal thresholds which are used to obtain the marginal 90\% inner and outer sets. These thresholds are illustrated via red and blue planes respectively and are obtained over the learning dataset. The panels on the bottom show the corresponding conformal confidence sets. Here the inner set is shown in red, plotted over the ground truth mask of the polyps, shown in yellow, plotted over the outer set which is shown in blue. The outer set contains the ground truth mask which contains the inner set in all examples. From these figures we see that the original scores provide tight inner confidence sets and the distance transformed scores instead provide tight outer confidence sets. The conclusion from the learning dataset is therefore that it makes sense to combine these two score transformations}{figure.caption.2}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Illustrating the performance of conformal confidence sets}{9}{subsection.3.2}\protected@file@percent }
-\newlabel{SS:val}{{3.2}{9}{Illustrating the performance of conformal confidence sets}{subsection.3.2}{}}
-\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 237}}{9}{Illustrating the performance of conformal confidence sets}{figure.caption.3}{}}
-\newlabel{sub@fig:1}{{}{9}{Illustrating the performance of conformal confidence sets}{figure.caption.3}{}}
-\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 242}}{9}{Illustrating the performance of conformal confidence sets}{figure.caption.3}{}}
-\newlabel{sub@fig:1}{{}{9}{Illustrating the performance of conformal confidence sets}{figure.caption.3}{}}
-\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 247}}{9}{Illustrating the performance of conformal confidence sets}{figure.caption.3}{}}
-\newlabel{sub@fig:1}{{}{9}{Illustrating the performance of conformal confidence sets}{figure.caption.3}{}}
-\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 252}}{9}{Illustrating the performance of conformal confidence sets}{figure.caption.3}{}}
-\newlabel{sub@fig:1}{{}{9}{Illustrating the performance of conformal confidence sets}{figure.caption.3}{}}
-\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 257}}{9}{Illustrating the performance of conformal confidence sets}{figure.caption.3}{}}
-\newlabel{sub@fig:1}{{}{9}{Illustrating the performance of conformal confidence sets}{figure.caption.3}{}}
-\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 264}}{9}{Illustrating the performance of conformal confidence sets}{figure.caption.3}{}}
-\newlabel{sub@fig:1}{{}{9}{Illustrating the performance of conformal confidence sets}{figure.caption.3}{}}
-\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 269}}{9}{Illustrating the performance of conformal confidence sets}{figure.caption.3}{}}
-\newlabel{sub@fig:1}{{}{9}{Illustrating the performance of conformal confidence sets}{figure.caption.3}{}}
-\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 274}}{9}{Illustrating the performance of conformal confidence sets}{figure.caption.3}{}}
-\newlabel{sub@fig:1}{{}{9}{Illustrating the performance of conformal confidence sets}{figure.caption.3}{}}
-\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 279}}{9}{Illustrating the performance of conformal confidence sets}{figure.caption.3}{}}
-\newlabel{sub@fig:1}{{}{9}{Illustrating the performance of conformal confidence sets}{figure.caption.3}{}}
-\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 284}}{9}{Illustrating the performance of conformal confidence sets}{figure.caption.3}{}}
-\newlabel{sub@fig:1}{{}{9}{Illustrating the performance of conformal confidence sets}{figure.caption.3}{}}
-\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 291}}{9}{Illustrating the performance of conformal confidence sets}{figure.caption.3}{}}
-\newlabel{sub@fig:1}{{}{9}{Illustrating the performance of conformal confidence sets}{figure.caption.3}{}}
-\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 296}}{9}{Illustrating the performance of conformal confidence sets}{figure.caption.3}{}}
-\newlabel{sub@fig:1}{{}{9}{Illustrating the performance of conformal confidence sets}{figure.caption.3}{}}
-\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 301}}{9}{Illustrating the performance of conformal confidence sets}{figure.caption.3}{}}
-\newlabel{sub@fig:1}{{}{9}{Illustrating the performance of conformal confidence sets}{figure.caption.3}{}}
-\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 306}}{9}{Illustrating the performance of conformal confidence sets}{figure.caption.3}{}}
-\newlabel{sub@fig:1}{{}{9}{Illustrating the performance of conformal confidence sets}{figure.caption.3}{}}
-\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 311}}{9}{Illustrating the performance of conformal confidence sets}{figure.caption.3}{}}
-\newlabel{sub@fig:1}{{}{9}{Illustrating the performance of conformal confidence sets}{figure.caption.3}{}}
-\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 318}}{9}{Illustrating the performance of conformal confidence sets}{figure.caption.3}{}}
-\newlabel{sub@fig:1}{{}{9}{Illustrating the performance of conformal confidence sets}{figure.caption.3}{}}
-\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 323}}{9}{Illustrating the performance of conformal confidence sets}{figure.caption.3}{}}
-\newlabel{sub@fig:1}{{}{9}{Illustrating the performance of conformal confidence sets}{figure.caption.3}{}}
-\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 328}}{9}{Illustrating the performance of conformal confidence sets}{figure.caption.3}{}}
-\newlabel{sub@fig:1}{{}{9}{Illustrating the performance of conformal confidence sets}{figure.caption.3}{}}
-\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 333}}{9}{Illustrating the performance of conformal confidence sets}{figure.caption.3}{}}
-\newlabel{sub@fig:1}{{}{9}{Illustrating the performance of conformal confidence sets}{figure.caption.3}{}}
-\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 338}}{9}{Illustrating the performance of conformal confidence sets}{figure.caption.3}{}}
-\newlabel{sub@fig:1}{{}{9}{Illustrating the performance of conformal confidence sets}{figure.caption.3}{}}
-\newlabel{fig:grid}{{\caption@xref {fig:grid}{ on input line 340}}{9}{Illustrating the performance of conformal confidence sets}{figure.caption.3}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Conformal confidence sets for the polyps data. For each set of polpys images the top row shows the original endoscopic images with visible polyp and the second row presents the conformal confidence sets, with the ground truth masks shown in yellow. The inner sets and outer sets are shown in red and blue respectively. The figure shows the benefits of combining different score transformations for the inner and outer sets and illustrates the method's effectiveness in accurately identifying polyp regions whilst providing informative spatial uncertainty bounds.}}{9}{figure.caption.3}\protected@file@percent }
-\newlabel{fig:res}{{3}{9}{Conformal confidence sets for the polyps data. For each set of polpys images the top row shows the original endoscopic images with visible polyp and the second row presents the conformal confidence sets, with the ground truth masks shown in yellow. The inner sets and outer sets are shown in red and blue respectively. The figure shows the benefits of combining different score transformations for the inner and outer sets and illustrates the method's effectiveness in accurately identifying polyp regions whilst providing informative spatial uncertainty bounds}{figure.caption.3}{}}
-\citation{}
-\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces False coverage levels of the inner and outer sets averaged over 1000 validations for the original, distance transformed (DT) and bounding box (BB) scores.}}{10}{figure.caption.4}\protected@file@percent }
-\newlabel{fig:coverage}{{4}{10}{False coverage levels of the inner and outer sets averaged over 1000 validations for the original, distance transformed (DT) and bounding box (BB) scores}{figure.caption.4}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}Measuring the coverge rate}{10}{subsection.3.3}\protected@file@percent }
-\newlabel{SS:cov}{{3.3}{10}{Measuring the coverge rate}{subsection.3.3}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Measuring the efficiency of the bound using the ratio of the diameter of the coverage set to the diameter of the true tumor mask The closer the ratio is to one the better. Higher coverage rates lead to a lower efficiency. The original scores provide the most efficient inner sets and the distance transformed scores provide the most efficient outer sets.}}{11}{figure.caption.5}\protected@file@percent }
-\newlabel{fig:efficiency}{{5}{11}{Measuring the efficiency of the bound using the ratio of the diameter of the coverage set to the diameter of the true tumor mask The closer the ratio is to one the better. Higher coverage rates lead to a lower efficiency. The original scores provide the most efficient inner sets and the distance transformed scores provide the most efficient outer sets}{figure.caption.5}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.4}Comparing the efficiency of the bounds}{11}{subsection.3.4}\protected@file@percent }
+\newlabel{SS:learn}{{3.1}{7}{Choosing a score transformation}{subsection.3.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Illustrating the performance of conformal confidence sets}{8}{subsection.3.2}\protected@file@percent }
+\newlabel{SS:val}{{3.2}{8}{Illustrating the performance of conformal confidence sets}{subsection.3.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}Measuring the coverge rate}{8}{subsection.3.3}\protected@file@percent }
+\newlabel{SS:cov}{{3.3}{8}{Measuring the coverge rate}{subsection.3.3}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Illustrating the performance of the different score transformations on the learning dataset. We display 2 example tumors and present the results of each in 8 panels. These panels are as follows. Bottom left: the original image of the polpys tumor. Top Left: an intensity plot of the scores obtained from PraNet with purple/yellow indicating areas of lower/higher assigned probability. For the remaining panels, 3 different score transformations are shown which from left to right are the original scores, distance transformed scores $d_\rho (\hat  {M}(X), v)$ and bounding box scores (obtained using the combined bounding box score $b_M$ defined in Definition \ref {dfn:BBS}). In each of the panels on the top row a surface plot of the transformed PraNet scores is shown, along with the conformal thresholds which are used to obtain the marginal 90\% inner and outer confidence sets. These thresholds are illustrated via red and blue planes respectively and are obtained over the learning dataset. The panels on the bottom row of each example show the corresponding conformal confidence sets. Here the inner set is shown in red, plotted over the ground truth mask of the polyps, shown in yellow, plotted over the outer set which is shown in blue. The outer set contains the ground truth mask which contains the inner set in all examples. From these figures we see that the original scores provide tight inner confidence sets and the distance transformed scores instead provide tight outer confidence sets. The conclusion from the learning dataset is therefore that it makes sense to combine these two score transformations.}}{9}{figure.caption.2}\protected@file@percent }
+\newlabel{fig:learning}{{2}{9}{Illustrating the performance of the different score transformations on the learning dataset. We display 2 example tumors and present the results of each in 8 panels. These panels are as follows. Bottom left: the original image of the polpys tumor. Top Left: an intensity plot of the scores obtained from PraNet with purple/yellow indicating areas of lower/higher assigned probability. For the remaining panels, 3 different score transformations are shown which from left to right are the original scores, distance transformed scores $d_\rho (\hat {M}(X), v)$ and bounding box scores (obtained using the combined bounding box score $b_M$ defined in Definition \ref {dfn:BBS}). In each of the panels on the top row a surface plot of the transformed PraNet scores is shown, along with the conformal thresholds which are used to obtain the marginal 90\% inner and outer confidence sets. These thresholds are illustrated via red and blue planes respectively and are obtained over the learning dataset. The panels on the bottom row of each example show the corresponding conformal confidence sets. Here the inner set is shown in red, plotted over the ground truth mask of the polyps, shown in yellow, plotted over the outer set which is shown in blue. The outer set contains the ground truth mask which contains the inner set in all examples. From these figures we see that the original scores provide tight inner confidence sets and the distance transformed scores instead provide tight outer confidence sets. The conclusion from the learning dataset is therefore that it makes sense to combine these two score transformations}{figure.caption.2}{}}
+\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 236}}{10}{Illustrating the performance of conformal confidence sets}{figure.caption.3}{}}
+\newlabel{sub@fig:1}{{}{10}{Illustrating the performance of conformal confidence sets}{figure.caption.3}{}}
+\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 241}}{10}{Illustrating the performance of conformal confidence sets}{figure.caption.3}{}}
+\newlabel{sub@fig:1}{{}{10}{Illustrating the performance of conformal confidence sets}{figure.caption.3}{}}
+\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 246}}{10}{Illustrating the performance of conformal confidence sets}{figure.caption.3}{}}
+\newlabel{sub@fig:1}{{}{10}{Illustrating the performance of conformal confidence sets}{figure.caption.3}{}}
+\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 251}}{10}{Illustrating the performance of conformal confidence sets}{figure.caption.3}{}}
+\newlabel{sub@fig:1}{{}{10}{Illustrating the performance of conformal confidence sets}{figure.caption.3}{}}
+\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 256}}{10}{Illustrating the performance of conformal confidence sets}{figure.caption.3}{}}
+\newlabel{sub@fig:1}{{}{10}{Illustrating the performance of conformal confidence sets}{figure.caption.3}{}}
+\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 263}}{10}{Illustrating the performance of conformal confidence sets}{figure.caption.3}{}}
+\newlabel{sub@fig:1}{{}{10}{Illustrating the performance of conformal confidence sets}{figure.caption.3}{}}
+\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 268}}{10}{Illustrating the performance of conformal confidence sets}{figure.caption.3}{}}
+\newlabel{sub@fig:1}{{}{10}{Illustrating the performance of conformal confidence sets}{figure.caption.3}{}}
+\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 273}}{10}{Illustrating the performance of conformal confidence sets}{figure.caption.3}{}}
+\newlabel{sub@fig:1}{{}{10}{Illustrating the performance of conformal confidence sets}{figure.caption.3}{}}
+\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 278}}{10}{Illustrating the performance of conformal confidence sets}{figure.caption.3}{}}
+\newlabel{sub@fig:1}{{}{10}{Illustrating the performance of conformal confidence sets}{figure.caption.3}{}}
+\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 283}}{10}{Illustrating the performance of conformal confidence sets}{figure.caption.3}{}}
+\newlabel{sub@fig:1}{{}{10}{Illustrating the performance of conformal confidence sets}{figure.caption.3}{}}
+\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 290}}{10}{Illustrating the performance of conformal confidence sets}{figure.caption.3}{}}
+\newlabel{sub@fig:1}{{}{10}{Illustrating the performance of conformal confidence sets}{figure.caption.3}{}}
+\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 295}}{10}{Illustrating the performance of conformal confidence sets}{figure.caption.3}{}}
+\newlabel{sub@fig:1}{{}{10}{Illustrating the performance of conformal confidence sets}{figure.caption.3}{}}
+\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 300}}{10}{Illustrating the performance of conformal confidence sets}{figure.caption.3}{}}
+\newlabel{sub@fig:1}{{}{10}{Illustrating the performance of conformal confidence sets}{figure.caption.3}{}}
+\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 305}}{10}{Illustrating the performance of conformal confidence sets}{figure.caption.3}{}}
+\newlabel{sub@fig:1}{{}{10}{Illustrating the performance of conformal confidence sets}{figure.caption.3}{}}
+\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 310}}{10}{Illustrating the performance of conformal confidence sets}{figure.caption.3}{}}
+\newlabel{sub@fig:1}{{}{10}{Illustrating the performance of conformal confidence sets}{figure.caption.3}{}}
+\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 317}}{10}{Illustrating the performance of conformal confidence sets}{figure.caption.3}{}}
+\newlabel{sub@fig:1}{{}{10}{Illustrating the performance of conformal confidence sets}{figure.caption.3}{}}
+\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 322}}{10}{Illustrating the performance of conformal confidence sets}{figure.caption.3}{}}
+\newlabel{sub@fig:1}{{}{10}{Illustrating the performance of conformal confidence sets}{figure.caption.3}{}}
+\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 327}}{10}{Illustrating the performance of conformal confidence sets}{figure.caption.3}{}}
+\newlabel{sub@fig:1}{{}{10}{Illustrating the performance of conformal confidence sets}{figure.caption.3}{}}
+\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 332}}{10}{Illustrating the performance of conformal confidence sets}{figure.caption.3}{}}
+\newlabel{sub@fig:1}{{}{10}{Illustrating the performance of conformal confidence sets}{figure.caption.3}{}}
+\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 337}}{10}{Illustrating the performance of conformal confidence sets}{figure.caption.3}{}}
+\newlabel{sub@fig:1}{{}{10}{Illustrating the performance of conformal confidence sets}{figure.caption.3}{}}
+\newlabel{fig:grid}{{\caption@xref {fig:grid}{ on input line 339}}{10}{Illustrating the performance of conformal confidence sets}{figure.caption.3}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Conformal confidence sets for the polyps data. For each set of polpys images the top row shows the original endoscopic images with visible polyps and the second row presents the marginal 90\% confidence sets, with ground truth masks shown in yellow. The inner sets and outer sets are shown in red and blue, obtained using the identity and distance transforms respectively. The figure shows the benefits of combining different score transformations for the inner and outer sets and illustrates the method's effectiveness in accurately identifying polyp regions whilst providing informative spatial uncertainty bounds.}}{10}{figure.caption.3}\protected@file@percent }
+\newlabel{fig:res}{{3}{10}{Conformal confidence sets for the polyps data. For each set of polpys images the top row shows the original endoscopic images with visible polyps and the second row presents the marginal 90\% confidence sets, with ground truth masks shown in yellow. The inner sets and outer sets are shown in red and blue, obtained using the identity and distance transforms respectively. The figure shows the benefits of combining different score transformations for the inner and outer sets and illustrates the method's effectiveness in accurately identifying polyp regions whilst providing informative spatial uncertainty bounds}{figure.caption.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.4}Comparing the efficiency of the bounds}{10}{subsection.3.4}\protected@file@percent }
+\citation{Andeol2023}
+\citation{chen2017density}
+\citation{Bowring2019}
+\citation{Mejia2020}
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Coverage levels of the inner and outer sets averaged over 1000 validations for the original, distance transformed (DT) and bounding box (BB) scores.}}{11}{figure.caption.4}\protected@file@percent }
+\newlabel{fig:coverage}{{4}{11}{Coverage levels of the inner and outer sets averaged over 1000 validations for the original, distance transformed (DT) and bounding box (BB) scores}{figure.caption.4}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {4}Discussion}{11}{section.4}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Measuring the proportion of the entire image which is under/over covered by the respective confidence sets. Left: proportion of the image which lies within the true mask but outside of the inner set. Middle: proportion of the image which lies within the confidence set but outside of the true mask. For both a lower proportion corresponds to increased precision. }}{12}{figure.caption.6}\protected@file@percent }
-\newlabel{fig:efficiency2}{{6}{12}{Measuring the proportion of the entire image which is under/over covered by the respective confidence sets. Left: proportion of the image which lies within the true mask but outside of the inner set. Middle: proportion of the image which lies within the confidence set but outside of the true mask. For both a lower proportion corresponds to increased precision}{figure.caption.6}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Measuring the efficiency of the bound using the ratio of the diameter of the coverage set to the diameter of the true tumor mask. The closer the ratio is to one the better. Higher coverage rates lead to a lower efficiency. The original scores provide the most efficient inner sets and the distance transformed scores provide the most efficient outer sets.}}{12}{figure.caption.5}\protected@file@percent }
+\newlabel{fig:efficiency}{{5}{12}{Measuring the efficiency of the bound using the ratio of the diameter of the coverage set to the diameter of the true tumor mask. The closer the ratio is to one the better. Higher coverage rates lead to a lower efficiency. The original scores provide the most efficient inner sets and the distance transformed scores provide the most efficient outer sets}{figure.caption.5}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Measuring the proportion of the entire image which is under/over covered by the respective confidence sets. Left: proportion of the image which lies within the true mask but outside of the inner set. Right: proportion of the image which lies within the confidence set but outside of the true mask. For both a lower proportion corresponds to increased precision. }}{12}{figure.caption.6}\protected@file@percent }
+\newlabel{fig:efficiency2}{{6}{12}{Measuring the proportion of the entire image which is under/over covered by the respective confidence sets. Left: proportion of the image which lies within the true mask but outside of the inner set. Right: proportion of the image which lies within the confidence set but outside of the true mask. For both a lower proportion corresponds to increased precision}{figure.caption.6}{}}
 \bibstyle{plainnat}
 \bibdata{../bibfiles/RFT,../bibfiles/MachineLearning,../bibfiles/MHT,../bibfiles/Statistics,../bibfiles/TomsPapers,../bibfiles/Genetics,../bibfiles/fMRI,../bibfiles/Books}
 \bibcite{Andeol2023}{{1}{2023}{{And{\'e}ol et~al.}}{{And{\'e}ol, Fel, De~Grancey, and Mossina}}}
 \bibcite{Angelopoulos2021}{{2}{2021}{{Angelopoulos and Bates}}{{}}}
 \bibcite{Angelopoulos2021LTT}{{3}{2021}{{Angelopoulos et~al.}}{{Angelopoulos, Bates, Cand{\`e}s, Jordan, and Lei}}}
-\bibcite{Angelopoulos2022}{{4}{2022}{{Angelopoulos et~al.}}{{Angelopoulos, Bates, Fisch, Lei, and Schuster}}}
+\bibcite{Angelopoulos2022}{{4}{2024}{{Angelopoulos et~al.}}{{Angelopoulos, Bates, Fisch, Lei, and Schuster}}}
 \bibcite{Bates2021}{{5}{2021}{{Bates et~al.}}{{Bates, Angelopoulos, Lei, Malik, and Jordan}}}
 \bibcite{Benjamini1995}{{6}{1995}{{Benjamini and Hochberg}}{{}}}
 \bibcite{Bernal2012}{{7}{2012}{{Bernal et~al.}}{{Bernal, S{\'a}nchez, and Vilarino}}}
@@ -131,201 +136,321 @@
 \bibcite{Borgefors1986}{{9}{1986}{{Borgefors}}{{}}}
 \bibcite{Hyperkvasir2020}{{10}{2020}{{Borgli et~al.}}{{Borgli, Thambawita, Smedsrud, Hicks, Jha, Eskeland, Randel, Pogorelov, Lux, Nguyen, et~al.}}}
 \bibcite{Bowring2019}{{11}{2019}{{Bowring et~al.}}{{Bowring, Telschow, Schwartzman, and Nichols}}}
-\bibcite{De2022}{{12}{2022}{{de~Grancey et~al.}}{{de~Grancey, Adam, Alecu, Gerchinovitz, Mamalet, and Vigouroux}}}
-\bibcite{PraNet2020}{{13}{2020}{{Fan et~al.}}{{Fan, Ji, Zhou, Chen, Fu, Shen, and Shao}}}
-\bibcite{}{{14}{2018}{{Gong et~al.}}{{Gong, Wan, Lu, Ma, Cheng, Cheng, Gruenewald, and Feng}}}
+\bibcite{chen2017density}{{12}{2017}{{Chen et~al.}}{{Chen, Genovese, and Wasserman}}}
+\bibcite{De2022}{{13}{2022}{{de~Grancey et~al.}}{{de~Grancey, Adam, Alecu, Gerchinovitz, Mamalet, and Vigouroux}}}
+\bibcite{PraNet2020}{{14}{2020}{{Fan et~al.}}{{Fan, Ji, Zhou, Chen, Fu, Shen, and Shao}}}
 \bibcite{Guo2017}{{15}{2017}{{Guo et~al.}}{{Guo, Pleiss, Sun, and Weinberger}}}
 \bibcite{Gupta2020}{{16}{2020}{{Gupta et~al.}}{{Gupta, Podkopaev, and Ramdas}}}
 \bibcite{Jalalifar2022}{{17}{2022}{{Jalalifar et~al.}}{{Jalalifar, Soliman, Sahgal, and Sadeghi-Naini}}}
 \bibcite{Jungo2020}{{18}{2020}{{Jungo et~al.}}{{Jungo, Balsiger, and Reyes}}}
 \bibcite{Maple2003}{{19}{2003}{{Maple}}{{}}}
 \bibcite{Marandon2024}{{20}{2024}{{Marandon}}{{}}}
-\bibcite{Mossina2024}{{21}{2024}{{Mossina et~al.}}{{Mossina, Dalmau, and And{\'e}ol}}}
-\bibcite{Mukama2024}{{22}{2024}{{Mukama et~al.}}{{Mukama, Messoudi, Rousseau, and Destercke}}}
-\bibcite{Papadopoulos2002}{{23}{2002}{{Papadopoulos et~al.}}{{Papadopoulos, Proedrou, Vovk, and Gammerman}}}
-\bibcite{Patz2014}{{24}{2014}{{Patz et~al.}}{{Patz, Pinsky, Gatsonis, Sicks, Kramer, Tammem{\"a}gi, Chiles, Black, Aberle, Team, et~al.}}}
-\bibcite{KVASIR2017}{{25}{2017}{{Pogorelov et~al.}}{{Pogorelov, Randel, Griwodz, Eskeland, de~Lange, Johansen, Spampinato, Dang-Nguyen, Lux, Schmidt, Riegler, and Halvorsen}}}
-\bibcite{Shafer2008}{{26}{2008}{{Shafer and Vovk}}{{}}}
-\bibcite{Silva2014}{{27}{2014}{{Silva et~al.}}{{Silva, Histace, Romain, Dray, and Granado}}}
-\bibcite{Sun2024}{{28}{2024}{{Sun and Yu}}{{}}}
-\bibcite{Tibshirani2019}{{29}{2019}{{Tibshirani et~al.}}{{Tibshirani, Foygel~Barber, Candes, and Ramdas}}}
-\bibcite{Topol2019}{{30}{2019}{{Topol}}{{}}}
-\bibcite{Vovk2005}{{31}{2005}{{Vovk et~al.}}{{Vovk, Gammerman, and Shafer}}}
-\bibcite{Worsley1992}{{32}{1992}{{Worsley et~al.}}{{Worsley, Evans, Marrett, and Neelin}}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Obtaining conformal confidence sets with increasing combination functions}{15}{subsection.4.1}\protected@file@percent }
-\newlabel{A:CF}{{4.1}{15}{Obtaining conformal confidence sets with increasing combination functions}{subsection.4.1}{}}
+\bibcite{Mejia2020}{{21}{2020}{{Mejia et~al.}}{{Mejia, Yue, Bolin, Lindgren, and Lindquist}}}
+\bibcite{Mossina2024}{{22}{2024}{{Mossina et~al.}}{{Mossina, Dalmau, and And{\'e}ol}}}
+\bibcite{Mukama2024}{{23}{2024}{{Mukama et~al.}}{{Mukama, Messoudi, Rousseau, and Destercke}}}
+\bibcite{Papadopoulos2002}{{24}{2002}{{Papadopoulos et~al.}}{{Papadopoulos, Proedrou, Vovk, and Gammerman}}}
+\bibcite{Patz2014}{{25}{2014}{{Patz et~al.}}{{Patz, Pinsky, Gatsonis, Sicks, Kramer, Tammem{\"a}gi, Chiles, Black, Aberle, Team, et~al.}}}
+\bibcite{KVASIR2017}{{26}{2017}{{Pogorelov et~al.}}{{Pogorelov, Randel, Griwodz, Eskeland, de~Lange, Johansen, Spampinato, Dang-Nguyen, Lux, Schmidt, Riegler, and Halvorsen}}}
+\bibcite{Shafer2008}{{27}{2008}{{Shafer and Vovk}}{{}}}
+\bibcite{Silva2014}{{28}{2014}{{Silva et~al.}}{{Silva, Histace, Romain, Dray, and Granado}}}
+\bibcite{Sun2024}{{29}{2024}{{Sun and Yu}}{{}}}
+\bibcite{Tibshirani2019}{{30}{2019}{{Tibshirani et~al.}}{{Tibshirani, Foygel~Barber, Candes, and Ramdas}}}
+\bibcite{Topol2019}{{31}{2019}{{Topol}}{{}}}
+\bibcite{Vovk2005}{{32}{2005}{{Vovk et~al.}}{{Vovk, Gammerman, and Shafer}}}
+\bibcite{Wieslander2020}{{33}{2020}{{Wieslander et~al.}}{{Wieslander, Harrison, Skogberg, Jackson, Frid{\'e}n, Karlsson, Spjuth, and W{\"a}hlby}}}
+\bibcite{Worsley1992}{{34}{1992}{{Worsley et~al.}}{{Worsley, Evans, Marrett, and Neelin}}}
 \citation{Angelopoulos2022}
 \citation{Angelopoulos2022}
 \citation{Angelopoulos2022}
+\@writefile{toc}{\contentsline {section}{\numberline {A}Appendix}{17}{appendix.A}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {A.1}Obtaining conformal confidence sets with increasing combination functions}{17}{subsection.A.1}\protected@file@percent }
+\newlabel{A:CF}{{A.1}{17}{Obtaining conformal confidence sets with increasing combination functions}{subsection.A.1}{}}
+\newlabel{thm:innergen}{{A.2}{17}{}{theorem.A.2}{}}
+\newlabel{eq:probstat}{{7}{17}{}{equation.A.7}{}}
+\newlabel{thm:genouter}{{A.3}{17}{}{theorem.A.3}{}}
+\newlabel{eq:probstat}{{8}{17}{}{equation.A.8}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {A.2}Obtaining confidence sets from risk control}{17}{subsection.A.2}\protected@file@percent }
+\newlabel{risk2con}{{A.2}{17}{Obtaining confidence sets from risk control}{subsection.A.2}{}}
 \citation{Andeol2023}
-\newlabel{thm:innergen}{{4.2}{16}{}{theorem.4.2}{}}
-\newlabel{eq:probstat}{{7}{16}{}{equation.4.7}{}}
-\newlabel{thm:genouter}{{4.3}{16}{}{theorem.4.3}{}}
-\newlabel{eq:probstat}{{8}{16}{}{equation.4.8}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Obtaining confidence sets from risk control}{16}{subsection.4.2}\protected@file@percent }
-\newlabel{risk2con}{{4.2}{16}{Obtaining confidence sets from risk control}{subsection.4.2}{}}
-\newlabel{eq:probstat2}{{9}{16}{Obtaining confidence sets from risk control}{equation.4.9}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.3}Providing theory for deriving confidence sets from bounding boxes}{17}{subsection.4.3}\protected@file@percent }
-\newlabel{AA:BBtheory}{{4.3}{17}{Providing theory for deriving confidence sets from bounding boxes}{subsection.4.3}{}}
-\newlabel{dfn:BBS}{{4.4}{17}{}{theorem.4.4}{}}
-\newlabel{thm:boxinnergen}{{4.5}{17}{}{theorem.4.5}{}}
-\newlabel{eq:probstat}{{4.5}{17}{}{equation.4.10}{}}
-\newlabel{thm:boxgenouter}{{4.6}{18}{}{theorem.4.6}{}}
-\newlabel{eq:probstat}{{4.6}{18}{}{equation.4.11}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.4}Additional examples from the learning dataset}{19}{subsection.4.4}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces Additional examples from the learning dataset. The layout of these figures is the same as for Figure \ref {fig:learning}.}}{19}{figure.caption.10}\protected@file@percent }
-\newlabel{fig:learning2}{{7}{19}{Additional examples from the learning dataset. The layout of these figures is the same as for Figure \ref {fig:learning}}{figure.caption.10}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces Futher examples from the learning dataset. The layout of these figures is the same as for Figure \ref {fig:learning}.}}{20}{figure.caption.11}\protected@file@percent }
-\newlabel{fig:learning3}{{8}{20}{Futher examples from the learning dataset. The layout of these figures is the same as for Figure \ref {fig:learning}}{figure.caption.11}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.5}Validition figures for the original and bounding box scores}{21}{subsection.4.5}\protected@file@percent }
-\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 161}}{21}{Validition figures for the original and bounding box scores}{figure.caption.12}{}}
-\newlabel{sub@fig:1}{{}{21}{Validition figures for the original and bounding box scores}{figure.caption.12}{}}
-\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 166}}{21}{Validition figures for the original and bounding box scores}{figure.caption.12}{}}
-\newlabel{sub@fig:1}{{}{21}{Validition figures for the original and bounding box scores}{figure.caption.12}{}}
-\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 171}}{21}{Validition figures for the original and bounding box scores}{figure.caption.12}{}}
-\newlabel{sub@fig:1}{{}{21}{Validition figures for the original and bounding box scores}{figure.caption.12}{}}
-\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 176}}{21}{Validition figures for the original and bounding box scores}{figure.caption.12}{}}
-\newlabel{sub@fig:1}{{}{21}{Validition figures for the original and bounding box scores}{figure.caption.12}{}}
-\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 181}}{21}{Validition figures for the original and bounding box scores}{figure.caption.12}{}}
-\newlabel{sub@fig:1}{{}{21}{Validition figures for the original and bounding box scores}{figure.caption.12}{}}
-\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 188}}{21}{Validition figures for the original and bounding box scores}{figure.caption.12}{}}
-\newlabel{sub@fig:1}{{}{21}{Validition figures for the original and bounding box scores}{figure.caption.12}{}}
-\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 193}}{21}{Validition figures for the original and bounding box scores}{figure.caption.12}{}}
-\newlabel{sub@fig:1}{{}{21}{Validition figures for the original and bounding box scores}{figure.caption.12}{}}
-\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 198}}{21}{Validition figures for the original and bounding box scores}{figure.caption.12}{}}
-\newlabel{sub@fig:1}{{}{21}{Validition figures for the original and bounding box scores}{figure.caption.12}{}}
-\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 203}}{21}{Validition figures for the original and bounding box scores}{figure.caption.12}{}}
-\newlabel{sub@fig:1}{{}{21}{Validition figures for the original and bounding box scores}{figure.caption.12}{}}
-\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 208}}{21}{Validition figures for the original and bounding box scores}{figure.caption.12}{}}
-\newlabel{sub@fig:1}{{}{21}{Validition figures for the original and bounding box scores}{figure.caption.12}{}}
-\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 215}}{21}{Validition figures for the original and bounding box scores}{figure.caption.12}{}}
-\newlabel{sub@fig:1}{{}{21}{Validition figures for the original and bounding box scores}{figure.caption.12}{}}
-\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 220}}{21}{Validition figures for the original and bounding box scores}{figure.caption.12}{}}
-\newlabel{sub@fig:1}{{}{21}{Validition figures for the original and bounding box scores}{figure.caption.12}{}}
-\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 225}}{21}{Validition figures for the original and bounding box scores}{figure.caption.12}{}}
-\newlabel{sub@fig:1}{{}{21}{Validition figures for the original and bounding box scores}{figure.caption.12}{}}
-\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 230}}{21}{Validition figures for the original and bounding box scores}{figure.caption.12}{}}
-\newlabel{sub@fig:1}{{}{21}{Validition figures for the original and bounding box scores}{figure.caption.12}{}}
-\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 235}}{21}{Validition figures for the original and bounding box scores}{figure.caption.12}{}}
-\newlabel{sub@fig:1}{{}{21}{Validition figures for the original and bounding box scores}{figure.caption.12}{}}
-\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 242}}{21}{Validition figures for the original and bounding box scores}{figure.caption.12}{}}
-\newlabel{sub@fig:1}{{}{21}{Validition figures for the original and bounding box scores}{figure.caption.12}{}}
-\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 247}}{21}{Validition figures for the original and bounding box scores}{figure.caption.12}{}}
-\newlabel{sub@fig:1}{{}{21}{Validition figures for the original and bounding box scores}{figure.caption.12}{}}
-\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 252}}{21}{Validition figures for the original and bounding box scores}{figure.caption.12}{}}
-\newlabel{sub@fig:1}{{}{21}{Validition figures for the original and bounding box scores}{figure.caption.12}{}}
-\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 257}}{21}{Validition figures for the original and bounding box scores}{figure.caption.12}{}}
-\newlabel{sub@fig:1}{{}{21}{Validition figures for the original and bounding box scores}{figure.caption.12}{}}
-\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 262}}{21}{Validition figures for the original and bounding box scores}{figure.caption.12}{}}
-\newlabel{sub@fig:1}{{}{21}{Validition figures for the original and bounding box scores}{figure.caption.12}{}}
-\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 269}}{21}{Validition figures for the original and bounding box scores}{figure.caption.12}{}}
-\newlabel{sub@fig:1}{{}{21}{Validition figures for the original and bounding box scores}{figure.caption.12}{}}
-\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 274}}{21}{Validition figures for the original and bounding box scores}{figure.caption.12}{}}
-\newlabel{sub@fig:1}{{}{21}{Validition figures for the original and bounding box scores}{figure.caption.12}{}}
-\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 279}}{21}{Validition figures for the original and bounding box scores}{figure.caption.12}{}}
-\newlabel{sub@fig:1}{{}{21}{Validition figures for the original and bounding box scores}{figure.caption.12}{}}
-\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 284}}{21}{Validition figures for the original and bounding box scores}{figure.caption.12}{}}
-\newlabel{sub@fig:1}{{}{21}{Validition figures for the original and bounding box scores}{figure.caption.12}{}}
-\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 289}}{21}{Validition figures for the original and bounding box scores}{figure.caption.12}{}}
-\newlabel{sub@fig:1}{{}{21}{Validition figures for the original and bounding box scores}{figure.caption.12}{}}
-\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 296}}{21}{Validition figures for the original and bounding box scores}{figure.caption.12}{}}
-\newlabel{sub@fig:1}{{}{21}{Validition figures for the original and bounding box scores}{figure.caption.12}{}}
-\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 301}}{21}{Validition figures for the original and bounding box scores}{figure.caption.12}{}}
-\newlabel{sub@fig:1}{{}{21}{Validition figures for the original and bounding box scores}{figure.caption.12}{}}
-\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 306}}{21}{Validition figures for the original and bounding box scores}{figure.caption.12}{}}
-\newlabel{sub@fig:1}{{}{21}{Validition figures for the original and bounding box scores}{figure.caption.12}{}}
-\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 311}}{21}{Validition figures for the original and bounding box scores}{figure.caption.12}{}}
-\newlabel{sub@fig:1}{{}{21}{Validition figures for the original and bounding box scores}{figure.caption.12}{}}
-\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 316}}{21}{Validition figures for the original and bounding box scores}{figure.caption.12}{}}
-\newlabel{sub@fig:1}{{}{21}{Validition figures for the original and bounding box scores}{figure.caption.12}{}}
-\newlabel{fig:grid}{{\caption@xref {fig:grid}{ on input line 318}}{21}{Validition figures for the original and bounding box scores}{figure.caption.12}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces Conformal confidence sets for the polyps data examples from Figure \ref {fig:res} for alternative scores. In each set of panels the confidence obtained from using the original scores are shown in the middle row and those obtained from the bounding box scores are shown in the bottom row. As observed on the learning dataset the outer sets obtained when using the original scores are very large and uninformative.}}{21}{figure.caption.12}\protected@file@percent }
-\newlabel{fig:polpys}{{9}{21}{Conformal confidence sets for the polyps data examples from Figure \ref {fig:res} for alternative scores. In each set of panels the confidence obtained from using the original scores are shown in the middle row and those obtained from the bounding box scores are shown in the bottom row. As observed on the learning dataset the outer sets obtained when using the original scores are very large and uninformative}{figure.caption.12}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.6}Additional validition figures}{22}{subsection.4.6}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.7}Histograms of the coverage}{23}{subsection.4.7}\protected@file@percent }
-\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 327}}{24}{Additional validition figures}{figure.caption.13}{}}
-\newlabel{sub@fig:1}{{}{24}{Additional validition figures}{figure.caption.13}{}}
-\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 332}}{24}{Additional validition figures}{figure.caption.13}{}}
-\newlabel{sub@fig:1}{{}{24}{Additional validition figures}{figure.caption.13}{}}
-\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 337}}{24}{Additional validition figures}{figure.caption.13}{}}
-\newlabel{sub@fig:1}{{}{24}{Additional validition figures}{figure.caption.13}{}}
-\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 342}}{24}{Additional validition figures}{figure.caption.13}{}}
-\newlabel{sub@fig:1}{{}{24}{Additional validition figures}{figure.caption.13}{}}
-\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 347}}{24}{Additional validition figures}{figure.caption.13}{}}
-\newlabel{sub@fig:1}{{}{24}{Additional validition figures}{figure.caption.13}{}}
-\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 354}}{24}{Additional validition figures}{figure.caption.13}{}}
-\newlabel{sub@fig:1}{{}{24}{Additional validition figures}{figure.caption.13}{}}
-\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 359}}{24}{Additional validition figures}{figure.caption.13}{}}
-\newlabel{sub@fig:1}{{}{24}{Additional validition figures}{figure.caption.13}{}}
-\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 364}}{24}{Additional validition figures}{figure.caption.13}{}}
-\newlabel{sub@fig:1}{{}{24}{Additional validition figures}{figure.caption.13}{}}
-\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 369}}{24}{Additional validition figures}{figure.caption.13}{}}
-\newlabel{sub@fig:1}{{}{24}{Additional validition figures}{figure.caption.13}{}}
-\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 374}}{24}{Additional validition figures}{figure.caption.13}{}}
-\newlabel{sub@fig:1}{{}{24}{Additional validition figures}{figure.caption.13}{}}
-\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 381}}{24}{Additional validition figures}{figure.caption.13}{}}
-\newlabel{sub@fig:1}{{}{24}{Additional validition figures}{figure.caption.13}{}}
-\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 386}}{24}{Additional validition figures}{figure.caption.13}{}}
-\newlabel{sub@fig:1}{{}{24}{Additional validition figures}{figure.caption.13}{}}
-\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 391}}{24}{Additional validition figures}{figure.caption.13}{}}
-\newlabel{sub@fig:1}{{}{24}{Additional validition figures}{figure.caption.13}{}}
-\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 396}}{24}{Additional validition figures}{figure.caption.13}{}}
-\newlabel{sub@fig:1}{{}{24}{Additional validition figures}{figure.caption.13}{}}
-\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 401}}{24}{Additional validition figures}{figure.caption.13}{}}
-\newlabel{sub@fig:1}{{}{24}{Additional validition figures}{figure.caption.13}{}}
-\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 408}}{24}{Additional validition figures}{figure.caption.13}{}}
-\newlabel{sub@fig:1}{{}{24}{Additional validition figures}{figure.caption.13}{}}
-\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 413}}{24}{Additional validition figures}{figure.caption.13}{}}
-\newlabel{sub@fig:1}{{}{24}{Additional validition figures}{figure.caption.13}{}}
-\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 418}}{24}{Additional validition figures}{figure.caption.13}{}}
-\newlabel{sub@fig:1}{{}{24}{Additional validition figures}{figure.caption.13}{}}
-\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 423}}{24}{Additional validition figures}{figure.caption.13}{}}
-\newlabel{sub@fig:1}{{}{24}{Additional validition figures}{figure.caption.13}{}}
-\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 428}}{24}{Additional validition figures}{figure.caption.13}{}}
-\newlabel{sub@fig:1}{{}{24}{Additional validition figures}{figure.caption.13}{}}
-\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 435}}{24}{Additional validition figures}{figure.caption.13}{}}
-\newlabel{sub@fig:1}{{}{24}{Additional validition figures}{figure.caption.13}{}}
-\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 440}}{24}{Additional validition figures}{figure.caption.13}{}}
-\newlabel{sub@fig:1}{{}{24}{Additional validition figures}{figure.caption.13}{}}
-\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 445}}{24}{Additional validition figures}{figure.caption.13}{}}
-\newlabel{sub@fig:1}{{}{24}{Additional validition figures}{figure.caption.13}{}}
-\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 450}}{24}{Additional validition figures}{figure.caption.13}{}}
-\newlabel{sub@fig:1}{{}{24}{Additional validition figures}{figure.caption.13}{}}
-\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 455}}{24}{Additional validition figures}{figure.caption.13}{}}
-\newlabel{sub@fig:1}{{}{24}{Additional validition figures}{figure.caption.13}{}}
-\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 462}}{24}{Additional validition figures}{figure.caption.13}{}}
-\newlabel{sub@fig:1}{{}{24}{Additional validition figures}{figure.caption.13}{}}
-\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 467}}{24}{Additional validition figures}{figure.caption.13}{}}
-\newlabel{sub@fig:1}{{}{24}{Additional validition figures}{figure.caption.13}{}}
-\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 472}}{24}{Additional validition figures}{figure.caption.13}{}}
-\newlabel{sub@fig:1}{{}{24}{Additional validition figures}{figure.caption.13}{}}
-\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 477}}{24}{Additional validition figures}{figure.caption.13}{}}
-\newlabel{sub@fig:1}{{}{24}{Additional validition figures}{figure.caption.13}{}}
-\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 482}}{24}{Additional validition figures}{figure.caption.13}{}}
-\newlabel{sub@fig:1}{{}{24}{Additional validition figures}{figure.caption.13}{}}
-\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 489}}{24}{Additional validition figures}{figure.caption.13}{}}
-\newlabel{sub@fig:1}{{}{24}{Additional validition figures}{figure.caption.13}{}}
-\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 494}}{24}{Additional validition figures}{figure.caption.13}{}}
-\newlabel{sub@fig:1}{{}{24}{Additional validition figures}{figure.caption.13}{}}
-\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 499}}{24}{Additional validition figures}{figure.caption.13}{}}
-\newlabel{sub@fig:1}{{}{24}{Additional validition figures}{figure.caption.13}{}}
-\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 504}}{24}{Additional validition figures}{figure.caption.13}{}}
-\newlabel{sub@fig:1}{{}{24}{Additional validition figures}{figure.caption.13}{}}
-\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 509}}{24}{Additional validition figures}{figure.caption.13}{}}
-\newlabel{sub@fig:1}{{}{24}{Additional validition figures}{figure.caption.13}{}}
-\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 516}}{24}{Additional validition figures}{figure.caption.13}{}}
-\newlabel{sub@fig:1}{{}{24}{Additional validition figures}{figure.caption.13}{}}
-\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 521}}{24}{Additional validition figures}{figure.caption.13}{}}
-\newlabel{sub@fig:1}{{}{24}{Additional validition figures}{figure.caption.13}{}}
-\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 526}}{24}{Additional validition figures}{figure.caption.13}{}}
-\newlabel{sub@fig:1}{{}{24}{Additional validition figures}{figure.caption.13}{}}
-\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 531}}{24}{Additional validition figures}{figure.caption.13}{}}
-\newlabel{sub@fig:1}{{}{24}{Additional validition figures}{figure.caption.13}{}}
-\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 536}}{24}{Additional validition figures}{figure.caption.13}{}}
-\newlabel{sub@fig:1}{{}{24}{Additional validition figures}{figure.caption.13}{}}
-\newlabel{fig:grid}{{\caption@xref {fig:grid}{ on input line 538}}{24}{Additional validition figures}{figure.caption.13}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {10}{\ignorespaces Additional validition examples. In each example, after the original images, the rows are (from top to bottom) the combination, then the original scores and finally the bounding box scores.}}{24}{figure.caption.13}\protected@file@percent }
-\newlabel{fig:polpys}{{10}{24}{Additional validition examples. In each example, after the original images, the rows are (from top to bottom) the combination, then the original scores and finally the bounding box scores}{figure.caption.13}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {11}{\ignorespaces Histograms of the coverage rates obtained across each of the validation resamples for 90\% inner and outer marginal confidence sets. We plot the results for the original scores, distance transformed scores (DT) and boundary box scores (BB) from left to right. The bounding box scores are discontinuous which is the cause of the discreteness of the rightmost histogram.}}{25}{figure.caption.14}\protected@file@percent }
-\newlabel{fig:valhist}{{11}{25}{Histograms of the coverage rates obtained across each of the validation resamples for 90\% inner and outer marginal confidence sets. We plot the results for the original scores, distance transformed scores (DT) and boundary box scores (BB) from left to right. The bounding box scores are discontinuous which is the cause of the discreteness of the rightmost histogram}{figure.caption.14}{}}
-\gdef \@abspage@last{25}
+\newlabel{eq:probstat2}{{9}{18}{Obtaining confidence sets from risk control}{equation.A.9}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {A.3}Providing theory for deriving confidence sets from bounding boxes}{18}{subsection.A.3}\protected@file@percent }
+\newlabel{AA:BBtheory}{{A.3}{18}{Providing theory for deriving confidence sets from bounding boxes}{subsection.A.3}{}}
+\newlabel{dfn:BBS}{{A.4}{18}{}{theorem.A.4}{}}
+\newlabel{thm:boxinnergen}{{A.5}{19}{}{theorem.A.5}{}}
+\newlabel{eq:probstat}{{A.5}{19}{}{equation.A.10}{}}
+\newlabel{thm:boxgenouter}{{A.6}{19}{}{theorem.A.6}{}}
+\newlabel{eq:probstat}{{A.6}{19}{}{equation.A.11}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {A.4}Additional examples from the learning dataset}{20}{subsection.A.4}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {A7}{\ignorespaces Additional examples from the learning dataset. The layout of these figures is the same as for Figure \ref {fig:learning}.}}{20}{figure.caption.10}\protected@file@percent }
+\newlabel{fig:learning2}{{A7}{20}{Additional examples from the learning dataset. The layout of these figures is the same as for Figure \ref {fig:learning}}{figure.caption.10}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {A8}{\ignorespaces Futher examples from the learning dataset. The layout of these figures is the same as for Figure \ref {fig:learning}.}}{21}{figure.caption.11}\protected@file@percent }
+\newlabel{fig:learning3}{{A8}{21}{Futher examples from the learning dataset. The layout of these figures is the same as for Figure \ref {fig:learning}}{figure.caption.11}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {A.5}Validition figures for the original and bounding box scores}{22}{subsection.A.5}\protected@file@percent }
+\newlabel{SS:furtherval}{{A.5}{22}{Validition figures for the original and bounding box scores}{subsection.A.5}{}}
+\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 166}}{22}{Validition figures for the original and bounding box scores}{figure.caption.12}{}}
+\newlabel{sub@fig:1}{{}{22}{Validition figures for the original and bounding box scores}{figure.caption.12}{}}
+\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 171}}{22}{Validition figures for the original and bounding box scores}{figure.caption.12}{}}
+\newlabel{sub@fig:1}{{}{22}{Validition figures for the original and bounding box scores}{figure.caption.12}{}}
+\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 176}}{22}{Validition figures for the original and bounding box scores}{figure.caption.12}{}}
+\newlabel{sub@fig:1}{{}{22}{Validition figures for the original and bounding box scores}{figure.caption.12}{}}
+\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 181}}{22}{Validition figures for the original and bounding box scores}{figure.caption.12}{}}
+\newlabel{sub@fig:1}{{}{22}{Validition figures for the original and bounding box scores}{figure.caption.12}{}}
+\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 186}}{22}{Validition figures for the original and bounding box scores}{figure.caption.12}{}}
+\newlabel{sub@fig:1}{{}{22}{Validition figures for the original and bounding box scores}{figure.caption.12}{}}
+\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 193}}{22}{Validition figures for the original and bounding box scores}{figure.caption.12}{}}
+\newlabel{sub@fig:1}{{}{22}{Validition figures for the original and bounding box scores}{figure.caption.12}{}}
+\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 198}}{22}{Validition figures for the original and bounding box scores}{figure.caption.12}{}}
+\newlabel{sub@fig:1}{{}{22}{Validition figures for the original and bounding box scores}{figure.caption.12}{}}
+\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 203}}{22}{Validition figures for the original and bounding box scores}{figure.caption.12}{}}
+\newlabel{sub@fig:1}{{}{22}{Validition figures for the original and bounding box scores}{figure.caption.12}{}}
+\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 208}}{22}{Validition figures for the original and bounding box scores}{figure.caption.12}{}}
+\newlabel{sub@fig:1}{{}{22}{Validition figures for the original and bounding box scores}{figure.caption.12}{}}
+\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 213}}{22}{Validition figures for the original and bounding box scores}{figure.caption.12}{}}
+\newlabel{sub@fig:1}{{}{22}{Validition figures for the original and bounding box scores}{figure.caption.12}{}}
+\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 220}}{22}{Validition figures for the original and bounding box scores}{figure.caption.12}{}}
+\newlabel{sub@fig:1}{{}{22}{Validition figures for the original and bounding box scores}{figure.caption.12}{}}
+\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 225}}{22}{Validition figures for the original and bounding box scores}{figure.caption.12}{}}
+\newlabel{sub@fig:1}{{}{22}{Validition figures for the original and bounding box scores}{figure.caption.12}{}}
+\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 230}}{22}{Validition figures for the original and bounding box scores}{figure.caption.12}{}}
+\newlabel{sub@fig:1}{{}{22}{Validition figures for the original and bounding box scores}{figure.caption.12}{}}
+\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 235}}{22}{Validition figures for the original and bounding box scores}{figure.caption.12}{}}
+\newlabel{sub@fig:1}{{}{22}{Validition figures for the original and bounding box scores}{figure.caption.12}{}}
+\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 240}}{22}{Validition figures for the original and bounding box scores}{figure.caption.12}{}}
+\newlabel{sub@fig:1}{{}{22}{Validition figures for the original and bounding box scores}{figure.caption.12}{}}
+\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 247}}{22}{Validition figures for the original and bounding box scores}{figure.caption.12}{}}
+\newlabel{sub@fig:1}{{}{22}{Validition figures for the original and bounding box scores}{figure.caption.12}{}}
+\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 252}}{22}{Validition figures for the original and bounding box scores}{figure.caption.12}{}}
+\newlabel{sub@fig:1}{{}{22}{Validition figures for the original and bounding box scores}{figure.caption.12}{}}
+\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 257}}{22}{Validition figures for the original and bounding box scores}{figure.caption.12}{}}
+\newlabel{sub@fig:1}{{}{22}{Validition figures for the original and bounding box scores}{figure.caption.12}{}}
+\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 262}}{22}{Validition figures for the original and bounding box scores}{figure.caption.12}{}}
+\newlabel{sub@fig:1}{{}{22}{Validition figures for the original and bounding box scores}{figure.caption.12}{}}
+\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 267}}{22}{Validition figures for the original and bounding box scores}{figure.caption.12}{}}
+\newlabel{sub@fig:1}{{}{22}{Validition figures for the original and bounding box scores}{figure.caption.12}{}}
+\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 274}}{22}{Validition figures for the original and bounding box scores}{figure.caption.12}{}}
+\newlabel{sub@fig:1}{{}{22}{Validition figures for the original and bounding box scores}{figure.caption.12}{}}
+\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 279}}{22}{Validition figures for the original and bounding box scores}{figure.caption.12}{}}
+\newlabel{sub@fig:1}{{}{22}{Validition figures for the original and bounding box scores}{figure.caption.12}{}}
+\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 284}}{22}{Validition figures for the original and bounding box scores}{figure.caption.12}{}}
+\newlabel{sub@fig:1}{{}{22}{Validition figures for the original and bounding box scores}{figure.caption.12}{}}
+\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 289}}{22}{Validition figures for the original and bounding box scores}{figure.caption.12}{}}
+\newlabel{sub@fig:1}{{}{22}{Validition figures for the original and bounding box scores}{figure.caption.12}{}}
+\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 294}}{22}{Validition figures for the original and bounding box scores}{figure.caption.12}{}}
+\newlabel{sub@fig:1}{{}{22}{Validition figures for the original and bounding box scores}{figure.caption.12}{}}
+\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 301}}{22}{Validition figures for the original and bounding box scores}{figure.caption.12}{}}
+\newlabel{sub@fig:1}{{}{22}{Validition figures for the original and bounding box scores}{figure.caption.12}{}}
+\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 306}}{22}{Validition figures for the original and bounding box scores}{figure.caption.12}{}}
+\newlabel{sub@fig:1}{{}{22}{Validition figures for the original and bounding box scores}{figure.caption.12}{}}
+\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 311}}{22}{Validition figures for the original and bounding box scores}{figure.caption.12}{}}
+\newlabel{sub@fig:1}{{}{22}{Validition figures for the original and bounding box scores}{figure.caption.12}{}}
+\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 316}}{22}{Validition figures for the original and bounding box scores}{figure.caption.12}{}}
+\newlabel{sub@fig:1}{{}{22}{Validition figures for the original and bounding box scores}{figure.caption.12}{}}
+\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 321}}{22}{Validition figures for the original and bounding box scores}{figure.caption.12}{}}
+\newlabel{sub@fig:1}{{}{22}{Validition figures for the original and bounding box scores}{figure.caption.12}{}}
+\newlabel{fig:grid}{{\caption@xref {fig:grid}{ on input line 323}}{22}{Validition figures for the original and bounding box scores}{figure.caption.12}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {A9}{\ignorespaces Conformal confidence sets for the polyps data examples from Figure \ref {fig:res} for alternative scores. In each set of panels the confidence obtained from using the original scores are shown in the middle row and those obtained from the bounding box scores are shown in the bottom row. As observed on the learning dataset the outer sets obtained when using the original scores are very large and uninformative.}}{22}{figure.caption.12}\protected@file@percent }
+\newlabel{fig:polpysex}{{A9}{22}{Conformal confidence sets for the polyps data examples from Figure \ref {fig:res} for alternative scores. In each set of panels the confidence obtained from using the original scores are shown in the middle row and those obtained from the bounding box scores are shown in the bottom row. As observed on the learning dataset the outer sets obtained when using the original scores are very large and uninformative}{figure.caption.12}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {A.6}Additional validition figures}{23}{subsection.A.6}\protected@file@percent }
+\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 332}}{23}{Additional validition figures}{figure.caption.13}{}}
+\newlabel{sub@fig:1}{{}{23}{Additional validition figures}{figure.caption.13}{}}
+\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 337}}{23}{Additional validition figures}{figure.caption.13}{}}
+\newlabel{sub@fig:1}{{}{23}{Additional validition figures}{figure.caption.13}{}}
+\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 342}}{23}{Additional validition figures}{figure.caption.13}{}}
+\newlabel{sub@fig:1}{{}{23}{Additional validition figures}{figure.caption.13}{}}
+\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 347}}{23}{Additional validition figures}{figure.caption.13}{}}
+\newlabel{sub@fig:1}{{}{23}{Additional validition figures}{figure.caption.13}{}}
+\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 352}}{23}{Additional validition figures}{figure.caption.13}{}}
+\newlabel{sub@fig:1}{{}{23}{Additional validition figures}{figure.caption.13}{}}
+\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 359}}{23}{Additional validition figures}{figure.caption.13}{}}
+\newlabel{sub@fig:1}{{}{23}{Additional validition figures}{figure.caption.13}{}}
+\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 364}}{23}{Additional validition figures}{figure.caption.13}{}}
+\newlabel{sub@fig:1}{{}{23}{Additional validition figures}{figure.caption.13}{}}
+\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 369}}{23}{Additional validition figures}{figure.caption.13}{}}
+\newlabel{sub@fig:1}{{}{23}{Additional validition figures}{figure.caption.13}{}}
+\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 374}}{23}{Additional validition figures}{figure.caption.13}{}}
+\newlabel{sub@fig:1}{{}{23}{Additional validition figures}{figure.caption.13}{}}
+\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 379}}{23}{Additional validition figures}{figure.caption.13}{}}
+\newlabel{sub@fig:1}{{}{23}{Additional validition figures}{figure.caption.13}{}}
+\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 386}}{23}{Additional validition figures}{figure.caption.13}{}}
+\newlabel{sub@fig:1}{{}{23}{Additional validition figures}{figure.caption.13}{}}
+\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 391}}{23}{Additional validition figures}{figure.caption.13}{}}
+\newlabel{sub@fig:1}{{}{23}{Additional validition figures}{figure.caption.13}{}}
+\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 396}}{23}{Additional validition figures}{figure.caption.13}{}}
+\newlabel{sub@fig:1}{{}{23}{Additional validition figures}{figure.caption.13}{}}
+\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 401}}{23}{Additional validition figures}{figure.caption.13}{}}
+\newlabel{sub@fig:1}{{}{23}{Additional validition figures}{figure.caption.13}{}}
+\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 406}}{23}{Additional validition figures}{figure.caption.13}{}}
+\newlabel{sub@fig:1}{{}{23}{Additional validition figures}{figure.caption.13}{}}
+\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 413}}{23}{Additional validition figures}{figure.caption.13}{}}
+\newlabel{sub@fig:1}{{}{23}{Additional validition figures}{figure.caption.13}{}}
+\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 418}}{23}{Additional validition figures}{figure.caption.13}{}}
+\newlabel{sub@fig:1}{{}{23}{Additional validition figures}{figure.caption.13}{}}
+\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 423}}{23}{Additional validition figures}{figure.caption.13}{}}
+\newlabel{sub@fig:1}{{}{23}{Additional validition figures}{figure.caption.13}{}}
+\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 428}}{23}{Additional validition figures}{figure.caption.13}{}}
+\newlabel{sub@fig:1}{{}{23}{Additional validition figures}{figure.caption.13}{}}
+\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 433}}{23}{Additional validition figures}{figure.caption.13}{}}
+\newlabel{sub@fig:1}{{}{23}{Additional validition figures}{figure.caption.13}{}}
+\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 440}}{23}{Additional validition figures}{figure.caption.13}{}}
+\newlabel{sub@fig:1}{{}{23}{Additional validition figures}{figure.caption.13}{}}
+\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 445}}{23}{Additional validition figures}{figure.caption.13}{}}
+\newlabel{sub@fig:1}{{}{23}{Additional validition figures}{figure.caption.13}{}}
+\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 450}}{23}{Additional validition figures}{figure.caption.13}{}}
+\newlabel{sub@fig:1}{{}{23}{Additional validition figures}{figure.caption.13}{}}
+\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 455}}{23}{Additional validition figures}{figure.caption.13}{}}
+\newlabel{sub@fig:1}{{}{23}{Additional validition figures}{figure.caption.13}{}}
+\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 460}}{23}{Additional validition figures}{figure.caption.13}{}}
+\newlabel{sub@fig:1}{{}{23}{Additional validition figures}{figure.caption.13}{}}
+\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 467}}{23}{Additional validition figures}{figure.caption.13}{}}
+\newlabel{sub@fig:1}{{}{23}{Additional validition figures}{figure.caption.13}{}}
+\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 472}}{23}{Additional validition figures}{figure.caption.13}{}}
+\newlabel{sub@fig:1}{{}{23}{Additional validition figures}{figure.caption.13}{}}
+\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 477}}{23}{Additional validition figures}{figure.caption.13}{}}
+\newlabel{sub@fig:1}{{}{23}{Additional validition figures}{figure.caption.13}{}}
+\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 482}}{23}{Additional validition figures}{figure.caption.13}{}}
+\newlabel{sub@fig:1}{{}{23}{Additional validition figures}{figure.caption.13}{}}
+\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 487}}{23}{Additional validition figures}{figure.caption.13}{}}
+\newlabel{sub@fig:1}{{}{23}{Additional validition figures}{figure.caption.13}{}}
+\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 494}}{23}{Additional validition figures}{figure.caption.13}{}}
+\newlabel{sub@fig:1}{{}{23}{Additional validition figures}{figure.caption.13}{}}
+\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 499}}{23}{Additional validition figures}{figure.caption.13}{}}
+\newlabel{sub@fig:1}{{}{23}{Additional validition figures}{figure.caption.13}{}}
+\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 504}}{23}{Additional validition figures}{figure.caption.13}{}}
+\newlabel{sub@fig:1}{{}{23}{Additional validition figures}{figure.caption.13}{}}
+\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 509}}{23}{Additional validition figures}{figure.caption.13}{}}
+\newlabel{sub@fig:1}{{}{23}{Additional validition figures}{figure.caption.13}{}}
+\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 514}}{23}{Additional validition figures}{figure.caption.13}{}}
+\newlabel{sub@fig:1}{{}{23}{Additional validition figures}{figure.caption.13}{}}
+\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 521}}{23}{Additional validition figures}{figure.caption.13}{}}
+\newlabel{sub@fig:1}{{}{23}{Additional validition figures}{figure.caption.13}{}}
+\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 526}}{23}{Additional validition figures}{figure.caption.13}{}}
+\newlabel{sub@fig:1}{{}{23}{Additional validition figures}{figure.caption.13}{}}
+\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 531}}{23}{Additional validition figures}{figure.caption.13}{}}
+\newlabel{sub@fig:1}{{}{23}{Additional validition figures}{figure.caption.13}{}}
+\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 536}}{23}{Additional validition figures}{figure.caption.13}{}}
+\newlabel{sub@fig:1}{{}{23}{Additional validition figures}{figure.caption.13}{}}
+\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 541}}{23}{Additional validition figures}{figure.caption.13}{}}
+\newlabel{sub@fig:1}{{}{23}{Additional validition figures}{figure.caption.13}{}}
+\newlabel{fig:grid}{{\caption@xref {fig:grid}{ on input line 543}}{23}{Additional validition figures}{figure.caption.13}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {A10}{\ignorespaces Additional validition examples. In each example, after the original images, the rows are (from top to bottom) the combination of the original and distance transformed scores, then the original scores and finally the bounding box scores.}}{23}{figure.caption.13}\protected@file@percent }
+\newlabel{fig:polpysex2}{{A10}{23}{Additional validition examples. In each example, after the original images, the rows are (from top to bottom) the combination of the original and distance transformed scores, then the original scores and finally the bounding box scores}{figure.caption.13}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {A.7}Confidence sets for the bounding boxes}{24}{subsection.A.7}\protected@file@percent }
+\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 553}}{24}{Confidence sets for the bounding boxes}{figure.caption.14}{}}
+\newlabel{sub@fig:1}{{}{24}{Confidence sets for the bounding boxes}{figure.caption.14}{}}
+\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 558}}{24}{Confidence sets for the bounding boxes}{figure.caption.14}{}}
+\newlabel{sub@fig:1}{{}{24}{Confidence sets for the bounding boxes}{figure.caption.14}{}}
+\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 563}}{24}{Confidence sets for the bounding boxes}{figure.caption.14}{}}
+\newlabel{sub@fig:1}{{}{24}{Confidence sets for the bounding boxes}{figure.caption.14}{}}
+\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 568}}{24}{Confidence sets for the bounding boxes}{figure.caption.14}{}}
+\newlabel{sub@fig:1}{{}{24}{Confidence sets for the bounding boxes}{figure.caption.14}{}}
+\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 573}}{24}{Confidence sets for the bounding boxes}{figure.caption.14}{}}
+\newlabel{sub@fig:1}{{}{24}{Confidence sets for the bounding boxes}{figure.caption.14}{}}
+\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 580}}{24}{Confidence sets for the bounding boxes}{figure.caption.14}{}}
+\newlabel{sub@fig:1}{{}{24}{Confidence sets for the bounding boxes}{figure.caption.14}{}}
+\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 585}}{24}{Confidence sets for the bounding boxes}{figure.caption.14}{}}
+\newlabel{sub@fig:1}{{}{24}{Confidence sets for the bounding boxes}{figure.caption.14}{}}
+\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 590}}{24}{Confidence sets for the bounding boxes}{figure.caption.14}{}}
+\newlabel{sub@fig:1}{{}{24}{Confidence sets for the bounding boxes}{figure.caption.14}{}}
+\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 595}}{24}{Confidence sets for the bounding boxes}{figure.caption.14}{}}
+\newlabel{sub@fig:1}{{}{24}{Confidence sets for the bounding boxes}{figure.caption.14}{}}
+\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 600}}{24}{Confidence sets for the bounding boxes}{figure.caption.14}{}}
+\newlabel{sub@fig:1}{{}{24}{Confidence sets for the bounding boxes}{figure.caption.14}{}}
+\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 607}}{24}{Confidence sets for the bounding boxes}{figure.caption.14}{}}
+\newlabel{sub@fig:1}{{}{24}{Confidence sets for the bounding boxes}{figure.caption.14}{}}
+\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 612}}{24}{Confidence sets for the bounding boxes}{figure.caption.14}{}}
+\newlabel{sub@fig:1}{{}{24}{Confidence sets for the bounding boxes}{figure.caption.14}{}}
+\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 617}}{24}{Confidence sets for the bounding boxes}{figure.caption.14}{}}
+\newlabel{sub@fig:1}{{}{24}{Confidence sets for the bounding boxes}{figure.caption.14}{}}
+\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 622}}{24}{Confidence sets for the bounding boxes}{figure.caption.14}{}}
+\newlabel{sub@fig:1}{{}{24}{Confidence sets for the bounding boxes}{figure.caption.14}{}}
+\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 627}}{24}{Confidence sets for the bounding boxes}{figure.caption.14}{}}
+\newlabel{sub@fig:1}{{}{24}{Confidence sets for the bounding boxes}{figure.caption.14}{}}
+\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 634}}{24}{Confidence sets for the bounding boxes}{figure.caption.14}{}}
+\newlabel{sub@fig:1}{{}{24}{Confidence sets for the bounding boxes}{figure.caption.14}{}}
+\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 639}}{24}{Confidence sets for the bounding boxes}{figure.caption.14}{}}
+\newlabel{sub@fig:1}{{}{24}{Confidence sets for the bounding boxes}{figure.caption.14}{}}
+\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 644}}{24}{Confidence sets for the bounding boxes}{figure.caption.14}{}}
+\newlabel{sub@fig:1}{{}{24}{Confidence sets for the bounding boxes}{figure.caption.14}{}}
+\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 649}}{24}{Confidence sets for the bounding boxes}{figure.caption.14}{}}
+\newlabel{sub@fig:1}{{}{24}{Confidence sets for the bounding boxes}{figure.caption.14}{}}
+\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 654}}{24}{Confidence sets for the bounding boxes}{figure.caption.14}{}}
+\newlabel{sub@fig:1}{{}{24}{Confidence sets for the bounding boxes}{figure.caption.14}{}}
+\newlabel{fig:grid}{{\caption@xref {fig:grid}{ on input line 656}}{24}{Confidence sets for the bounding boxes}{figure.caption.14}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {A11}{\ignorespaces Conformal confidence sets for the boundary boxes themselves using the approach introduced in Section \ref {AA:BBtheory}. The ground truth outer bounding boxes are shown in yellow.}}{24}{figure.caption.14}\protected@file@percent }
+\newlabel{fig:resbb}{{A11}{24}{Conformal confidence sets for the boundary boxes themselves using the approach introduced in Section \ref {AA:BBtheory}. The ground truth outer bounding boxes are shown in yellow}{figure.caption.14}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {A.8}Joint 90\% confidence regions}{24}{subsection.A.8}\protected@file@percent }
+\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 665}}{24}{Joint 90\% confidence regions}{figure.caption.15}{}}
+\newlabel{sub@fig:1}{{}{24}{Joint 90\% confidence regions}{figure.caption.15}{}}
+\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 670}}{24}{Joint 90\% confidence regions}{figure.caption.15}{}}
+\newlabel{sub@fig:1}{{}{24}{Joint 90\% confidence regions}{figure.caption.15}{}}
+\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 675}}{24}{Joint 90\% confidence regions}{figure.caption.15}{}}
+\newlabel{sub@fig:1}{{}{24}{Joint 90\% confidence regions}{figure.caption.15}{}}
+\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 680}}{24}{Joint 90\% confidence regions}{figure.caption.15}{}}
+\newlabel{sub@fig:1}{{}{24}{Joint 90\% confidence regions}{figure.caption.15}{}}
+\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 685}}{24}{Joint 90\% confidence regions}{figure.caption.15}{}}
+\newlabel{sub@fig:1}{{}{24}{Joint 90\% confidence regions}{figure.caption.15}{}}
+\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 692}}{24}{Joint 90\% confidence regions}{figure.caption.15}{}}
+\newlabel{sub@fig:1}{{}{24}{Joint 90\% confidence regions}{figure.caption.15}{}}
+\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 697}}{24}{Joint 90\% confidence regions}{figure.caption.15}{}}
+\newlabel{sub@fig:1}{{}{24}{Joint 90\% confidence regions}{figure.caption.15}{}}
+\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 702}}{24}{Joint 90\% confidence regions}{figure.caption.15}{}}
+\newlabel{sub@fig:1}{{}{24}{Joint 90\% confidence regions}{figure.caption.15}{}}
+\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 707}}{24}{Joint 90\% confidence regions}{figure.caption.15}{}}
+\newlabel{sub@fig:1}{{}{24}{Joint 90\% confidence regions}{figure.caption.15}{}}
+\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 712}}{24}{Joint 90\% confidence regions}{figure.caption.15}{}}
+\newlabel{sub@fig:1}{{}{24}{Joint 90\% confidence regions}{figure.caption.15}{}}
+\newlabel{fig:grid}{{\caption@xref {fig:grid}{ on input line 714}}{24}{Joint 90\% confidence regions}{figure.caption.15}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {A12}{\ignorespaces Joint 90\% conformal confidence sets obtained using Corollary \ref {cor:weighting}, with $\alpha _1 = 0.02$ and $\alpha _2 = 0.08$, for the polpys images in Figure \ref {fig:res}.}}{24}{figure.caption.15}\protected@file@percent }
+\newlabel{fig:joint}{{A12}{24}{Joint 90\% conformal confidence sets obtained using Corollary \ref {cor:weighting}, with $\alpha _1 = 0.02$ and $\alpha _2 = 0.08$, for the polpys images in Figure \ref {fig:res}}{figure.caption.15}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {A.9}Marginal 80 \% Confidence regions}{25}{subsection.A.9}\protected@file@percent }
+\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 723}}{25}{Marginal 80 \% Confidence regions}{figure.caption.16}{}}
+\newlabel{sub@fig:1}{{}{25}{Marginal 80 \% Confidence regions}{figure.caption.16}{}}
+\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 728}}{25}{Marginal 80 \% Confidence regions}{figure.caption.16}{}}
+\newlabel{sub@fig:1}{{}{25}{Marginal 80 \% Confidence regions}{figure.caption.16}{}}
+\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 733}}{25}{Marginal 80 \% Confidence regions}{figure.caption.16}{}}
+\newlabel{sub@fig:1}{{}{25}{Marginal 80 \% Confidence regions}{figure.caption.16}{}}
+\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 738}}{25}{Marginal 80 \% Confidence regions}{figure.caption.16}{}}
+\newlabel{sub@fig:1}{{}{25}{Marginal 80 \% Confidence regions}{figure.caption.16}{}}
+\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 743}}{25}{Marginal 80 \% Confidence regions}{figure.caption.16}{}}
+\newlabel{sub@fig:1}{{}{25}{Marginal 80 \% Confidence regions}{figure.caption.16}{}}
+\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 750}}{25}{Marginal 80 \% Confidence regions}{figure.caption.16}{}}
+\newlabel{sub@fig:1}{{}{25}{Marginal 80 \% Confidence regions}{figure.caption.16}{}}
+\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 755}}{25}{Marginal 80 \% Confidence regions}{figure.caption.16}{}}
+\newlabel{sub@fig:1}{{}{25}{Marginal 80 \% Confidence regions}{figure.caption.16}{}}
+\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 760}}{25}{Marginal 80 \% Confidence regions}{figure.caption.16}{}}
+\newlabel{sub@fig:1}{{}{25}{Marginal 80 \% Confidence regions}{figure.caption.16}{}}
+\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 765}}{25}{Marginal 80 \% Confidence regions}{figure.caption.16}{}}
+\newlabel{sub@fig:1}{{}{25}{Marginal 80 \% Confidence regions}{figure.caption.16}{}}
+\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 770}}{25}{Marginal 80 \% Confidence regions}{figure.caption.16}{}}
+\newlabel{sub@fig:1}{{}{25}{Marginal 80 \% Confidence regions}{figure.caption.16}{}}
+\newlabel{fig:grid}{{\caption@xref {fig:grid}{ on input line 772}}{25}{Marginal 80 \% Confidence regions}{figure.caption.16}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {A13}{\ignorespaces Marginal 80\% conformal confidence sets obtained for the polpys images in Figure \ref {fig:res}.}}{25}{figure.caption.16}\protected@file@percent }
+\newlabel{fig:joint2}{{A13}{25}{Marginal 80\% conformal confidence sets obtained for the polpys images in Figure \ref {fig:res}}{figure.caption.16}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {A.10}Marginal 95 \% Confidence regions}{25}{subsection.A.10}\protected@file@percent }
+\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 781}}{25}{Marginal 95 \% Confidence regions}{figure.caption.17}{}}
+\newlabel{sub@fig:1}{{}{25}{Marginal 95 \% Confidence regions}{figure.caption.17}{}}
+\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 786}}{25}{Marginal 95 \% Confidence regions}{figure.caption.17}{}}
+\newlabel{sub@fig:1}{{}{25}{Marginal 95 \% Confidence regions}{figure.caption.17}{}}
+\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 791}}{25}{Marginal 95 \% Confidence regions}{figure.caption.17}{}}
+\newlabel{sub@fig:1}{{}{25}{Marginal 95 \% Confidence regions}{figure.caption.17}{}}
+\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 796}}{25}{Marginal 95 \% Confidence regions}{figure.caption.17}{}}
+\newlabel{sub@fig:1}{{}{25}{Marginal 95 \% Confidence regions}{figure.caption.17}{}}
+\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 801}}{25}{Marginal 95 \% Confidence regions}{figure.caption.17}{}}
+\newlabel{sub@fig:1}{{}{25}{Marginal 95 \% Confidence regions}{figure.caption.17}{}}
+\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 808}}{25}{Marginal 95 \% Confidence regions}{figure.caption.17}{}}
+\newlabel{sub@fig:1}{{}{25}{Marginal 95 \% Confidence regions}{figure.caption.17}{}}
+\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 813}}{25}{Marginal 95 \% Confidence regions}{figure.caption.17}{}}
+\newlabel{sub@fig:1}{{}{25}{Marginal 95 \% Confidence regions}{figure.caption.17}{}}
+\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 818}}{25}{Marginal 95 \% Confidence regions}{figure.caption.17}{}}
+\newlabel{sub@fig:1}{{}{25}{Marginal 95 \% Confidence regions}{figure.caption.17}{}}
+\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 823}}{25}{Marginal 95 \% Confidence regions}{figure.caption.17}{}}
+\newlabel{sub@fig:1}{{}{25}{Marginal 95 \% Confidence regions}{figure.caption.17}{}}
+\newlabel{fig:1}{{\caption@xref {fig:1}{ on input line 828}}{25}{Marginal 95 \% Confidence regions}{figure.caption.17}{}}
+\newlabel{sub@fig:1}{{}{25}{Marginal 95 \% Confidence regions}{figure.caption.17}{}}
+\newlabel{fig:grid}{{\caption@xref {fig:grid}{ on input line 830}}{25}{Marginal 95 \% Confidence regions}{figure.caption.17}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {A14}{\ignorespaces Marginal 95\% conformal confidence sets obtained using for the polpys images in Figure \ref {fig:res}. These sets are also joint 90\% confidence sets with equally weighted $\alpha _1 = \alpha _2 = 0.05$. The influence of the weighting scheme can therefore examined by comparing to Figure \ref {fig:joint}.}}{25}{figure.caption.17}\protected@file@percent }
+\newlabel{fig:joint3}{{A14}{25}{Marginal 95\% conformal confidence sets obtained using for the polpys images in Figure \ref {fig:res}. These sets are also joint 90\% confidence sets with equally weighted $\alpha _1 = \alpha _2 = 0.05$. The influence of the weighting scheme can therefore examined by comparing to Figure \ref {fig:joint}}{figure.caption.17}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {A.11}Histograms of the coverage}{26}{subsection.A.11}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {A15}{\ignorespaces Histograms of the coverage rates obtained across each of the validation resamples for 90\% inner and outer marginal confidence sets. We plot the results for the original scores, distance transformed scores (DT) and boundary box scores (BB) from left to right. The bounding box scores are discontinuous which is the cause of the discreteness of the rightmost histograms.}}{26}{figure.caption.18}\protected@file@percent }
+\newlabel{fig:valhist}{{A15}{26}{Histograms of the coverage rates obtained across each of the validation resamples for 90\% inner and outer marginal confidence sets. We plot the results for the original scores, distance transformed scores (DT) and boundary box scores (BB) from left to right. The bounding box scores are discontinuous which is the cause of the discreteness of the rightmost histograms}{figure.caption.18}{}}
+\gdef \@abspage@last{26}
