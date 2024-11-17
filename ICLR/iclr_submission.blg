@@ -2,7 +2,7 @@ This is BibTeX, Version 0.99d (TeX Live 2024)
 Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: iclr_submission.aux
 I couldn't open database file ../bibfiles/Genetics.bib
----line 124 of file iclr_submission.aux
+---line 147 of file iclr_submission.aux
  : \bibdata{../bibfiles/RFT,../bibfiles/MachineLearning,../bibfiles/MHT,../bibfiles/Statistics,../bibfiles/TomsPapers,../bibfiles/Genetics
  :                                                                                                                                        ,../bibfiles/fMRI,../bibfiles/Books}
 I'm skipping whatever remains of this command
@@ -13,17 +13,17 @@ Repeated entry---line 1940 of file ../bibfiles/RFT.bib
  :                     ,
 I'm skipping whatever remains of this entry
 Database file #2: ../bibfiles/MachineLearning.bib
-Repeated entry---line 92 of file ../bibfiles/MachineLearning.bib
+Repeated entry---line 122 of file ../bibfiles/MachineLearning.bib
  : @article{Gupta2020
  :                   ,
 I'm skipping whatever remains of this entry
-Repeated entry---line 250 of file ../bibfiles/MachineLearning.bib
+Repeated entry---line 280 of file ../bibfiles/MachineLearning.bib
  : @book{Vovk2005
  :               ,
 I'm skipping whatever remains of this entry
 Database file #3: ../bibfiles/MHT.bib
 Database file #4: ../bibfiles/Statistics.bib
-Repeated entry---line 3176 of file ../bibfiles/Statistics.bib
+Repeated entry---line 3205 of file ../bibfiles/Statistics.bib
  : @article{Worsley1992
  :                     ,
 I'm skipping whatever remains of this entry
@@ -32,45 +32,45 @@ Repeated entry---line 272 of file ../bibfiles/TomsPapers.bib
  : @article{Benjamini1995
  :                       ,
 I'm skipping whatever remains of this entry
-You've used 34 entries,
+You've used 37 entries,
             2773 wiz_defined-function locations,
-            842 strings with 13028 characters,
-and the built_in function-call counts, 19282 in all, are:
-= -- 1664
-> -- 1406
-< -- 17
-+ -- 472
-- -- 438
-* -- 1679
-:= -- 2977
-add.period$ -- 110
-call.type$ -- 34
-change.case$ -- 245
-chr.to.int$ -- 34
-cite$ -- 68
-duplicate$ -- 798
-empty$ -- 1390
-format.name$ -- 480
-if$ -- 4016
+            861 strings with 13831 characters,
+and the built_in function-call counts, 21306 in all, are:
+= -- 1822
+> -- 1610
+< -- 18
++ -- 541
+- -- 504
+* -- 1873
+:= -- 3310
+add.period$ -- 120
+call.type$ -- 37
+change.case$ -- 275
+chr.to.int$ -- 37
+cite$ -- 74
+duplicate$ -- 855
+empty$ -- 1502
+format.name$ -- 549
+if$ -- 4417
 int.to.chr$ -- 1
 int.to.str$ -- 1
-missing$ -- 35
-newline$ -- 180
-num.names$ -- 136
-pop$ -- 486
+missing$ -- 37
+newline$ -- 196
+num.names$ -- 148
+pop$ -- 546
 preamble$ -- 1
-purify$ -- 212
+purify$ -- 239
 quote$ -- 0
-skip$ -- 651
+skip$ -- 708
 stack$ -- 0
-substring$ -- 653
-swap$ -- 112
+substring$ -- 699
+swap$ -- 115
 text.length$ -- 9
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 369
+type$ -- 402
 warning$ -- 0
-while$ -- 154
+while$ -- 166
 width$ -- 0
-write$ -- 454
+write$ -- 494
 (There were 6 error messages)

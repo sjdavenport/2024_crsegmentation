@@ -1,4 +1,4 @@
-\begin{thebibliography}{34}
+\begin{thebibliography}{37}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -117,6 +117,24 @@ Chirag Gupta, Aleksandr Podkopaev, and Aaditya Ramdas.
   intervals and calibration.
 \newblock \emph{Advances in Neural Information Processing Systems},
   33:\penalty0 3711--3723, 2020.
+
+\bibitem[Hoshme(2024)]{hoshme2024}
+Kaled Hoshme.
+\newblock Adult tooth segmentation using u-net based gan.
+\newblock
+  \url{https://www.kaggle.com/code/kaledhoshme/adult-tooth-segmentation-u-net-based-gan/},
+  2024.
+\newblock Accessed: 2024-11-17.
+
+\bibitem[Isensee et~al.(2019)Isensee, Schell, Pflueger, Brugnara, Bonekamp,
+  Neuberger, Wick, Schlemmer, Heiland, Wick, et~al.]{hdbet}
+Fabian Isensee, Marianne Schell, Irada Pflueger, Gianluca Brugnara, David
+  Bonekamp, Ulf Neuberger, Antje Wick, Heinz-Peter Schlemmer, Sabine Heiland,
+  Wolfgang Wick, et~al.
+\newblock Automated brain extraction of multisequence mri using artificial
+  neural networks.
+\newblock \emph{Human brain mapping}, 40\penalty0 (17):\penalty0 4952--4964,
+  2019.
 
 \bibitem[Jalalifar et~al.(2022)Jalalifar, Soliman, Sahgal, and
   Sadeghi-Naini]{Jalalifar2022}
@@ -249,5 +267,13 @@ Keith~J. Worsley, Alan~C Evans, Sean Marrett, and P~Neelin.
 \newblock A three-dimensional statistical analysis for {CBF} activation studies
   in human brain.
 \newblock \emph{JCBFM}, 1992.
+
+\bibitem[Zhang et~al.(2023)Zhang, Ye, Chen, Xu, Chen, Wu, Cao, Li, Wang, and
+  Huang]{Zhang2023}
+Yifan Zhang, Fan Ye, Lingxiao Chen, Feng Xu, Xiaodiao Chen, Hongkun Wu, Mingguo
+  Cao, Yunxiang Li, Yaqi Wang, and Xingru Huang.
+\newblock Children’s dental panoramic radiographs dataset for caries
+  segmentation and dental disease detection.
+\newblock \emph{Scientific Data}, 10\penalty0 (1):\penalty0 380, 2023.
 
 \end{thebibliography}
