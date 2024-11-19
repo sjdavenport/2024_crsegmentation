@@ -7,6 +7,6 @@ The use of improved neural networks which can better separate the scores within 
 
 The confidence sets we develop in this paper are related in spirit to work on uncertainty quantification for spatial excursion sets (\cite{chen2017density}, \cite{Bowring2019}, \cite{Mejia2020}). These approaches instead assume that multiple observations from a signal plus noise model are observed and perform inference on the underlying signal rather than prediction. Unlike conformal inference these approaches rely on central limit theorems or distributional assumptions in order to provide spatial confidence regions with asymptotic coverage guarantees. 
 
-\section*{Availability of code}
-\vspace{-0.1cm}
-Matlab code to implement the methods of this paper and a demo on a downscaled version of the data is available in the supplementary material. The code is very fast: calculating inner and outer thresholds (over the 1000 images in the calibration set) requires approximately 0.03 seconds on the downscaled data on a standard laptop (Apple M3 chip with 16 GB RAM) and 2.64 seconds for the original dataset. 
+%\section*{Availability of code}
+%\vspace{-0.1cm}
+Matlab code to implement the methods of this paper and a demo on a downscaled version of the data is available in the supplementary material. The code is very fast: calculating inner and outer thresholds (over the 1000 images in the calibration set) requires approximately 0.03 seconds on the downscaled polyps data on a standard laptop (Apple M3 chip with 16 GB RAM) and 2.64 seconds for the original polyps dataset. \nt{This fast performance due to our observation that it is sufficient to rely on quantiles of the maximum scores within and outside the mask, meaning we don't have to rely on binary search which is the approach used in e.g. \cite{Angelopoulos2022} and \cite{Mossina2024} to obtain their conformal prediction thresholds.}
