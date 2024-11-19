@@ -51,6 +51,21 @@ and so $I(X) = I_{\hat{\lambda}}(X)$. As such
 \end{equation}
 and we recover the desired result. Arguing similarly it is possible to establish a proof of Theorem \ref{thm:outer}.
 
+\subsection{Characterizing the relationship between Haussdorff distance and the distance transformed scores}\label{haussproof}
+In this section we provide a proof of Theorem \ref{thm:distscoreschar}.
+\begin{proof}
+	Consider the outer confidence sets obtained using the distance transformed scores. Then given $1 \leq i \leq n$ such that $H(\hat{M}(X_i), Y_i) \leq k $, we have 
+	$$Y_i = \left( Y_i \cap \hat{M}(X_i) \right)\cup \left( Y_i \cap \hat{M}(X_i)^C\right)$$
+	where the union is disjoint. The distance transformed scores $d_\rho(\hat{M}(X_i), v)$ are positive for $v \in \hat{M}(X_i)$ and negative for $v \not \in \hat{M}(X_i)$. As such 
+	\begin{align*}
+		\gamma_i &= \max_{v \in \mathcal{V}: Y_i(v) = 1} -f_O(s(X_i), v) = \max_{v \in \mathcal{V}: Y_i(v) = 1} -d_\rho(\hat{M}(X_i), v)\\
+		&= \max_{v \in \mathcal{V}: Y_i(v) = 1} \min_{e \in E(\hat{M}(X_i))} \rho(v, e) \leq H(\hat{M}(X_i), Y_i)  \leq k.
+	\end{align*}
+	Since this holds for all $i $ on a set $J$ which has  $\frac{|J|}{n} > 1-\alpha_2$, it follows that $\lambda_O(\alpha_2) \leq k $. In particular, arguing similarly in the opposite direction it follows that for any new observation $X_{n+1}$ we have that $$d_H(\hat{M}(X_{n+1}), O(X_{n+1}))  \leq k.$$ 
+	
+	An analogous proof can be used to establish the corresponding result for the inner sets. 
+\end{proof}
+
 \subsection{Deriving confidence sets from bounding boxes}\label{AA:BBtheory}
 We can use our results in order to provide valid inference for bounding boxes via an adaption of the approach of \cite{Andeol2023}. In particular given $Z \in \mathcal{Y}$, let $B_{I, \max}(Z)$ be the largest box which can be contained within the set $\lbrace v\in \mathcal{V}: Z(v) = 1 \rbrace$ and let $ B_{O, \min}(Z)$ be the smallest box which contains the set $\lbrace v\in \mathcal{V}: Z(v) = 1 \rbrace$. Given $Y \in \mathcal{Y}, $ let $cc(Y) \subseteq \mathcal{P}(\mathcal{V})$ denote the set of connected components of the set $\lbrace v\in \mathcal{V}: Y(v) = 1 \rbrace$ for a given connectivity criterion (which we take to be $4$ in our examples), and note that these components can themselves be identifed as elements of $\mathcal{Y}$. Define 
 $$B_I(Y) = \cup_{c \in cc(Y)} B_{I, \max}(c) \text{ and } B_O(Y) = \cup_{c \in cc(Y)} B_{O, \min}(c)$$
@@ -1894,9 +1909,7 @@ In the table we display performance metrics for each model, computed over the va
 \end{table}
 
 
-\subsection{Analogy to FWER control}\label{coveragerates}
-
-\nt{This section formalize the analogy between coverage and FWER control.}
+\subsection{Analogy to multiple testing error rates}\label{coveragerates}
 
 \subsection*{Family-Wise Error Rate (FWER)}
 \nt{In traditional multiple hypothesis testing \textit{Family-Wise Error Rate} (FWER) is the probability of making at least one false discovery across a set of considered hypotheses. Given a multiple testing problem in which $m$ hypotheses are tested and a multiple testing algorithm $\mathcal{M}$, let \( V(\mathcal{M}) \) denotes the resulting set of false discoveries, $R(\mathcal{M})$ the set of rejected hypotheses and $T$ be the set of true rejections. Then the FWER is defined as:

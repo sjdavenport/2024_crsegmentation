@@ -165,12 +165,13 @@ A score transformation that we will make particular use of in Section \ref{SS:re
 \begin{equation*}
 	d_{\rho}(\mathcal{A}, v) = \text{sign}(\mathcal{A}, v)\min\lbrace \rho(v, e): e \in E(\mathcal{A})\rbrace, 
 \end{equation*}
-where $ \text{sign}(\mathcal{A}, v) = 1 $ if $v\in \mathcal{A}$ and equals $-1$ otherwise. The function $d_{\rho}$ is an adapation of the distance transform of \cite{Borgefors1986} which provides positive values within the set $\mathcal{A}$ and negative values outside of $\mathcal{A}$. \nt{Moreover let $H(\mathcal{A}, \mathcal{B})$ be the Haussdorff distance between two sets $ \mathcal{A}, \mathcal{B} \subseteq \mathcal{V}.$}
+where $ \text{sign}(\mathcal{A}, v) = 1 $ if $v\in \mathcal{A}$ and equals $-1$ otherwise. The function $d_{\rho}$ is an adapation of the distance transform of \cite{Borgefors1986} which provides positive values within the set $\mathcal{A}$ and negative values outside of $\mathcal{A}$. \nt{Moreover define the Hausdorff distance  between two sets $ \mathcal{A}, \mathcal{B} \subseteq \mathcal{V}$ as $H_\rho(\mathcal{A}, \mathcal{B}) = \max\{\sup_{a \in \mathcal{A}} \inf_{b \in \mathcal{B}} \rho(a, b), \sup_{b \in \mathcal{B}} \inf_{a \in \mathcal{A}} \rho(b, a)\},$ The following result shows that transforming the scores using the distance transformation ensures that accurate segmentation provides precise confidence sets. See Section \ref{haussproof} for a proof.}
 \nt{
-\begin{theorem}
-	Let $f_I(s(X), v) = f_O(s(X), v) = d_\rho(\hat{M}(X), v)$ and define $I(X)$ and $O(X)$ as in Section \ref{SS:MCS}. Suppose that $H(\hat{M}(X_i), Y_i) \leq k$, some $k \in \mathbb{R}$, for all $i \in J$, for some $J \subseteq \lbrace 1, \dots, n \rbrace$ such that $\frac{|J|}{n} \geq 1-\alpha_1$. Then $d_H(\hat{M}(X_{n+1}), I(X_{n+1}))  \leq k$. If we instead require that $\frac{|J|}{n} \geq 1-\alpha_2$, then $d_H(\hat{M}(X_{n+1}), O(X_{n+1}))  \leq k$.
+\begin{theorem}\label{thm:distscoreschar}
+	For each $v \in \mathcal{V}$, let $f_I(s(X), v) = f_O(s(X), v) = d_\rho(\hat{M}(X), v)$ and define $I(X)$ and $O(X)$ as in Section \ref{SS:MCS}. Suppose that $H(\hat{M}(X_i), Y_i) \leq k$, some $k \in \mathbb{R}$, for all $i \in J$, for some $J \subseteq \lbrace 1, \dots, n \rbrace$ such that $\frac{|J|}{n} > 1-\alpha_1$. Then $H(\hat{M}(X_{n+1}), I(X_{n+1}))  \leq k$. If we instead require that $\frac{|J|}{n} > 1-\alpha_2$, then $d_H(\hat{M}(X_{n+1}), O(X_{n+1}))  \leq k$.
 \end{theorem}
 }
+Note that a corresponding result is not true for the original untransformed scores, see Section \ref{fig:brain2}. 
 \subsection{Constructing confidence sets from bounding boxes}
 %Inner and outer confidence sets can instead be provided using bounding boxes \citep{De2022, Andeol2023, Mukama2024}. 
 Existing work on conformal inner and outer confidence sets, which aim to provide coverage of the entire ground truth mask with a given probability, has primarily focused on bounding boxes \citep{De2022, Andeol2023, Mukama2024}. These papers adjust for multiple comparisons over the 4 edges of the bounding box, doing so conformally by comparing the distance between the predicted bounding box and the bounding box of the ground truth mask. These approaches provide box-wise coverage by aggregrating the predictions over all objects within all of the calibration images, often combining multiple bounding boxes per image. However, as observed in Section 5 of \cite{De2022}, doing so violates exchangeability which is needed for valid conformal inference, as there is dependence between the objects within each image. Instead image-wise coverage can be provided without violating exchangeability by treating the union of the boxes as the ground truth image \citep{De2022, Andeol2023}.
@@ -220,6 +221,7 @@ Based on the results of the learning dataset we decided to combine the best of t
 	\caption{Illustrating the performance of the different score transformations on the learning dataset. We display 2 example polyps images and present the results of each in 8 panels. These panels are as follows. Bottom left: the original image of the polyps. Top Left: an intensity plot of the scores obtained from PraNet with purple/yellow indicating areas of lower/higher assigned probability. For the remaining panels, 3 different score transformations are shown which from left to right are the original scores, distance transformed scores $d_\rho(\hat{M}(X), v)$ and bounding box scores (obtained using the combined bounding box score $b_M$ defined in Definition \ref{dfn:BBS}). In each of the panels on the top row a surface plot of the transformed PraNet scores is shown, along with the conformal thresholds which are used to obtain the marginal 90\% inner and outer confidence sets.  These thresholds are illustrated via red and blue planes respectively and are obtained over the learning dataset. The panels on the bottom row of each example show the corresponding conformal confidence sets. Here the inner set is shown in red, plotted over the ground truth mask of the polyps, shown in yellow, plotted over the outer set which is shown in blue. The outer set contains the ground truth mask which contains the inner set in all examples. From these figures we see that the original scores provide tight inner confidence sets and the distance transformed scores instead provide tight outer confidence sets.
 The conclusion from the learning dataset is therefore that it makes sense to combine these two score transformations.}
 	\label{fig:learning}
+	\vspace{-1cm}
 \end{figure}
 %\subsection{Tumor detection}
 %\begin{figure}[h!]
@@ -491,7 +493,7 @@ We repeat this procedure instead targeting the proportion of the entire image wh
 %\subsection{Melanoma Segmentation}
 
 \section{Application to brain imaging segmentation}
-
+\vspace{-0.3cm}
 	\begin{wrapfigure}{r}{0.58\textwidth} % 'r' for right, and setting the width
 	\vspace{-0.4cm}
 	\captionsetup{width=0.58\textwidth}
@@ -564,6 +566,7 @@ We repeat this procedure instead targeting the proportion of the entire image wh
 \nt{Based on the results of the learning dataset, see Appendix \ref{brainlearn}, we see that the distance transformed scores perform best for constructing both inner and outer confidence sets. The naive approach of using the original scores perform very poorly for both inner and outer sets. Calibrating thresholds for the distance transformed scores using the calibration dataset and applying to the images from the testing dataset we obtain informative inner and outer confidence sets, as shown in Figure \ref{fig:brain}. Validating as in Section \ref{SS:cov}, we see that the false coverage rate is controlled to the nominal level, see Section \ref{SS:val2}. }
 
 \section{Application to teeth segmentation}
+\vspace{-0.3cm}
 \nt{As a third application we consider the problem of teeth segmentation. We use a dataset (released by \cite{Zhang2023}) consisting of scans of the teeth of 598 subjects and train a U-net based GAN network using 400 subjects (following \cite{hoshme2024}). We divide the remaining 198 subjects into 170 to use as calibration data and 28 to use as a test dataset. We use the original training data as a learning dataset (note that this is independent of the calibration dataset so does not affect validity). We tried a variety of score transformations including distance transformations and smoothing, see Section \ref{A:teeth}. Based on the learning data we chose the distance transformation for the outer sets and smoothing with a full width at half maximum (FWHM) of 2 pixels for the inner set. Calibrating thresholds on the calibration dataset and applying to the test data we obtain the results shown in Figure \ref{fig:teeth}. Moreover, validating as in Section \ref{SS:cov}, we show that the false coverage rate is controlled to the nominal level in practice, see Section \ref{val3}.}
 
 %\begin{figure}[h!]
@@ -695,5 +698,6 @@ We repeat this procedure instead targeting the proportion of the entire image wh
 			\includegraphics[width=\textwidth]{../figures/teeth/test/smooth_scores/575_smooth_dist.png}
 			\label{fig:1}
 		\end{subfigure}
+		\vspace{-0.5cm}
 	\caption{\nt{Inner and outer confidence sets for teeth segmentation computed using scores smoothed with 2 pixel FWHM and distance transformed scores respectively. The true mask is shown in yellow.}}\label{fig:teeth}
 \end{figure}
