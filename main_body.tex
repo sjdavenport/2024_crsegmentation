@@ -201,22 +201,23 @@ Based on the results of the learning dataset we decided to combine the best of t
 \begin{figure}[h!]
 %	\centering
 %\vspace{-0.5cm}
+	\hspace{3.8cm} \textbf{\normalsize Original scores} \hspace{0.6cm} 	\textbf{ Distance scores} \hspace{0.9cm}	\textbf{ Box scores}
 \begin{center}
-	\includegraphics[width=0.24\textwidth]{../figures/learning/scores/362.png}
-		\includegraphics[width=0.24\textwidth]{../figures/learning/score_surf/362.png}	\includegraphics[width=0.24\textwidth]{../figures/learning/dist_surf/362.png}
-		\includegraphics[width=0.24\textwidth]{../figures/learning/dist_bt_surf/362.png}\\
-		\includegraphics[width=0.24\textwidth]{../figures/learning/images/362.png}
-	\includegraphics[width=0.24\textwidth]{../figures/learning/score_crs_marginal90/362.png}
-	\includegraphics[width=0.24\textwidth]{../figures/learning/dist_crs_marginal90/362.png}
-	\includegraphics[width=0.24\textwidth]{../figures/learning/dist_bt_crs_marginal90/362.png}
+	\includegraphics[width=0.2\textwidth]{../figures/learning/scores/362.png}\hspace{0.5cm}
+		\includegraphics[width=0.2\textwidth]{../figures/learning/score_surf/362.png}\hspace{0.5cm}	\includegraphics[width=0.2\textwidth]{../figures/learning/dist_surf/362.png}\hspace{0.5cm}
+		\includegraphics[width=0.2\textwidth]{../figures/learning/dist_bt_surf/362.png}\hspace{0.5cm}\\
+		\includegraphics[width=0.2\textwidth]{../figures/learning/images/362.png}\hspace{0.5cm}
+	\includegraphics[width=0.2\textwidth]{../figures/learning/score_crs_marginal90/362.png}\hspace{0.5cm}
+	\includegraphics[width=0.2\textwidth]{../figures/learning/dist_crs_marginal90/362.png}\hspace{0.5cm}
+	\includegraphics[width=0.2\textwidth]{../figures/learning/dist_bt_crs_marginal90/362.png}\hspace{0.5cm}
 %\vspace{0.5cm}
-		\includegraphics[width=0.24\textwidth]{../figures/learning/scores/335.png}
-	\includegraphics[width=0.24\textwidth]{../figures/learning/score_surf/335.png}	\includegraphics[width=0.24\textwidth]{../figures/learning/dist_surf/335.png}
-	\includegraphics[width=0.24\textwidth]{../figures/learning/dist_bt_surf/335.png}\\
-	\includegraphics[width=0.24\textwidth]{../figures/learning/images/335.png}
-	\includegraphics[width=0.24\textwidth]{../figures/learning/score_crs_marginal90/335.png}
-	\includegraphics[width=0.24\textwidth]{../figures/learning/dist_crs_marginal90/335.png}
-	\includegraphics[width=0.24\textwidth]{../figures/learning/dist_bt_crs_marginal90/335.png}
+		\includegraphics[width=0.2\textwidth]{../figures/learning/scores/335.png}\hspace{0.5cm}
+	\includegraphics[width=0.2\textwidth]{../figures/learning/score_surf/335.png}\hspace{0.5cm}	\includegraphics[width=0.2\textwidth]{../figures/learning/dist_surf/335.png}\hspace{0.5cm}
+	\includegraphics[width=0.2\textwidth]{../figures/learning/dist_bt_surf/335.png}\hspace{0.5cm}\\
+	\includegraphics[width=0.2\textwidth]{../figures/learning/images/335.png}\hspace{0.5cm}
+	\includegraphics[width=0.2\textwidth]{../figures/learning/score_crs_marginal90/335.png}\hspace{0.5cm}
+	\includegraphics[width=0.2\textwidth]{../figures/learning/dist_crs_marginal90/335.png}\hspace{0.5cm}
+	\includegraphics[width=0.2\textwidth]{../figures/learning/dist_bt_crs_marginal90/335.png}
 \end{center}
 	\caption{Illustrating the performance of the different score transformations on the learning dataset. We display 2 example polyps images and present the results of each in 8 panels. These panels are as follows. Bottom left: the original image of the polyps. Top Left: an intensity plot of the scores obtained from PraNet with purple/yellow indicating areas of lower/higher assigned probability. For the remaining panels, 3 different score transformations are shown which from left to right are the original scores, distance transformed scores $d_\rho(\hat{M}(X), v)$ and bounding box scores (obtained using the combined bounding box score $b_M$ defined in Definition \ref{dfn:BBS}). In each of the panels on the top row a surface plot of the transformed PraNet scores is shown, along with the conformal thresholds which are used to obtain the marginal 90\% inner and outer confidence sets.  These thresholds are illustrated via red and blue planes respectively and are obtained over the learning dataset. The panels on the bottom row of each example show the corresponding conformal confidence sets. Here the inner set is shown in red, plotted over the ground truth mask of the polyps, shown in yellow, plotted over the outer set which is shown in blue. The outer set contains the ground truth mask which contains the inner set in all examples. From these figures we see that the original scores provide tight inner confidence sets and the distance transformed scores instead provide tight outer confidence sets.
 The conclusion from the learning dataset is therefore that it makes sense to combine these two score transformations.}
@@ -235,108 +236,120 @@ The conclusion from the learning dataset is therefore that it makes sense to com
 In order to illustrate the full extent of our methods in practice we divide the set aside 1500 images at random into 1000 for conformal calibration, and 500 for testing. The resulting conformal confidence sets for 10 example images from the test dataset are shown in Figure \ref{fig:res}, with inner sets obtained using the original scores and outer sets using the distance transformed scores. The inner sets are shown in red and represent regions where we can have high confidence of the presence of polyps. The outer sets are shown in blue and represent regions in which the polyps may be. The ground truth mask for each polyps is shown in yellow and can be compared to the original images. In each of the examples considered the ground truth is bounded from within by the inner set and from without by the outer set. 
 \begin{figure}[h!]
 	\centering
-	\begin{subfigure}{0.19\textwidth}
+	\begin{subfigure}{0.18\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/all_images/61.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.19\textwidth}
+	\begin{subfigure}{0.18\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/all_images/114.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.19\textwidth}
+	\begin{subfigure}{0.18\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/all_images/144.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.19\textwidth}
+	\begin{subfigure}{0.18\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/all_images/148.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.19\textwidth}
+	\begin{subfigure}{0.18\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/all_images/251.png}
 		\label{fig:1}
 	\end{subfigure}
 	\vspace{-0.35cm}
 	\\
-	\begin{subfigure}{0.19\textwidth}
+		\begin{subfigure}[b]{0.03\textwidth} % Adjust the width to fit your label
+		\centering
+		\raisebox{0.5\height}{\rotatebox{90}{\textbf{DT scores}}}
+	\end{subfigure}
+	\begin{subfigure}{0.18\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/validation/val_crs_combo_90/61.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.19\textwidth}
+	\begin{subfigure}{0.18\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/validation/val_crs_combo_90/114.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.19\textwidth}
+	\begin{subfigure}{0.18\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/validation/val_crs_combo_90/144.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.19\textwidth}
+	\begin{subfigure}{0.18\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/validation/val_crs_combo_90/148.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.19\textwidth}
+	\begin{subfigure}{0.18\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/validation/val_crs_combo_90/251.png}
 		\label{fig:1}
 	\end{subfigure}
 	\vspace{-0.35cm}
 	\\
-		\begin{subfigure}{0.19\textwidth}
+	\begin{subfigure}[b]{0.03\textwidth} % Adjust the width to fit your label
+		\centering
+		\raisebox{0.5\height}{\rotatebox{90}{\textbf{Image}}}
+	\end{subfigure}
+		\begin{subfigure}{0.18\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/all_images/7.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.19\textwidth}
+	\begin{subfigure}{0.18\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/all_images/211.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.19\textwidth}
+	\begin{subfigure}{0.18\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/all_images/1062.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.19\textwidth}
+	\begin{subfigure}{0.18\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/all_images/398.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.19\textwidth}
+	\begin{subfigure}{0.18\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/all_images/269.png}
 		\label{fig:1}
 	\end{subfigure}
 	\vspace{-0.35cm}
 	\\
-	\begin{subfigure}{0.19\textwidth}
+	\begin{subfigure}[b]{0.03\textwidth} % Adjust the width to fit your label
+		\centering
+		\raisebox{0.5\height}{\rotatebox{90}{\textbf{\shortstack{Confidence \\ Sets}}}}
+	\end{subfigure}
+	\begin{subfigure}{0.18\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/validation/cal_crs_combo_90/7.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.19\textwidth}
+	\begin{subfigure}{0.18\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/validation/cal_crs_combo_90/211.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.19\textwidth}
+	\begin{subfigure}{0.18\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/validation/val_crs_combo_90/1062.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.19\textwidth}
+	\begin{subfigure}{0.18\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/validation/val_crs_combo_90/398.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.19\textwidth}
+	\begin{subfigure}{0.18\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/validation/cal_crs_combo_90/269.png}
 		\label{fig:1}
@@ -346,7 +359,7 @@ In order to illustrate the full extent of our methods in practice we divide the 
 	\vspace{-0.5cm}
 \end{figure}
 %\begin{figure}
-%	\begin{subfigure}{0.19\textwidth}
+%	\begin{subfigure}{0.18\textwidth}
 %		\centering
 %		\includegraphics[width=\textwidth]{../figures/val_images/15.png}
 %		\label{fig:1}
