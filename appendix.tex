@@ -52,7 +52,7 @@ and so $I(X) = I_{\hat{\lambda}}(X)$. As such
 and we recover the desired result. Arguing similarly it is possible to establish a proof of Theorem \ref{thm:outer}.
 
 \subsection{Characterizing the relationship between Haussdorff distance and the distance transformed scores}\label{haussproof}
-In this section we provide a proof of Theorem \ref{thm:distscoreschar}.
+\nt{In this section we provide a proof of Theorem \ref{thm:distscoreschar} and state the analogous result for the inner confidence sets obtained using the distance transformation.
 \begin{proof}
 	Consider the outer confidence sets obtained using the distance transformed scores. Then given $1 \leq i \leq n$ such that $H(\hat{M}(X_i), Y_i) \leq k $, we have 
 	$$Y_i = \left( Y_i \cap \hat{M}(X_i) \right)\cup \left( Y_i \cap \hat{M}(X_i)^C\right)$$
@@ -62,10 +62,13 @@ In this section we provide a proof of Theorem \ref{thm:distscoreschar}.
 		&= \max_{v \in \mathcal{V}: Y_i(v) = 1} \min_{e \in E(\hat{M}(X_i))} \rho(v, e) \leq H(\hat{M}(X_i), Y_i)  \leq k.
 	\end{align*}
 	Since this holds for all $i $ on a set $J$ which has  $\frac{|J|}{n} > 1-\alpha_2$, it follows that $\lambda_O(\alpha_2) \leq k $. In particular, arguing similarly in the opposite direction it follows that for any new observation $X_{n+1}$ we have that $$d_H(\hat{M}(X_{n+1}), O(X_{n+1}))  \leq k.$$ 
-	
-	An analogous proof can be used to establish the corresponding result for the inner sets. 
 \end{proof}
-
+A similar result can be established for the inner confidence sets via an analogous proof. We state this formally as follows.}
+\nt{
+\begin{theorem}\label{thm:distscoreschar}
+	For each $v \in \mathcal{V}$, let $f_I(s(X), v) = d_\rho(\hat{M}(X), v)$ and define $I(X)$ as in Section \ref{SS:MCS}. Suppose that $H(\hat{M}(X_i), Y_i) \leq k$, some $k \in \mathbb{R}$, for all $i \in J$, for some $J \subseteq \lbrace 1, \dots, n \rbrace$ such that $\frac{|J|}{n} > 1-\alpha_1$. Then $H(\hat{M}(X_{n+1}), I(X_{n+1}))  \leq k$.  In particular if $H(\hat{M}(X_{n+1}), Y_{n+1}) \leq k$, then $H(I(X_{n+1}), Y_{n+1})  \leq 2k$.
+\end{theorem}
+}
 \subsection{Deriving confidence sets from bounding boxes}\label{AA:BBtheory}
 We can use our results in order to provide valid inference for bounding boxes via an adaption of the approach of \cite{Andeol2023}. In particular given $Z \in \mathcal{Y}$, let $B_{I, \max}(Z)$ be the largest box which can be contained within the set $\lbrace v\in \mathcal{V}: Z(v) = 1 \rbrace$ and let $ B_{O, \min}(Z)$ be the smallest box which contains the set $\lbrace v\in \mathcal{V}: Z(v) = 1 \rbrace$. Given $Y \in \mathcal{Y}, $ let $cc(Y) \subseteq \mathcal{P}(\mathcal{V})$ denote the set of connected components of the set $\lbrace v\in \mathcal{V}: Y(v) = 1 \rbrace$ for a given connectivity criterion (which we take to be $4$ in our examples), and note that these components can themselves be identifed as elements of $\mathcal{Y}$. Define 
 $$B_I(Y) = \cup_{c \in cc(Y)} B_{I, \max}(c) \text{ and } B_O(Y) = \cup_{c \in cc(Y)} B_{O, \min}(c)$$
@@ -337,7 +340,7 @@ Joint results can be obtained in a similar manner to those in Section \ref{SS:jo
 		\label{fig:1}
 	\end{subfigure}
 	\label{fig:grid}
-	\caption{Conformal confidence sets for the polyps data examples from Figure \ref{fig:res} for alternative scores. In each set of panels the confidence obtained from using the original scores are shown in the middle row and those obtained from the bounding box scores are shown in the bottom row. As observed on the learning dataset the outer sets obtained when using the original scores are very large and uninformative.}\label{fig:polpysex}
+	\caption{Conformal confidence sets for the polyps data examples from Figure \ref{fig:res} for alternative scores. In each set of panels the confidence obtained from using the logit scores are shown in the middle row and those obtained from the bounding box scores are shown in the bottom row. As observed on the learning dataset the outer sets obtained when using the logit scores are very large and uninformative.}\label{fig:polpysex}
 \end{figure}
 \newpage
 \subsubsection{Additional validition figures}
@@ -557,7 +560,7 @@ Joint results can be obtained in a similar manner to those in Section \ref{SS:jo
 		\label{fig:1}
 	\end{subfigure}
 	\label{fig:grid}
-	\caption{Additional validition examples. In each example, after the original images, the rows are (from top to bottom) the combination of the original and distance transformed scores, then the original scores and finally the bounding box scores.}\label{fig:polpysex2}
+	\caption{Additional validition examples. In each example, after the original images, the rows are (from top to bottom) the combination of the original and distance transformed scores, then the logit scores and finally the bounding box scores.}\label{fig:polpysex2}
 \end{figure}
 
 \newpage
@@ -857,7 +860,7 @@ Joint results can be obtained in a similar manner to those in Section \ref{SS:jo
 		\includegraphics[width=0.32\textwidth]{../figures/validation/val_hist_dt_outer.pdf}
 		\includegraphics[width=0.32\textwidth]{../figures/validation/val_hist_bt_outer.pdf}
 	\end{center}
-	\caption{Histograms of the coverage rates obtained across each of the validation resamples for 90\% inner and outer marginal confidence sets. We plot the results for the original scores, distance transformed scores (DT) and boundary box scores (BB) from left to right. The bounding box scores are discontinuous which is the cause of the discreteness of the rightmost histograms.}\label{fig:valhist}
+	\caption{Histograms of the coverage rates obtained across each of the validation resamples for 90\% inner and outer marginal confidence sets. We plot the results for the logit scores, distance transformed scores (DT) and boundary box scores (BB) from left to right. The bounding box scores are discontinuous which is the cause of the discreteness of the rightmost histograms.}\label{fig:valhist}
 \end{figure}
 
 \subsubsection{Comparing the proportion}
@@ -963,7 +966,7 @@ Joint results can be obtained in a similar manner to those in Section \ref{SS:jo
 		\label{fig:10}
 	\end{subfigure}
 	% Caption for the figure
-	\caption{\nt{Learning the best transformation for brain mask segmentation. First row: original images from different subjects. Second row: confidence sets provided by calibrating the distance transformed scores on the learning dataset. Third row: confidence sets produced using the original scores on the learning dataset. Using the original scores produced very bad results. Instead the distance transformation is a big improvement. Note that the improvement obtained by using the distance scores is even more when using the full calibration data, see Figure \ref{fig:brain}. This is because the learning dataset is relatively small and does not capture the full picture. The results at test time for the original scores are equally bad as for the learning data, see Figure \ref{fig:brain2}.}}
+	\caption{\nt{Learning the best transformation for brain mask segmentation. First row: original images from different subjects. Second row: confidence sets provided by calibrating the distance transformed scores on the learning dataset. Third row: confidence sets produced using the logit scores on the learning dataset. Using the logit scores produced very bad results. Instead the distance transformation is a big improvement. Note that the improvement obtained by using the distance scores is even more when using the full calibration data, see Figure \ref{fig:brain}. This is because the learning dataset is relatively small and does not capture the full picture. The results at test time for the logit scores are equally bad as for the learning data, see Figure \ref{fig:brain2}.}}
 	\label{fig:brain3}
 \end{figure}
 
@@ -1151,6 +1154,11 @@ Joint results can be obtained in a similar manner to those in Section \ref{SS:jo
 %	\captionsetup{width=0.58\textwidth}
 	\centering
 	% First row of images
+		\begin{subfigure}[b]{0.03\textwidth} % Adjust the width to fit your label
+		\centering
+		\raisebox{1\height}{\rotatebox{90}{ \textbf{\shortstack{Image}}}}
+	\end{subfigure}
+	\hspace{0.1cm}
 	\begin{subfigure}{0.16\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/brain_seg/test/orig_images/101_orig.png}
@@ -1181,6 +1189,11 @@ Joint results can be obtained in a similar manner to those in Section \ref{SS:jo
 		\\
 	\vspace{-0.35cm}
 	% Second row of images
+	\begin{subfigure}[b]{0.03\textwidth} % Adjust the width to fit your label
+		\centering
+		\raisebox{0.5\height}{\rotatebox{90}{ \textbf{\shortstack{DT scores}}}}
+	\end{subfigure}
+	\hspace{0.1cm}
 	\begin{subfigure}{0.16\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/brain_seg/test/dt_scores/101_crs.png}
@@ -1209,6 +1222,11 @@ Joint results can be obtained in a similar manner to those in Section \ref{SS:jo
 		\\
 	\vspace{-0.35cm}
 	% Second row of images
+	\begin{subfigure}[b]{0.03\textwidth} % Adjust the width to fit your label
+		\centering
+		\raisebox{0.37\height}{\rotatebox{90}{ \textbf{\shortstack{Logit scores}}}}
+	\end{subfigure}
+	\hspace{0.1cm}
 	\begin{subfigure}{0.16\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/brain_seg/test/orig_scores/101_origcrs.png}
@@ -1234,8 +1252,13 @@ Joint results can be obtained in a similar manner to those in Section \ref{SS:jo
 		\includegraphics[width=\textwidth]{../figures/brain_seg/test/orig_scores/120_origcrs.png}
 		\label{fig:10}
 	\end{subfigure}
-			\\
+	\\
 	\vspace{-0.35cm}
+		\begin{subfigure}[b]{0.03\textwidth} % Adjust the width to fit your label
+		\centering
+		\raisebox{0.3\height}{\rotatebox{90}{ \textbf{\shortstack{FWHM = 20}}}}
+	\end{subfigure}
+	\hspace{0.16cm}
 	% Second row of images
 	\begin{subfigure}{0.16\textwidth}
 		\centering
@@ -1264,7 +1287,7 @@ Joint results can be obtained in a similar manner to those in Section \ref{SS:jo
 	\end{subfigure}
 	\vspace{-0.5cm}
 	% Caption for the figure
-	\caption{\nt{Inner and outer confidence sets for brain mask segmentation using the distance transformed and original scores. Top row: brain images for each subject. 2nd row: the inner and outer confidence sets produced by calibrating the distance transformed scores on the calibration dataset. 3rd row:  the inner and outer confidence sets produced by calibrating the original scores on the calibration dataset. 4th row:  the inner and outer confidence sets produced by calibrating the smoothed scores (smoothed with an isotropic Guassian kernel of 20mm - chosen because it performed the best on the learning dataset). As for the learning dataset the original scores perform very poorly and are not able to separate the background from the segmented masks with confidence. Instead the distance transformed scores do a very good job at segmenting the mask. Indeed they do slightly better on the calibrated dataset than on the learning dataset. The smooth scores improve on the original scores but do not provide as tight bounds as the distance transformed scores for neither inner nor outer sets.}}
+	\caption{\nt{Inner and outer confidence sets for brain mask segmentation using the distance transformed and logit scores. Top row: brain images for each subject. 2nd row: the inner and outer confidence sets produced by calibrating the distance transformed scores on the calibration dataset. 3rd row:  the inner and outer confidence sets produced by calibrating the logit scores on the calibration dataset. 4th row:  the inner and outer confidence sets produced by calibrating the smoothed scores (smoothed with an isotropic Guassian kernel of 20mm - chosen because it performed the best on the learning dataset). As for the learning dataset the logit scores perform very poorly and are not able to separate the background from the segmented masks with confidence. Instead the distance transformed scores do a very good job at segmenting the mask. Indeed they do slightly better on the calibrated dataset than on the learning dataset. The smooth scores improve on the logit scores but do not provide as tight bounds as the distance transformed scores for neither inner nor outer sets.}}
 	\label{fig:brain2}
 \end{figure}
 
@@ -1290,588 +1313,652 @@ In order to study the coverage rate of the methods in the context of the brain i
 \subsubsection{Comparing original and distance transformed scores on the learning dataset}\label{teethlearnorig}
 
 \begin{figure}[h!]
-	\begin{subfigure}{0.16\textwidth}
+	\begin{subfigure}[b]{0.03\textwidth} % Adjust the width to fit your label
+		\centering
+		\raisebox{1.1\height}{\rotatebox{90}{\small \textbf{\shortstack{Image}}}}
+	\end{subfigure}
+	\begin{subfigure}{0.15\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/teeth/learning/orig_images/1_orig.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.16\textwidth}
+	\begin{subfigure}{0.15\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/teeth/learning/orig_images/2_orig.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.16\textwidth}
+	\begin{subfigure}{0.15\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/teeth/learning/orig_images/3_orig.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.16\textwidth}
+	\begin{subfigure}{0.15\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/teeth/learning/orig_images/4_orig.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.16\textwidth}
+	\begin{subfigure}{0.15\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/teeth/learning/orig_images/5_orig.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.16\textwidth}
+	\begin{subfigure}{0.15\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/teeth/learning/orig_images/6_orig.png}
 		\label{fig:1}
 	\end{subfigure}
 	\vspace{-0.35cm}
 	\\
-	\begin{subfigure}{0.16\textwidth}
+	\begin{subfigure}[b]{0.03\textwidth} % Adjust the width to fit your label
+		\centering
+		\raisebox{0.5\height}{\rotatebox{90}{\small \textbf{\shortstack{DT scores}}}}
+	\end{subfigure}
+	\begin{subfigure}{0.15\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/teeth/learning/dist_scores/1_orig.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.16\textwidth}
+	\begin{subfigure}{0.15\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/teeth/learning/dist_scores/2_orig.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.16\textwidth}
+	\begin{subfigure}{0.15\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/teeth/learning/dist_scores/3_orig.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.16\textwidth}
+	\begin{subfigure}{0.15\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/teeth/learning/dist_scores/4_orig.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.16\textwidth}
+	\begin{subfigure}{0.15\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/teeth/learning/dist_scores/5_orig.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.16\textwidth}
+	\begin{subfigure}{0.15\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/teeth/learning/dist_scores/6_orig.png}
 		\label{fig:1}
 	\end{subfigure}
 		\vspace{-0.35cm}
 	\\
-		\begin{subfigure}{0.16\textwidth}
+		\begin{subfigure}[b]{0.03\textwidth} % Adjust the width to fit your label
+		\centering
+		\raisebox{0.4\height}{\rotatebox{90}{\small \textbf{\shortstack{Logit scores}}}}
+	\end{subfigure}
+		\begin{subfigure}{0.15\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/teeth/learning/orig_scores/1_orig.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.16\textwidth}
+	\begin{subfigure}{0.15\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/teeth/learning/orig_scores/2_orig.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.16\textwidth}
+	\begin{subfigure}{0.15\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/teeth/learning/orig_scores/3_orig.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.16\textwidth}
+	\begin{subfigure}{0.15\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/teeth/learning/orig_scores/4_orig.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.16\textwidth}
+	\begin{subfigure}{0.15\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/teeth/learning/orig_scores/5_orig.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.16\textwidth}
+	\begin{subfigure}{0.15\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/teeth/learning/orig_scores/6_orig.png}
 		\label{fig:1}
 	\end{subfigure}
 %	\vspace{-0.35cm}
 	\\
-		\begin{subfigure}{0.16\textwidth}
+			\begin{subfigure}[b]{0.03\textwidth} % Adjust the width to fit your label
+		\centering
+		\raisebox{1.1\height}{\rotatebox{90}{\small \textbf{\shortstack{Image}}}}
+	\end{subfigure}
+		\begin{subfigure}{0.15\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/teeth/learning/orig_images/7_orig.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.16\textwidth}
+	\begin{subfigure}{0.15\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/teeth/learning/orig_images/8_orig.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.16\textwidth}
+	\begin{subfigure}{0.15\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/teeth/learning/orig_images/9_orig.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.16\textwidth}
+	\begin{subfigure}{0.15\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/teeth/learning/orig_images/10_orig.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.16\textwidth}
+	\begin{subfigure}{0.15\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/teeth/learning/orig_images/11_orig.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.16\textwidth}
+	\begin{subfigure}{0.15\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/teeth/learning/orig_images/12_orig.png}
 		\label{fig:1}
 	\end{subfigure}
 	\vspace{-0.35cm}
 	\\
-	\begin{subfigure}{0.16\textwidth}
+			\begin{subfigure}[b]{0.03\textwidth} % Adjust the width to fit your label
+		\centering
+		\raisebox{0.5\height}{\rotatebox{90}{\small \textbf{\shortstack{DT scores}}}}
+	\end{subfigure}
+	\begin{subfigure}{0.15\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/teeth/learning/dist_scores/7_orig.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.16\textwidth}
+	\begin{subfigure}{0.15\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/teeth/learning/dist_scores/8_orig.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.16\textwidth}
+	\begin{subfigure}{0.15\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/teeth/learning/dist_scores/9_orig.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.16\textwidth}
+	\begin{subfigure}{0.15\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/teeth/learning/dist_scores/10_orig.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.16\textwidth}
+	\begin{subfigure}{0.15\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/teeth/learning/dist_scores/11_orig.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.16\textwidth}
+	\begin{subfigure}{0.15\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/teeth/learning/dist_scores/12_orig.png}
 		\label{fig:1}
 	\end{subfigure}
 	\vspace{-0.35cm}
 	\\
-	\begin{subfigure}{0.16\textwidth}
+	\begin{subfigure}[b]{0.03\textwidth} % Adjust the width to fit your label
+		\centering
+		\raisebox{0.4\height}{\rotatebox{90}{\small \textbf{\shortstack{Logit scores}}}}
+	\end{subfigure}
+	\begin{subfigure}{0.15\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/teeth/learning/orig_scores/7_orig.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.16\textwidth}
+	\begin{subfigure}{0.15\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/teeth/learning/orig_scores/8_orig.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.16\textwidth}
+	\begin{subfigure}{0.15\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/teeth/learning/orig_scores/9_orig.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.16\textwidth}
+	\begin{subfigure}{0.15\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/teeth/learning/orig_scores/10_orig.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.16\textwidth}
+	\begin{subfigure}{0.15\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/teeth/learning/orig_scores/11_orig.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.16\textwidth}
+	\begin{subfigure}{0.15\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/teeth/learning/orig_scores/12_orig.png}
 		\label{fig:1}
 	\end{subfigure}
-	\caption{\nt{Inner and outer confidence sets for brain mask segmentation calibrated and plotted on the learning dataset. 12 images are plotted in two sets of 6, for each set the rows are as follows. First row: original images. Second row: results of distance transformed scores - providing tight outer sets but uninformative inner sets. Third row: original scores providing looser outer sets but more informative inner sets though these can be improved by smoothing see Figure \ref{fig:teethsmooth}.}}\label{fig:teeth2}
+	\caption{\nt{Inner and outer confidence sets for brain mask segmentation calibrated and plotted on the learning dataset. 12 images are plotted in two sets of 6, for each set the rows are as follows. First row: original images. Second row: results of distance transformed scores - providing tight outer sets but uninformative inner sets. Third row: logit scores providing looser outer sets but more informative inner sets though these can be improved by smoothing see Figure \ref{fig:teethsmooth}.}}\label{fig:teeth2}
 \end{figure}
 
 \newpage
 \subsubsection{Comparing smooth transformed scores on the learning dataset}\label{teethlearnorig2}
 \begin{figure}[h!]
-	\begin{subfigure}{0.16\textwidth}
+	\begin{subfigure}[b]{0.03\textwidth} % Adjust the width to fit your label
+		\centering
+		\raisebox{0.7\height}{\rotatebox{90}{\small \textbf{\shortstack{Original}}}}
+	\end{subfigure}
+	\begin{subfigure}{0.15\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/teeth/learning/orig_images/1_orig.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.16\textwidth}
+	\begin{subfigure}{0.15\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/teeth/learning/orig_images/2_orig.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.16\textwidth}
+	\begin{subfigure}{0.15\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/teeth/learning/orig_images/3_orig.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.16\textwidth}
+	\begin{subfigure}{0.15\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/teeth/learning/orig_images/4_orig.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.16\textwidth}
+	\begin{subfigure}{0.15\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/teeth/learning/orig_images/5_orig.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.16\textwidth}
+	\begin{subfigure}{0.15\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/teeth/learning/orig_images/6_orig.png}
 		\label{fig:1}
 	\end{subfigure}
 	\vspace{-0.35cm}
 	\\
-	\begin{subfigure}{0.16\textwidth}
+	\begin{subfigure}[b]{0.03\textwidth} % Adjust the width to fit your label
+		\centering
+		\raisebox{0.4\height}{\rotatebox{90}{\small \textbf{\shortstack{FWHM = 2}}}}
+	\end{subfigure}
+	\begin{subfigure}{0.15\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/teeth/learning/smooth_scores/1_smooth_2.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.16\textwidth}
+	\begin{subfigure}{0.15\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/teeth/learning/smooth_scores/2_smooth_2.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.16\textwidth}
+	\begin{subfigure}{0.15\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/teeth/learning/smooth_scores/3_smooth_2.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.16\textwidth}
+	\begin{subfigure}{0.15\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/teeth/learning/smooth_scores/4_smooth_2.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.16\textwidth}
+	\begin{subfigure}{0.15\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/teeth/learning/smooth_scores/5_smooth_2.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.16\textwidth}
+	\begin{subfigure}{0.15\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/teeth/learning/smooth_scores/6_smooth_2.png}
 		\label{fig:1}
 	\end{subfigure}
 	\vspace{-0.35cm}
 	\\
-	\begin{subfigure}{0.16\textwidth}
+	\begin{subfigure}[b]{0.03\textwidth} % Adjust the width to fit your label
+		\centering
+		\raisebox{0.4\height}{\rotatebox{90}{\small \textbf{\shortstack{FWHM = 4}}}}
+	\end{subfigure}
+	\begin{subfigure}{0.15\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/teeth/learning/smooth_scores/1_smooth_4.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.16\textwidth}
+	\begin{subfigure}{0.15\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/teeth/learning/smooth_scores/2_smooth_4.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.16\textwidth}
+	\begin{subfigure}{0.15\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/teeth/learning/smooth_scores/3_smooth_4.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.16\textwidth}
+	\begin{subfigure}{0.15\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/teeth/learning/smooth_scores/4_smooth_4.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.16\textwidth}
+	\begin{subfigure}{0.15\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/teeth/learning/smooth_scores/5_smooth_4.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.16\textwidth}
+	\begin{subfigure}{0.15\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/teeth/learning/smooth_scores/6_smooth_4.png}
 		\label{fig:1}
 	\end{subfigure}
 %		\vspace{-0.35cm}
 %	\\
-%		\begin{subfigure}{0.16\textwidth}
+%		\begin{subfigure}{0.15\textwidth}
 %		\centering
 %		\includegraphics[width=\textwidth]{../figures/teeth/learning/smooth_scores/1_smooth_6.png}
 %		\label{fig:1}
 %	\end{subfigure}
-%	\begin{subfigure}{0.16\textwidth}
+%	\begin{subfigure}{0.15\textwidth}
 %		\centering
 %		\includegraphics[width=\textwidth]{../figures/teeth/learning/smooth_scores/2_smooth_6.png}
 %		\label{fig:1}
 %	\end{subfigure}
-%	\begin{subfigure}{0.16\textwidth}
+%	\begin{subfigure}{0.15\textwidth}
 %		\centering
 %		\includegraphics[width=\textwidth]{../figures/teeth/learning/smooth_scores/3_smooth_6.png}
 %		\label{fig:1}
 %	\end{subfigure}
-%	\begin{subfigure}{0.16\textwidth}
+%	\begin{subfigure}{0.15\textwidth}
 %		\centering
 %		\includegraphics[width=\textwidth]{../figures/teeth/learning/smooth_scores/4_smooth_6.png}
 %		\label{fig:1}
 %	\end{subfigure}
-%	\begin{subfigure}{0.16\textwidth}
+%	\begin{subfigure}{0.15\textwidth}
 %		\centering
 %		\includegraphics[width=\textwidth]{../figures/teeth/learning/smooth_scores/5_smooth_6.png}
 %		\label{fig:1}
 %	\end{subfigure}
-%	\begin{subfigure}{0.16\textwidth}
+%	\begin{subfigure}{0.15\textwidth}
 %		\centering
 %		\includegraphics[width=\textwidth]{../figures/teeth/learning/smooth_scores/6_smooth_6.png}
 %		\label{fig:1}
 %	\end{subfigure}
 	\vspace{-0.35cm}
 	\\
-	\begin{subfigure}{0.16\textwidth}
+		\begin{subfigure}[b]{0.03\textwidth} % Adjust the width to fit your label
+		\centering
+		\raisebox{0.4\height}{\rotatebox{90}{\small \textbf{\shortstack{FWHM = 8}}}}
+	\end{subfigure}
+	\begin{subfigure}{0.15\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/teeth/learning/smooth_scores/1_smooth_8.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.16\textwidth}
+	\begin{subfigure}{0.15\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/teeth/learning/smooth_scores/2_smooth_8.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.16\textwidth}
+	\begin{subfigure}{0.15\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/teeth/learning/smooth_scores/3_smooth_8.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.16\textwidth}
+	\begin{subfigure}{0.15\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/teeth/learning/smooth_scores/4_smooth_8.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.16\textwidth}
+	\begin{subfigure}{0.15\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/teeth/learning/smooth_scores/5_smooth_8.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.16\textwidth}
+	\begin{subfigure}{0.15\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/teeth/learning/smooth_scores/6_smooth_8.png}
 		\label{fig:1}
 	\end{subfigure}
 	%	\vspace{-0.35cm}
 	\\
-	\begin{subfigure}{0.16\textwidth}
+	\begin{subfigure}[b]{0.03\textwidth} % Adjust the width to fit your label
+		\centering
+		\raisebox{0.7\height}{\rotatebox{90}{\small \textbf{\shortstack{Original \,}}}}
+	\end{subfigure}
+	\begin{subfigure}{0.15\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/teeth/learning/orig_images/7_orig.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.16\textwidth}
+	\begin{subfigure}{0.15\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/teeth/learning/orig_images/8_orig.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.16\textwidth}
+	\begin{subfigure}{0.15\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/teeth/learning/orig_images/9_orig.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.16\textwidth}
+	\begin{subfigure}{0.15\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/teeth/learning/orig_images/10_orig.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.16\textwidth}
+	\begin{subfigure}{0.15\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/teeth/learning/orig_images/11_orig.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.16\textwidth}
+	\begin{subfigure}{0.15\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/teeth/learning/orig_images/12_orig.png}
 		\label{fig:1}
 	\end{subfigure}
 	\vspace{-0.35cm}
 	\\
-	\begin{subfigure}{0.16\textwidth}
+	\begin{subfigure}[b]{0.03\textwidth} % Adjust the width to fit your label
+		\centering
+		\raisebox{0.4\height}{\rotatebox{90}{\small \textbf{\shortstack{FWHM = 2}}}}
+	\end{subfigure}
+	\begin{subfigure}{0.15\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/teeth/learning/smooth_scores/7_smooth_2.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.16\textwidth}
+	\begin{subfigure}{0.15\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/teeth/learning/smooth_scores/8_smooth_2.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.16\textwidth}
+	\begin{subfigure}{0.15\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/teeth/learning/smooth_scores/9_smooth_2.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.16\textwidth}
+	\begin{subfigure}{0.15\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/teeth/learning/smooth_scores/10_smooth_2.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.16\textwidth}
+	\begin{subfigure}{0.15\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/teeth/learning/smooth_scores/11_smooth_2.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.16\textwidth}
+	\begin{subfigure}{0.15\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/teeth/learning/smooth_scores/12_smooth_2.png}
 		\label{fig:1}
 	\end{subfigure}
 	\vspace{-0.35cm}
 	\\
-	\begin{subfigure}{0.16\textwidth}
+			\begin{subfigure}[b]{0.03\textwidth} % Adjust the width to fit your label
+		\centering
+		\raisebox{0.4\height}{\rotatebox{90}{\small \textbf{\shortstack{FWHM = 4}}}}
+	\end{subfigure}
+	\begin{subfigure}{0.15\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/teeth/learning/smooth_scores/7_smooth_4.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.16\textwidth}
+	\begin{subfigure}{0.15\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/teeth/learning/smooth_scores/8_smooth_4.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.16\textwidth}
+	\begin{subfigure}{0.15\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/teeth/learning/smooth_scores/9_smooth_4.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.16\textwidth}
+	\begin{subfigure}{0.15\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/teeth/learning/smooth_scores/10_smooth_4.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.16\textwidth}
+	\begin{subfigure}{0.15\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/teeth/learning/smooth_scores/11_smooth_4.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.16\textwidth}
+	\begin{subfigure}{0.15\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/teeth/learning/smooth_scores/12_smooth_4.png}
 		\label{fig:1}
 	\end{subfigure}
-%		\begin{subfigure}{0.16\textwidth}
+%		\begin{subfigure}{0.15\textwidth}
 %		\centering
 %		\includegraphics[width=\textwidth]{../figures/teeth/learning/smooth_scores/7_smooth_6.png}
 %		\label{fig:1}
 %	\end{subfigure}
-%	\begin{subfigure}{0.16\textwidth}
+%	\begin{subfigure}{0.15\textwidth}
 %		\centering
 %		\includegraphics[width=\textwidth]{../figures/teeth/learning/smooth_scores/8_smooth_6.png}
 %		\label{fig:1}
 %	\end{subfigure}
-%	\begin{subfigure}{0.16\textwidth}
+%	\begin{subfigure}{0.15\textwidth}
 %		\centering
 %		\includegraphics[width=\textwidth]{../figures/teeth/learning/smooth_scores/9_smooth_6.png}
 %		\label{fig:1}
 %	\end{subfigure}
-%	\begin{subfigure}{0.16\textwidth}
+%	\begin{subfigure}{0.15\textwidth}
 %		\centering
 %		\includegraphics[width=\textwidth]{../figures/teeth/learning/smooth_scores/10_smooth_6.png}
 %		\label{fig:1}
 %	\end{subfigure}
-%	\begin{subfigure}{0.16\textwidth}
+%	\begin{subfigure}{0.15\textwidth}
 %		\centering
 %		\includegraphics[width=\textwidth]{../figures/teeth/learning/smooth_scores/11_smooth_6.png}
 %		\label{fig:1}
 %	\end{subfigure}
-%	\begin{subfigure}{0.16\textwidth}
+%	\begin{subfigure}{0.15\textwidth}
 %		\centering
 %		\includegraphics[width=\textwidth]{../figures/teeth/learning/smooth_scores/12_smooth_6.png}
 %		\label{fig:1}
 %	\end{subfigure}
 	\vspace{-0.35cm}
 	\\
-	\begin{subfigure}{0.16\textwidth}
+			\begin{subfigure}[b]{0.03\textwidth} % Adjust the width to fit your label
+		\centering
+		\raisebox{0.4\height}{\rotatebox{90}{\small \textbf{\shortstack{FWHM = 8}}}}
+	\end{subfigure}
+	\begin{subfigure}{0.15\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/teeth/learning/smooth_scores/7_smooth_8.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.16\textwidth}
+	\begin{subfigure}{0.15\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/teeth/learning/smooth_scores/8_smooth_8.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.16\textwidth}
+	\begin{subfigure}{0.15\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/teeth/learning/smooth_scores/9_smooth_8.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.16\textwidth}
+	\begin{subfigure}{0.15\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/teeth/learning/smooth_scores/10_smooth_8.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.16\textwidth}
+	\begin{subfigure}{0.15\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/teeth/learning/smooth_scores/11_smooth_8.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.16\textwidth}
+	\begin{subfigure}{0.15\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/teeth/learning/smooth_scores/12_smooth_8.png}
 		\label{fig:1}
 	\end{subfigure}
 	\vspace{-0.5cm}
-	\caption{\nt{Inner and outer sets computed by comparing smooth score transformations on the learning dataset. Scores were smoothed using a Gaussian kernel with full width at half maximum (FWHM) taking values in $\lbrace 2,4,8\rbrace$. For each set of 6 the resulting inner and outer sets based on increasing levels of applied smoothness are shown from top to bottom. A FWHM of 2 pixels is the best for the inner set and indeed performs better than the original scores shown in Figure \ref{fig:teeth2}. Instead an increased level of smoothness is better for the outer set, attaining comparable performance to the distance transformed scores though with additional blobs.}}\label{fig:teethsmooth}
+	\caption{\nt{Inner and outer sets computed by comparing smooth score transformations on the learning dataset. Scores were smoothed using a Gaussian kernel with full width at half maximum (FWHM) taking values in $\lbrace 2,4,8\rbrace$. For each set of 6 the resulting inner and outer sets based on increasing levels of applied smoothness are shown from top to bottom. A FWHM of 2 pixels is the best for the inner set and indeed performs better than the logit scores shown in Figure \ref{fig:teeth2}. Instead an increased level of smoothness is better for the outer set, attaining comparable performance to the distance transformed scores though with some additional blobs.}}\label{fig:teethsmooth}
 \end{figure}
 
 \newpage
-\subsubsection{Comparing to the original scores on the test dataset}
+\subsubsection{Comparing to the logit scores on the test dataset}
 \begin{figure}[h!]
-	\begin{subfigure}{0.16\textwidth}
+	\begin{subfigure}[b]{0.03\textwidth} % Adjust the width to fit your label
+		\centering
+		\raisebox{1.1\height}{\rotatebox{90}{\small \textbf{\shortstack{Image}}}}
+	\end{subfigure}
+	\begin{subfigure}{0.15\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/teeth/test/orig_images/518_orig.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.16\textwidth}
+	\begin{subfigure}{0.15\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/teeth/test/orig_images/573_orig.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.16\textwidth}
+	\begin{subfigure}{0.15\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/teeth/test/orig_images/566_orig.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.16\textwidth}
+	\begin{subfigure}{0.15\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/teeth/test/orig_images/572_orig.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.16\textwidth}
+	\begin{subfigure}{0.15\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/teeth/test/orig_images/530_orig.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.16\textwidth}
+	\begin{subfigure}{0.15\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/teeth/test/orig_images/575_orig.png}
 		\label{fig:1}
 	\end{subfigure}
 	\vspace{-0.35cm}
 	\\
-	\begin{subfigure}{0.16\textwidth}
+		\begin{subfigure}[b]{0.03\textwidth} % Adjust the width to fit your label
+		\centering
+		\raisebox{0.4\height}{\rotatebox{90}{\small \textbf{\shortstack{Logit scores}}}}
+	\end{subfigure}
+	\begin{subfigure}{0.15\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/teeth/test/orig_scores/518_orig.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.16\textwidth}
+	\begin{subfigure}{0.15\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/teeth/test/orig_scores/573_orig.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.16\textwidth}
+	\begin{subfigure}{0.15\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/teeth/test/orig_scores/566_orig.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.16\textwidth}
+	\begin{subfigure}{0.15\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/teeth/test/orig_scores/572_orig.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.16\textwidth}
+	\begin{subfigure}{0.15\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/teeth/test/orig_scores/530_orig.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.16\textwidth}
+	\begin{subfigure}{0.15\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/teeth/test/orig_scores/575_orig.png}
 		\label{fig:1}
 	\end{subfigure}
-	\caption{\nt{Inner and outer confidence sets for brain mask segmentation computed using the original scores. The performance is less good than the score transformations optimized on the learning dataset and shown in the main text but have been included for reference. The outer sets are larger and less precise than those based on the distance transformation. The inner sets are good but not quite as good as the ones based on a small amount of smoothing.}}\label{fig:teethorig}
+	\caption{\nt{Inner and outer confidence sets for brain mask segmentation computed using the logit scores. The performance is less good than the score transformations optimized on the learning dataset and shown in the main text but have been included for reference. The outer sets are larger and less precise than those based on the distance transformation. The inner sets are good but not quite as good as the ones based on a small amount of smoothing.}}\label{fig:teethorig}
 \end{figure}
 
 %\newpage

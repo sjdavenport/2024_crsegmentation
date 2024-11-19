@@ -168,10 +168,10 @@ A score transformation that we will make particular use of in Section \ref{SS:re
 where $ \text{sign}(\mathcal{A}, v) = 1 $ if $v\in \mathcal{A}$ and equals $-1$ otherwise. The function $d_{\rho}$ is an adapation of the distance transform of \cite{Borgefors1986} which provides positive values within the set $\mathcal{A}$ and negative values outside of $\mathcal{A}$. \nt{Moreover define the Hausdorff distance  between two sets $ \mathcal{A}, \mathcal{B} \subseteq \mathcal{V}$ as $H_\rho(\mathcal{A}, \mathcal{B}) = \max\{\sup_{a \in \mathcal{A}} \inf_{b \in \mathcal{B}} \rho(a, b), \sup_{b \in \mathcal{B}} \inf_{a \in \mathcal{A}} \rho(b, a)\},$ The following result shows that transforming the scores using the distance transformation ensures that accurate segmentation provides precise confidence sets. See Section \ref{haussproof} for a proof.}
 \nt{
 \begin{theorem}\label{thm:distscoreschar}
-	For each $v \in \mathcal{V}$, let $f_I(s(X), v) = f_O(s(X), v) = d_\rho(\hat{M}(X), v)$ and define $I(X)$ and $O(X)$ as in Section \ref{SS:MCS}. Suppose that $H(\hat{M}(X_i), Y_i) \leq k$, some $k \in \mathbb{R}$, for all $i \in J$, for some $J \subseteq \lbrace 1, \dots, n \rbrace$ such that $\frac{|J|}{n} > 1-\alpha_1$. Then $H(\hat{M}(X_{n+1}), I(X_{n+1}))  \leq k$. If we instead require that $\frac{|J|}{n} > 1-\alpha_2$, then $d_H(\hat{M}(X_{n+1}), O(X_{n+1}))  \leq k$.
+	For each $v \in \mathcal{V}$, let $f_O(s(X), v) = d_\rho(\hat{M}(X), v)$ and define $O(X)$ as in Section \ref{SS:MCS}. Suppose that $H(\hat{M}(X_i), Y_i) \leq k$, some $k \in \mathbb{R}$, for all $i \in J$, for some $J \subseteq \lbrace 1, \dots, n \rbrace$ such that $\frac{|J|}{n} > 1-\alpha_2$. Then $H(\hat{M}(X_{n+1}), O(X_{n+1}))  \leq k$. Moreover if $H(\hat{M}(X_{n+1}), Y_{n+1}) \leq k$, then $H(O(X_{n+1}), Y_{n+1})  \leq 2k$
 \end{theorem}
 }
-Note that a corresponding result is not true for the original untransformed scores, see Section \ref{fig:brain2}. 
+A similar result holds for the inner confidence sets, see Theorem XXX. Note that a corresponding result is not true for the \nt{untransformed logit} scores, see Section \ref{fig:brain2}. 
 \subsection{Constructing confidence sets from bounding boxes}
 %Inner and outer confidence sets can instead be provided using bounding boxes \citep{De2022, Andeol2023, Mukama2024}. 
 Existing work on conformal inner and outer confidence sets, which aim to provide coverage of the entire ground truth mask with a given probability, has primarily focused on bounding boxes \citep{De2022, Andeol2023, Mukama2024}. These papers adjust for multiple comparisons over the 4 edges of the bounding box, doing so conformally by comparing the distance between the predicted bounding box and the bounding box of the ground truth mask. These approaches provide box-wise coverage by aggregrating the predictions over all objects within all of the calibration images, often combining multiple bounding boxes per image. However, as observed in Section 5 of \cite{De2022}, doing so violates exchangeability which is needed for valid conformal inference, as there is dependence between the objects within each image. Instead image-wise coverage can be provided without violating exchangeability by treating the union of the boxes as the ground truth image \citep{De2022, Andeol2023}.
@@ -195,34 +195,37 @@ In order to optimize the size of our confidence sets we set aside 298 of the 179
 
 The score transformations we considered were the identity (after softmax transformation) and distance transformations of the predicted masks:  taking $f_I(s(X), v) = f_O(s(X), v) = d_\rho(\hat{M}(X), v)$, where $\rho$ is the Euclidean metric. We also compare to the results of using the bounding box transformations $f_I = b_I$ and $f_O = b_O$ which correspond to transforming the predicted bounding box using a distance transformation based on the chessboard metric and are defined formally in Appendix \ref{AA:BBtheory}. For the purposes of plotting we used the combined bounding box scores defined in Definition \ref{dfn:BBS}.
 
-From the histograms in Figure \ref{scorehists} we can see that thresholding the original scores at the inner threshold well separates the data. However this is not the case for the outer threshold for which the data is better separated using the distance transformed and bounding box scores. Figure \ref{fig:learning} shows PraNet scores for 2 typical examples, along with surface plots of the transformed scores and corresponding $90\%$ marginal confidence regions (with thresholds obtained from calibrating over the learning dataset). From these we see that PraNet typically assigns a high softmax score to the polyps regions which decreases in the regions directly around the  boundary before returning to a higher level away from the polyps. This results in tight inner sets but large outer sets as the model struggles to identify where the polyps ends. Instead the distance transformed and bounding box scores are much better at providing outer bounds on the polyps, with distance transformed scores providing a tighter outside fit. Additional examples are shown in Figures \ref{fig:learning2} and \ref{fig:learning3} and have the same conclusion.
+From the histograms in Figure \ref{scorehists} we can see that thresholding the logit scores at the inner threshold well separates the data. However this is not the case for the outer threshold for which the data is better separated using the distance transformed and bounding box scores. Figure \ref{fig:learning} shows PraNet scores for 2 typical examples, along with surface plots of the transformed scores and corresponding $90\%$ marginal confidence regions (with thresholds obtained from calibrating over the learning dataset). From these we see that PraNet typically assigns a high softmax score to the polyps regions which decreases in the regions directly around the  boundary before returning to a higher level away from the polyps. This results in tight inner sets but large outer sets as the model struggles to identify where the polyps ends. Instead the distance transformed and bounding box scores are much better at providing outer bounds on the polyps, with distance transformed scores providing a tighter outside fit. Additional examples are shown in Figures \ref{fig:learning2} and \ref{fig:learning3} and have the same conclusion.
 
 Based on the results of the learning dataset we decided to combine the best of the approaches for the inner and outer sets respectively for the inference in Section \ref{SS:val}, taking $f_I$ to be the identity and $f_O$ to be the distance transformation of the predicted mask in order to optimize performance. We can also use the learning dataset to determine how to weight the $\alpha$ used to obtain joint confidence sets. A ratio of 4 to 1 seems appropriate here in light of the fact that in this dataset identifying where a given polyps ends appears to be more challenging than identifying pixels where we are sure that there is a polyps. To achieve joint coverage of $90\%$ this involves taking $\alpha_1 = 0.02$ and $\alpha_2 = 0.08$.
 \begin{figure}[h!]
 %	\centering
 %\vspace{-0.5cm}
-	\hspace{3.8cm} \textbf{\normalsize Original scores} \hspace{0.6cm} 	\textbf{ Distance scores} \hspace{0.9cm}	\textbf{ Box scores}
+%	\hspace{4.25cm} \textbf{\normalsize Original scores} \hspace{0.6cm} 	\textbf{ Distance scores} \hspace{1.1cm}	\textbf{ Box scores}
+\hspace{4.3cm} {\fontsize{11pt}{13pt}\selectfont \textbf{Logit scores}} \hspace{0.8cm} 
+{\fontsize{11pt}{13pt}\selectfont \textbf{Distance scores}} \hspace{1cm} 
+{\fontsize{11pt}{13pt}\selectfont \textbf{Box scores}}
 \begin{center}
-	\includegraphics[width=0.2\textwidth]{../figures/learning/scores/362.png}\hspace{0.5cm}
-		\includegraphics[width=0.2\textwidth]{../figures/learning/score_surf/362.png}\hspace{0.5cm}	\includegraphics[width=0.2\textwidth]{../figures/learning/dist_surf/362.png}\hspace{0.5cm}
-		\includegraphics[width=0.2\textwidth]{../figures/learning/dist_bt_surf/362.png}\hspace{0.5cm}\\
-		\includegraphics[width=0.2\textwidth]{../figures/learning/images/362.png}\hspace{0.5cm}
-	\includegraphics[width=0.2\textwidth]{../figures/learning/score_crs_marginal90/362.png}\hspace{0.5cm}
-	\includegraphics[width=0.2\textwidth]{../figures/learning/dist_crs_marginal90/362.png}\hspace{0.5cm}
-	\includegraphics[width=0.2\textwidth]{../figures/learning/dist_bt_crs_marginal90/362.png}\hspace{0.5cm}
-%\vspace{0.5cm}
-		\includegraphics[width=0.2\textwidth]{../figures/learning/scores/335.png}\hspace{0.5cm}
-	\includegraphics[width=0.2\textwidth]{../figures/learning/score_surf/335.png}\hspace{0.5cm}	\includegraphics[width=0.2\textwidth]{../figures/learning/dist_surf/335.png}\hspace{0.5cm}
-	\includegraphics[width=0.2\textwidth]{../figures/learning/dist_bt_surf/335.png}\hspace{0.5cm}\\
-	\includegraphics[width=0.2\textwidth]{../figures/learning/images/335.png}\hspace{0.5cm}
-	\includegraphics[width=0.2\textwidth]{../figures/learning/score_crs_marginal90/335.png}\hspace{0.5cm}
-	\includegraphics[width=0.2\textwidth]{../figures/learning/dist_crs_marginal90/335.png}\hspace{0.5cm}
-	\includegraphics[width=0.2\textwidth]{../figures/learning/dist_bt_crs_marginal90/335.png}
+	\includegraphics[width=0.21\textwidth]{../figures/learning/scores/362.png}\hspace{0.3cm}
+		\includegraphics[width=0.21\textwidth]{../figures/learning/score_surf/362.png}\hspace{0.3cm}	\includegraphics[width=0.21\textwidth]{../figures/learning/dist_surf/362.png}\hspace{0.3cm}
+		\includegraphics[width=0.21\textwidth]{../figures/learning/dist_bt_surf/362.png}\hspace{0.3cm}\\
+		\includegraphics[width=0.21\textwidth]{../figures/learning/images/362.png}\hspace{0.3cm}
+	\includegraphics[width=0.21\textwidth]{../figures/learning/score_crs_marginal90/362.png}\hspace{0.3cm}
+	\includegraphics[width=0.21\textwidth]{../figures/learning/dist_crs_marginal90/362.png}\hspace{0.3cm}
+	\includegraphics[width=0.21\textwidth]{../figures/learning/dist_bt_crs_marginal90/362.png}\hspace{0.3cm}
+%\vspace{0.3cm}
+		\includegraphics[width=0.21\textwidth]{../figures/learning/scores/335.png}\hspace{0.3cm}
+	\includegraphics[width=0.21\textwidth]{../figures/learning/score_surf/335.png}\hspace{0.3cm}	\includegraphics[width=0.21\textwidth]{../figures/learning/dist_surf/335.png}\hspace{0.3cm}
+	\includegraphics[width=0.21\textwidth]{../figures/learning/dist_bt_surf/335.png}\hspace{0.3cm}\\
+	\includegraphics[width=0.21\textwidth]{../figures/learning/images/335.png}\hspace{0.3cm}
+	\includegraphics[width=0.21\textwidth]{../figures/learning/score_crs_marginal90/335.png}\hspace{0.3cm}
+	\includegraphics[width=0.21\textwidth]{../figures/learning/dist_crs_marginal90/335.png}\hspace{0.3cm}
+	\includegraphics[width=0.21\textwidth]{../figures/learning/dist_bt_crs_marginal90/335.png}
 \end{center}
-	\caption{Illustrating the performance of the different score transformations on the learning dataset. We display 2 example polyps images and present the results of each in 8 panels. These panels are as follows. Bottom left: the original image of the polyps. Top Left: an intensity plot of the scores obtained from PraNet with purple/yellow indicating areas of lower/higher assigned probability. For the remaining panels, 3 different score transformations are shown which from left to right are the original scores, distance transformed scores $d_\rho(\hat{M}(X), v)$ and bounding box scores (obtained using the combined bounding box score $b_M$ defined in Definition \ref{dfn:BBS}). In each of the panels on the top row a surface plot of the transformed PraNet scores is shown, along with the conformal thresholds which are used to obtain the marginal 90\% inner and outer confidence sets.  These thresholds are illustrated via red and blue planes respectively and are obtained over the learning dataset. The panels on the bottom row of each example show the corresponding conformal confidence sets. Here the inner set is shown in red, plotted over the ground truth mask of the polyps, shown in yellow, plotted over the outer set which is shown in blue. The outer set contains the ground truth mask which contains the inner set in all examples. From these figures we see that the original scores provide tight inner confidence sets and the distance transformed scores instead provide tight outer confidence sets.
+	\caption{Illustrating the performance of the different score transformations on the learning dataset. We display 2 example polyps images and present the results of each in 8 panels. These panels are as follows. Bottom left: the original image of the polyps. Top Left: an intensity plot of the scores obtained from PraNet with purple/yellow indicating areas of lower/higher assigned probability. For the remaining panels, 3 different score transformations are shown which from left to right are the untransformed logit scores, distance transformed scores $d_\rho(\hat{M}(X), v)$ and bounding box scores (obtained using the combined bounding box score $b_M$ defined in Definition \ref{dfn:BBS}). In each of the panels on the top row a surface plot of the transformed PraNet scores is shown, along with the conformal thresholds which are used to obtain the marginal 90\% inner and outer confidence sets.  These thresholds are illustrated via red and blue planes respectively and are obtained over the learning dataset. The panels on the bottom row of each example show the corresponding conformal confidence sets. Here the inner set is shown in red, plotted over the ground truth mask of the polyps, shown in yellow, plotted over the outer set which is shown in blue. The outer set contains the ground truth mask which contains the inner set in all examples. From these figures we see that the logit scores provide tight inner confidence sets and the distance transformed scores instead provide tight outer confidence sets.
 The conclusion from the learning dataset is therefore that it makes sense to combine these two score transformations.}
 	\label{fig:learning}
-	\vspace{-1cm}
+	\vspace{-0.5cm}
 \end{figure}
 %\subsection{Tumor detection}
 %\begin{figure}[h!]
@@ -233,9 +236,14 @@ The conclusion from the learning dataset is therefore that it makes sense to com
 %\end{figur
 %\subsection{}
 \subsection{Illustrating the performance of conformal confidence sets}\label{SS:val}
-In order to illustrate the full extent of our methods in practice we divide the set aside 1500 images at random into 1000 for conformal calibration, and 500 for testing. The resulting conformal confidence sets for 10 example images from the test dataset are shown in Figure \ref{fig:res}, with inner sets obtained using the original scores and outer sets using the distance transformed scores. The inner sets are shown in red and represent regions where we can have high confidence of the presence of polyps. The outer sets are shown in blue and represent regions in which the polyps may be. The ground truth mask for each polyps is shown in yellow and can be compared to the original images. In each of the examples considered the ground truth is bounded from within by the inner set and from without by the outer set. 
+In order to illustrate the full extent of our methods in practice we divide the set aside 1500 images at random into 1000 for conformal calibration, and 500 for testing. The resulting conformal confidence sets for 10 example images from the test dataset are shown in Figure \ref{fig:res}, with inner sets obtained using the untransformed logit scores and outer sets using the distance transformed scores. The inner sets are shown in red and represent regions where we can have high confidence of the presence of polyps. The outer sets are shown in blue and represent regions in which the polyps may be. The ground truth mask for each polyps is shown in yellow and can be compared to the original images. In each of the examples considered the ground truth is bounded from within by the inner set and from without by the outer set. 
 \begin{figure}[h!]
 	\centering
+	\begin{subfigure}[b]{0.03\textwidth} % Adjust the width to fit your label
+		\centering
+		\raisebox{0.7\height}{\rotatebox{90}{\textbf{\shortstack{Original \\ Image}}}}
+	\end{subfigure}
+	\hspace{0.2cm}
 	\begin{subfigure}{0.18\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/all_images/61.png}
@@ -265,8 +273,9 @@ In order to illustrate the full extent of our methods in practice we divide the 
 	\\
 		\begin{subfigure}[b]{0.03\textwidth} % Adjust the width to fit your label
 		\centering
-		\raisebox{0.5\height}{\rotatebox{90}{\textbf{DT scores}}}
+		\raisebox{0.5\height}{\rotatebox{90}{\textbf{\shortstack{Confidence \\ Sets}}}}
 	\end{subfigure}
+	\hspace{0.2cm}
 	\begin{subfigure}{0.18\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/validation/val_crs_combo_90/61.png}
@@ -296,8 +305,9 @@ In order to illustrate the full extent of our methods in practice we divide the 
 	\\
 	\begin{subfigure}[b]{0.03\textwidth} % Adjust the width to fit your label
 		\centering
-		\raisebox{0.5\height}{\rotatebox{90}{\textbf{Image}}}
+	\raisebox{0.7\height}{\rotatebox{90}{\textbf{\shortstack{Original \\ Image}}}}
 	\end{subfigure}
+	\hspace{0.2cm}
 		\begin{subfigure}{0.18\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/all_images/7.png}
@@ -329,6 +339,7 @@ In order to illustrate the full extent of our methods in practice we divide the 
 		\centering
 		\raisebox{0.5\height}{\rotatebox{90}{\textbf{\shortstack{Confidence \\ Sets}}}}
 	\end{subfigure}
+	\hspace{0.2cm}
 	\begin{subfigure}{0.18\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/validation/cal_crs_combo_90/7.png}
@@ -355,8 +366,9 @@ In order to illustrate the full extent of our methods in practice we divide the 
 		\label{fig:1}
 	\end{subfigure}
 	\label{fig:grid}
+	\vspace{-0.3cm}
 	\caption{Conformal confidence sets for the polyps data. For each set of polyps images the top row shows the original endoscopic images with visible polyps and the second row presents the marginal 90\% confidence sets, with ground truth masks shown in yellow. The inner sets and outer sets are shown in red and blue, obtained using the identity and distance transforms respectively. The figure shows the benefits of combining different score transformations for the inner and outer sets and illustrates the method's effectiveness in accurately identifying polyp regions whilst providing informative spatial uncertainty bounds.}\label{fig:res}
-	\vspace{-0.5cm}
+	\vspace{-0.4cm}
 \end{figure}
 %\begin{figure}
 %	\begin{subfigure}{0.18\textwidth}
@@ -441,9 +453,9 @@ In order to illustrate the full extent of our methods in practice we divide the 
 %	\label{fig:grid}
 %	\caption{Conformal confidence sets for the polyps data. The bottom row shows the original endoscopic images with visible polyps. The top two rows present the conformal confidence sets, with the ground truth masks shown in yellow. The inner sets and outer sets are shown in red and blue respectively. The top row illustrates the sets which arise when using the original scores. Instead the middle show the resulting sets when $f_O$ is given by the distance transformation of the predicted polyps mask. The figure shows the benefit of transforming the score function and illustrates the method's effectiveness in accurately identifying polyp regions whilst providing informative spatial uncertainty bounds.}\label{fig:polyps}
 %\end{figure}
-Results for confidence sets based on the original and bounding box scores as well as additional examples are available in Figures \ref{fig:polpysex} and \ref{fig:polpysex2}. Confidence sets can also be provided for the bounding boxes themselves if that is the object of interest, see Figure \ref{fig:resbb}. Joint $90\%$ confidence sets are displayed in Figure \ref{fig:joint}, from which we can see that with alpha-weighting (i.e. taking $\alpha_1 = 0.02$ and $\alpha_2 = 0.08$) we are able to obtain joint confidence sets which are still relatively tight.
+Results for confidence sets based on the logit and bounding box scores as well as additional examples are available in Figures \ref{fig:polpysex} and \ref{fig:polpysex2}. Confidence sets can also be provided for the bounding boxes themselves if that is the object of interest, see Figure \ref{fig:resbb}. Joint $90\%$ confidence sets are displayed in Figure \ref{fig:joint}, from which we can see that with alpha-weighting (i.e. taking $\alpha_1 = 0.02$ and $\alpha_2 = 0.08$) we are able to obtain joint confidence sets which are still relatively tight.
 
-These results collectively show that we can provide informative confidence bounds for the location of the polyps and allow us to use the PraNet segmentation model with uncertainty guarantees. From Figure \ref{fig:res} we can see that the method, which combines the original and the transformed scores, effectively delineates polyps regions. These results also help to make us aware of the limitations of the model, allowing medical practioners to follow up on outer sets which do not contain inner sets in order to determine whether a polyps is present. Improved uncertainty quantification would require an improved segmentation model. 
+These results collectively show that we can provide informative confidence bounds for the location of the polyps and allow us to use the PraNet segmentation model with uncertainty guarantees. From Figure \ref{fig:res} we can see that the method, which combines the logit and the distance transformed scores, effectively delineates polyps regions. These results also help to make us aware of the limitations of the model, allowing medical practioners to follow up on outer sets which do not contain inner sets in order to determine whether a polyps is present. Improved uncertainty quantification would require an improved segmentation model. 
 %Larger uncertainty bounds may require specialist follow-up in order to be certain about the true extent of the observed tumor. 
 
 More precise results can be obtained at the expense of probabilistic guarantees, see Figures \ref{fig:joint2} and \ref{fig:joint3}. A trade off must be made between precision and confidence. The most informative confidence level can be determined in advance based on the learning dataset and the desired type of coverage.
@@ -480,38 +492,39 @@ From these results we can see that for all the approaches the coverage rate is c
 %\includegraphics[width=0.28\textwidth]{../figures/validation/val_hist.pdf}
 
 \subsection{Comparing the efficiency of the bounds}
-In this section we compare the efficiency of the confidence sets based on the different score transformations. To do so we run 1000 validations in each dividing and calibrating as in Section \ref{SS:cov}. For each run we compute the ratio between the diameter of the inner set and the diameter of the ground truth mask and average this ratio over the 500 test images.
+In this section we compare the efficiency of the confidence sets based on the different score transformations. To do so we run 1000 validations in each dividing and calibrating as in Section \ref{SS:cov}. 
 \begin{wrapfigure}{l}{0.61\textwidth}
+	\vspace{-0.3cm}
 	\begin{center}
 		\includegraphics[width=0.3\textwidth]{../figures/efficiency/inner_ratio.pdf}
 		%		\quad\quad
 		%		\hspace{-0.8cm}
 		\includegraphics[width=0.3\textwidth]{../figures/efficiency/outer_ratio.pdf}
 	\end{center}
-	\caption{Measuring the efficiency of the bound using the ratio of the diameter of the coverage set to the diameter of the true mask. The closer the ratio is to one the better. Higher coverage rates lead to a lower efficiency. The original scores provide the most efficient inner sets and the distance transformed scores provide the most efficient outer sets.}\label{fig:efficiency}
-	%	\vspace{-cm}
+	\caption{Measuring the efficiency of the bound using the ratio of the diameter of the coverage set to the diameter of the true mask. The closer the ratio is to one the better. Higher coverage rates lead to a lower efficiency. The logit scores provide the most efficient inner sets and the distance transformed scores provide the most efficient outer sets.}\label{fig:efficiency}
+		\vspace{-0.45cm}
 \end{wrapfigure}
- In order to make a smooth curve we average this quantity over all 1000 runs. A similar calculation is performed for the outer set. The results are shown in Figure \ref{fig:efficiency}. They show that the inner confidence sets produced by using the original scores are the most efficient. Instead, for the outer set, the distance transformed scores perform best. These results match the observations made on the learning dataset in Section \ref{SS:learn} and the results found in Section \ref{SS:val}.
+For each run we compute the ratio between the diameter of the inner set and the diameter of the ground truth mask and average this ratio over the 500 test images. In order to make a smooth curve we average this quantity over all 1000 runs. A similar calculation is performed for the outer set. The results are shown in Figure \ref{fig:efficiency}. They show that the inner confidence sets produced by using the logit scores are the most efficient. Instead, for the outer set, the distance transformed scores perform best. These results match the observations of Sections \ref{SS:learn} and \ref{SS:val}.
 
 We repeat this procedure instead targeting the proportion of the entire image which is under/over covered by the respective confidence sets. The results are shown in Figure \ref{fig:efficiency2} and can be interpreted similarly. 
-
 %\begin{figure}[h!]
 %\subsection{Improving risk control using transformed scores}
 %Risk control can also benefit  
-
 %\subsection{Application to Melanoma segmentation}
-
 %\subsection{Melanoma Lesion Segmentation}
-
 %\subsection{Melanoma Segmentation}
-
 \section{Application to brain imaging segmentation}
 \vspace{-0.3cm}
-	\begin{wrapfigure}{r}{0.58\textwidth} % 'r' for right, and setting the width
+	\begin{wrapfigure}{r}{0.64\textwidth} % 'r' for right, and setting the width
 	\vspace{-0.4cm}
 	\captionsetup{width=0.58\textwidth}
 	\centering
 	% First row of images
+	\begin{subfigure}[b]{0.03\textwidth} % Adjust the width to fit your label
+		\centering
+		\raisebox{0.8\height}{\rotatebox{90}{\small \textbf{\shortstack{Original \\ Image}}}}
+	\end{subfigure}
+	\hspace{0.2cm}
 	\begin{subfigure}{0.14\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/brain_seg/test/orig_images/101_orig.png}
@@ -539,9 +552,14 @@ We repeat this procedure instead targeting the proportion of the entire image wh
 		%		\end{subfigure}
 	%		
 	% Small vertical space adjustment
-	\vspace{-0.75cm}
+	\vspace{-0.3cm}
 	\\
 	% Second row of images
+	\begin{subfigure}[b]{0.03\textwidth} % Adjust the width to fit your label
+		\centering
+		\raisebox{0.6\height}{\rotatebox{90}{\small \textbf{\shortstack{Confidence \\ Sets}}}}
+	\end{subfigure}
+	\hspace{0.2cm}
 	\begin{subfigure}{0.14\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/brain_seg/test/dt_scores/101_crs.png}
@@ -568,7 +586,7 @@ We repeat this procedure instead targeting the proportion of the entire image wh
 		%			\label{fig:10}
 		%		\end{subfigure}
 	% Caption for the figure
-	\vspace{-0.8cm}
+	\vspace{-0.5cm}
 	\caption{\nt{Inner and outer confidence sets for brain mask segmentation: both computed using the distance transformed scores. The true mask is shown in yellow.}}
 	\label{fig:brain}
 	\vspace{-0.5cm}
@@ -576,12 +594,11 @@ We repeat this procedure instead targeting the proportion of the entire image wh
 %\vspace{-04
 \nt{As a second application we consider the task of skull stripping. This task consists of segmenting the brain given an Magnetic resonance image of a human head. For image segmentation we use the HD-BET \citep{hdbet} neural network model which was trained on dataset of 1,568 subjects and has quickly become the defacto method of performing brain mask segmentation. In order to apply our methods in this setting we combine data from 3 public datasets (LPBA40, NFBS, and CC-359) resulting in 524 brain images in total. This data is independent from the data used to train HD-BET, see e.g. \citep{hdbet}. We divide this data into 50 subjects to make up a learning dataset, use 300 subjects to perform calibration and use the remaining subjects for testing.}
 
-\nt{Based on the results of the learning dataset, see Appendix \ref{brainlearn}, we see that the distance transformed scores perform best for constructing both inner and outer confidence sets. The naive approach of using the original scores perform very poorly for both inner and outer sets. Calibrating thresholds for the distance transformed scores using the calibration dataset and applying to the images from the testing dataset we obtain informative inner and outer confidence sets, as shown in Figure \ref{fig:brain}. Validating as in Section \ref{SS:cov}, we see that the false coverage rate is controlled to the nominal level, see Section \ref{SS:val2}. }
-
+\nt{Based on the results of the learning dataset, see Appendix \ref{brainlearn}, we see that the distance transformed scores perform best for constructing both inner and outer confidence sets. The naive approach of using the untransformed logit scores performs very poorly for both inner and outer sets. Calibrating thresholds for the distance transformed scores using the calibration dataset and applying to the images from the testing dataset we obtain informative inner and outer confidence sets, as shown in Figure \ref{fig:brain}. Validating as in Section \ref{SS:cov}, we see that the false coverage rate is controlled to the nominal level, see Section \ref{SS:val2}. }
+\vspace{-0.5cm}
 \section{Application to teeth segmentation}
 \vspace{-0.3cm}
 \nt{As a third application we consider the problem of teeth segmentation. We use a dataset (released by \cite{Zhang2023}) consisting of scans of the teeth of 598 subjects and train a U-net based GAN network using 400 subjects (following \cite{hoshme2024}). We divide the remaining 198 subjects into 170 to use as calibration data and 28 to use as a test dataset. We use the original training data as a learning dataset (note that this is independent of the calibration dataset so does not affect validity). We tried a variety of score transformations including distance transformations and smoothing, see Section \ref{A:teeth}. Based on the learning data we chose the distance transformation for the outer sets and smoothing with a full width at half maximum (FWHM) of 2 pixels for the inner set. Calibrating thresholds on the calibration dataset and applying to the test data we obtain the results shown in Figure \ref{fig:teeth}. Moreover, validating as in Section \ref{SS:cov}, we show that the false coverage rate is controlled to the nominal level in practice, see Section \ref{val3}.}
-
 %\begin{figure}[h!]
 %	\begin{subfigure}{0.16\textwidth}
 %		\centering
@@ -649,64 +666,74 @@ We repeat this procedure instead targeting the proportion of the entire image wh
 %\end{figure}
 
 \begin{figure}[h!]
-	\begin{subfigure}{0.16\textwidth}
+	\begin{subfigure}[b]{0.03\textwidth} % Adjust the width to fit your label
+		\centering
+		\raisebox{0.6\height}{\rotatebox{90}{\small \textbf{\shortstack{Original \\ Image}}}}
+	\end{subfigure}
+	\hspace{0.2cm}
+	\begin{subfigure}{0.15\textwidth}
 			\centering
 			\includegraphics[width=\textwidth]{../figures/teeth/test/orig_images/518_orig.png}
 			\label{fig:1}
 		\end{subfigure}
-	\begin{subfigure}{0.16\textwidth}
+	\begin{subfigure}{0.15\textwidth}
 			\centering
 			\includegraphics[width=\textwidth]{../figures/teeth/test/orig_images/573_orig.png}
 			\label{fig:1}
 		\end{subfigure}
-	\begin{subfigure}{0.16\textwidth}
+	\begin{subfigure}{0.15\textwidth}
 			\centering
 			\includegraphics[width=\textwidth]{../figures/teeth/test/orig_images/566_orig.png}
 			\label{fig:1}
 		\end{subfigure}
-	\begin{subfigure}{0.16\textwidth}
+	\begin{subfigure}{0.15\textwidth}
 			\centering
 			\includegraphics[width=\textwidth]{../figures/teeth/test/orig_images/572_orig.png}
 			\label{fig:1}
 		\end{subfigure}
-	\begin{subfigure}{0.16\textwidth}
+	\begin{subfigure}{0.15\textwidth}
 			\centering
 			\includegraphics[width=\textwidth]{../figures/teeth/test/orig_images/530_orig.png}
 			\label{fig:1}
 		\end{subfigure}
-	\begin{subfigure}{0.16\textwidth}
+	\begin{subfigure}{0.15\textwidth}
 			\centering
 			\includegraphics[width=\textwidth]{../figures/teeth/test/orig_images/575_orig.png}
 			\label{fig:1}
 		\end{subfigure}
 	\vspace{-0.35cm}
 	\\
-	\begin{subfigure}{0.16\textwidth}
+	\begin{subfigure}[b]{0.03\textwidth} % Adjust the width to fit your label
+		\centering
+		\raisebox{0.5\height}{\rotatebox{90}{\small \textbf{\shortstack{Confidence \\ Sets}}}}
+	\end{subfigure}
+	\hspace{0.2cm}
+	\begin{subfigure}{0.15\textwidth}
 			\centering
 			\includegraphics[width=\textwidth]{../figures/teeth/test/smooth_scores/518_smooth_dist.png}
 			\label{fig:1}
 		\end{subfigure}
-	\begin{subfigure}{0.16\textwidth}
+	\begin{subfigure}{0.15\textwidth}
 			\centering
 			\includegraphics[width=\textwidth]{../figures/teeth/test/smooth_scores/573_smooth_dist.png}
 			\label{fig:1}
 		\end{subfigure}
-	\begin{subfigure}{0.16\textwidth}
+	\begin{subfigure}{0.15\textwidth}
 			\centering
 			\includegraphics[width=\textwidth]{../figures/teeth/test/smooth_scores/566_smooth_dist.png}
 			\label{fig:1}
 		\end{subfigure}
-	\begin{subfigure}{0.16\textwidth}
+	\begin{subfigure}{0.15\textwidth}
 			\centering
 			\includegraphics[width=\textwidth]{../figures/teeth/test/smooth_scores/572_smooth_dist.png}
 			\label{fig:1}
 		\end{subfigure}
-	\begin{subfigure}{0.16\textwidth}
+	\begin{subfigure}{0.15\textwidth}
 			\centering
 			\includegraphics[width=\textwidth]{../figures/teeth/test/smooth_scores/530_smooth_dist.png}
 			\label{fig:1}
 		\end{subfigure}
-	\begin{subfigure}{0.16\textwidth}
+	\begin{subfigure}{0.15\textwidth}
 			\centering
 			\includegraphics[width=\textwidth]{../figures/teeth/test/smooth_scores/575_smooth_dist.png}
 			\label{fig:1}
@@ -714,3 +741,4 @@ We repeat this procedure instead targeting the proportion of the entire image wh
 		\vspace{-0.5cm}
 	\caption{\nt{Inner and outer confidence sets for teeth segmentation computed using scores smoothed with 2 pixel FWHM and distance transformed scores respectively. The true mask is shown in yellow.}}\label{fig:teeth}
 \end{figure}
+\vspace{-0.5cm}
