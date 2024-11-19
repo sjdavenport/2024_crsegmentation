@@ -65,10 +65,14 @@ and we recover the desired result. Arguing similarly it is possible to establish
 \end{proof}
 A similar result can be established for the inner confidence sets via an analogous proof. We state this formally as follows.}
 \nt{
-\begin{theorem}\label{thm:distscoreschar}
+\begin{theorem}\label{thm:distscoreschar2}
 	For each $v \in \mathcal{V}$, let $f_I(s(X), v) = d_\rho(\hat{M}(X), v)$ and define $I(X)$ as in Section \ref{SS:MCS}. Suppose that $H(\hat{M}(X_i), Y_i) \leq k$, some $k \in \mathbb{R}$, for all $i \in J$, for some $J \subseteq \lbrace 1, \dots, n \rbrace$ such that $\frac{|J|}{n} > 1-\alpha_1$. Then $H(\hat{M}(X_{n+1}), I(X_{n+1}))  \leq k$.  In particular if $H(\hat{M}(X_{n+1}), Y_{n+1}) \leq k$, then $H(I(X_{n+1}), Y_{n+1})  \leq 2k$.
 \end{theorem}
 }
+
+%\subsection{Confidence sets for multiple structures}
+%Our results generalize to multiple structures. Suppose that we have 
+
 \subsection{Deriving confidence sets from bounding boxes}\label{AA:BBtheory}
 We can use our results in order to provide valid inference for bounding boxes via an adaption of the approach of \cite{Andeol2023}. In particular given $Z \in \mathcal{Y}$, let $B_{I, \max}(Z)$ be the largest box which can be contained within the set $\lbrace v\in \mathcal{V}: Z(v) = 1 \rbrace$ and let $ B_{O, \min}(Z)$ be the smallest box which contains the set $\lbrace v\in \mathcal{V}: Z(v) = 1 \rbrace$. Given $Y \in \mathcal{Y}, $ let $cc(Y) \subseteq \mathcal{P}(\mathcal{V})$ denote the set of connected components of the set $\lbrace v\in \mathcal{V}: Y(v) = 1 \rbrace$ for a given connectivity criterion (which we take to be $4$ in our examples), and note that these components can themselves be identifed as elements of $\mathcal{Y}$. Define 
 $$B_I(Y) = \cup_{c \in cc(Y)} B_{I, \max}(c) \text{ and } B_O(Y) = \cup_{c \in cc(Y)} B_{O, \min}(c)$$
@@ -112,34 +116,38 @@ Joint results can be obtained in a similar manner to those in Section \ref{SS:jo
 
 \newpage
 \subsection{Additional settings for polyps segmentation}
-\subsubsection{Additional examples from the learning dataset}
+Here we plot additional settings and examples for the polyps data application. The version of the method which uses the distance transformation to create outer confidence sets and the untransformed logit scores to create inner confidence sets will be referred to as combo.
 
+\subsubsection{Additional examples from the learning dataset}
 \begin{figure}[h!]
 	%	\centering
+\hspace{4.3cm} {\fontsize{11pt}{13pt}\selectfont \textbf{Logit scores}} \hspace{1.2cm} 
+{\fontsize{11pt}{13pt}\selectfont \textbf{DT scores}} \hspace{1.3cm} 
+{\fontsize{11pt}{13pt}\selectfont \textbf{BB scores}}
 	\begin{center}
-		\includegraphics[width=0.24\textwidth]{../figures/learning/scores/772.png}
-		\includegraphics[width=0.24\textwidth]{../figures/learning/score_surf/772.png}	\includegraphics[width=0.24\textwidth]{../figures/learning/dist_surf/772.png}
-		\includegraphics[width=0.24\textwidth]{../figures/learning/dist_bt_surf/772.png}\\
-		\includegraphics[width=0.24\textwidth]{../figures/learning/images/772.png}
-		\includegraphics[width=0.24\textwidth]{../figures/learning/score_crs_marginal90/772.png}
-		\includegraphics[width=0.24\textwidth]{../figures/learning/dist_crs_marginal90/772.png}
-		\includegraphics[width=0.24\textwidth]{../figures/learning/dist_bt_crs_marginal90/772.png}\\
+		\includegraphics[width=0.22\textwidth]{../figures/learning/scores/772.png}
+		\includegraphics[width=0.22\textwidth]{../figures/learning/score_surf/772.png}	\includegraphics[width=0.22\textwidth]{../figures/learning/dist_surf/772.png}
+		\includegraphics[width=0.22\textwidth]{../figures/learning/dist_bt_surf/772.png}\\
+		\includegraphics[width=0.22\textwidth]{../figures/learning/images/772.png}
+		\includegraphics[width=0.22\textwidth]{../figures/learning/score_crs_marginal90/772.png}
+		\includegraphics[width=0.22\textwidth]{../figures/learning/dist_crs_marginal90/772.png}
+		\includegraphics[width=0.22\textwidth]{../figures/learning/dist_bt_crs_marginal90/772.png}\\
 		\vspace{0.5cm}
-		\includegraphics[width=0.24\textwidth]{../figures/learning/scores/202.png}
-		\includegraphics[width=0.24\textwidth]{../figures/learning/score_surf/202.png}	\includegraphics[width=0.24\textwidth]{../figures/learning/dist_surf/202.png}
-		\includegraphics[width=0.24\textwidth]{../figures/learning/dist_bt_surf/202.png}\\
-		\includegraphics[width=0.24\textwidth]{../figures/learning/images/202.png}
-		\includegraphics[width=0.24\textwidth]{../figures/learning/score_crs_marginal90/202.png}
-		\includegraphics[width=0.24\textwidth]{../figures/learning/dist_crs_marginal90/202.png}
-		\includegraphics[width=0.24\textwidth]{../figures/learning/dist_bt_crs_marginal90/202.png}\\
+		\includegraphics[width=0.22\textwidth]{../figures/learning/scores/202.png}
+		\includegraphics[width=0.22\textwidth]{../figures/learning/score_surf/202.png}	\includegraphics[width=0.22\textwidth]{../figures/learning/dist_surf/202.png}
+		\includegraphics[width=0.22\textwidth]{../figures/learning/dist_bt_surf/202.png}\\
+		\includegraphics[width=0.22\textwidth]{../figures/learning/images/202.png}
+		\includegraphics[width=0.22\textwidth]{../figures/learning/score_crs_marginal90/202.png}
+		\includegraphics[width=0.22\textwidth]{../figures/learning/dist_crs_marginal90/202.png}
+		\includegraphics[width=0.22\textwidth]{../figures/learning/dist_bt_crs_marginal90/202.png}\\
 			\vspace{0.5cm}
-		\includegraphics[width=0.24\textwidth]{../figures/learning/scores/54.png}
-		\includegraphics[width=0.24\textwidth]{../figures/learning/score_surf/54.png}	\includegraphics[width=0.24\textwidth]{../figures/learning/dist_surf/54.png}
-		\includegraphics[width=0.24\textwidth]{../figures/learning/dist_bt_surf/54.png}\\
-		\includegraphics[width=0.24\textwidth]{../figures/learning/images/54.png}
-		\includegraphics[width=0.24\textwidth]{../figures/learning/score_crs_marginal90/54.png}
-		\includegraphics[width=0.24\textwidth]{../figures/learning/dist_crs_marginal90/54.png}
-		\includegraphics[width=0.24\textwidth]{../figures/learning/dist_bt_crs_marginal90/54.png}
+		\includegraphics[width=0.22\textwidth]{../figures/learning/scores/54.png}
+		\includegraphics[width=0.22\textwidth]{../figures/learning/score_surf/54.png}	\includegraphics[width=0.22\textwidth]{../figures/learning/dist_surf/54.png}
+		\includegraphics[width=0.22\textwidth]{../figures/learning/dist_bt_surf/54.png}\\
+		\includegraphics[width=0.22\textwidth]{../figures/learning/images/54.png}
+		\includegraphics[width=0.22\textwidth]{../figures/learning/score_crs_marginal90/54.png}
+		\includegraphics[width=0.22\textwidth]{../figures/learning/dist_crs_marginal90/54.png}
+		\includegraphics[width=0.22\textwidth]{../figures/learning/dist_bt_crs_marginal90/54.png}
 	\end{center}
 	\caption{Additional examples from the learning dataset. The layout of these figures is the same as for Figure \ref{fig:learning}.}
 	\label{fig:learning2}
@@ -147,30 +155,33 @@ Joint results can be obtained in a similar manner to those in Section \ref{SS:jo
 
 \begin{figure}
 	%	\centering
+\hspace{4.3cm} {\fontsize{11pt}{13pt}\selectfont \textbf{Logit scores}} \hspace{1.2cm} 
+{\fontsize{11pt}{13pt}\selectfont \textbf{DT scores}} \hspace{1.3cm} 
+{\fontsize{11pt}{13pt}\selectfont \textbf{BB scores}}
 	\begin{center}
-		\includegraphics[width=0.24\textwidth]{../figures/learning/scores/183.png}
-		\includegraphics[width=0.24\textwidth]{../figures/learning/score_surf/183.png}	\includegraphics[width=0.24\textwidth]{../figures/learning/dist_surf/183.png}
-		\includegraphics[width=0.24\textwidth]{../figures/learning/dist_bt_surf/183.png}\\
-		\includegraphics[width=0.24\textwidth]{../figures/learning/images/183.png}
-		\includegraphics[width=0.24\textwidth]{../figures/learning/score_crs_marginal90/183.png}
-		\includegraphics[width=0.24\textwidth]{../figures/learning/dist_crs_marginal90/183.png}
-		\includegraphics[width=0.24\textwidth]{../figures/learning/dist_bt_crs_marginal90/183.png}\\
+		\includegraphics[width=0.22\textwidth]{../figures/learning/scores/183.png}
+		\includegraphics[width=0.22\textwidth]{../figures/learning/score_surf/183.png}	\includegraphics[width=0.22\textwidth]{../figures/learning/dist_surf/183.png}
+		\includegraphics[width=0.22\textwidth]{../figures/learning/dist_bt_surf/183.png}\\
+		\includegraphics[width=0.22\textwidth]{../figures/learning/images/183.png}
+		\includegraphics[width=0.22\textwidth]{../figures/learning/score_crs_marginal90/183.png}
+		\includegraphics[width=0.22\textwidth]{../figures/learning/dist_crs_marginal90/183.png}
+		\includegraphics[width=0.22\textwidth]{../figures/learning/dist_bt_crs_marginal90/183.png}\\
 		\vspace{0.5cm}
-		\includegraphics[width=0.24\textwidth]{../figures/learning/scores/530.png}
-		\includegraphics[width=0.24\textwidth]{../figures/learning/score_surf/530.png}	\includegraphics[width=0.24\textwidth]{../figures/learning/dist_surf/530.png}
-		\includegraphics[width=0.24\textwidth]{../figures/learning/dist_bt_surf/530.png}\\
-		\includegraphics[width=0.24\textwidth]{../figures/learning/images/530.png}
-		\includegraphics[width=0.24\textwidth]{../figures/learning/score_crs_marginal90/530.png}
-		\includegraphics[width=0.24\textwidth]{../figures/learning/dist_crs_marginal90/530.png}
-		\includegraphics[width=0.24\textwidth]{../figures/learning/dist_bt_crs_marginal90/530.png}\\
+		\includegraphics[width=0.22\textwidth]{../figures/learning/scores/530.png}
+		\includegraphics[width=0.22\textwidth]{../figures/learning/score_surf/530.png}	\includegraphics[width=0.22\textwidth]{../figures/learning/dist_surf/530.png}
+		\includegraphics[width=0.22\textwidth]{../figures/learning/dist_bt_surf/530.png}\\
+		\includegraphics[width=0.22\textwidth]{../figures/learning/images/530.png}
+		\includegraphics[width=0.22\textwidth]{../figures/learning/score_crs_marginal90/530.png}
+		\includegraphics[width=0.22\textwidth]{../figures/learning/dist_crs_marginal90/530.png}
+		\includegraphics[width=0.22\textwidth]{../figures/learning/dist_bt_crs_marginal90/530.png}\\
 		\vspace{0.5cm}
-		\includegraphics[width=0.24\textwidth]{../figures/learning/scores/754.png}
-		\includegraphics[width=0.24\textwidth]{../figures/learning/score_surf/754.png}	\includegraphics[width=0.24\textwidth]{../figures/learning/dist_surf/754.png}
-		\includegraphics[width=0.24\textwidth]{../figures/learning/dist_bt_surf/754.png}\\
-		\includegraphics[width=0.24\textwidth]{../figures/learning/images/754.png}
-		\includegraphics[width=0.24\textwidth]{../figures/learning/score_crs_marginal90/754.png}
-		\includegraphics[width=0.24\textwidth]{../figures/learning/dist_crs_marginal90/754.png}
-		\includegraphics[width=0.24\textwidth]{../figures/learning/dist_bt_crs_marginal90/754.png}
+		\includegraphics[width=0.22\textwidth]{../figures/learning/scores/754.png}
+		\includegraphics[width=0.22\textwidth]{../figures/learning/score_surf/754.png}	\includegraphics[width=0.22\textwidth]{../figures/learning/dist_surf/754.png}
+		\includegraphics[width=0.22\textwidth]{../figures/learning/dist_bt_surf/754.png}\\
+		\includegraphics[width=0.22\textwidth]{../figures/learning/images/754.png}
+		\includegraphics[width=0.22\textwidth]{../figures/learning/score_crs_marginal90/754.png}
+		\includegraphics[width=0.22\textwidth]{../figures/learning/dist_crs_marginal90/754.png}
+		\includegraphics[width=0.22\textwidth]{../figures/learning/dist_bt_crs_marginal90/754.png}
 	\end{center}
 	\caption{Futher examples from the learning dataset. The layout of these figures is the same as for Figure \ref{fig:learning}.}
 	\label{fig:learning3}
@@ -179,162 +190,193 @@ Joint results can be obtained in a similar manner to those in Section \ref{SS:jo
 \newpage
 \subsubsection{Validition figures for the original and bounding box scores}\label{SS:furtherval}
 \begin{figure}[h!]
-	\begin{subfigure}{0.19\textwidth}
+	\begin{subfigure}[b]{0.03\textwidth} % Adjust the width to fit your label
+		\centering
+		\raisebox{1\height}{\rotatebox{90}{\textbf{\shortstack{Image}}}}
+	\end{subfigure}
+	\hspace{0.05cm}
+	\begin{subfigure}{0.18\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/all_images/61.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.19\textwidth}
+	\begin{subfigure}{0.18\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/all_images/114.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.19\textwidth}
+	\begin{subfigure}{0.18\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/all_images/144.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.19\textwidth}
+	\begin{subfigure}{0.18\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/all_images/148.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.19\textwidth}
+	\begin{subfigure}{0.18\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/all_images/848.png}
 		\label{fig:1}
 	\end{subfigure}
 	\vspace{-0.35cm}
 	\\
-	\begin{subfigure}{0.19\textwidth}
+			\begin{subfigure}[b]{0.03\textwidth} % Adjust the width to fit your label
+		\centering
+		\raisebox{0.3\height}{\rotatebox{90}{\textbf{\shortstack{Logit scores}}}}
+	\end{subfigure}
+	\hspace{0.05cm}
+	\begin{subfigure}{0.18\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/validation/val_crs_orig_90/61.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.19\textwidth}
+	\begin{subfigure}{0.18\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/validation/val_crs_orig_90/114.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.19\textwidth}
+	\begin{subfigure}{0.18\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/validation/val_crs_orig_90/144.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.19\textwidth}
+	\begin{subfigure}{0.18\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/validation/val_crs_orig_90/148.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.19\textwidth}
+	\begin{subfigure}{0.18\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/validation/val_crs_orig_90/848.png}
 		\label{fig:1}
 	\end{subfigure}
 	\vspace{-0.35cm}
 	\\
-		\begin{subfigure}{0.19\textwidth}
+		\begin{subfigure}[b]{0.03\textwidth} % Adjust the width to fit your label
+		\centering
+		\raisebox{0.5\height}{\rotatebox{90}{\textbf{\shortstack{BB scores}}}}
+	\end{subfigure}
+	\hspace{0.05cm}
+		\begin{subfigure}{0.18\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/validation/val_crs_bt_90/61.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.19\textwidth}
+	\begin{subfigure}{0.18\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/validation/val_crs_bt_90/114.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.19\textwidth}
+	\begin{subfigure}{0.18\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/validation/val_crs_bt_90/144.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.19\textwidth}
+	\begin{subfigure}{0.18\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/validation/val_crs_bt_90/148.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.19\textwidth}
+	\begin{subfigure}{0.18\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/validation/val_crs_bt_90/848.png}
 		\label{fig:1}
 	\end{subfigure}
-	\vspace{-0.35cm}
+%	\vspace{-0.35cm}
+\vspace{0.5cm}
 	\\
-	\begin{subfigure}{0.19\textwidth}
+		\begin{subfigure}[b]{0.03\textwidth} % Adjust the width to fit your label
+		\centering
+		\raisebox{1\height}{\rotatebox{90}{\textbf{\shortstack{Image}}}}
+	\end{subfigure}
+	\hspace{0.05cm}
+	\begin{subfigure}{0.18\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/all_images/7.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.19\textwidth}
+	\begin{subfigure}{0.18\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/all_images/211.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.19\textwidth}
+	\begin{subfigure}{0.18\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/all_images/1062.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.19\textwidth}
+	\begin{subfigure}{0.18\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/all_images/398.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.19\textwidth}
+	\begin{subfigure}{0.18\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/all_images/269.png}
 		\label{fig:1}
 	\end{subfigure}
 	\vspace{-0.35cm}
 	\\
-	\begin{subfigure}{0.19\textwidth}
+			\begin{subfigure}[b]{0.03\textwidth} % Adjust the width to fit your label
+		\centering
+		\raisebox{0.3\height}{\rotatebox{90}{\textbf{\shortstack{Logit scores}}}}
+	\end{subfigure}
+	\hspace{0.05cm}
+	\begin{subfigure}{0.18\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/validation/cal_crs_orig_90/7.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.19\textwidth}
+	\begin{subfigure}{0.18\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/validation/cal_crs_orig_90/211.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.19\textwidth}
+	\begin{subfigure}{0.18\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/validation/val_crs_orig_90/1062.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.19\textwidth}
+	\begin{subfigure}{0.18\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/validation/val_crs_orig_90/398.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.19\textwidth}
+	\begin{subfigure}{0.18\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/validation/cal_crs_orig_90/269.png}
 		\label{fig:1}
 	\end{subfigure}
 	\vspace{-0.35cm}
 	\\
-	\begin{subfigure}{0.19\textwidth}
+			\begin{subfigure}[b]{0.03\textwidth} % Adjust the width to fit your label
+		\centering
+		\raisebox{0.5\height}{\rotatebox{90}{\textbf{\shortstack{BB scores}}}}
+	\end{subfigure}
+	\hspace{0.05cm}
+	\begin{subfigure}{0.18\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/validation/cal_crs_bt_90/7.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.19\textwidth}
+	\begin{subfigure}{0.18\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/validation/cal_crs_bt_90/211.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.19\textwidth}
+	\begin{subfigure}{0.18\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/validation/val_crs_bt_90/1062.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.19\textwidth}
+	\begin{subfigure}{0.18\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/validation/val_crs_bt_90/398.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.19\textwidth}
+	\begin{subfigure}{0.18\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/validation/cal_crs_bt_90/269.png}
 		\label{fig:1}
@@ -345,329 +387,390 @@ Joint results can be obtained in a similar manner to those in Section \ref{SS:jo
 \newpage
 \subsubsection{Additional validition figures}
 \begin{figure}[h!]
-	\begin{subfigure}{0.19\textwidth}
+	\begin{subfigure}[b]{0.03\textwidth} % Adjust the width to fit your label
+		\centering
+		\raisebox{1\height}{\rotatebox{90}{\textbf{\shortstack{Image}}}}
+	\end{subfigure}
+	\hspace{0.05cm}
+	\begin{subfigure}{0.18\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/all_images/685.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.19\textwidth}
+	\begin{subfigure}{0.18\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/all_images/743.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.19\textwidth}
+	\begin{subfigure}{0.18\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/all_images/771.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.19\textwidth}
+	\begin{subfigure}{0.18\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/all_images/829.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.19\textwidth}
+	\begin{subfigure}{0.18\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/all_images/848.png}
 		\label{fig:1}
 	\end{subfigure}
 	\vspace{-0.35cm}
 	\\
-	\begin{subfigure}{0.19\textwidth}
+	\begin{subfigure}[b]{0.03\textwidth} % Adjust the width to fit your label
+	\centering
+	\raisebox{0.8\height}{\rotatebox{90}{\textbf{\shortstack{Combo}}}}
+\end{subfigure}
+\hspace{0.05cm}
+	\begin{subfigure}{0.18\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/validation/val_crs_combo_90/685.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.19\textwidth}
+	\begin{subfigure}{0.18\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/validation/val_crs_combo_90/743.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.19\textwidth}
+	\begin{subfigure}{0.18\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/validation/val_crs_combo_90/771.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.19\textwidth}
+	\begin{subfigure}{0.18\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/validation/val_crs_combo_90/829.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.19\textwidth}
+	\begin{subfigure}{0.18\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/validation/val_crs_combo_90/848.png}
 		\label{fig:1}
 	\end{subfigure}
 	\vspace{-0.35cm}
 	\\
-	\begin{subfigure}{0.19\textwidth}
+		\begin{subfigure}[b]{0.03\textwidth} % Adjust the width to fit your label
+		\centering
+		\raisebox{0.3\height}{\rotatebox{90}{\textbf{\shortstack{Logit scores}}}}
+	\end{subfigure}
+	\hspace{0.05cm}
+	\begin{subfigure}{0.18\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/validation/val_crs_orig_90/685.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.19\textwidth}
+	\begin{subfigure}{0.18\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/validation/val_crs_orig_90/743.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.19\textwidth}
+	\begin{subfigure}{0.18\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/validation/val_crs_orig_90/771.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.19\textwidth}
+	\begin{subfigure}{0.18\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/validation/val_crs_orig_90/829.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.19\textwidth}
+	\begin{subfigure}{0.18\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/validation/val_crs_orig_90/848.png}
 		\label{fig:1}
 	\end{subfigure}
 		\vspace{-0.35cm}
 	\\
-	\begin{subfigure}{0.19\textwidth}
+	\begin{subfigure}[b]{0.03\textwidth} % Adjust the width to fit your label
+	\centering
+	\raisebox{0.5\height}{\rotatebox{90}{\textbf{\shortstack{BB scores}}}}
+\end{subfigure}
+\hspace{0.05cm}
+	\begin{subfigure}{0.18\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/validation/val_crs_bt_90/685.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.19\textwidth}
+	\begin{subfigure}{0.18\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/validation/val_crs_bt_90/743.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.19\textwidth}
+	\begin{subfigure}{0.18\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/validation/val_crs_bt_90/771.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.19\textwidth}
+	\begin{subfigure}{0.18\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/validation/val_crs_bt_90/829.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.19\textwidth}
+	\begin{subfigure}{0.18\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/validation/val_crs_bt_90/848.png}
 		\label{fig:1}
 	\end{subfigure}
-	\vspace{-0.35cm}
+%	\vspace{-0.35cm}
+	\vspace{0.5cm}
 	\\
-	\begin{subfigure}{0.19\textwidth}
+	\begin{subfigure}[b]{0.03\textwidth} % Adjust the width to fit your label
+		\centering
+		\raisebox{1\height}{\rotatebox{90}{\textbf{\shortstack{Image}}}}
+	\end{subfigure}
+	\hspace{0.05cm}
+	\begin{subfigure}{0.18\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/all_images/50.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.19\textwidth}
+	\begin{subfigure}{0.18\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/all_images/138.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.19\textwidth}
+	\begin{subfigure}{0.18\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/all_images/179.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.19\textwidth}
+	\begin{subfigure}{0.18\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/all_images/483.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.19\textwidth}
+	\begin{subfigure}{0.18\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/all_images/1097.png}
 		\label{fig:1}
 	\end{subfigure}
 	\vspace{-0.35cm}
 	\\
-	\begin{subfigure}{0.19\textwidth}
+		\begin{subfigure}[b]{0.03\textwidth} % Adjust the width to fit your label
+		\centering
+		\raisebox{0.8\height}{\rotatebox{90}{\textbf{\shortstack{Combo}}}}
+	\end{subfigure}
+	\hspace{0.05cm}
+	\begin{subfigure}{0.18\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/validation/val_crs_combo_90/50.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.19\textwidth}
+	\begin{subfigure}{0.18\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/validation/val_crs_combo_90/138.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.19\textwidth}
+	\begin{subfigure}{0.18\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/validation/val_crs_combo_90/179.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.19\textwidth}
+	\begin{subfigure}{0.18\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/validation/val_crs_combo_90/483.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.19\textwidth}
+	\begin{subfigure}{0.18\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/validation/val_crs_combo_90/1097.png}
 		\label{fig:1}
 	\end{subfigure}
 		\vspace{-0.35cm}
 	\\
-	\begin{subfigure}{0.19\textwidth}
+	\begin{subfigure}[b]{0.03\textwidth} % Adjust the width to fit your label
+		\centering
+		\raisebox{0.3\height}{\rotatebox{90}{\textbf{\shortstack{Logit scores}}}}
+	\end{subfigure}
+	\hspace{0.05cm}
+	\begin{subfigure}{0.18\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/validation/val_crs_orig_90/50.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.19\textwidth}
+	\begin{subfigure}{0.18\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/validation/val_crs_orig_90/138.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.19\textwidth}
+	\begin{subfigure}{0.18\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/validation/val_crs_orig_90/179.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.19\textwidth}
+	\begin{subfigure}{0.18\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/validation/val_crs_orig_90/483.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.19\textwidth}
+	\begin{subfigure}{0.18\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/validation/val_crs_orig_90/1097.png}
 		\label{fig:1}
 	\end{subfigure}
 			\vspace{-0.35cm}
 	\\
-	\begin{subfigure}{0.19\textwidth}
+		\begin{subfigure}[b]{0.03\textwidth} % Adjust the width to fit your label
+		\centering
+		\raisebox{0.5\height}{\rotatebox{90}{\textbf{\shortstack{BB scores}}}}
+	\end{subfigure}
+	\hspace{0.05cm}
+	\begin{subfigure}{0.18\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/validation/val_crs_bt_90/50.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.19\textwidth}
+	\begin{subfigure}{0.18\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/validation/val_crs_bt_90/138.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.19\textwidth}
+	\begin{subfigure}{0.18\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/validation/val_crs_bt_90/179.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.19\textwidth}
+	\begin{subfigure}{0.18\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/validation/val_crs_bt_90/483.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.19\textwidth}
+	\begin{subfigure}{0.18\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/validation/val_crs_bt_90/1097.png}
 		\label{fig:1}
 	\end{subfigure}
 	\label{fig:grid}
-	\caption{Additional validition examples. In each example, after the original images, the rows are (from top to bottom) the combination of the original and distance transformed scores, then the logit scores and finally the bounding box scores.}\label{fig:polpysex2}
+	\caption{Additional validition examples. In each example, after the original images, the rows are (from top to bottom) the combination of the original and distance transformed scores, then the logit scores and finally the bounding box scores. The interpretation of the results is the same as for Figure \ref{fig:res}.}\label{fig:polpysex2}
 \end{figure}
 
 \newpage
 \subsubsection{Confidence sets for the bounding boxes}
 \begin{figure}[h!]
-	\begin{subfigure}{0.19\textwidth}
+		\begin{subfigure}[b]{0.03\textwidth} % Adjust the width to fit your label
+		\centering
+		\raisebox{1\height}{\rotatebox{90}{\textbf{\shortstack{Image}}}}
+	\end{subfigure}
+	\hspace{0.05cm}
+	\begin{subfigure}{0.18\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/all_images/61.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.19\textwidth}
+	\begin{subfigure}{0.18\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/all_images/114.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.19\textwidth}
+	\begin{subfigure}{0.18\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/all_images/144.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.19\textwidth}
+	\begin{subfigure}{0.18\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/all_images/148.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.19\textwidth}
+	\begin{subfigure}{0.18\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/all_images/251.png}
 		\label{fig:1}
 	\end{subfigure}
 	\vspace{-0.35cm}
 	\\
-	\begin{subfigure}{0.19\textwidth}
+		\begin{subfigure}[b]{0.03\textwidth} % Adjust the width to fit your label
+		\centering
+		\raisebox{0.5\height}{\rotatebox{90}{\textbf{\shortstack{BB scores}}}}
+	\end{subfigure}
+	\hspace{0.05cm}
+	\begin{subfigure}{0.18\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/validation/boundary_box_90/61.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.19\textwidth}
+	\begin{subfigure}{0.18\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/validation/boundary_box_90/114.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.19\textwidth}
+	\begin{subfigure}{0.18\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/validation/boundary_box_90/144.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.19\textwidth}
+	\begin{subfigure}{0.18\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/validation/boundary_box_90/148.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.19\textwidth}
+	\begin{subfigure}{0.18\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/validation/boundary_box_90/251.png}
 		\label{fig:1}
 	\end{subfigure}
 	\vspace{-0.35cm}
 	\\
-	\begin{subfigure}{0.19\textwidth}
+		\begin{subfigure}[b]{0.03\textwidth} % Adjust the width to fit your label
+		\centering
+		\raisebox{1\height}{\rotatebox{90}{\textbf{\shortstack{Image}}}}
+	\end{subfigure}
+	\hspace{0.05cm}
+	\begin{subfigure}{0.18\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/all_images/7.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.19\textwidth}
+	\begin{subfigure}{0.18\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/all_images/211.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.19\textwidth}
+	\begin{subfigure}{0.18\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/all_images/1062.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.19\textwidth}
+	\begin{subfigure}{0.18\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/all_images/398.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.19\textwidth}
+	\begin{subfigure}{0.18\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/all_images/269.png}
 		\label{fig:1}
 	\end{subfigure}
 	\vspace{-0.35cm}
 	\\
-	\begin{subfigure}{0.19\textwidth}
+		\begin{subfigure}[b]{0.03\textwidth} % Adjust the width to fit your label
+		\centering
+		\raisebox{0.5\height}{\rotatebox{90}{\textbf{\shortstack{BB scores}}}}
+	\end{subfigure}
+	\hspace{0.05cm}
+	\begin{subfigure}{0.18\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/validation/boundary_box_90/7.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.19\textwidth}
+	\begin{subfigure}{0.18\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/validation/boundary_box_90/211.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.19\textwidth}
+	\begin{subfigure}{0.18\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/validation/boundary_box_90/1062.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.19\textwidth}
+	\begin{subfigure}{0.18\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/validation/boundary_box_90/398.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.19\textwidth}
+	\begin{subfigure}{0.18\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/validation/boundary_box_90/269.png}
 		\label{fig:1}
@@ -678,54 +781,64 @@ Joint results can be obtained in a similar manner to those in Section \ref{SS:jo
 
 \subsubsection{Joint 90\% confidence regions}
 \begin{figure}[h!]
-	\begin{subfigure}{0.19\textwidth}
+			\begin{subfigure}[b]{0.03\textwidth} % Adjust the width to fit your label
+		\centering
+		\raisebox{0.8\height}{\rotatebox{90}{\textbf{\shortstack{Combo}}}}
+	\end{subfigure}
+	\hspace{0.05cm}
+	\begin{subfigure}{0.18\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/validation/joint_90/61.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.19\textwidth}
+	\begin{subfigure}{0.18\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/validation/joint_90/114.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.19\textwidth}
+	\begin{subfigure}{0.18\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/validation/joint_90/144.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.19\textwidth}
+	\begin{subfigure}{0.18\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/validation/joint_90/148.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.19\textwidth}
+	\begin{subfigure}{0.18\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/validation/joint_90/251.png}
 		\label{fig:1}
 	\end{subfigure}
 	\vspace{-0.35cm}
 	\\
-	\begin{subfigure}{0.19\textwidth}
+			\begin{subfigure}[b]{0.03\textwidth} % Adjust the width to fit your label
+		\centering
+		\raisebox{0.8\height}{\rotatebox{90}{\textbf{\shortstack{Combo}}}}
+	\end{subfigure}
+	\hspace{0.05cm}
+	\begin{subfigure}{0.18\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/validation/joint_90/7.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.19\textwidth}
+	\begin{subfigure}{0.18\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/validation/joint_90/211.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.19\textwidth}
+	\begin{subfigure}{0.18\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/validation/joint_90/1062.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.19\textwidth}
+	\begin{subfigure}{0.18\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/validation/joint_90/398.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.19\textwidth}
+	\begin{subfigure}{0.18\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/validation/joint_90/269.png}
 		\label{fig:1}
@@ -736,54 +849,64 @@ Joint results can be obtained in a similar manner to those in Section \ref{SS:jo
 \newpage
 \subsubsection{Marginal 80 \% Confidence regions}
 \begin{figure}[h!]
-	\begin{subfigure}{0.19\textwidth}
+			\begin{subfigure}[b]{0.03\textwidth} % Adjust the width to fit your label
+		\centering
+		\raisebox{0.8\height}{\rotatebox{90}{\textbf{\shortstack{Combo}}}}
+	\end{subfigure}
+	\hspace{0.05cm}
+	\begin{subfigure}{0.18\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/validation/val_crs_combo_80/61.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.19\textwidth}
+	\begin{subfigure}{0.18\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/validation/val_crs_combo_80/114.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.19\textwidth}
+	\begin{subfigure}{0.18\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/validation/val_crs_combo_80/144.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.19\textwidth}
+	\begin{subfigure}{0.18\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/validation/val_crs_combo_80/148.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.19\textwidth}
+	\begin{subfigure}{0.18\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/validation/val_crs_combo_80/251.png}
 		\label{fig:1}
 	\end{subfigure}
 	\vspace{-0.35cm}
 	\\
-	\begin{subfigure}{0.19\textwidth}
+			\begin{subfigure}[b]{0.03\textwidth} % Adjust the width to fit your label
+		\centering
+		\raisebox{0.8\height}{\rotatebox{90}{\textbf{\shortstack{Combo}}}}
+	\end{subfigure}
+	\hspace{0.05cm}
+	\begin{subfigure}{0.18\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/validation/val_crs_combo_80/7.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.19\textwidth}
+	\begin{subfigure}{0.18\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/validation/val_crs_combo_80/211.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.19\textwidth}
+	\begin{subfigure}{0.18\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/validation/val_crs_combo_80/1062.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.19\textwidth}
+	\begin{subfigure}{0.18\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/validation/val_crs_combo_80/398.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.19\textwidth}
+	\begin{subfigure}{0.18\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/validation/val_crs_combo_80/269.png}
 		\label{fig:1}
@@ -794,54 +917,64 @@ Joint results can be obtained in a similar manner to those in Section \ref{SS:jo
 \subsubsection{Marginal 95 \% Confidence regions}
 
 \begin{figure}[h!]
-	\begin{subfigure}{0.19\textwidth}
+			\begin{subfigure}[b]{0.03\textwidth} % Adjust the width to fit your label
+		\centering
+		\raisebox{0.8\height}{\rotatebox{90}{\textbf{\shortstack{Combo}}}}
+	\end{subfigure}
+	\hspace{0.05cm}
+	\begin{subfigure}{0.18\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/validation/val_crs_combo_95/61.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.19\textwidth}
+	\begin{subfigure}{0.18\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/validation/val_crs_combo_95/114.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.19\textwidth}
+	\begin{subfigure}{0.18\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/validation/val_crs_combo_95/144.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.19\textwidth}
+	\begin{subfigure}{0.18\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/validation/val_crs_combo_95/148.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.19\textwidth}
+	\begin{subfigure}{0.18\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/validation/val_crs_combo_95/251.png}
 		\label{fig:1}
 	\end{subfigure}
 	\vspace{-0.35cm}
 	\\
-	\begin{subfigure}{0.19\textwidth}
+			\begin{subfigure}[b]{0.03\textwidth} % Adjust the width to fit your label
+		\centering
+		\raisebox{0.8\height}{\rotatebox{90}{\textbf{\shortstack{Combo}}}}
+	\end{subfigure}
+	\hspace{0.05cm}
+	\begin{subfigure}{0.18\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/validation/val_crs_combo_95/7.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.19\textwidth}
+	\begin{subfigure}{0.18\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/validation/val_crs_combo_95/211.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.19\textwidth}
+	\begin{subfigure}{0.18\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/validation/val_crs_combo_95/1062.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.19\textwidth}
+	\begin{subfigure}{0.18\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/validation/joint_90/398.png}
 		\label{fig:1}
 	\end{subfigure}
-	\begin{subfigure}{0.19\textwidth}
+	\begin{subfigure}{0.18\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/validation/joint_90/269.png}
 		\label{fig:1}
@@ -882,6 +1015,11 @@ Joint results can be obtained in a similar manner to those in Section \ref{SS:jo
 	%	\captionsetup{width=0.58\textwidth}
 	\centering
 	% First row of images
+			\begin{subfigure}[b]{0.03\textwidth} % Adjust the width to fit your label
+		\centering
+		\raisebox{1\height}{\rotatebox{90}{ \textbf{\shortstack{Image}}}}
+	\end{subfigure}
+	\hspace{0.1cm}
 	\begin{subfigure}{0.16\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/brain_seg/learning/orig_images/1_orig.png}
@@ -912,6 +1050,11 @@ Joint results can be obtained in a similar manner to those in Section \ref{SS:jo
 	\\
 	\vspace{-0.35cm}
 	% Second row of images
+		\begin{subfigure}[b]{0.03\textwidth} % Adjust the width to fit your label
+		\centering
+		\raisebox{0.5\height}{\rotatebox{90}{ \textbf{\shortstack{DT scores}}}}
+	\end{subfigure}
+	\hspace{0.1cm}
 	\begin{subfigure}{0.16\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/brain_seg/learning/dt_scores/1_crs.png}
@@ -940,6 +1083,11 @@ Joint results can be obtained in a similar manner to those in Section \ref{SS:jo
 	\\
 	\vspace{-0.35cm}
 	% Second row of images
+		\begin{subfigure}[b]{0.03\textwidth} % Adjust the width to fit your label
+		\centering
+		\raisebox{0.37\height}{\rotatebox{90}{ \textbf{\shortstack{Logit scores}}}}
+	\end{subfigure}
+	\hspace{0.1cm}
 	\begin{subfigure}{0.16\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/brain_seg/learning/orig_scores/1_origcrs.png}
@@ -977,6 +1125,11 @@ Joint results can be obtained in a similar manner to those in Section \ref{SS:jo
 	%	\captionsetup{width=0.58\textwidth}
 	\centering
 	% First row of images
+	\begin{subfigure}[b]{0.03\textwidth} % Adjust the width to fit your label
+		\centering
+		\raisebox{1\height}{\rotatebox{90}{ \textbf{\shortstack{Image}}}}
+	\end{subfigure}
+	\hspace{0.1cm}
 	\begin{subfigure}{0.16\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/brain_seg/learning/orig_images/1_orig.png}
@@ -1007,6 +1160,11 @@ Joint results can be obtained in a similar manner to those in Section \ref{SS:jo
 	\\
 	\vspace{-0.35cm}
 	% Second row of images
+		\begin{subfigure}[b]{0.03\textwidth} % Adjust the width to fit your label
+		\centering
+		\raisebox{0.4\height}{\rotatebox{90}{ \textbf{\shortstack{FWHM = 5}}}}
+	\end{subfigure}
+	\hspace{0.1cm}
 	\begin{subfigure}{0.16\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/brain_seg/learning/smooth_scores/1_FWHM_15.png}
@@ -1035,6 +1193,11 @@ Joint results can be obtained in a similar manner to those in Section \ref{SS:jo
 	\\
 	\vspace{-0.35cm}
 	% Second row of images
+		\begin{subfigure}[b]{0.03\textwidth} % Adjust the width to fit your label
+		\centering
+		\raisebox{0.3\height}{\rotatebox{90}{ \textbf{\shortstack{FWHM = 10}}}}
+	\end{subfigure}
+	\hspace{0.1cm}
 	\begin{subfigure}{0.16\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/brain_seg/learning/smooth_scores/1_FWHM_10.png}
@@ -1063,6 +1226,11 @@ Joint results can be obtained in a similar manner to those in Section \ref{SS:jo
 		\\
 	\vspace{-0.35cm}
 	% Second row of images
+		\begin{subfigure}[b]{0.03\textwidth} % Adjust the width to fit your label
+		\centering
+		\raisebox{0.3\height}{\rotatebox{90}{ \textbf{\shortstack{FWHM = 15}}}}
+	\end{subfigure}
+	\hspace{0.1cm}
 	\begin{subfigure}{0.16\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../figures/brain_seg/learning/smooth_scores/1_FWHM_15.png}
@@ -1090,6 +1258,11 @@ Joint results can be obtained in a similar manner to those in Section \ref{SS:jo
 	\end{subfigure}
 	\\
 	\vspace{-0.35cm}
+		\begin{subfigure}[b]{0.03\textwidth} % Adjust the width to fit your label
+		\centering
+		\raisebox{0.3\height}{\rotatebox{90}{ \textbf{\shortstack{FWHM = 20}}}}
+	\end{subfigure}
+		\hspace{0.1cm}
 	% Second row of images
 	\begin{subfigure}{0.16\textwidth}
 		\centering
@@ -1118,6 +1291,11 @@ Joint results can be obtained in a similar manner to those in Section \ref{SS:jo
 	\end{subfigure}
 		\\
 	\vspace{-0.35cm}
+		\begin{subfigure}[b]{0.03\textwidth} % Adjust the width to fit your label
+		\centering
+		\raisebox{0.3\height}{\rotatebox{90}{ \textbf{\shortstack{FWHM = 25}}}}
+	\end{subfigure}
+	\hspace{0.1cm}
 	% Second row of images
 	\begin{subfigure}{0.16\textwidth}
 		\centering
@@ -1285,7 +1463,7 @@ Joint results can be obtained in a similar manner to those in Section \ref{SS:jo
 		\includegraphics[width=\textwidth]{../figures/brain_seg/test/smooth_scores/120_FWHM_20.png}
 		\label{fig:10}
 	\end{subfigure}
-	\vspace{-0.5cm}
+%	\vspace{-0.5cm}
 	% Caption for the figure
 	\caption{\nt{Inner and outer confidence sets for brain mask segmentation using the distance transformed and logit scores. Top row: brain images for each subject. 2nd row: the inner and outer confidence sets produced by calibrating the distance transformed scores on the calibration dataset. 3rd row:  the inner and outer confidence sets produced by calibrating the logit scores on the calibration dataset. 4th row:  the inner and outer confidence sets produced by calibrating the smoothed scores (smoothed with an isotropic Guassian kernel of 20mm - chosen because it performed the best on the learning dataset). As for the learning dataset the logit scores perform very poorly and are not able to separate the background from the segmented masks with confidence. Instead the distance transformed scores do a very good job at segmenting the mask. Indeed they do slightly better on the calibrated dataset than on the learning dataset. The smooth scores improve on the logit scores but do not provide as tight bounds as the distance transformed scores for neither inner nor outer sets.}}
 	\label{fig:brain2}
@@ -1293,20 +1471,19 @@ Joint results can be obtained in a similar manner to those in Section \ref{SS:jo
 
 \newpage
 \subsubsection{Computing the coverage for the brain imaging data}\label{SS:val2}
-In order to study the coverage rate of the methods in the context of the brain imaging application we peform a similar validation to that described in Section \ref{SS:cov} for polyps segmentation. To do so we divide the 474 subjects left, after excluding the learning dataset, into 300 calibration and 174 test images. We do this 1000 times, randomly sampling the sets of 300 and 174 images respectively and measuring the coverage in each run. We average the coverage over the 1000 runs and display the results in Figure \ref{fig:coverage2}. Note that unlike the box scores considered in Section \ref{SS:cov}, the smooth scores are not discrete so do not display discreteness issues at lower levels of coverage. 
+\nt{In order to study the coverage rate of the methods in the context of the brain imaging application we peform a similar validation to that described in Section \ref{SS:cov} for polyps segmentation. To do so we divide the 474 subjects left, after excluding the learning dataset, into 300 calibration and 174 test images. We do this 1000 times, randomly sampling the sets of 300 and 174 images respectively and measuring the coverage in each run. We average the coverage over the 1000 runs and display the results in Figure \ref{fig:coverage2}. Note that unlike the box scores considered in Section \ref{SS:cov}, the smooth scores are not discrete so do not display discreteness issues at lower levels of coverage. }
 \begin{figure}[h!]
 	\begin{center}
 		\includegraphics[width=0.4\textwidth]{../figures/coverage/inner_coverage_1.pdf}
 		%		\quad\quad
 		\includegraphics[width=0.4\textwidth]{../figures/coverage/outer_coverage_1.pdf}
-		%		\includegraphics[width=0.24\textwidth]{../figures/efficiency/inner_ratio.pdf}
+		%		\includegraphics[width=0.22\textwidth]{../figures/efficiency/inner_ratio.pdf}
 		%		%		\quad\quad
 		%		%		\hspace{-0.8cm}
-		%		\includegraphics[width=0.24\textwidth]{../figures/efficiency/outer_ratio.pdf}
+		%		\includegraphics[width=0.22\textwidth]{../figures/efficiency/outer_ratio.pdf}
 	\end{center}
-	\caption{Coverage levels of the inner and outer sets averaged over 1000 validations for the original, distance transformed (DT) and smoothed scores (smoothed with a full width at half maximum of 20mm). The nominal rate is acheived in all settings considered.}\label{fig:coverage2}
+	\caption{\nt{Coverage levels of the inner and outer sets averaged over 1000 validations for the original, distance transformed (DT) and smoothed scores (smoothed with a full width at half maximum of 20mm). The nominal rate is acheived in all settings considered.}}\label{fig:coverage2}
 \end{figure}
-
 \newpage
 \subsection{Additional settings for teeth segmentation}\label{A:teeth}
 
@@ -1963,27 +2140,29 @@ In order to study the coverage rate of the methods in the context of the brain i
 
 %\newpage
 \subsubsection{Computing the coverage for the teeth dataset}\label{val3}
-In order to study the coverage rate of the methods in the context of the brain imaging application we peform a similar validation to that described in Sections \ref{SS:cov} and \ref{SS:val2}. To do so we divide the 198 subjects, into subsets of size 170 and 28. We do this 1000 times, randomly sampling the sets of 170 and 28 images respectively and measuring the coverage in each run. We average the coverage over the 1000 runs and display the results in Figure \ref{fig:coverage3}.
+\nt{In order to study the coverage rate of the methods in the context of the brain imaging application we peform a similar validation to that described in Sections \ref{SS:cov} and \ref{SS:val2}. To do so we divide the 198 subjects, into subsets of size 170 and 28. We do this 1000 times, randomly sampling the sets of 170 and 28 images respectively and measuring the coverage in each run. We average the coverage over the 1000 runs and display the results in Figure \ref{fig:coverage3}.}
 \begin{figure}[h!]
 	\begin{center}
 		\includegraphics[width=0.4\textwidth]{../figures/coverage/inner_coverage_2.pdf}
 		%		\quad\quad
 		\includegraphics[width=0.4\textwidth]{../figures/coverage/outer_coverage_2.pdf}
-		%		\includegraphics[width=0.24\textwidth]{../figures/efficiency/inner_ratio.pdf}
+		%		\includegraphics[width=0.22\textwidth]{../figures/efficiency/inner_ratio.pdf}
 		%		%		\quad\quad
 		%		%		\hspace{-0.8cm}
-		%		\includegraphics[width=0.24\textwidth]{../figures/efficiency/outer_ratio.pdf}
+		%		\includegraphics[width=0.22\textwidth]{../figures/efficiency/outer_ratio.pdf}
 	\end{center}
-	\caption{Coverage levels of the inner and outer sets averaged over 1000 validations for the original, distance transformed (DT) and smoothed scores (smoothed with a full width at half maximum of 2 pixels). The nominal rate is acheived in all settings considered.}\label{fig:coverage3}
+	\caption{\nt{Coverage levels of the inner and outer sets averaged over 1000 validations for the original, distance transformed (DT) and smoothed scores (smoothed with a full width at half maximum of 2 pixels). The nominal rate is acheived in all settings considered.}}\label{fig:coverage3}
 \end{figure}
 
 %\newpage
 \newpage
 \subsection{Comparing performance metrics for each segmentation model}\label{metrics}
-In the table we display performance metrics for each model, computed over the validation set used in each data application. 
+\nt{
+In the table we display performance metrics for each model, computed over the validation set used in each data application.}
 \begin{table}[h!]
+	\nt{
 	\centering
-	\caption{Performance Metrics over the validation set}
+	\caption{\nt{Performance Metrics over the validation set}}
 	\begin{tabular}{@{}lcccc@{}}
 		\toprule
 		\textbf{Model} & Application &\textbf{Average Dice Score} & \textbf{Average Precision} & \textbf{Average Recall} \\ \midrule
@@ -1991,12 +2170,11 @@ In the table we display performance metrics for each model, computed over the va
 		HDBET & Brain imaging & 0.97578
 		 & 0.96058  & 0.99158 \\
 		U-Net based GAN & Teeth & 0.93347 & 0.93548 & 0.93236 \\ \bottomrule
-	\end{tabular}
+	\end{tabular}}
 	\label{tab:model_performance}
 \end{table}
 
-
-\subsection{Analogy to multiple testing error rates}\label{coveragerates}
+\subsection{Relationship with multiple testing error rates}\label{coveragerates}
 
 \subsection*{Family-Wise Error Rate (FWER)}
 \nt{In traditional multiple hypothesis testing \textit{Family-Wise Error Rate} (FWER) is the probability of making at least one false discovery across a set of considered hypotheses. Given a multiple testing problem in which $m$ hypotheses are tested and a multiple testing algorithm $\mathcal{M}$, let \( V(\mathcal{M}) \) denotes the resulting set of false discoveries, $R(\mathcal{M})$ the set of rejected hypotheses and $T$ be the set of true rejections. Then the FWER is defined as:
