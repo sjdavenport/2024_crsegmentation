@@ -34,9 +34,9 @@ Given this we construct confidence sets as follows.
 \begin{theorem}\label{thm:inner}
 	(Marginal inner set)
 	Under Assumptions \ref{ass:ex} and \ref{ass:indep}, given $\alpha_1 \in (0,1)$, let 
-	\begin{equation*}
+	\begin{equation}\label{lambdaI}
 		\lambda_I(\alpha_1) = \inf\left\lbrace \lambda: \frac{1}{n} \sum_{i = 1}^n 1\left[ \tau_i\leq \lambda \right] \geq \frac{\lceil (1-\alpha_1)(n+1) \rceil}{n}\right\rbrace,
-	\end{equation*}
+	\end{equation}
 %	be the upper $\alpha_1$ quantile of $(\tau_i)_{i = 1}^n$
 	and define $I(X) = \lbrace v \in \mathcal{V}: f_I(s(X), v) >\lambda_I(\alpha_1)  \rbrace $. Then,
 	\begin{equation}\label{eq:probstat}
@@ -58,9 +58,9 @@ Given this we construct confidence sets as follows.
 \begin{theorem}\label{thm:outer}
 	(Marginal outer set)
 	Under Assumptions \ref{ass:ex} and \ref{ass:indep}, given $\alpha_2 \in (0,1)$, let 
-	\begin{equation*}
+	\begin{equation}\label{lambdaO}
 		\lambda_O({\alpha_2})= \inf\left\lbrace \lambda: \frac{1}{n} \sum_{i = 1}^n 1\left[ \gamma_i\leq \lambda \right] \geq \frac{\lceil (1-\alpha_2)(n+1) \rceil}{n} \right\rbrace,
-	\end{equation*}
+	\end{equation}
 %	be the upper $\alpha_2$ quantile of $(\gamma_i)_{i = 1}^n$
 	and define $O(X) = \lbrace v \in \mathcal{V}: -f_O(s(X), v) \leq \lambda_O(\alpha_2)  \rbrace $. Then,
 	\begin{equation}\label{eq:probstat}
@@ -238,7 +238,7 @@ The conclusion from the learning dataset is therefore that it makes sense to com
 %\end{figur
 %\subsection{}
 \subsection{Illustrating the performance of conformal confidence sets}\label{SS:val}
-In order to illustrate the full extent of our methods in practice we divide the \nt{remaining 1500} images at random into 1000 for conformal calibration, and 500 for testing. The resulting conformal confidence sets for 10 example images from the test dataset are shown in Figure \ref{fig:res}, with inner sets obtained using the untransformed logit scores and outer sets using the distance transformed scores. The inner sets are shown in red and represent regions where we can have high confidence of the presence of polyps. The outer sets are shown in blue and represent regions in which the polyps may be. The ground truth mask for each polyps is shown in yellow and can be compared to the original images. In each of the examples considered the ground truth is bounded from within by the inner set and from without by the outer set. 
+In order to illustrate the full extent of our methods in practice we divide the \nt{remaining 1500} images at random into 1000 for conformal calibration, and 500 for testing. The resulting conformal confidence sets for 10 example images from the test dataset are shown in Figure \ref{fig:res}, with inner sets obtained using the untransformed logit scores and outer sets using the distance transformed scores. \nt{Details of the test time implementation are shown in Algorithm \ref{alg}}. The inner sets are shown in red and represent regions where we can have high confidence of the presence of polyps. The outer sets are shown in blue and represent regions in which the polyps may be. The ground truth mask for each polyps is shown in yellow and can be compared to the original images. In each of the examples considered the ground truth is bounded from within by the inner set and from without by the outer set. 
 \begin{figure}[h!]
 	\centering
 	\begin{subfigure}[b]{0.03\textwidth} % Adjust the width to fit your label

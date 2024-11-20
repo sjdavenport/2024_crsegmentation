@@ -114,6 +114,40 @@ Now consider the sequences of image pairs $(X_i, B_i^I)_{i = 1}^n$ and $(X_i, B_
 \end{corollary}
 Joint results can be obtained in a similar manner to those in Section \ref{SS:joint}.
 
+\subsection{Writing the test time steps as an algorithm}
+
+\nt{In order to clarify what is done at test time we include the following algorithm which demonstrates this for the polyps data application.} 
+
+%\begin{algorithm}
+%	\caption{Test time application of the methods (for the polyps data application)}\label{alg:bubble_sort}
+%	\begin{algorithmic}[1]
+%		\REQUIRE Inner and outer alpha levels $\alpha_1$ and $\alpha_2$ and thresholds $\lambda_I(\alpha_1)$ and $\lambda_O(\alpha_2)$ obtained as in equations \eqref{lambdaI} and \eqref{lambdaO} from the calibration dataset and test time observation $X_{n+1}$
+%		\STATE Compute the predicted mask as $\hat{M}(X_{n+1}) = \lbrace v \in \mathcal{V}: s(X_{n+1}, v) > 0 \rbrace $
+%		\STATE Calculate the set of points $E(\hat{M}(X_{n+1}))$ on the boundary of the predicted mask $\hat{M}(X_{n+1})$ using the marching squares algorithm.
+%		\STATE Compute $ 
+%		d_{\rho}(\hat{M}(X_{n+1}), v) = \text{sign}(\hat{M}(X_{n+1}), v)\min\lbrace \rho(v, e): e \in E(\hat{M}(X_{n+1}))\rbrace,$ i.e. the distance transformed scores, for each $v \in \mathcal{V}$.
+%		\STATE Let $I(X_{n+1}) = \lbrace v \in \mathcal{V}: s(X, v) >\lambda_I(\alpha_1)  \rbrace $.
+%		\STATE Let $O(X_{n+1}) = \lbrace v \in \mathcal{V}: -d_{\rho}(\hat{M}(X_{n+1}), v) \leq \lambda_O(\alpha_2)  \rbrace$.
+%		\RETURN $I(X_{n+1}) $ and $O(X_{n+1}).$
+%	\end{algorithmic}
+%\end{algorithm}
+
+\begin{algorithm}
+	\caption{Test time application of the methods (for the polyps data application)}\label{alg}
+	\begin{algorithmic}[1]
+		\REQUIRE Inner and outer alpha levels $\alpha_1$ and $\alpha_2$ and thresholds $\lambda_I(\alpha_1)$ and $\lambda_O(\alpha_2)$ obtained as in equations \eqref{lambdaI} and \eqref{lambdaO} from the calibration dataset with $f_I$ the identity and $f_O$ the distance transformed scores.  A test time observation $X_{n+1}$ and a score function $s(X_{n+1})$ obtained by an image segmenting model and a distance metric $ \rho. $
+		\STATE Compute the predicted mask as $\hat{M}(X_{n+1}) = \lbrace v \in \mathcal{V}: s(X_{n+1}, v) > 0 \rbrace $
+		\STATE Calculate the set of points $E(\hat{M}(X_{n+1}))$ on the boundary of the predicted mask $\hat{M}(X_{n+1})$ using the marching squares algorithm.
+		\STATE Compute $ 
+			d_{\rho}(\hat{M}(X_{n+1}), v) = \text{sign}(\hat{M}(X_{n+1}), v)\min\lbrace \rho(v, e): e \in E(\hat{M}(X_{n+1}))\rbrace,$ i.e. the distance transformed scores, for each $v \in \mathcal{V}$.
+		\STATE Let $I(X_{n+1}) = \lbrace v \in \mathcal{V}: s(X, v) >\lambda_I(\alpha_1)  \rbrace $.
+		\STATE Let $O(X_{n+1}) = \lbrace v \in \mathcal{V}: -d_{\rho}(\hat{M}(X_{n+1}), v) \leq \lambda_O(\alpha_2)  \rbrace$.
+		\RETURN $I(X_{n+1}) $ and $O(X_{n+1}).$
+	\end{algorithmic}
+\end{algorithm}
+\nt{
+For the brain imaging application, $\lambda_I(\alpha_1)$ and $\lambda_O(\alpha_2)$ are instead computed from the calibration dataset with both $f_I$ and $f_O$ being the distance transformed scores. Then line 4 of the algorithm at test time is replaced by:  Let $I(X_{n+1}) = \lbrace v \in \mathcal{V}: d_{\rho}(\hat{M}(X_{n+1}), v)>\lambda_I(\alpha_1)  \rbrace $. For the teeth segmentation the inner scores are analogously replaced but with scores smoothing using a kernel with FWHM 2 pixels.}
+
 \newpage
 \subsection{Additional settings for polyps segmentation}
 Here we plot additional settings and examples for the polyps data application. The version of the method which uses the distance transformation to create outer confidence sets and the untransformed logit scores to create inner confidence sets will be referred to as combo.
